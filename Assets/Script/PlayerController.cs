@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -89,7 +90,7 @@ public class PlayerController : MonoBehaviour
         //setting offset
         Vector3 offset = unitForward * 1f;
         Vector3 upCenter = cam.transform.position + offset;
-        Vector3 downCenter = downCenter + unitForward * length;
+        Vector3 downCenter = upCenter + unitForward * length;
 
         float gap = 0;
 
@@ -99,10 +100,10 @@ public class PlayerController : MonoBehaviour
             float angle = 360 / (level * level);
             for (float degree = 0; degree < 360; degree += angle)
             {
-                float radians = degree * Math.PI / 180f;
+                float radians = degree * Mathf.PI / 180f;
                 Vector3 xyPoint = new Vector3(
-                    Math.cos(radius) * gap,
-                    Math.sin(radius) * gap,
+                    Mathf.Cos(radius) * gap,
+                    Mathf.Sin(radius) * gap,
                     0
                     );
           
@@ -162,10 +163,6 @@ public class PlayerController : MonoBehaviour
                 // PICK A WEAPON
                 Debug.Log("Pick a Weapon");
             }
-        }
-        else if(firstItem.tag == "food")
-        {
-            FoodLostSystem.F_EatFood(5f);
         }
     }
 }
