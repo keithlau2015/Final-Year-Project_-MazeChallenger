@@ -11,12 +11,19 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private int countJump;
     private Camera cam;
+    private Vector3 camOffset;
+
+    [SerializeField]
+    private GameObject[] weapons;
+
+    [SerializeField]
+    private Transform rightHand, leftHand;
 
     // Raycast collider
     private Collider firstItem = null;
     private Dictionary<string, int> itemPriority = new Dictionary<string, int>()
     {
-        {"Item", 0},{"Intecractable Item", 1}
+        {"Item", 0}, {"Intecractable Item", 1}
     };
 
     private void Awake()
@@ -28,23 +35,32 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        camOffset = new Vector3(0, 4.5f, 0);
         cam = Camera.main;
         rigidbody = GetComponent<Rigidbody>();
     }
    
 
-        // Update is called once per frame
-        private void Update()
+    // Update is called once per frame
+    private void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector3 movenment = new Vector3(moveHorizontal, 0 , moveVertical);
-        rigidbody.AddForce(movenment * speed);
+        Vector3 movenment = new Vector3(Input.GetAxis("Horizontal"), 0 , Input.GetAxis("Vertical"));
+        Vector3 velocity = transform.TransformDirection(movenment) * speed;
+        velocity.y = rigidbody.velocity.y;
+        rigidbody.velocity = velocity;
+        cam.transform.position = gameObject.transform.position + camOffset;
+
+        transform.rotation = Quaternion.Euler(0, cam.transform.eulerAngles.y, 0);
     }
 
     private void FixedUpdate()
     {
+        DrawRayCastLine();
         if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            speed = 30;
+        }
+        else if(Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 20;
         }
@@ -59,6 +75,7 @@ public class PlayerController : MonoBehaviour
             }
             */
             rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+
         }
     }
 
@@ -82,7 +99,7 @@ public class PlayerController : MonoBehaviour
         //const
         const int accuracy = 5;
         const float radius = 0.05f;
-        const float length = 3f;
+        const float length = 15f;
         
         //getting camera transformation
         Vector3 unitForward = cam.transform.TransformDirection(Vector3.forward);
@@ -156,12 +173,33 @@ public class PlayerController : MonoBehaviour
     private void onTriggerLineStay()
     {
         if (!firstItem) return;
-        else if(firstItem.tag == "Weapon")
+        if(firstItem.tag == "Item")
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-                // PICK A WEAPON
-                Debug.Log("Pick a Weapon");
+                switch (firstItem.name)
+                {
+                    case "Spear":
+                        Debug.Log("pick up Spear"); 
+                        break;
+                    case "Sword_1":
+                        Instantiate(weapons[0], rightHand);
+                        Destroy(firstItem.transform.gameObject);
+                        Debug.Log("pick up Sword_1");
+                        break;
+                    case "Shield_0":
+                        Debug.Log("pick up Shield_0");
+                        break;
+                    case "Shield_1":
+                        Instantiate(weapons[1], leftHand);
+                        Destroy(firstItem.transform.gameObject);
+                        Debug.Log("pick up Shield_1");
+                        break;
+                    case "Sword_0":
+                        Debug.Log("pick up Sword_0");
+                        break;
+
+                }
             }
         }
     }
