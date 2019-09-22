@@ -98,8 +98,8 @@ public class PlayerController : MonoBehaviour
     private void DrawRayCastLine() {
         //const
         const int accuracy = 5;
-        const float radius = 0.05f;
-        const float length = 15f;
+        const float radius = 0.1f;
+        const float length = 13f;
         
         //getting camera transformation
         Vector3 unitForward = cam.transform.TransformDirection(Vector3.forward);
@@ -169,6 +169,22 @@ public class PlayerController : MonoBehaviour
         return cp < 0 ? -1 : cp > 0 ? 1 : xPriority < yPriority ? -1 : xPriority > yPriority ? 1 : 0;
     }
 
+    private void cleaRightHandObject()
+    {
+        if (rightHand.transform.childCount > 0)
+        {
+            Destroy(rightHand.GetChild(0).gameObject);
+        }
+    }
+
+    private void clearLeftHandObject()
+    {
+        if (leftHand.transform.childCount > 0)
+        {
+            Destroy(leftHand.GetChild(0).gameObject);
+        }
+    }
+
     //just like onTriggerStay function
     private void onTriggerLineStay()
     {
@@ -180,23 +196,40 @@ public class PlayerController : MonoBehaviour
                 switch (firstItem.name)
                 {
                     case "Spear":
+                        cleaRightHandObject();
+                        Instantiate(weapons[4], rightHand);
+                        Destroy(firstItem.transform.gameObject);
                         Debug.Log("pick up Spear"); 
                         break;
                     case "Sword_1":
+                        cleaRightHandObject();
                         Instantiate(weapons[0], rightHand);
                         Destroy(firstItem.transform.gameObject);
                         Debug.Log("pick up Sword_1");
                         break;
                     case "Shield_0":
+                        clearLeftHandObject();
+                        Instantiate(weapons[3], leftHand);
+                        Destroy(firstItem.transform.gameObject);
                         Debug.Log("pick up Shield_0");
                         break;
                     case "Shield_1":
+                        clearLeftHandObject();
                         Instantiate(weapons[1], leftHand);
                         Destroy(firstItem.transform.gameObject);
                         Debug.Log("pick up Shield_1");
                         break;
                     case "Sword_0":
+                        cleaRightHandObject();
+                        Instantiate(weapons[2], rightHand);
+                        Destroy(firstItem.transform.gameObject);
                         Debug.Log("pick up Sword_0");
+                        break;
+                    case "GreatSword":
+                        cleaRightHandObject();
+                        Instantiate(weapons[5], rightHand);
+                        Destroy(firstItem.transform.gameObject);
+                        Debug.Log("pick up GreatSword");
                         break;
 
                 }
