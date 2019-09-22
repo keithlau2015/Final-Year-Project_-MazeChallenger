@@ -211,7 +211,7 @@ public class PlayerController : MonoBehaviour
                         clearLeftHandObject();
                         Instantiate(weapons[3], leftHand);
                         Destroy(firstItem.transform.gameObject);
-                        Debug.Log("pick up Shield_0");
+                        Debug.Log("pick up Shield_0");  
                         break;
                     case "Shield_1":
                         clearLeftHandObject();
