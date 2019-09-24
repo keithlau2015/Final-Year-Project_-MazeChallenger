@@ -140,7 +140,7 @@ PrefabInstance:
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.92
+      value: 9.1
       objectReference: {fileID: 0}
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 195850824}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -424,7 +424,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &195850825
@@ -910,7 +910,7 @@ PrefabInstance:
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.92
+      value: 9.1
       objectReference: {fileID: 0}
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
@@ -979,7 +979,7 @@ PrefabInstance:
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.92
+      value: 9.1
       objectReference: {fileID: 0}
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
@@ -1039,6 +1039,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 19582d15f46fe2c498129ded2204d93b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 19582d15f46fe2c498129ded2204d93b,
         type: 3}
@@ -1211,7 +1216,7 @@ PrefabInstance:
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.92
+      value: 9.1
       objectReference: {fileID: 0}
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
@@ -1271,6 +1276,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Barrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738674875391274251, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
@@ -1550,7 +1560,7 @@ PrefabInstance:
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.11
+      value: 15.29
       objectReference: {fileID: 0}
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
@@ -1812,7 +1822,7 @@ PrefabInstance:
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.11
+      value: 15.29
       objectReference: {fileID: 0}
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
@@ -2123,7 +2133,7 @@ PrefabInstance:
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.11
+      value: 15.29
       objectReference: {fileID: 0}
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
@@ -2631,7 +2641,7 @@ PrefabInstance:
     - target: {fileID: 2202149435517990368, guid: 6471fe717285ff24a9974907e020f20f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.02
+      value: 6.198
       objectReference: {fileID: 0}
     - target: {fileID: 2202149435517990368, guid: 6471fe717285ff24a9974907e020f20f,
         type: 3}
@@ -2766,6 +2776,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table
       objectReference: {fileID: 0}
+    - target: {fileID: 3726906472409807455, guid: 7792397589a0ef148b490fe7431121f1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 424455916008622156, guid: 7792397589a0ef148b490fe7431121f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2834,6 +2849,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Barrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738674875391274251, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     - target: {fileID: 412406081009557272, guid: d8783e96aaac5a942b9fd88a99b0c3b1,
         type: 3}
