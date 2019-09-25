@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     private int countJump;
     private Camera cam;
     private Vector3 camOffset;
-
     [SerializeField]
     private GameObject[] weapons;
 
@@ -49,7 +48,7 @@ public class PlayerController : MonoBehaviour
         velocity.y = rigidbody.velocity.y;
         rigidbody.velocity = velocity;
         cam.transform.position = gameObject.transform.position + camOffset;
-
+        
         transform.rotation = Quaternion.Euler(0, cam.transform.eulerAngles.y, 0);
     }
 
@@ -59,10 +58,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             speed = 30;
+            soundcontrol.running_effect = true;
+            soundcontrol.walking_effect = false;
         }
         else if(Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 20;
+            soundcontrol.running_effect = false;
+            soundcontrol.walking_effect = true;
         }
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -199,36 +202,48 @@ public class PlayerController : MonoBehaviour
                         cleaRightHandObject();
                         Instantiate(weapons[4], rightHand);
                         Destroy(firstItem.transform.gameObject);
+                        soundcontrol.spear = true;
+                        soundcontrol.picking_up = true;
                         Debug.Log("pick up Spear"); 
                         break;
                     case "Sword_1":
                         cleaRightHandObject();
                         Instantiate(weapons[0], rightHand);
                         Destroy(firstItem.transform.gameObject);
+                        soundcontrol.sword = true;
+                        soundcontrol.picking_up = true;
                         Debug.Log("pick up Sword_1");
                         break;
                     case "Shield_0":
                         clearLeftHandObject();
                         Instantiate(weapons[3], leftHand);
                         Destroy(firstItem.transform.gameObject);
+                        soundcontrol.picking_up = true;
+                        soundcontrol.spear = true;
                         Debug.Log("pick up Shield_0");  
                         break;
                     case "Shield_1":
                         clearLeftHandObject();
                         Instantiate(weapons[1], leftHand);
                         Destroy(firstItem.transform.gameObject);
+                         soundcontrol.picking_up = true;
+                         soundcontrol.spear = true;
                         Debug.Log("pick up Shield_1");
                         break;
                     case "Sword_0":
                         cleaRightHandObject();
                         Instantiate(weapons[2], rightHand);
                         Destroy(firstItem.transform.gameObject);
+                        soundcontrol.sword = true;
+                        soundcontrol.picking_up = true;
                         Debug.Log("pick up Sword_0");
                         break;
                     case "GreatSword":
                         cleaRightHandObject();
                         Instantiate(weapons[5], rightHand);
                         Destroy(firstItem.transform.gameObject);
+                        soundcontrol.sword = true;
+                        soundcontrol.picking_up = true;
                         Debug.Log("pick up GreatSword");
                         break;
 
