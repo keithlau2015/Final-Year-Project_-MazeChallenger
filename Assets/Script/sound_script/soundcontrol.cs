@@ -37,12 +37,12 @@ public class soundcontrol : MonoBehaviour
 		Sound s = Array.Find(sounds, sound => sound.name == name);
 		if(s == null)
 		{
-			Debug.Log("warnning, there is a error, name not found");
+			Debug.Log("warnning, there is a error, name not found" + name);
 			return;
 		}
 		s.source.Play();
 	}
 
-    //FindObjectOfType<AudioManager>().Play("spear_atk_sound");
+    //FindObjectOfType<soundcontrol>().Play("spear_atk_sound");
     // For other script using
 }

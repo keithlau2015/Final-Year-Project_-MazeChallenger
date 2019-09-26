@@ -65,15 +65,29 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButtonDown(0) && holdingSword)
         {
             rightHandAnimator.SetBool("Sword_Swing", true);
+
+            if (rightHandAnimator.GetBool("Sword_Swing"))
+            {
+                FindObjectOfType<soundcontrol>().Play("sword_atk");
+            } 
+
         }
         else if (Input.GetMouseButtonUp(0) && holdingSword)
         {
             rightHandAnimator.SetBool("Sword_Swing", false);
+            if (rightHandAnimator.GetBool("Sword_Swing"))
+            {
+                FindObjectOfType<soundcontrol>().Play("sword_atk");
+            } 
         }
 
         if (Input.GetMouseButtonDown(0) && holdingSpear)
         {
             rightHandAnimator.SetBool("Sting", true);
+            if (rightHandAnimator.GetBool("Sting"))
+            {
+                FindObjectOfType<soundcontrol>().Play("spear_atk_sound");
+            } 
         }
         else if (Input.GetMouseButtonUp(0) && holdingSpear)
         {
@@ -83,15 +97,28 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && holdingGreatSword)
         {
             rightHandAnimator.SetBool("GreatSword_Swing", true);
+            if (rightHandAnimator.GetBool("GreatSword_Swing"))
+            {
+                FindObjectOfType<soundcontrol>().Play("sword_atk");
+            } 
+
         }
         else if (Input.GetMouseButtonUp(0) && holdingGreatSword)
         {
             rightHandAnimator.SetBool("GreatSword_Swing", false);
+            if (rightHandAnimator.GetBool("GreatSword_Swing"))
+            {
+                FindObjectOfType<soundcontrol>().Play("sword_atk");
+            } 
         }
 
         if (Input.GetMouseButtonDown(0) && holdingBattleAxe)
         {
             rightHandAnimator.SetBool("BattleAxe_Swing", true);
+            if (rightHandAnimator.GetBool("BattleAxe_Swing"))
+            {
+                FindObjectOfType<soundcontrol>().Play("sword_atk");
+            } 
         }
         else if (Input.GetMouseButtonUp(0) && holdingBattleAxe)
         {
@@ -101,6 +128,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && holdingBow)
         {
             rightHandAnimator.SetBool("Shot", true);
+            if (rightHandAnimator.GetBool("Shot"))
+            {
+                FindObjectOfType<soundcontrol>().Play("arrow_atk");
+            } 
         }
         else if (Input.GetMouseButtonUp(0) && holdingBow)
         {
@@ -258,9 +289,9 @@ public class PlayerController : MonoBehaviour
                         cleaRightHandObject();
                         Instantiate(weapons[4], rightHand);
                         Destroy(firstItem.transform.gameObject);
-                        FindObjectOfType<soundcontrol>().Play("gun_picking");
                         holdingBattleAxe = holdingGreatSword = holdingSword = holdingBow = false;
                         holdingSpear = true;
+                        FindObjectOfType<soundcontrol>().Play("wood_pickup");
                         Debug.Log("pick up Spear"); 
                         break;
                     case "Sword_1":
@@ -269,6 +300,7 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.transform.gameObject);
                         holdingSpear = holdingGreatSword = holdingBattleAxe = holdingBow = false;
                         holdingSword = true;
+                        FindObjectOfType<soundcontrol>().Play("sword_pickup");
                         Debug.Log("pick up Sword_1");
                         break;
                     case "Shield_0":
@@ -276,6 +308,7 @@ public class PlayerController : MonoBehaviour
                         Instantiate(weapons[3], leftHand);
                         Destroy(firstItem.transform.gameObject);
                         holdingShield = true;
+                        FindObjectOfType<soundcontrol>().Play("wood_pickup");
                         Debug.Log("pick up Shield_0");  
                         break;
                     case "Shield_1":
@@ -283,6 +316,7 @@ public class PlayerController : MonoBehaviour
                         Instantiate(weapons[1], leftHand);
                         Destroy(firstItem.transform.gameObject);
                         holdingShield = true;
+                        FindObjectOfType<soundcontrol>().Play("wood_pickup");
                         Debug.Log("pick up Shield_1");
                         break;
                     case "Sword_0":
@@ -291,6 +325,7 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.transform.gameObject);
                         holdingBattleAxe = holdingGreatSword = holdingSpear = holdingBow = false;
                         holdingSword = true;
+                        FindObjectOfType<soundcontrol>().Play("sword_pickup");
                         Debug.Log("pick up Sword_0");
                         break;
                     case "GreatSword":
@@ -299,6 +334,7 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.transform.gameObject);
                         holdingSpear = holdingSword = holdingBattleAxe = holdingBow = false;
                         holdingGreatSword = true;
+                        FindObjectOfType<soundcontrol>().Play("sword_pickup");
                         Debug.Log("pick up GreatSword");
                         break;
                     case "BattleAxe":
@@ -307,6 +343,7 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.transform.gameObject);
                         holdingGreatSword = holdingSpear = holdingSword = holdingBow = false;
                         holdingBattleAxe = true;
+                        FindObjectOfType<soundcontrol>().Play("sword_pickup");
                         Debug.Log("pick up BattleAxe");
                         break;
                     case "Bow":
@@ -315,6 +352,7 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.transform.gameObject);
                         holdingGreatSword = holdingSpear = holdingSword = false;
                         holdingBattleAxe = true;
+                        FindObjectOfType<soundcontrol>().Play("spear_pick");
                         Debug.Log("pick up Bow");
                         break;
                 }
