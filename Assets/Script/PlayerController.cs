@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float speed, jumpPower;
     private Rigidbody rigidbody;
-    private bool isGrounded;
+    private bool isGrounded, holdingShield, holdingSword, holdingSpear, holdingGreatSword, holdingBattleAxe, holdingBow;
     private int countJump;
     private Camera cam;
     private Vector3 camOffset;
+    private Animator leftHandAnimator, rightHandAnimator;
+
     [SerializeField]
     private GameObject[] weapons;
 
@@ -37,6 +39,8 @@ public class PlayerController : MonoBehaviour
         camOffset = new Vector3(0, 4.5f, 0);
         cam = Camera.main;
         rigidbody = GetComponent<Rigidbody>();
+        leftHandAnimator = leftHand.GetComponent<Animator>();
+        rightHandAnimator = rightHand.GetComponent<Animator>();
     }
    
 
@@ -48,25 +52,74 @@ public class PlayerController : MonoBehaviour
         velocity.y = rigidbody.velocity.y;
         rigidbody.velocity = velocity;
         cam.transform.position = gameObject.transform.position + camOffset;
-        
         transform.rotation = Quaternion.Euler(0, cam.transform.eulerAngles.y, 0);
-    }
+        if (Input.GetMouseButtonDown(1) && holdingShield)
+        {
+            leftHandAnimator.SetBool("Blocking", true);
+        }
+        else if (Input.GetMouseButtonUp(1) && holdingShield)
+        {
+            leftHandAnimator.SetBool("Blocking", false);
+        }
 
-    private void FixedUpdate()
-    {
-        DrawRayCastLine();
+        if(Input.GetMouseButtonDown(0) && holdingSword)
+        {
+            rightHandAnimator.SetBool("Sword_Swing", true);
+        }
+        else if (Input.GetMouseButtonUp(0) && holdingSword)
+        {
+            rightHandAnimator.SetBool("Sword_Swing", false);
+        }
+
+        if (Input.GetMouseButtonDown(0) && holdingSpear)
+        {
+            rightHandAnimator.SetBool("Sting", true);
+        }
+        else if (Input.GetMouseButtonUp(0) && holdingSpear)
+        {
+            rightHandAnimator.SetBool("Sting", false);
+        }
+
+        if (Input.GetMouseButtonDown(0) && holdingGreatSword)
+        {
+            rightHandAnimator.SetBool("GreatSword_Swing", true);
+        }
+        else if (Input.GetMouseButtonUp(0) && holdingGreatSword)
+        {
+            rightHandAnimator.SetBool("GreatSword_Swing", false);
+        }
+
+        if (Input.GetMouseButtonDown(0) && holdingBattleAxe)
+        {
+            rightHandAnimator.SetBool("BattleAxe_Swing", true);
+        }
+        else if (Input.GetMouseButtonUp(0) && holdingBattleAxe)
+        {
+            rightHandAnimator.SetBool("BattleAxe_Swing", false);
+        }
+
+        if (Input.GetMouseButtonDown(0) && holdingBow)
+        {
+            rightHandAnimator.SetBool("Shot", true);
+        }
+        else if (Input.GetMouseButtonUp(0) && holdingBow)
+        {
+            rightHandAnimator.SetBool("Shot", false);
+        }
+
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             speed = 30;
             soundcontrol.running_effect = true;
             soundcontrol.walking_effect = false;
         }
-        else if(Input.GetKeyUp(KeyCode.LeftShift))
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 20;
             soundcontrol.running_effect = false;
             soundcontrol.walking_effect = true;
         }
+
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             //Double jump
@@ -78,8 +131,13 @@ public class PlayerController : MonoBehaviour
             }
             */
             rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-
         }
+    }
+
+    private void FixedUpdate()
+    {
+        DrawRayCastLine();
+        
     }
 
     private void OnCollisionStay(Collision collision)
@@ -202,6 +260,8 @@ public class PlayerController : MonoBehaviour
                         cleaRightHandObject();
                         Instantiate(weapons[4], rightHand);
                         Destroy(firstItem.transform.gameObject);
+                        holdingBattleAxe = holdingGreatSword = holdingSword = holdingBow = false;
+                        holdingSpear = true;
                         soundcontrol.spear = true;
                         soundcontrol.picking_up = true;
                         Debug.Log("pick up Spear"); 
@@ -210,6 +270,8 @@ public class PlayerController : MonoBehaviour
                         cleaRightHandObject();
                         Instantiate(weapons[0], rightHand);
                         Destroy(firstItem.transform.gameObject);
+                        holdingSpear = holdingGreatSword = holdingBattleAxe = holdingBow = false;
+                        holdingSword = true;
                         soundcontrol.sword = true;
                         soundcontrol.picking_up = true;
                         Debug.Log("pick up Sword_1");
@@ -218,6 +280,7 @@ public class PlayerController : MonoBehaviour
                         clearLeftHandObject();
                         Instantiate(weapons[3], leftHand);
                         Destroy(firstItem.transform.gameObject);
+                        holdingShield = true;
                         soundcontrol.picking_up = true;
                         soundcontrol.spear = true;
                         Debug.Log("pick up Shield_0");  
@@ -226,14 +289,17 @@ public class PlayerController : MonoBehaviour
                         clearLeftHandObject();
                         Instantiate(weapons[1], leftHand);
                         Destroy(firstItem.transform.gameObject);
-                         soundcontrol.picking_up = true;
-                         soundcontrol.spear = true;
+                        holdingShield = true;
+                        soundcontrol.picking_up = true;
+                        soundcontrol.spear = true;
                         Debug.Log("pick up Shield_1");
                         break;
                     case "Sword_0":
                         cleaRightHandObject();
                         Instantiate(weapons[2], rightHand);
                         Destroy(firstItem.transform.gameObject);
+                        holdingBattleAxe = holdingGreatSword = holdingSpear = holdingBow = false;
+                        holdingSword = true;
                         soundcontrol.sword = true;
                         soundcontrol.picking_up = true;
                         Debug.Log("pick up Sword_0");
@@ -242,11 +308,28 @@ public class PlayerController : MonoBehaviour
                         cleaRightHandObject();
                         Instantiate(weapons[5], rightHand);
                         Destroy(firstItem.transform.gameObject);
+                        holdingSpear = holdingSword = holdingBattleAxe = holdingBow = false;
+                        holdingGreatSword = true;
                         soundcontrol.sword = true;
                         soundcontrol.picking_up = true;
                         Debug.Log("pick up GreatSword");
                         break;
-
+                    case "BattleAxe":
+                        cleaRightHandObject();
+                        Instantiate(weapons[6], rightHand);
+                        Destroy(firstItem.transform.gameObject);
+                        holdingGreatSword = holdingSpear = holdingSword = holdingBow = false;
+                        holdingBattleAxe = true;
+                        Debug.Log("pick up BattleAxe");
+                        break;
+                    case "Bow":
+                        cleaRightHandObject();
+                        Instantiate(weapons[7], rightHand);
+                        Destroy(firstItem.transform.gameObject);
+                        holdingGreatSword = holdingSpear = holdingSword = false;
+                        holdingBattleAxe = true;
+                        Debug.Log("pick up Bow");
+                        break;
                 }
             }
         }

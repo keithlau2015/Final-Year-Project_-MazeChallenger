@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 20425675352043563}
   - component: {fileID: 9012714079544461853}
   - component: {fileID: 3327912594817365732}
-  - component: {fileID: 7156845504965855880}
-  m_Layer: 0
+  - component: {fileID: 61779327456264253}
+  m_Layer: 9
   m_Name: GreatSword
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7156845504965855880
+--- !u!64 &61779327456264253
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -88,7 +88,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3896678914595029560}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -101,11 +101,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 20425675352043563}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 70b3c78d8214a1546b402673ce00b07c,
-        type: 3}
-      propertyPath: m_Name
-      value: GreatSword_Flip
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 70b3c78d8214a1546b402673ce00b07c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -175,6 +170,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 126.5056
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 70b3c78d8214a1546b402673ce00b07c,
+        type: 3}
+      propertyPath: m_Name
+      value: GreatSword_Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 70b3c78d8214a1546b402673ce00b07c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 70b3c78d8214a1546b402673ce00b07c,
         type: 3}
