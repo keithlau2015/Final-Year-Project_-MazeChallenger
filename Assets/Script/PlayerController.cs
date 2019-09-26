@@ -110,14 +110,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             speed = 30;
-            soundcontrol.running_effect = true;
-            soundcontrol.walking_effect = false;
+            
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = 20;
-            soundcontrol.running_effect = false;
-            soundcontrol.walking_effect = true;
+            
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
@@ -260,10 +258,9 @@ public class PlayerController : MonoBehaviour
                         cleaRightHandObject();
                         Instantiate(weapons[4], rightHand);
                         Destroy(firstItem.transform.gameObject);
+                        FindObjectOfType<soundcontrol>().Play("gun_picking");
                         holdingBattleAxe = holdingGreatSword = holdingSword = holdingBow = false;
                         holdingSpear = true;
-                        soundcontrol.spear = true;
-                        soundcontrol.picking_up = true;
                         Debug.Log("pick up Spear"); 
                         break;
                     case "Sword_1":
@@ -272,8 +269,6 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.transform.gameObject);
                         holdingSpear = holdingGreatSword = holdingBattleAxe = holdingBow = false;
                         holdingSword = true;
-                        soundcontrol.sword = true;
-                        soundcontrol.picking_up = true;
                         Debug.Log("pick up Sword_1");
                         break;
                     case "Shield_0":
@@ -281,8 +276,6 @@ public class PlayerController : MonoBehaviour
                         Instantiate(weapons[3], leftHand);
                         Destroy(firstItem.transform.gameObject);
                         holdingShield = true;
-                        soundcontrol.picking_up = true;
-                        soundcontrol.spear = true;
                         Debug.Log("pick up Shield_0");  
                         break;
                     case "Shield_1":
@@ -290,8 +283,6 @@ public class PlayerController : MonoBehaviour
                         Instantiate(weapons[1], leftHand);
                         Destroy(firstItem.transform.gameObject);
                         holdingShield = true;
-                        soundcontrol.picking_up = true;
-                        soundcontrol.spear = true;
                         Debug.Log("pick up Shield_1");
                         break;
                     case "Sword_0":
@@ -300,8 +291,6 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.transform.gameObject);
                         holdingBattleAxe = holdingGreatSword = holdingSpear = holdingBow = false;
                         holdingSword = true;
-                        soundcontrol.sword = true;
-                        soundcontrol.picking_up = true;
                         Debug.Log("pick up Sword_0");
                         break;
                     case "GreatSword":
@@ -310,8 +299,6 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.transform.gameObject);
                         holdingSpear = holdingSword = holdingBattleAxe = holdingBow = false;
                         holdingGreatSword = true;
-                        soundcontrol.sword = true;
-                        soundcontrol.picking_up = true;
                         Debug.Log("pick up GreatSword");
                         break;
                     case "BattleAxe":
