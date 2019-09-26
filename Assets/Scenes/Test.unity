@@ -4182,6 +4182,12 @@ MonoBehaviour:
   - name: arrow_atk
     clip: {fileID: 8300000, guid: 7511132f907bb4fcd8ce083fcb0d4136, type: 3}
     source: {fileID: 0}
+  - name: sword_pickup
+    clip: {fileID: 8300000, guid: 0c2a63faedc084d00b7ea2b0df34bf9f, type: 3}
+    source: {fileID: 0}
+  - name: wood_pickup
+    clip: {fileID: 8300000, guid: a4d282646e3984921a17bcc7c3c7e59f, type: 3}
+    source: {fileID: 0}
   instance: {fileID: 0}
 --- !u!4 &1621529484
 Transform:

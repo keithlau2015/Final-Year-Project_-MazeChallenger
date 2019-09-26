@@ -291,7 +291,7 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.transform.gameObject);
                         holdingBattleAxe = holdingGreatSword = holdingSword = holdingBow = false;
                         holdingSpear = true;
-                        FindObjectOfType<soundcontrol>().Play("spear_pick");
+                        FindObjectOfType<soundcontrol>().Play("wood_pickup");
                         Debug.Log("pick up Spear"); 
                         break;
                     case "Sword_1":
@@ -300,7 +300,7 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.transform.gameObject);
                         holdingSpear = holdingGreatSword = holdingBattleAxe = holdingBow = false;
                         holdingSword = true;
-                        FindObjectOfType<soundcontrol>().Play("spear_pick");
+                        FindObjectOfType<soundcontrol>().Play("sword_pickup");
                         Debug.Log("pick up Sword_1");
                         break;
                     case "Shield_0":
@@ -308,7 +308,7 @@ public class PlayerController : MonoBehaviour
                         Instantiate(weapons[3], leftHand);
                         Destroy(firstItem.transform.gameObject);
                         holdingShield = true;
-                        FindObjectOfType<soundcontrol>().Play("spear_pick");
+                        FindObjectOfType<soundcontrol>().Play("wood_pickup");
                         Debug.Log("pick up Shield_0");  
                         break;
                     case "Shield_1":
@@ -316,7 +316,7 @@ public class PlayerController : MonoBehaviour
                         Instantiate(weapons[1], leftHand);
                         Destroy(firstItem.transform.gameObject);
                         holdingShield = true;
-                        FindObjectOfType<soundcontrol>().Play("spear_pick");
+                        FindObjectOfType<soundcontrol>().Play("wood_pickup");
                         Debug.Log("pick up Shield_1");
                         break;
                     case "Sword_0":
@@ -325,7 +325,7 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.transform.gameObject);
                         holdingBattleAxe = holdingGreatSword = holdingSpear = holdingBow = false;
                         holdingSword = true;
-                        FindObjectOfType<soundcontrol>().Play("spear_pick");
+                        FindObjectOfType<soundcontrol>().Play("sword_pickup");
                         Debug.Log("pick up Sword_0");
                         break;
                     case "GreatSword":
@@ -334,7 +334,7 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.transform.gameObject);
                         holdingSpear = holdingSword = holdingBattleAxe = holdingBow = false;
                         holdingGreatSword = true;
-                        FindObjectOfType<soundcontrol>().Play("spear_pick");
+                        FindObjectOfType<soundcontrol>().Play("sword_pickup");
                         Debug.Log("pick up GreatSword");
                         break;
                     case "BattleAxe":
@@ -343,7 +343,7 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.transform.gameObject);
                         holdingGreatSword = holdingSpear = holdingSword = holdingBow = false;
                         holdingBattleAxe = true;
-                        FindObjectOfType<soundcontrol>().Play("spear_pick");
+                        FindObjectOfType<soundcontrol>().Play("sword_pickup");
                         Debug.Log("pick up BattleAxe");
                         break;
                     case "Bow":
