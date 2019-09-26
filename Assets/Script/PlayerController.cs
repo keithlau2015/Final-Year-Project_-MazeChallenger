@@ -290,8 +290,8 @@ public class PlayerController : MonoBehaviour
                         Instantiate(weapons[1], leftHand);
                         Destroy(firstItem.transform.gameObject);
                         holdingShield = true;
-                         soundcontrol.picking_up = true;
-                         soundcontrol.spear = true;
+                        soundcontrol.picking_up = true;
+                        soundcontrol.spear = true;
                         Debug.Log("pick up Shield_1");
                         break;
                     case "Sword_0":
