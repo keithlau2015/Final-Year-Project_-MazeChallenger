@@ -261,10 +261,7 @@ public class PlayerController : MonoBehaviour
 
     private void cleaRightHandObject()
     {
-        if (rightHand.transform.childCount > 0)
-        {
-            Destroy(rightHand.GetChild(0).gameObject);
-        }
+        Destroy(rightHand.GetChild(0).gameObject);
     }
 
     private void clearLeftHandObject()

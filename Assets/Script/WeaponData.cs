@@ -49,4 +49,9 @@ public class WeaponData
     {
         return this.durability;
     }
+
+    public void weaponDestory()
+    {
+
+    }
 }
