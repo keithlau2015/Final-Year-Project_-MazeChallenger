@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class MonsterStat : MonoBehaviour
 {
-    public int HitPoints { get; set; }
-    public float AttackSpeed { get; set; }
-    public float Speed { get; set; }
-    public int Damage { get; set; }
-    public float AttackRange { get; set; }
-    public float SpawnningRate { get; set; }
+    public int hitPoints { get; set; }
+    public float attackSpeed { get; set; }
+    public float speed { get; set; }
+    public int damage { get; set; }
+    public float attackRange { get; set; }
+    public float spawnningRate { get; set; }
+
+    public MonsterStat(int hitPoints, float attackSpeed, float speed, int damage)
+    {
+
+    }
 }

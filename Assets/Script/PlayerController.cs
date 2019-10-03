@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private Camera cam;
     private Vector3 camOffset;
     private Animator leftHandAnimator, rightHandAnimator;
+    private bool checkIsMoving;
 
     [SerializeField]
     private GameObject[] weapons;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        isGrounded = false;
         soundawake = false;
         isGrounded = false;
         countJump = 0;
