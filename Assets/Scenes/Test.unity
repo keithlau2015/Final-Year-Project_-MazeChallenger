@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43846723, g: 0.48655277, b: 0.5668258, a: 1}
+  m_IndirectSpecularColor: {r: 0.43846717, g: 0.4865529, b: 0.56682587, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11517,7 +11517,11 @@ MonoBehaviour:
   - name: wood_pickup
     clip: {fileID: 8300000, guid: a4d282646e3984921a17bcc7c3c7e59f, type: 3}
     source: {fileID: 0}
+  - name: running
+    clip: {fileID: 8300000, guid: a622d58cda17f448da96e2d5cffdf0f1, type: 3}
+    source: {fileID: 0}
   instance: {fileID: 0}
+  playRate: 1
 --- !u!4 &1621529484
 Transform:
   m_ObjectHideFlags: 0
