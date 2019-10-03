@@ -11488,6 +11488,9 @@ MonoBehaviour:
   - name: running
     clip: {fileID: 8300000, guid: a622d58cda17f448da96e2d5cffdf0f1, type: 3}
     source: {fileID: 0}
+  - name: great_sword_atk
+    clip: {fileID: 8300000, guid: 0f1efd2ab7bd84c65b2d6a9279007948, type: 3}
+    source: {fileID: 0}
   instance: {fileID: 0}
   playRate: 1
 --- !u!4 &1621529484

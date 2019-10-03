@@ -97,11 +97,11 @@ public class PlayerController : MonoBehaviour
             soundawake = false;
         }
 
-        if (Input.GetMouseButton(0) && holdingGreatSword)
+        if (Input.GetMouseButton(0) && holdingGreatSword) // change the sound effect, make the sound longer
         {
             rightHandAnimator.SetBool("GreatSword_Swing", true);
             soundawake = true;
-            StartCoroutine(soundeffect("sword_atk"));
+            StartCoroutine(soundeffect("great_sword_atk"));
 
         }
         else if (Input.GetMouseButtonUp(0) && holdingGreatSword)
