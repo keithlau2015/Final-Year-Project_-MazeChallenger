@@ -53,7 +53,7 @@ public class soundcontrol : MonoBehaviour
         
     }
 
-    public void character(string name, bool sound_stop)
+    public void character(string name)
     {
      Sound s = Array.Find(sounds, sound => sound.name == name);
      if(s == null)
@@ -61,12 +61,6 @@ public class soundcontrol : MonoBehaviour
         Debug.Log("warnning, there is a error, name not found" + "" + name);
         return;
      }
-     if(sound_stop)
-    {
-        s.source.Stop();
-       
-    }
-
     s.source.Play(); 
     }
 

@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     private Transform rightHand, leftHand;
 
     // set the trigger
-    private bool running, soundawake, walking, sound_stop;
+    private bool soundawake, ismoving, running, walking;
     // Raycast collider
     private Collider firstItem = null;
     private Dictionary<string, int> itemPriority = new Dictionary<string, int>()
@@ -31,8 +31,6 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        walking =false;
-        running = false;
         soundawake = false;
         isGrounded = false;
         countJump = 0;
@@ -60,23 +58,8 @@ public class PlayerController : MonoBehaviour
         cam.transform.position = gameObject.transform.position + camOffset;
         transform.rotation = Quaternion.Euler(0, cam.transform.eulerAngles.y, 0);
 
-        if(speed == 20 && isGrounded)
-        {
-            walking = true;
-            running = false;
-            sound_stop = false;
-        }
-        else if(speed == 30 && isGrounded)
-        {
-            walking = false;
-            running = true;
-            sound_stop = false;
-        }
-
-        if(speed == 0)
-        {
-            sound_stop = true;
-        }
+        float x = rigidbody.velocity.x;
+        float z = rigidbody.velocity.z;
 
         if (Input.GetMouseButtonDown(1) && holdingShield)
         {
@@ -153,20 +136,45 @@ public class PlayerController : MonoBehaviour
             soundawake = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if(Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
         {
-            speed = 30;   
+            ismoving = true;
+            walking = true;
+            running = false;
+            Debug.Log("He is moving");
+
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
+
+        if(Input.GetKeyDown(KeyCode.LeftShift))
         {
+            if(z>0 || x>0)
+            {
+            ismoving = true;
+            running = true;
+            walking = false;
+            Debug.Log("He is running");
+            speed = 40;
+            }
+        }
+            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
             speed = 20;
+            ismoving = true;
+            walking = true;
+            running = false;
+            Debug.Log("Back to moving");
+            }
+        
+        if(Mathf.Approximately(rigidbody.velocity.x, 0) && Mathf.Approximately(rigidbody.velocity.z, 0))
+        {
+            ismoving = false;
+            Debug.Log("He is not moving");
         }
+
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            FindObjectOfType<soundcontrol>().character("jumpping_effect", sound_stop);
-            walking = false;
-            running = false;
+            FindObjectOfType<soundcontrol>().character("jumpping_effect");
             //Double jump
             /*
             countJump++;
@@ -281,18 +289,16 @@ public class PlayerController : MonoBehaviour
 
     private void walkandrun()
     {
-        if(Input.GetButton("Vertical") || Input.GetButton("Horizontal") && walking)
+        if(ismoving && walking)
         {
-            walking = true;
             soundawake = true;
-            FindObjectOfType<soundcontrol>().character("walking_effect", sound_stop);
+            FindObjectOfType<soundcontrol>().character("walking_effect");
             
         }
-        else if(running)
+        else if(ismoving && running)
         {
-            running = true;
             soundawake = true;
-            FindObjectOfType<soundcontrol>().character("running", sound_stop);
+            FindObjectOfType<soundcontrol>().character("running");
             Debug.Log("The sound played");
         }
         else{
@@ -313,6 +319,14 @@ public class PlayerController : MonoBehaviour
         yield return 0;
     }
 
+    private void ifhitthewood()
+    {
+        /*if (Physics.Raycast (transform.position, transform.forward, out rigidbody)){
+         ReceivingClass rc = rigidbody.transform.GetComponent<ReceivingClass>();
+     if(rc != null)
+         FindObjectOfType<soundcontrol>().character("walking_effect");
+     }*/
+    }
 
     private void cleaRightHandObject()
     {
