@@ -8,6 +8,9 @@ TagManager:
   - Item
   - LeftHand
   - RightHand
+  - Slime
+  - Setting
+  - Door
   layers:
   - Default
   - TransparentFX
