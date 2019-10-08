@@ -199,6 +199,14 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.name == "Barrel_fbx (2)")
+        {
+            StartCoroutine(soundeffect("wood_touch"));
+        }
+    }
+
     private void OnCollisionStay(Collision collision)
     {
         if(collision.collider.tag == "Ground")
