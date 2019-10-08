@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2543861526155411619}
   - component: {fileID: 5301351055363166910}
   m_Layer: 0
-  m_Name: Candle_Flame
+  m_Name: FirePlace_Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4708,7 +4708,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: db73e6b37de6af741a84a76b64ddabf4, type: 2}
+  - {fileID: 2100000, guid: 0a0ed2d2dfdb578488985f86434c5b54, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
