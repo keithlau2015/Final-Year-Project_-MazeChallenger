@@ -10,6 +10,9 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private Transform origin;
 
+    [SerializeField]
+    private int StartingRoomNumber;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +28,12 @@ public class MapGenerator : MonoBehaviour
     private void SpawnStartingRooms()
     {
         GameObject StartingPoint = Instantiate(RoomPrefab[(int)Random.value].gameObject, origin) as GameObject;
-        GameObject[] exitTemp = GameObject.FindGameObjectsWithTag("Exit");
-        for (int roomCount = 0; roomCount < RoomPrefab.Capacity; roomCount++)
+        for (int roomCount = 1; roomCount < StartingRoomNumber; roomCount++)
         {
+            GameObject[] exitTemp = GameObject.FindGameObjectsWithTag("Exit");
             for (int exitCount = 0; exitCount < exitTemp.Length; exitCount++)
             {
+                if(exitTemp[exitCount])
                 GameObject cloneRoom = Instantiate(RoomPrefab[(int)Random.value], exitTemp[exitCount].transform);
                 GameObject[] cloneRoomExit = GameObject.FindGameObjectsWithTag("Exit");
                 float offsetX, offsetY, offsetZ;
