@@ -483,14 +483,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e7b03c2ff2b8c4a9129d3a99edef85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startRoomPrefab: {fileID: -8588043200701236685, guid: 6f60e95a1f5a22f449c7e6d4357f29d3,
+  startRoomPrefab: {fileID: 2255064858518847101, guid: a7a1f1e714fa3a540a1a9fadc8924724,
     type: 3}
-  endRoomPrefab: {fileID: -4374180863332416878, guid: 0d31d4dd86ea3174282efd3da6e5be1f,
+  endRoomPrefab: {fileID: 3378533251212319575, guid: ba60e8239107aad42acfc9bb5c1d5144,
     type: 3}
   roomPrefabs:
-  - {fileID: 6394552632451411925, guid: fa3271d64a5badd41860e20dc62a98f2, type: 3}
-  - {fileID: 1971899883318862755, guid: 15d8ee8b6d8a4264c8caff35c2114731, type: 3}
-  iterationRange: {x: 3, y: 10}
+  - {fileID: 5143844486444197695, guid: 4caedd7b26e824740983f9ee939f5d31, type: 3}
+  - {fileID: 1679118758360412178, guid: b9ed5add2a2e6b145b92d8d423fe3178, type: 3}
+  iterationRange: {x: 7, y: 10}
 --- !u!4 &617042930
 Transform:
   m_ObjectHideFlags: 0

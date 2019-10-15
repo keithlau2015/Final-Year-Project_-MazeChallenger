@@ -127,7 +127,6 @@ public class LevelBuilder : MonoBehaviour
                 {
                     continue;
                 }
-
                 roomPlaced = true;
 
                 placedRooms.Add(currentRoom);
@@ -140,14 +139,9 @@ public class LevelBuilder : MonoBehaviour
 
                 break;
             }
-
-            if (roomPlaced)
-            {
-                break;
-            }
         }
 
-        if (!roomPlaced)
+        if (roomPlaced == false)
         {
             Destroy(currentRoom.gameObject);
             ResetLevel();
@@ -172,7 +166,7 @@ public class LevelBuilder : MonoBehaviour
     private bool CheckRoomOverlap(Room room)
     {
         Bounds bounds = room.RoomBounds;
-        bounds.Expand(-0.1f);
+        bounds.Expand(-5f);
 
         Collider[] colliders = Physics.OverlapBox(bounds.center, bounds.size / 2, room.transform.rotation, roomLayerMask);
         if(colliders.Length > 0)
@@ -181,10 +175,12 @@ public class LevelBuilder : MonoBehaviour
             {
                 if (c.transform.parent.gameObject.Equals(room.gameObject))
                 {
+                    Debug.Log("continue");
                     continue;
                 }
                 else
                 {
+                    Debug.Log("the room the overlap");
                     return true;
                 }
             }
