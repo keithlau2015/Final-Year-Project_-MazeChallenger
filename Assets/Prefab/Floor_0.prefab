@@ -30,7 +30,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 300, y: 300, z: 300}
   m_Children:
-  - {fileID: 4352544246906610247}
+  - {fileID: 2190802822690818392}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
@@ -93,23 +93,13 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.20106436, y: 0.20110838, z: 0.014441356}
   m_Center: {x: 0, y: -0.00021577993, z: 0.0022105312}
---- !u!1001 &8727381379686353245
+--- !u!1001 &6565684489953043010
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 4352544246905521391}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: db5a57b8ed443cf4293a77b6c297ddf6,
-        type: 3}
-      propertyPath: m_Name
-      value: Floor_0_Flip
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: db5a57b8ed443cf4293a77b6c297ddf6,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: db5a57b8ed443cf4293a77b6c297ddf6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -123,7 +113,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: db5a57b8ed443cf4293a77b6c297ddf6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0002010004
+      value: -0.00020100044
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: db5a57b8ed443cf4293a77b6c297ddf6,
         type: 3}
@@ -173,12 +163,22 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: db5a57b8ed443cf4293a77b6c297ddf6,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.01
+      value: 1.0100002
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: db5a57b8ed443cf4293a77b6c297ddf6,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.091002
+      value: 1.0910022
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: db5a57b8ed443cf4293a77b6c297ddf6,
+        type: 3}
+      propertyPath: m_Name
+      value: Floor_0_Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: db5a57b8ed443cf4293a77b6c297ddf6,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: db5a57b8ed443cf4293a77b6c297ddf6,
         type: 3}
@@ -187,9 +187,9 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4d20df7c5fea4e340b243182c0c73ec5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db5a57b8ed443cf4293a77b6c297ddf6, type: 3}
---- !u!4 &4352544246906610247 stripped
+--- !u!4 &2190802822690818392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: db5a57b8ed443cf4293a77b6c297ddf6,
     type: 3}
-  m_PrefabInstance: {fileID: 8727381379686353245}
+  m_PrefabInstance: {fileID: 6565684489953043010}
   m_PrefabAsset: {fileID: 0}
