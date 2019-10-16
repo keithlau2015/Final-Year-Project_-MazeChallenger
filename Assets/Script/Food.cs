@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartRoom : Room
+public class Food : MonoBehaviour
 {
-    public Transform playerStartingPosition;
+    public int hunger;
+    public string extraBuff;
 }

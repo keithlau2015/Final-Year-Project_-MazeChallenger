@@ -364,7 +364,7 @@ public class PlayerController : MonoBehaviour
             {
                 switch (firstItem.name)
                 {
-                    case "Spear":
+                    case "Spear(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[4], rightHand);
                         Destroy(firstItem.transform.gameObject);
@@ -373,7 +373,7 @@ public class PlayerController : MonoBehaviour
                         FindObjectOfType<soundcontrol>().wepon_atk("wood_pickup");
                         Debug.Log("pick up Spear"); 
                         break;
-                    case "Sword_1":
+                    case "Sword_1(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[0], rightHand);
                         Destroy(firstItem.transform.gameObject);
@@ -382,7 +382,7 @@ public class PlayerController : MonoBehaviour
                         FindObjectOfType<soundcontrol>().wepon_atk("sword_pickup");
                         Debug.Log("pick up Sword_1");
                         break;
-                    case "Shield_0":
+                    case "Shield_0(Clone)":
                         clearLeftHandObject();
                         Instantiate(weapons[3], leftHand);
                         Destroy(firstItem.transform.gameObject);
@@ -390,7 +390,7 @@ public class PlayerController : MonoBehaviour
                         FindObjectOfType<soundcontrol>().wepon_atk("wood_pickup");
                         Debug.Log("pick up Shield_0");  
                         break;
-                    case "Shield_1":
+                    case "Shield_1(Clone)":
                         clearLeftHandObject();
                         Instantiate(weapons[1], leftHand);
                         Destroy(firstItem.transform.gameObject);
@@ -398,7 +398,7 @@ public class PlayerController : MonoBehaviour
                         FindObjectOfType<soundcontrol>().wepon_atk("wood_pickup");
                         Debug.Log("pick up Shield_1");
                         break;
-                    case "Sword_0":
+                    case "Sword_0(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[2], rightHand);
                         Destroy(firstItem.transform.gameObject);
@@ -407,7 +407,7 @@ public class PlayerController : MonoBehaviour
                         FindObjectOfType<soundcontrol>().wepon_atk("sword_pickup");
                         Debug.Log("pick up Sword_0");
                         break;
-                    case "GreatSword":
+                    case "GreatSword(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[5], rightHand);
                         Destroy(firstItem.transform.gameObject);
@@ -416,7 +416,7 @@ public class PlayerController : MonoBehaviour
                         FindObjectOfType<soundcontrol>().wepon_atk("sword_pickup");
                         Debug.Log("pick up GreatSword");
                         break;
-                    case "BattleAxe":
+                    case "BattleAxe(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[6], rightHand);
                         Destroy(firstItem.transform.gameObject);
@@ -425,7 +425,7 @@ public class PlayerController : MonoBehaviour
                         FindObjectOfType<soundcontrol>().wepon_atk("sword_pickup");
                         Debug.Log("pick up BattleAxe");
                         break;
-                    case "Bow":
+                    case "Bow(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[7], rightHand);
                         Destroy(firstItem.transform.gameObject);
