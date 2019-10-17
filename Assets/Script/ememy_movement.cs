@@ -8,6 +8,7 @@ using UnityEngine.AI;
 	Transform target;
 	NavMeshAgent nav;
 	Rigidbody m_Rigidbody;
+	EnemyStatus status;
 	//set up state
 	public enum State   {CHASE, PATROL, DIE, INVESTIGATE}
     public State state;
@@ -17,7 +18,7 @@ using UnityEngine.AI;
     public float InvestigateWait = 10f;
 	//insight
 	public float heightMultiplier;
-	public float sightDist = 10f;
+	public float sightDist = 20f;
 	//patrol time
 	private float waittime;
 	private float startwaittime = 3f;
@@ -45,12 +46,11 @@ void Start()
 void Update()
 {
 	float distance = Vector3.Distance(target.position, transform.position);
-     /*
-	if()
+	if(status.health == 0)
 	{
-		
+		state = State.DIE;
 	}
-    */
+    
 	switch(state)
 	{
 		case State.CHASE:
@@ -97,7 +97,7 @@ void Chase(float distances)
 		if(nav.remainingDistance < 2f)
 		{
 			Debug.Log("Has been attack!");
-			//GetComponent<Animator>().SetTrigger("Attack");
+			GetComponent<Animator>().SetTrigger("attack");
 		}
 		FaceTarget();
 	}
@@ -137,7 +137,8 @@ void Patrol(float distances)
 
 void Die()
 {
-	//GetComponent<Animator>().SetTrigger("die");
+	GetComponent<Animator>().SetTrigger("die");
+	Debug.Log("Destroy");
 	Destroy(gameObject);
 }
 
@@ -145,7 +146,7 @@ void Invistigate(float distances)
 {
 	timer += Time.deltaTime;	
 	nav.SetDestination(target.position);
-	transform.LookAt(investigatespot);
+	transform.LookAt(target.position);
 	if(timer >= InvestigateWait)
 	{
 		state = State.PATROL;
