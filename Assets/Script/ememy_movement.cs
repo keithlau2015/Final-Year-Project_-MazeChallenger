@@ -45,6 +45,10 @@ void Start()
 void Update()
 {
 	float distance = Vector3.Distance(target.position, transform.position);
+	if()
+	{
+		
+	}
 	switch(state)
 	{
 		case State.CHASE:
@@ -101,6 +105,8 @@ void Patrol(float distances)
 {
 	Vector3 movingPoint = movespot[random_spot].position;
 	Vector3 relativePos = movingPoint - transform.position;
+	float distance_way = Vector3.Distance(movingPoint, transform.position);
+
 	nav.speed = patrol_speed;
 	nav.SetDestination(movingPoint);
 	transform.rotation = Quaternion.LookRotation(relativePos, Vector3.up);
@@ -119,8 +125,11 @@ void Patrol(float distances)
 	}
 	else
 	{
+		if(distance_way <= 13f)
+		{
 		nav.speed = 0f;
 		waittime -= Time.deltaTime;
+		}
 	}
 }
 
@@ -145,13 +154,10 @@ void Invistigate(float distances)
 
 void FixedUpdate()
 {
-	nav.speed = nevigation_speed;
 	RaycastHit hit;
 	Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, transform.forward * sightDist, Color.green);
 	Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (transform.forward + transform.right).normalized * sightDist, Color.green);
 	Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (transform.forward - transform.right).normalized * sightDist, Color.green);
-
-	FaceTarget();
 
 	if(Physics.Raycast(transform.position + Vector3.up * heightMultiplier, transform.forward, out hit, sightDist))
 	{
