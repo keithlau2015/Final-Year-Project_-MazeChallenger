@@ -13,6 +13,9 @@ TagManager:
   - Door
   - Exit
   - StartGame
+  - Credit
+  - Teleporter
+  - Enemy
   layers:
   - Default
   - TransparentFX

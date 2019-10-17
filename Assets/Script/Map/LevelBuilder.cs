@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class LevelBuilder : MonoBehaviour
 {
+    public GameObject upgradeUI, pauseUI;
     public Room startRoomPrefab, endRoomPrefab;
     public List<Room> roomPrefabs = new List<Room>();
     public List<Weapon> weaponPrefabs = new List<Weapon>();
@@ -18,6 +19,7 @@ public class LevelBuilder : MonoBehaviour
 
     private List<Room> placedRooms = new List<Room>();
     private List<Weapon> placedWeapons = new List<Weapon>();
+    private List<Food> placedFoods = new List<Food>();
 
     private LayerMask roomLayerMask;
 
@@ -141,15 +143,33 @@ public class LevelBuilder : MonoBehaviour
                 {
                     continue;
                 }
+
                 roomPlaced = true;
 
                 placedRooms.Add(currentRoom);
-                if(!currentRoom.spwanPoint_Weapon.Equals(null))PlaceWeapon(weaponPrefabs[Random.Range(0, weaponPrefabs.Capacity)], currentRoom);
-                currentExit.gameObject.SetActive(false);
-                availableExits.Remove(currentExit);
 
-                availableExit.gameObject.SetActive(false);
-                availableExits.Remove(availableExit);
+                if (!currentRoom.spwanPoint_Weapon.Equals(null))
+                {
+                    for(int i = 0; i < currentRoom.spwanPoint_Weapon.Length; i++)
+                    {
+                        PlaceWeapon(weaponPrefabs[Random.Range(0, weaponPrefabs.Capacity)], currentRoom, i);
+                    }
+                }
+                if (!currentRoom.spwanPoint_Food.Equals(null))
+                {
+                    for(int i = 0; i < currentRoom.spwanPoint_Food.Length; i++)
+                    {
+                        PlaceFood(foodPrefabs[Random.Range(0, foodPrefabs.Capacity)], currentRoom, i);
+                    }
+                }
+                if (roomPlaced)
+                {
+                    currentExit.gameObject.SetActive(false);
+                    availableExits.Remove(currentExit);
+
+                    availableExit.gameObject.SetActive(false);
+                    availableExits.Remove(availableExit);
+                }
                 break;
             }
         }
@@ -221,24 +241,44 @@ public class LevelBuilder : MonoBehaviour
         {
             Destroy(weapon.gameObject);
         }
+        foreach(Food food in placedFoods)
+        {
+            Destroy(food.gameObject);
+        }
         placedWeapons.Clear();
         placedRooms.Clear();
+        placedFoods.Clear();
         availableExits.Clear();
         StartCoroutine("GenerateLevel");
     }
 
-    private void PlaceWeapon(Weapon weapon, Room room)
+    private void PlaceWeapon(Weapon weapon, Room room, int spwaningPoint)
     {
-        if (weapon.probability > 1)
+        if (weapon.probability > 1 || weapon.probability < 0)
         {
             Debug.Log("The weapon spwaning rate is out of range");
         }
         float rand = Random.Range(0f, 1f);
-        if(rand <= weapon.probability)
+        if(weapon.probability <= rand)
         {
-            Weapon currentSpawnedWeapon = Instantiate(weapon, room.spwanPoint_Weapon) as Weapon;
+            Weapon currentSpawnedWeapon = Instantiate(weapon, room.spwanPoint_Weapon[spwaningPoint]) as Weapon;
             currentSpawnedWeapon.transform.parent = this.transform;
             placedWeapons.Add(currentSpawnedWeapon);
+        }
+    }
+
+    private void PlaceFood(Food food, Room room, int spawningPoint)
+    {
+        if(food.probability > 1 || food.probability < 0)
+        {
+            Debug.LogError("The food spwaing rate is out of range");
+        }
+        float rand = Random.Range(0f, 1f);
+        if (food.probability <= rand)
+        {
+            Food currentSpawnedFoord = Instantiate(food, room.spwanPoint_Food[spawningPoint]) as Food;
+            currentSpawnedFoord.transform.parent = this.transform;
+            placedFoods.Add(currentSpawnedFoord);
         }
     }
 }
