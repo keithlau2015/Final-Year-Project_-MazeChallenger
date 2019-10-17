@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EndRoom : Room
+public class Golem : EnemyStatus
 {
-    //public Collider teleportCollider;
+     
 }

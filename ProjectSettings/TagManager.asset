@@ -13,6 +13,10 @@ TagManager:
   - Door
   - Exit
   - StartGame
+  - Credit
+  - Teleporter
+  - Enemy
+  - waypoint
   layers:
   - Default
   - TransparentFX
