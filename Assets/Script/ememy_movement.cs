@@ -50,7 +50,7 @@ void Update()
 	{
 		state = State.DIE;
 	}
-
+    
 	switch(state)
 	{
 		case State.CHASE:
