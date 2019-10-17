@@ -45,10 +45,12 @@ void Start()
 void Update()
 {
 	float distance = Vector3.Distance(target.position, transform.position);
+     /*
 	if()
 	{
 		
 	}
+    */
 	switch(state)
 	{
 		case State.CHASE:
