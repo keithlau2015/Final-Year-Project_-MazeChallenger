@@ -204,13 +204,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365239475}
-  m_LocalRotation: {x: 0.89239913, y: -0.23911716, z: -0.09904571, w: 0.36964405}
+  m_LocalRotation: {x: 0.8876264, y: -0.13529876, z: 0.13529867, w: 0.41893673}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 142.239, y: 26.564987, z: 39.230988}
+  m_LocalEulerAnglesHint: {x: 128.709, y: -11.700989, z: 11.700989}
 --- !u!1 &427667535
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,14 +223,13 @@ GameObject:
   - component: {fileID: 427667538}
   - component: {fileID: 427667537}
   - component: {fileID: 427667536}
-  - component: {fileID: 427667540}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &427667536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,25 +310,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!95 &427667540
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 427667535}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6ebefac577df145449c6e1b816ee8880, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &537761934
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,6 +463,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e7b03c2ff2b8c4a9129d3a99edef85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeUI: {fileID: 0}
+  pauseUI: {fileID: 0}
   startRoomPrefab: {fileID: 2255064858518847101, guid: a7a1f1e714fa3a540a1a9fadc8924724,
     type: 3}
   endRoomPrefab: {fileID: 3378533251212319575, guid: ba60e8239107aad42acfc9bb5c1d5144,
@@ -492,11 +474,13 @@ MonoBehaviour:
   - {fileID: 1015754631834842418, guid: 729756898d9f36c44915ce36398f18c3, type: 3}
   - {fileID: 1679118758360412178, guid: b9ed5add2a2e6b145b92d8d423fe3178, type: 3}
   - {fileID: 5760011545756883853, guid: c8bc7a1a9f9d9b849a2c6c6dd295d73e, type: 3}
+  - {fileID: 6877985683987972412, guid: a09bb8fb605b4ed458c82a59926f003e, type: 3}
   weaponPrefabs:
   - {fileID: 1755586793167772730, guid: 3adf5dd70e2c1aa438909259bec2588b, type: 3}
   - {fileID: 2976038040534345075, guid: 99f93adf1b0787d49bfe6bf384106900, type: 3}
   - {fileID: 2279295924587724363, guid: 9f37bd9b4d9206247bed0a6c14614eb2, type: 3}
-  foodPrefabs: []
+  foodPrefabs:
+  - {fileID: 3711289124881072101, guid: 259c8c3420b4a694d8c86c6888ab90e8, type: 3}
 --- !u!4 &617042930
 Transform:
   m_ObjectHideFlags: 0

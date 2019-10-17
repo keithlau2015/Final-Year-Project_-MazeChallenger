@@ -50,11 +50,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Body|Attack
-      takeName: Body|Attack
+      name: Body|Idle (1)
+      takeName: Body|Idle
       internalID: 3120525410132561022
       firstFrame: 0
-      lastFrame: 119
+      lastFrame: 89
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

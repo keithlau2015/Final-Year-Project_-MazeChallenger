@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -194,22 +195,27 @@ public class PlayerController : MonoBehaviour
             rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
         }
 
-
-        
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     private void FixedUpdate()
     {
-        DrawRayCastLine();
-        
+        DrawRayCastLine();        
     }
 
-    private void OnCollisionEnter(Collision col)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(col.gameObject.name == "Barrel_fbx (2)")
+        if(collision.gameObject.name == "Barrel_fbx (2)")
         {
             StartCoroutine(soundeffect("wood_touch"));
+        }
+        if(collision.gameObject.tag == "Enemy")
+        {
+            PlayerStatus.Instance.setHealth(-2, "");
+            Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
         }
     }
 
@@ -219,6 +225,20 @@ public class PlayerController : MonoBehaviour
         {
             countJump = 0;
             isGrounded = true;
+        }
+        if(collision.collider.tag == "Enemy")
+        {
+            PlayerStatus.Instance.setHealth(-1, "");
+            Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Teleporter")
+        {
+            //upgrade player status & monster status
+            SceneManager.LoadScene(2);
         }
     }
 
@@ -370,6 +390,7 @@ public class PlayerController : MonoBehaviour
             {
                 switch (firstItem.name)
                 {
+                    //Weapon
                     case "Spear(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[4], rightHand);
@@ -439,6 +460,32 @@ public class PlayerController : MonoBehaviour
                         holdingBattleAxe = true;
                         FindObjectOfType<soundcontrol>().wepon_atk("spear_pick");
                         Debug.Log("pick up Bow");
+                        break;
+
+                    //Food
+                    case "Bread(Clone)":
+                        PlayerStatus.Instance.setHunger(20);
+                        //Added Some buff if there have extra buff
+                        Destroy(firstItem.transform.gameObject);
+                        break;
+                    case "Pizza(Clone)":
+                        PlayerStatus.Instance.setHealth(+5, "");
+                        PlayerStatus.Instance.setHunger(15);
+                        //Added Some buff if there have extra buff
+                        Destroy(firstItem.transform.gameObject);
+                        break;
+                    case "Apple(Clone)":
+                        PlayerStatus.Instance.setHunger(10);
+                        PlayerStatus.Instance.setHealth(+1, "");
+                        Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
+                        //Added Some buff if there have extra buff
+                        Destroy(firstItem.transform.gameObject);
+                        break;
+                    case "Banana(Clone)":
+                        PlayerStatus.Instance.setHealth(+1, "");
+                        PlayerStatus.Instance.setHunger(10);
+                        //Added Some buff if there have extra buff
+                        Destroy(firstItem.transform.gameObject);
                         break;
                 }
             }

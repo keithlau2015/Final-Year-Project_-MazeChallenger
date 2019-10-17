@@ -15,18 +15,20 @@ public class Menu : MonoBehaviour
     private RaycastHit hit;
 
     //GameObject
-    [SerializeField] private Collider cog, cog_2, cog_3, cog_4, door;
+    [SerializeField] private Collider cog, cog_2, cog_3, cog_4, door, book;
 
-    private Animator cogAnimation, cog_2Animation, cog_3Animation, cog_4Animation, doorAnimator;
+    private Animator cogAnimation, cog_2Animation, cog_3Animation, cog_4Animation, doorAnimator, bookAnimator;
 
     private void Start()
     {
+        Cursor.visible = true;
         camera = Camera.main;
         cogAnimation = cog.GetComponent<Animator>();
         cog_2Animation = cog_2.GetComponent<Animator>();
         cog_3Animation = cog_3.GetComponent<Animator>();
         cog_4Animation = cog_4.GetComponent<Animator>();
         doorAnimator = door.GetComponentInChildren<Animator>();
+        bookAnimator = book.GetComponent<Animator>();
     }
     // Update is called once per frame
     private void Update()
@@ -45,6 +47,10 @@ public class Menu : MonoBehaviour
             {
                 //Door
                 doorAnimator.SetBool("play", false);
+            }
+            else if (_selection.CompareTag("Credit"))
+            {
+                bookAnimator.SetBool("play", false);
             }
             else
             {
@@ -71,15 +77,17 @@ public class Menu : MonoBehaviour
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(3);
                 _selection = selection;
             }
-            
+            */
+
             if (selection.CompareTag("Credit"))
             {
                 //audioSource.PlayOneShot(click, 0.5f);
                 var selectionCollider = selection.GetComponent<Collider>();
+                bookAnimator.SetBool("play", true);
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(2);
                 _selection = selection;
             }
-            */
+
             if (selection.CompareTag("Setting"))
             {
                 //audioSource.PlayOneShot(click, 0.5f);
