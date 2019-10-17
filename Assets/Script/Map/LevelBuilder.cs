@@ -7,21 +7,29 @@ public class LevelBuilder : MonoBehaviour
 {
     public Room startRoomPrefab, endRoomPrefab;
     public List<Room> roomPrefabs = new List<Room>();
-    public Vector2 iterationRange = new Vector2(3, 10);
+    public List<Weapon> weaponPrefabs = new List<Weapon>();
+    public List<Food> foodPrefabs = new List<Food>();
+    private int[] iterationRange = {6,7,8,11,12,13};
 
-    List<Exit> availableExits = new List<Exit>();
+    private List<Exit> availableExits = new List<Exit>();
+    
+    private StartRoom startRoom;
+    private EndRoom endRoom;
 
-    StartRoom startRoom;
-    EndRoom endRoom;
+    private List<Room> placedRooms = new List<Room>();
+    private List<Weapon> placedWeapons = new List<Weapon>();
 
-    List<Room> placedRooms = new List<Room>();
+    private LayerMask roomLayerMask;
 
-    LayerMask roomLayerMask;
+    private GameObject player;
+
+    private bool finishBuildLevel = false;
 
     private void Start()
     {
         roomLayerMask = LayerMask.GetMask("Room");
         StartCoroutine("GenerateLevel");
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     IEnumerator GenerateLevel()
@@ -35,7 +43,7 @@ public class LevelBuilder : MonoBehaviour
         Debug.Log("Place start room");
         yield return interval;
 
-        int iterations = Random.Range((int)iterationRange.x, (int)iterationRange.y);
+        int iterations = iterationRange[Random.Range(0, iterationRange.Length)];
 
         for(int i = 0; i < iterations; i++)
         {
@@ -47,6 +55,9 @@ public class LevelBuilder : MonoBehaviour
         PlaceEndRoom();
         Debug.Log("Place end room");
         yield return interval;
+
+        player.transform.position = startRoom.playerStartingPosition.position;
+        player.transform.rotation = Quaternion.identity;
     }
 
     private void AddExitsToList(Room room, ref List<Exit> list)
@@ -95,12 +106,15 @@ public class LevelBuilder : MonoBehaviour
             availableExit.gameObject.SetActive(false);
             availableExits.Remove(availableExit);
 
+            finishBuildLevel = true;
+
             break;
         }
 
         if (!roomPlaced)
         {
             ResetLevel();
+            finishBuildLevel = false;
         }
     }
 
@@ -130,13 +144,12 @@ public class LevelBuilder : MonoBehaviour
                 roomPlaced = true;
 
                 placedRooms.Add(currentRoom);
-
+                if(!currentRoom.spwanPoint_Weapon.Equals(null))PlaceWeapon(weaponPrefabs[Random.Range(0, weaponPrefabs.Capacity)], currentRoom);
                 currentExit.gameObject.SetActive(false);
                 availableExits.Remove(currentExit);
 
                 availableExit.gameObject.SetActive(false);
                 availableExits.Remove(availableExit);
-
                 break;
             }
         }
@@ -166,7 +179,7 @@ public class LevelBuilder : MonoBehaviour
     private bool CheckRoomOverlap(Room room)
     {
         Bounds bounds = room.RoomBounds;
-        bounds.Expand(-5f);
+        bounds.Expand(-2.12f);
 
         Collider[] colliders = Physics.OverlapBox(bounds.center, bounds.size / 2, room.transform.rotation, roomLayerMask);
         if(colliders.Length > 0)
@@ -204,8 +217,28 @@ public class LevelBuilder : MonoBehaviour
         {
             Destroy(room.gameObject);
         }
+        foreach(Weapon weapon in placedWeapons)
+        {
+            Destroy(weapon.gameObject);
+        }
+        placedWeapons.Clear();
         placedRooms.Clear();
         availableExits.Clear();
         StartCoroutine("GenerateLevel");
+    }
+
+    private void PlaceWeapon(Weapon weapon, Room room)
+    {
+        if (weapon.probability > 1)
+        {
+            Debug.Log("The weapon spwaning rate is out of range");
+        }
+        float rand = Random.Range(0f, 1f);
+        if(rand <= weapon.probability)
+        {
+            Weapon currentSpawnedWeapon = Instantiate(weapon, room.spwanPoint_Weapon) as Weapon;
+            currentSpawnedWeapon.transform.parent = this.transform;
+            placedWeapons.Add(currentSpawnedWeapon);
+        }
     }
 }

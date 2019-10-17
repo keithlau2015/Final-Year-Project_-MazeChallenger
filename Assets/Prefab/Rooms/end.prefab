@@ -91,6 +91,9 @@ MonoBehaviour:
   - {fileID: 7758458387581434100}
   - {fileID: 4399078274290591476}
   meshCollider: {fileID: 3243486555038296935}
+  spwanPoint_Food: {fileID: 0}
+  spwanPoint_Weapon: {fileID: 0}
+  spwanPoint_Enemy: {fileID: 0}
 --- !u!1001 &153073470002467131
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1913,7 +1916,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 6ef2df0454cd98841ad54563ae352d81,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -54.9413
+      value: -54.875
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6ef2df0454cd98841ad54563ae352d81,
         type: 3}
@@ -1968,17 +1971,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 6ef2df0454cd98841ad54563ae352d81,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6ef2df0454cd98841ad54563ae352d81,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 6ef2df0454cd98841ad54563ae352d81,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 6ef2df0454cd98841ad54563ae352d81,
         type: 3}

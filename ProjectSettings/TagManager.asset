@@ -12,6 +12,7 @@ TagManager:
   - Setting
   - Door
   - Exit
+  - StartGame
   layers:
   - Default
   - TransparentFX

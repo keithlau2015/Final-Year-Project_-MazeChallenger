@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6731364239204893559}
   - component: {fileID: 1033036766301962126}
   - component: {fileID: 4415049463890923237}
+  - component: {fileID: 4416207752992146039}
   m_Layer: 9
   m_Name: BattleAxe
   m_TagString: Item
@@ -94,6 +95,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: -5495902117074765545, guid: 2b650db8a3c94de4ba02d7ead3e8031e, type: 3}
+--- !u!114 &4416207752992146039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615318351608449874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc347b910f09f5f4582fd57b8902c3e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damge: 5
+  durability: 100
+  counterType: 
 --- !u!1001 &2686323319888149084
 PrefabInstance:
   m_ObjectHideFlags: 0

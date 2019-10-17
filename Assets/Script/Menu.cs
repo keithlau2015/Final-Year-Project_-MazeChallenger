@@ -108,18 +108,20 @@ public class Menu : MonoBehaviour
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(1);
                 _selection = selection;
             }
+            */
 
-            if (selection.CompareTag("Unlimited dungeon mode"))
+            if (selection.CompareTag("StartGame"))
             {
                 var selectionCollider = selection.GetComponent<Collider>();
-                if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(1);
+                if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(2);
                 _selection = selection;
             }
 
-            if (selection.CompareTag("Story Mode"))
+            /*
+            if (selection.CompareTag("Tutorial"))
             {
                 var selectionCollider = selection.GetComponent<Collider>();
-                if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(1);
+                if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(3);
                 _selection = selection;
             }
 

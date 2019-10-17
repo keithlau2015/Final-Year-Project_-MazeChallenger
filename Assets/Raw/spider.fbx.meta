@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7062f282f66254179b00154f1b31d4e5
+guid: bdacc481791ab354db72b7c228194605
 ModelImporter:
   serializedVersion: 26
   internalIDToNameTable:
@@ -54,7 +54,7 @@ ModelImporter:
       takeName: Body|Attack
       internalID: 3120525410132561022
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 119
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

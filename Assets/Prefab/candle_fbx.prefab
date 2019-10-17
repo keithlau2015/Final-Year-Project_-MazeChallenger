@@ -47,7 +47,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -4932,6 +4932,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2202149435517990368}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 21ea57a4e080e3c4e89e515e9c9b2fb1,
+        type: 3}
+      propertyPath: m_Name
+      value: Candle_Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 21ea57a4e080e3c4e89e515e9c9b2fb1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 21ea57a4e080e3c4e89e515e9c9b2fb1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5001,16 +5011,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.05
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 21ea57a4e080e3c4e89e515e9c9b2fb1,
-        type: 3}
-      propertyPath: m_Name
-      value: Candle_Flip
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 21ea57a4e080e3c4e89e515e9c9b2fb1,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 21ea57a4e080e3c4e89e515e9c9b2fb1,
         type: 3}
