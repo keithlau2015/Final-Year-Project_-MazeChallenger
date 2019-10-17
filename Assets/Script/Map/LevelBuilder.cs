@@ -10,6 +10,7 @@ public class LevelBuilder : MonoBehaviour
     public List<Room> roomPrefabs = new List<Room>();
     public List<Weapon> weaponPrefabs = new List<Weapon>();
     public List<Food> foodPrefabs = new List<Food>();
+    public List<EnemyStatus> enemyPrefabs = new List<EnemyStatus>();
     private int[] iterationRange = {6,7,8,11,12,13};
 
     private List<Exit> availableExits = new List<Exit>();
