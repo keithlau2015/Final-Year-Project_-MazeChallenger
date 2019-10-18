@@ -8,7 +8,7 @@ using UnityEngine.AI;
 	Transform target;
 	NavMeshAgent nav;
 	Rigidbody m_Rigidbody;
-	EnemyStatus status;
+	Golem status;
 	//set up state
 	public enum State   {CHASE, PATROL, DIE, INVESTIGATE}
     public State state;
@@ -34,6 +34,7 @@ using UnityEngine.AI;
 
 void Start()
 {
+    status = GetComponent<Golem>();
 	target = PlayerController.instance.player.transform;
 	nav = GetComponent<NavMeshAgent>();
 	m_Rigidbody = GetComponent<Rigidbody>();
