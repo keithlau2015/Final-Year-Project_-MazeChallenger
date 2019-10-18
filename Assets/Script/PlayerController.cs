@@ -6,20 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-#region Singleton
-    public static PlayerController instance;
-    void Awake()
-    {
-        instance = this;
-        isGrounded = false;
-        soundawake = false;
-        isGrounded = false;
-        countJump = 0;
-    }
-#endregion
-
-    public GameObject player;
-
     [SerializeField]
     private float speed, jumpPower;
     private Rigidbody rigidbody;
@@ -48,6 +34,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        isGrounded = false;
+        soundawake = false;
+        isGrounded = false;
+        countJump = 0;   
         camOffset = new Vector3(0, 4.5f, 0);
         cam = Camera.main;
         rigidbody = GetComponent<Rigidbody>();

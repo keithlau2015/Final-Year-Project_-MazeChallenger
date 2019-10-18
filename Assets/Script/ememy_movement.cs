@@ -5,6 +5,7 @@ using UnityEngine.AI;
 	public class ememy_movement : MonoBehaviour
 {
 	public float lookRadius = 10f;
+	GameObject player;
 	Transform target;
 	NavMeshAgent nav;
 	Rigidbody m_Rigidbody;
@@ -28,28 +29,51 @@ using UnityEngine.AI;
 	float nevigation_speed = 3f;
 	float patrol_speed = 5f;
 	// moving spot
-	public Transform[] movespot;
+	public GameObject[] movespot;
+	public Transform[] movespot_transform;
 	private int random_spot;
-
-
-void Start()
+void Awake()
 {
     status = GetComponent<Golem>();
 	target = PlayerController.instance.player.transform;
+	player = GameObject.FindWithTag("Player");
+	target = player.transform;
+	movespot = GameObject.FindGameObjectsWithTag("waypoint");
 	nav = GetComponent<NavMeshAgent>();
 	m_Rigidbody = GetComponent<Rigidbody>();
+	movespot_transform = new Transform[movespot.Length];
+	if(movespot == null)
+	{
+		Debug.Log("There is no array");
+	}
+	for(int i=0; i<movespot.Length; i++)
+	{
+		movespot_transform[i] = movespot[i].transform;
+		Debug.Log(i);	
+	}
+}
+
+void Start()
+{
 	state = State.PATROL;
 	heightMultiplier = 1.36f;
 	waittime = startwaittime;
-	random_spot = Random.Range(0, movespot.Length);
+	random_spot = Random.Range(0, movespot_transform.Length);
+	Debug.Log(movespot.Length);
+	Debug.Log(random_spot);
 }
 
 void Update()
 {
 	float distance = Vector3.Distance(target.position, transform.position);
-	if(status.health == 0)
+	/*if(status.health == 0)
 	{
 		state = State.DIE;
+		Die();
+	}*/
+	if(distance >= lookRadius)
+	{
+		state = State.PATROL;
 	}
     
 	switch(state)
@@ -67,11 +91,6 @@ void Update()
 			Die();
 			break;
 
-	}
-
-	if(distance >= lookRadius)
-	{
-		state = State.PATROL;
 	}
 	
 }
@@ -106,12 +125,12 @@ void Chase(float distances)
 
 void Patrol(float distances)
 {
-	Vector3 movingPoint = movespot[random_spot].position;
-	Vector3 relativePos = movingPoint - transform.position;
-	float distance_way = Vector3.Distance(movingPoint, transform.position);
+	Vector3 movingspot = movespot_transform[random_spot].position;
+	Vector3 relativePos = movingspot - transform.position;
+	float distance_way = Vector3.Distance(movingspot, transform.position);
 
 	nav.speed = patrol_speed;
-	nav.SetDestination(movingPoint);
+	nav.SetDestination(movingspot);
 	transform.rotation = Quaternion.LookRotation(relativePos, Vector3.up);
 	if(distances <= lookRadius)
 		{
@@ -122,7 +141,7 @@ void Patrol(float distances)
 
 	if(waittime <= 0)
 	{	
-		random_spot = Random.Range(0, movespot.Length);
+		random_spot = Random.Range(0, movespot_transform.Length);
 		waittime = startwaittime;
 		nav.speed = patrol_speed;
 	}
