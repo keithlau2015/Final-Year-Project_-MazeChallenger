@@ -10,8 +10,10 @@ using UnityEngine.AI;
 	NavMeshAgent nav;
 	Rigidbody m_Rigidbody;
 	EnemyStatus status;
+	//set up animation
+	private Animator clip;
 	//set up state
-	public enum State   {CHASE, PATROL, DIE, INVESTIGATE}
+	public enum State   {CHASE, PATROL, INVESTIGATE}
     public State state;
 	//investigate
     private Vector3 investigatespot;
@@ -39,6 +41,7 @@ void Awake()
 	movespot = GameObject.FindGameObjectsWithTag("waypoint");
 	nav = GetComponent<NavMeshAgent>();
 	m_Rigidbody = GetComponent<Rigidbody>();
+	clip = GetComponent<Animator>();
 	movespot_transform = new Transform[movespot.Length];
 	if(movespot == null)
 	{
@@ -64,11 +67,10 @@ void Start()
 void Update()
 {
 	float distance = Vector3.Distance(target.position, transform.position);
-	/*if(status.health == 0)
+	if(status.health == 0)
 	{
-		state = State.DIE;
 		Die();
-	}*/
+	}
 	if(distance >= lookRadius)
 	{
 		state = State.PATROL;
@@ -84,9 +86,6 @@ void Update()
 			break;
 		case State.PATROL:
 			Patrol(distance);
-			break;
-		case State.DIE:
-			Die();
 			break;
 
 	}
@@ -126,10 +125,12 @@ void Patrol(float distances)
 	Vector3 movingspot = movespot_transform[random_spot].position;
 	Vector3 relativePos = movingspot - transform.position;
 	float distance_way = Vector3.Distance(movingspot, transform.position);
-
+	//check if the animation play
+	anim_waiting();
 	nav.speed = patrol_speed;
 	nav.SetDestination(movingspot);
 	transform.rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+	
 	if(distances <= lookRadius)
 		{
 		state = State.INVESTIGATE;
@@ -204,6 +205,12 @@ void FixedUpdate()
 		}
 	}
 
+}
+
+
+private IEnumerator anim_waiting()
+{
+	yield return new WaitForSeconds(clip.GetCurrentAnimatorStateInfo(0).length+clip.GetCurrentAnimatorStateInfo(0).normalizedTime);
 }
 
 }
