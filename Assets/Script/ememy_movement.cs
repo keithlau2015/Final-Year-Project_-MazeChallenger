@@ -9,9 +9,9 @@ using UnityEngine.AI;
 	Transform target;
 	NavMeshAgent nav;
 	Rigidbody m_Rigidbody;
-	EnemyStatus status;
 	//set up animation
 	private Animator clip;
+	Golem status;
 	//set up state
 	public enum State   {CHASE, PATROL, INVESTIGATE}
     public State state;
@@ -36,6 +36,8 @@ using UnityEngine.AI;
 	private int random_spot;
 void Awake()
 {
+    status = GetComponent<Golem>();
+	target = PlayerController.instance.player.transform;
 	player = GameObject.FindWithTag("Player");
 	target = player.transform;
 	movespot = GameObject.FindGameObjectsWithTag("waypoint");
