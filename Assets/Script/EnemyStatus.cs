@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyStatus : MonoBehaviour
 {
-    public int health;
-    public float probability;
+    public int health, damage;
+    public float spwanRate, attackSpeed, speed;
     public string enemyType;
 
     public Animator enemyAnimator

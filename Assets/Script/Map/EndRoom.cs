@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class EndRoom : Room
 {
-    //public Collider teleportCollider;
+    
 }

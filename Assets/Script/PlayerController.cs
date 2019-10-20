@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
             rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             SceneManager.LoadScene(1);
         }
@@ -223,15 +223,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Teleporter")
-        {
-            //upgrade player status & monster status
-            SceneManager.LoadScene(2);
-        }
-    }
-
     private void OnCollisionExit(Collision collision)
     {
         if(collision.collider.tag == "Ground")
@@ -239,6 +230,16 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Teleporter")
+        {
+            //upgrade player status & monster status
+            PlayerStatus.Instance.setPlayerGetIntoNextLevel(true);
+        }
+    }
+
     private void DrawRayCastLine() {
         //const
         const int accuracy = 5;

@@ -35,7 +35,7 @@ public class MouseFollow : MonoBehaviour
 
     public static void CursorControl()
     {
-        if(Time.timeScale != 0) 
+        if(Time.timeScale != 0 && !PlayerStatus.Instance.getPlayerGetIntoNextLevel()) 
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Threading;
 
 public class LevelBuilder : MonoBehaviour
 {
-    public GameObject upgradeUI, pauseUI;
+    public GameObject upgradeUI, pauseUI, loadingUI;
     public Room startRoomPrefab, endRoomPrefab;
     public List<Room> roomPrefabs = new List<Room>();
     public List<Weapon> weaponPrefabs = new List<Weapon>();
@@ -26,17 +27,51 @@ public class LevelBuilder : MonoBehaviour
 
     private GameObject player;
 
-    private bool finishBuildLevel = false;
+    private bool finishLevelBuilding;
+
+    [SerializeField]
+    private Button Upgrade_slot_1, Upgrade_slot_2, Upgrade_slot_3;
 
     private void Start()
     {
+        finishLevelBuilding = false;
+        loadingUI.SetActive(false);
+        upgradeUI.SetActive(false);
         roomLayerMask = LayerMask.GetMask("Room");
         StartCoroutine("GenerateLevel");
         player = GameObject.FindGameObjectWithTag("Player");
+
+        Upgrade_slot_1.onClick.AddListener(ResetLevelWhenUpgrading);
+        Upgrade_slot_2.onClick.AddListener(ResetLevelWhenUpgrading);
+        Upgrade_slot_3.onClick.AddListener(ResetLevelWhenUpgrading);
     }
 
+    private void Update()
+    {
+        if (upgradeUI.activeSelf)
+        {
+            ResetLevel();
+        }
+        if (!finishLevelBuilding)
+        {
+            loadingUI.SetActive(true);
+        }
+        else
+        {
+            loadingUI.SetActive(false);
+        }
+        if (PlayerStatus.Instance.getPlayerGetIntoNextLevel())
+        {
+            upgradeUI.SetActive(true);
+        }
+        else
+        {
+            upgradeUI.SetActive(false);
+        }
+    }
     IEnumerator GenerateLevel()
     {
+        finishLevelBuilding = false;
         WaitForSeconds startup = new WaitForSeconds(1);
         WaitForFixedUpdate interval = new WaitForFixedUpdate();
 
@@ -109,7 +144,7 @@ public class LevelBuilder : MonoBehaviour
             availableExit.gameObject.SetActive(false);
             availableExits.Remove(availableExit);
 
-            finishBuildLevel = true;
+            finishLevelBuilding = true;
 
             break;
         }
@@ -117,7 +152,6 @@ public class LevelBuilder : MonoBehaviour
         if (!roomPlaced)
         {
             ResetLevel();
-            finishBuildLevel = false;
         }
     }
 
@@ -280,6 +314,34 @@ public class LevelBuilder : MonoBehaviour
             Food currentSpawnedFoord = Instantiate(food, room.spwanPoint_Food[spawningPoint]) as Food;
             currentSpawnedFoord.transform.parent = this.transform;
             placedFoods.Add(currentSpawnedFoord);
+        }
+    }
+
+    private void onClickUpgradButton()
+    {
+        PlayerStatus.Instance.setTotalHealth();
+        PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
+    }
+
+    private void ResetLevelWhenUpgrading()
+    {
+        if (Upgrade_slot_1)
+        {
+            Thread thread = new Thread(onClickUpgradButton);
+            thread.IsBackground = true;
+            thread.Start();
+        }
+        if (Upgrade_slot_2)
+        {
+            Thread thread = new Thread(onClickUpgradButton);
+            thread.IsBackground = true;
+            thread.Start();
+        }
+        if (Upgrade_slot_3)
+        {
+            Thread thread = new Thread(onClickUpgradButton);
+            thread.IsBackground = true;
+            thread.Start();
         }
     }
 }

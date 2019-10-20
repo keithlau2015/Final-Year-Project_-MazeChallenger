@@ -78,9 +78,12 @@ MonoBehaviour:
   - {fileID: 7224728484374208270}
   - {fileID: 335398971326170058}
   meshCollider: {fileID: 3022798288290253417}
-  spwanPoint_Food: {fileID: 0}
-  spwanPoint_Weapon: {fileID: 0}
-  spwanPoint_Enemy: {fileID: 0}
+  spwanPoint_Food:
+  - {fileID: 0}
+  spwanPoint_Weapon:
+  - {fileID: 0}
+  spwanPoint_Enemy:
+  - {fileID: 0}
 --- !u!64 &3022798288290253417
 MeshCollider:
   m_ObjectHideFlags: 0
