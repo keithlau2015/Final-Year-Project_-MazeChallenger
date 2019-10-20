@@ -10,10 +10,12 @@ public class ememy_movement : MonoBehaviour
 	Transform target;
 	NavMeshAgent nav;
 	Rigidbody m_Rigidbody;
+	//set up animation
+	private Animator clip;
 	Golem status;
 
 	//set up state
-	public enum State   {CHASE, PATROL, DIE, INVESTIGATE}
+	public enum State   {CHASE, PATROL, INVESTIGATE}
     public State state;
 
 	//investigate
@@ -38,6 +40,111 @@ public class ememy_movement : MonoBehaviour
 	public GameObject[] movespot;
 	public Transform[] movespot_transform;
 	private int random_spot;
+
+void Awake()
+{
+    status = GetComponent<Golem>();
+	target = PlayerController.instance.player.transform;
+	player = GameObject.FindWithTag("Player");
+	target = player.transform;
+	movespot = GameObject.FindGameObjectsWithTag("waypoint");
+	nav = GetComponent<NavMeshAgent>();
+	m_Rigidbody = GetComponent<Rigidbody>();
+	clip = GetComponent<Animator>();
+	movespot_transform = new Transform[movespot.Length];
+	if(movespot == null)
+	{
+		Debug.Log("There is no array");
+	}
+	for(int i=0; i<movespot.Length; i++)
+	{
+		movespot_transform[i] = movespot[i].transform;
+		Debug.Log(i);	
+	}
+}
+
+void Start()
+{
+	state = State.PATROL;
+	heightMultiplier = 1.36f;
+	waittime = startwaittime;
+	random_spot = Random.Range(0, movespot_transform.Length);
+	Debug.Log(movespot.Length);
+	Debug.Log(random_spot);
+}
+
+void Update()
+{
+	float distance = Vector3.Distance(target.position, transform.position);
+	if(status.health == 0)
+	{
+		Die();
+	}
+	if(distance >= lookRadius)
+	{
+		state = State.PATROL;
+	}
+    
+	switch(state)
+	{
+		case State.CHASE:
+			Chase(distance);
+			break;
+		case State.INVESTIGATE:
+			Invistigate(distance);
+			break;
+		case State.PATROL:
+			Patrol(distance);
+			break;
+
+	}
+	
+}
+
+void OnDrawGizmosSelected()
+{
+	Gizmos.color = Color.red;
+	Gizmos.DrawWireSphere(transform.position, lookRadius);
+}
+
+void FaceTarget()
+{
+	Vector3 direction = (target.position - transform.position).normalized;
+	Quaternion lookrotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+	transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, Time.deltaTime * 3f);
+}
+
+void Chase(float distances)
+{
+	if(state == State.CHASE)
+	{
+		nav.SetDestination(target.position);
+		nav.speed = chase_speed;
+		if(nav.remainingDistance < 2f)
+		{
+			Debug.Log("Has been attack!");
+			GetComponent<Animator>().SetTrigger("attack");
+		}
+		FaceTarget();
+	}
+}
+
+void Patrol(float distances)
+{
+	Vector3 movingspot = movespot_transform[random_spot].position;
+	Vector3 relativePos = movingspot - transform.position;
+	float distance_way = Vector3.Distance(movingspot, transform.position);
+	//check if the animation play
+	anim_waiting();
+	nav.speed = patrol_speed;
+	nav.SetDestination(movingspot);
+	transform.rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+	
+	if(distances <= lookRadius)
+		{
+		state = State.INVESTIGATE;
+		Invistigate(distances);
+		}
 
     private void Awake()
     {
@@ -142,6 +249,7 @@ public class ememy_movement : MonoBehaviour
 		    state = State.INVESTIGATE;
 		    Invistigate(distances);
 		}
+
 	    if(waittime <= 0)
 	    {	
 		    random_spot = Random.Range(0, movespot_transform.Length);
@@ -209,3 +317,24 @@ public class ememy_movement : MonoBehaviour
 	    }
     }
 }
+
+	}
+
+	if(Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (transform.forward - transform.right).normalized, out hit, sightDist))
+	{
+		if(hit.collider.gameObject.tag == "Player")
+		{
+			state = State.CHASE;
+		}
+	}
+
+}
+
+
+private IEnumerator anim_waiting()
+{
+	yield return new WaitForSeconds(clip.GetCurrentAnimatorStateInfo(0).length+clip.GetCurrentAnimatorStateInfo(0).normalizedTime);
+}
+
+}
+
