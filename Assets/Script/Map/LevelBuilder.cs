@@ -41,9 +41,9 @@ public class LevelBuilder : MonoBehaviour
         StartCoroutine("GenerateLevel");
         player = GameObject.FindGameObjectWithTag("Player");
 
-        Upgrade_slot_1.onClick.AddListener(ResetLevelWhenUpgrading);
-        Upgrade_slot_2.onClick.AddListener(ResetLevelWhenUpgrading);
-        Upgrade_slot_3.onClick.AddListener(ResetLevelWhenUpgrading);
+        Upgrade_slot_1.onClick.AddListener(onClickUpgradButton);
+        Upgrade_slot_2.onClick.AddListener(onClickUpgradButton);
+        Upgrade_slot_3.onClick.AddListener(onClickUpgradButton);
     }
 
     private void Update()
@@ -55,10 +55,12 @@ public class LevelBuilder : MonoBehaviour
         if (!finishLevelBuilding)
         {
             loadingUI.SetActive(true);
+            AudioListener.volume = 0f;
         }
         else
         {
             loadingUI.SetActive(false);
+            AudioListener.volume = 1f;
         }
         if (PlayerStatus.Instance.getPlayerGetIntoNextLevel())
         {
@@ -234,7 +236,7 @@ public class LevelBuilder : MonoBehaviour
     private bool CheckRoomOverlap(Room room)
     {
         Bounds bounds = room.RoomBounds;
-        bounds.Expand(-2.12f);
+        bounds.Expand(-2.15f);
 
         Collider[] colliders = Physics.OverlapBox(bounds.center, bounds.size / 2, room.transform.rotation, roomLayerMask);
         if(colliders.Length > 0)
@@ -274,11 +276,11 @@ public class LevelBuilder : MonoBehaviour
         }
         foreach(Weapon weapon in placedWeapons)
         {
-            Destroy(weapon.gameObject);
+            if(!weapon.Equals(null))Destroy(weapon.gameObject);
         }
         foreach(Food food in placedFoods)
         {
-            Destroy(food.gameObject);
+            if(!food.Equals(null)) Destroy(food.gameObject);
         }
         placedWeapons.Clear();
         placedRooms.Clear();
@@ -321,27 +323,5 @@ public class LevelBuilder : MonoBehaviour
     {
         PlayerStatus.Instance.setTotalHealth();
         PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
-    }
-
-    private void ResetLevelWhenUpgrading()
-    {
-        if (Upgrade_slot_1)
-        {
-            Thread thread = new Thread(onClickUpgradButton);
-            thread.IsBackground = true;
-            thread.Start();
-        }
-        if (Upgrade_slot_2)
-        {
-            Thread thread = new Thread(onClickUpgradButton);
-            thread.IsBackground = true;
-            thread.Start();
-        }
-        if (Upgrade_slot_3)
-        {
-            Thread thread = new Thread(onClickUpgradButton);
-            thread.IsBackground = true;
-            thread.Start();
-        }
     }
 }

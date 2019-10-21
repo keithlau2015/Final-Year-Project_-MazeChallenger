@@ -21,7 +21,9 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
-        Cursor.visible = true;
+        PlayerStatus.Instance.setPlayerAtTheMenu(true);
+        Debug.Log("Player at the menu: " + PlayerStatus.Instance.getPlayerAtTheMenu());
+        Debug.Log("Player upgrading: " + PlayerStatus.Instance.getPlayerGetIntoNextLevel());
         camera = Camera.main;
         cogAnimation = cog.GetComponent<Animator>();
         cog_2Animation = cog_2.GetComponent<Animator>();
@@ -33,6 +35,7 @@ public class Menu : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        MouseFollow.CursorControl();
         if (_selection != null)
         {
             //Cog
@@ -121,7 +124,11 @@ public class Menu : MonoBehaviour
             if (selection.CompareTag("StartGame"))
             {
                 var selectionCollider = selection.GetComponent<Collider>();
-                if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(2);
+                if (Input.GetMouseButtonDown(0))
+                {
+                    PlayerStatus.Instance.setPlayerAtTheMenu(false);
+                    SceneManager.LoadScene(2);
+                }
                 _selection = selection;
             }
 

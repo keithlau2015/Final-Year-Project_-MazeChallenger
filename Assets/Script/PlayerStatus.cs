@@ -9,7 +9,7 @@ public class PlayerStatus
     private int upgradeSlot_Health, upgradeSlot_Hunger;
     private int total_Health, total_Hunger;
 
-    private bool playerGetIntoNextLevel;
+    private bool playerGetIntoNextLevel, playerAtTheMenu;
 
     public static PlayerStatus Instance
     {
@@ -88,5 +88,23 @@ public class PlayerStatus
     public bool getPlayerGetIntoNextLevel()
     {
         return this.playerGetIntoNextLevel;
+    }
+
+    public void setPlayerAtTheMenu(bool playerAtTheMenu)
+    {
+        this.playerAtTheMenu = playerAtTheMenu;
+    }
+
+    public bool getPlayerAtTheMenu()
+    {
+        return this.playerAtTheMenu;
+    }
+
+    public void resetData()
+    {
+        this.upgradeSlot_Health = 0;
+        this.upgradeSlot_Hunger = 0;
+        this.total_Health = 0;
+        this.total_Hunger = 0;
     }
 }
