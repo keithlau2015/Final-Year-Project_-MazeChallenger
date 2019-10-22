@@ -6,20 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-#region Singleton
-    public static PlayerController instance;
-    void Awake()
-    {
-        instance = this;
-        isGrounded = false;
-        soundawake = false;
-        isGrounded = false;
-        countJump = 0;
-    }
-#endregion
-
-    public GameObject player;
-
     [SerializeField]
     private float speed, jumpPower;
     private Rigidbody rigidbody;
@@ -48,6 +34,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        isGrounded = false;
+        soundawake = false;
+        isGrounded = false;
+        countJump = 0;   
         camOffset = new Vector3(0, 4.5f, 0);
         cam = Camera.main;
         rigidbody = GetComponent<Rigidbody>();
@@ -150,34 +140,30 @@ public class PlayerController : MonoBehaviour
             ismoving = true;
             walking = true;
             running = false;
-            Debug.Log("He is moving");
-
+           
         }
 
         if(Input.GetKeyDown(KeyCode.LeftShift))
         {
             if(z>0 || x>0)
             {
-            ismoving = true;
-            running = true;
-            walking = false;
-            Debug.Log("He is running");
-            speed = 40;
+                ismoving = true;
+                running = true;
+                walking = false;
+                speed = 40;
             }
         }
-            else if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
             speed = 20;
             ismoving = true;
             walking = true;
             running = false;
-            Debug.Log("Back to moving");
-            }
+        }
         
         if(Mathf.Approximately(rigidbody.velocity.x, 0) && Mathf.Approximately(rigidbody.velocity.z, 0))
         {
             ismoving = false;
-            Debug.Log("He is not moving");
         }
 
 
@@ -197,6 +183,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            PlayerStatus.Instance.setPlayerAtTheMenu(true);
+            PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
             SceneManager.LoadScene(1);
         }
     }
@@ -233,15 +221,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Teleporter")
-        {
-            //upgrade player status & monster status
-            SceneManager.LoadScene(2);
-        }
-    }
-
     private void OnCollisionExit(Collision collision)
     {
         if(collision.collider.tag == "Ground")
@@ -249,11 +228,22 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Teleporter")
+        {
+            //upgrade player status & monster status
+            PlayerStatus.Instance.setPlayerGetIntoNextLevel(true);
+            PlayerStatus.Instance.resetData();
+        }
+    }
+
     private void DrawRayCastLine() {
         //const
         const int accuracy = 5;
         const float radius = 0.1f;
-        const float length = 13f;
+        const float length = 15f;
         
         //getting camera transformation
         Vector3 unitForward = cam.transform.TransformDirection(Vector3.forward);
@@ -468,7 +458,7 @@ public class PlayerController : MonoBehaviour
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.transform.gameObject);
                         break;
-                    case "Pizza(Clone)":
+                    case "Soup(Clone)":
                         PlayerStatus.Instance.setHealth(+5, "");
                         PlayerStatus.Instance.setHunger(15);
                         //Added Some buff if there have extra buff

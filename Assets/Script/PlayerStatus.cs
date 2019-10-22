@@ -9,6 +9,8 @@ public class PlayerStatus
     private int upgradeSlot_Health, upgradeSlot_Hunger;
     private int total_Health, total_Hunger;
 
+    private bool playerGetIntoNextLevel, playerAtTheMenu;
+
     public static PlayerStatus Instance
     {
         get
@@ -21,6 +23,7 @@ public class PlayerStatus
     {
         total_Health = base_Health;
         total_Hunger = base_Hunger;
+        playerGetIntoNextLevel = false;
     }
     
     public int getHealth()
@@ -70,5 +73,38 @@ public class PlayerStatus
         {
             this.total_Hunger += hunger;
         }
+    }
+    
+    public void setTotalHealth()
+    {
+        this.total_Health = total_Health + 1;
+    }
+
+    public void setPlayerGetIntoNextLevel(bool playerGetIntoNextLevel)
+    {
+        this.playerGetIntoNextLevel = playerGetIntoNextLevel;
+    }
+
+    public bool getPlayerGetIntoNextLevel()
+    {
+        return this.playerGetIntoNextLevel;
+    }
+
+    public void setPlayerAtTheMenu(bool playerAtTheMenu)
+    {
+        this.playerAtTheMenu = playerAtTheMenu;
+    }
+
+    public bool getPlayerAtTheMenu()
+    {
+        return this.playerAtTheMenu;
+    }
+
+    public void resetData()
+    {
+        this.upgradeSlot_Health = 0;
+        this.upgradeSlot_Hunger = 0;
+        this.total_Health = 0;
+        this.total_Hunger = 0;
     }
 }
