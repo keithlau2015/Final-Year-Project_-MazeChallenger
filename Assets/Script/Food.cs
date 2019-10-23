@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
-    public float probability;
+    public float spawningRate;
     public string extraBuff;
 }

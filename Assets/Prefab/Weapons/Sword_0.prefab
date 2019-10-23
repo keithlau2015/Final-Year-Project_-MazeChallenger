@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damge: 10
   durability: 30
-  probability: 0.2
+  probability: 0.5
   counterType: 
 --- !u!1001 &2346384714197122948
 PrefabInstance:

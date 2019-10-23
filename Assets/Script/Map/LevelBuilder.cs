@@ -6,41 +6,57 @@ using System.Threading;
 
 public class LevelBuilder : MonoBehaviour
 {
+    //The user interface components
     public GameObject upgradeUI, pauseUI, loadingUI;
-    public Room startRoomPrefab, endRoomPrefab;
+    [SerializeField]
+    private Button Upgrade_slot_1, Upgrade_slot_2, Upgrade_slot_3;
+
+    //The needed Prefabs
+    public Room[] startRoomPrefab, endRoomPrefab, specialRoomPrefab;
+
+    //The List of prefabs
     public List<Room> roomPrefabs = new List<Room>();
     public List<Weapon> weaponPrefabs = new List<Weapon>();
     public List<Food> foodPrefabs = new List<Food>();
-    public List<EnemyStatus> enemyPrefabs = new List<EnemyStatus>();
-    private int[] iterationRange = {6,7,8,11,12,13};
+    //public List<EnemyStatus> enemyPrefabs = new List<EnemyStatus>();
 
+    //The array control total rooms in game
+    private int[] iterationRange = {6,7,8,9,11,12,13};
+
+    //Saving for the exits which still available
     private List<Exit> availableExits = new List<Exit>();
     
+    //Object for specific rooms
     private StartRoom startRoom;
     private EndRoom endRoom;
+    private SpecialRoom specialRoom;
 
+    //The List to saving prefabs which in the game
     private List<Room> placedRooms = new List<Room>();
     private List<Weapon> placedWeapons = new List<Weapon>();
     private List<Food> placedFoods = new List<Food>();
 
+    //For the Room mesh layer
     private LayerMask roomLayerMask;
 
+    //Spawning the player in the right place
     private GameObject player;
 
     private bool finishLevelBuilding;
 
-    [SerializeField]
-    private Button Upgrade_slot_1, Upgrade_slot_2, Upgrade_slot_3;
-
     private void Start()
     {
+        //The default game status
         finishLevelBuilding = false;
         loadingUI.SetActive(false);
         upgradeUI.SetActive(false);
-        roomLayerMask = LayerMask.GetMask("Room");
-        StartCoroutine("GenerateLevel");
         player = GameObject.FindGameObjectWithTag("Player");
+        roomLayerMask = LayerMask.GetMask("Room");
 
+        //Starting to Generate the game level
+        StartCoroutine("GenerateLevel");
+
+        //Button listener
         Upgrade_slot_1.onClick.AddListener(onClickUpgradButton);
         Upgrade_slot_2.onClick.AddListener(onClickUpgradButton);
         Upgrade_slot_3.onClick.AddListener(onClickUpgradButton);
@@ -71,33 +87,49 @@ public class LevelBuilder : MonoBehaviour
             upgradeUI.SetActive(false);
         }
     }
+
     IEnumerator GenerateLevel()
     {
         finishLevelBuilding = false;
+        
         WaitForSeconds startup = new WaitForSeconds(1);
         WaitForFixedUpdate interval = new WaitForFixedUpdate();
 
         yield return startup;
 
-        PlaceStartRoom();
-        Debug.Log("Place start room");
-        yield return interval;
-
-        int iterations = iterationRange[Random.Range(0, iterationRange.Length)];
-
-        for(int i = 0; i < iterations; i++)
+        //10 is the special room spawning rate
+        if (1 >= Random.Range(0, 100))
         {
-            PlaceRoom();
-            Debug.Log("Place room");
-            yield return interval;
+            PlaceSpecialRoom();
+            Debug.Log("Place a special room");
+            player.transform.position = specialRoom.playerStartingPosition.position;
+            player.transform.rotation = Quaternion.identity;
+            finishLevelBuilding = true;
         }
+        else
+        {
+            PlaceStartRoom();
+            Debug.Log("Place start room");
+            yield return interval;
 
-        PlaceEndRoom();
-        Debug.Log("Place end room");
-        yield return interval;
+            int iterations = iterationRange[Random.Range(0, iterationRange.Length)];
 
-        player.transform.position = startRoom.playerStartingPosition.position;
-        player.transform.rotation = Quaternion.identity;
+            for (int i = 0; i < iterations; i++)
+            {
+                PlaceRoom();
+                Debug.Log("Place room");
+                yield return interval;
+            }
+
+            PlaceEndRoom();
+            Debug.Log("Place end room");
+            yield return interval;
+
+            player.transform.position = startRoom.playerStartingPosition.position;
+            player.transform.rotation = Quaternion.identity;
+
+            finishLevelBuilding = true;
+        }
     }
 
     private void AddExitsToList(Room room, ref List<Exit> list)
@@ -111,7 +143,7 @@ public class LevelBuilder : MonoBehaviour
 
     private void PlaceStartRoom()
     {
-        startRoom = Instantiate(startRoomPrefab) as StartRoom;
+        startRoom = Instantiate(startRoomPrefab[Random.Range(0, startRoomPrefab.Length-1)]) as StartRoom;
         startRoom.transform.parent = this.transform;
 
         AddExitsToList(startRoom, ref availableExits);
@@ -122,7 +154,7 @@ public class LevelBuilder : MonoBehaviour
 
     private void PlaceEndRoom()
     {
-        endRoom = Instantiate(endRoomPrefab) as EndRoom;
+        endRoom = Instantiate(endRoomPrefab[Random.Range(0, endRoomPrefab.Length - 1)]) as EndRoom;
         endRoom.transform.parent = this.transform;
 
         List<Exit> allAvailabeExits = new List<Exit>(availableExits);
@@ -145,8 +177,6 @@ public class LevelBuilder : MonoBehaviour
 
             availableExit.gameObject.SetActive(false);
             availableExits.Remove(availableExit);
-
-            finishLevelBuilding = true;
 
             break;
         }
@@ -218,6 +248,19 @@ public class LevelBuilder : MonoBehaviour
         }
     }
 
+    private void PlaceSpecialRoom()
+    {
+        specialRoom = Instantiate(specialRoomPrefab[Random.Range(0, startRoomPrefab.Length - 1)]) as SpecialRoom;
+        specialRoom.transform.parent = this.transform;
+
+        specialRoom.transform.position = Vector3.zero;
+        specialRoom.transform.rotation = Quaternion.identity;
+        for (int i = 0; i < specialRoom.spwanPoint_Weapon.Length; i++)
+        {
+            PlaceWeapon(weaponPrefabs[Random.Range(0, weaponPrefabs.Capacity)], specialRoom, i);
+        }
+    }
+
     private void PositionRoomAtExit(ref Room room, Exit exit, Exit targetExit)
     {
         room.transform.position = Vector3.zero;
@@ -270,6 +313,10 @@ public class LevelBuilder : MonoBehaviour
         {
             Destroy(endRoom.gameObject);
         }
+        if (specialRoom)
+        {
+            Destroy(specialRoom.gameObject);
+        }
         foreach(Room room in placedRooms)
         {
             Destroy(room.gameObject);
@@ -291,12 +338,12 @@ public class LevelBuilder : MonoBehaviour
 
     private void PlaceWeapon(Weapon weapon, Room room, int spwaningPoint)
     {
-        if (weapon.probability > 1 || weapon.probability < 0)
+        if (weapon.spawningRate > 1 || weapon.spawningRate < 0)
         {
             Debug.Log("The weapon spwaning rate is out of range");
         }
         float rand = Random.Range(0f, 1f);
-        if(weapon.probability <= rand)
+        if(weapon.spawningRate >= rand)
         {
             Weapon currentSpawnedWeapon = Instantiate(weapon, room.spwanPoint_Weapon[spwaningPoint]) as Weapon;
             currentSpawnedWeapon.transform.parent = this.transform;
@@ -306,12 +353,12 @@ public class LevelBuilder : MonoBehaviour
 
     private void PlaceFood(Food food, Room room, int spawningPoint)
     {
-        if(food.probability > 1 || food.probability < 0)
+        if(food.spawningRate > 1 || food.spawningRate < 0)
         {
             Debug.LogError("The food spwaing rate is out of range");
         }
         float rand = Random.Range(0f, 1f);
-        if (food.probability <= rand)
+        if (food.spawningRate >= rand)
         {
             Food currentSpawnedFoord = Instantiate(food, room.spwanPoint_Food[spawningPoint]) as Food;
             currentSpawnedFoord.transform.parent = this.transform;

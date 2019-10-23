@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Golem : EnemyStatus
+public class SpecialRoom : Room
 {
-     
+    public Transform playerStartingPosition;
 }

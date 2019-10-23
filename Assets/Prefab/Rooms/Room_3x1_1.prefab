@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8166229221200543642}
-  m_RootOrder: 33
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: -180.00002}
 --- !u!65 &6452655625214092596
 BoxCollider:
@@ -57,36 +57,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: -5495902117074765545, guid: d286aed5c6c978c4b925b96cb851434b, type: 3}
---- !u!1 &4607466707315238223
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1226656921190785105}
-  m_Layer: 0
-  m_Name: Spwaning Food Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1226656921190785105
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4607466707315238223}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 23, y: 8.32, z: -6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8166229221200543642}
-  m_RootOrder: 32
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8036015672615505352
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +117,6 @@ Transform:
   - {fileID: 5719546637838070409}
   - {fileID: 637006212833017687}
   - {fileID: 8668525120643329879}
-  - {fileID: 1226656921190785105}
   - {fileID: 6625205017854844222}
   - {fileID: 3165394616878253005}
   m_Father: {fileID: 0}
@@ -169,9 +138,12 @@ MonoBehaviour:
   - {fileID: 6300904066376828726}
   - {fileID: 6300904065300196761}
   meshCollider: {fileID: 7696556956931597674}
-  spwanPoint_Food: {fileID: 0}
-  spwanPoint_Weapon: {fileID: 6625205017854844222}
-  spwanPoint_Enemy: {fileID: 0}
+  spwanPoint_Food:
+  - {fileID: 0}
+  spwanPoint_Weapon:
+  - {fileID: 6625205017854844222}
+  spwanPoint_Enemy:
+  - {fileID: 0}
 --- !u!1001 &992101792873421143
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -853,15 +825,15 @@ PrefabInstance:
     - {fileID: -1504981713932161579, guid: d286aed5c6c978c4b925b96cb851434b, type: 3}
     - {fileID: -5178661895559278292, guid: d286aed5c6c978c4b925b96cb851434b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d286aed5c6c978c4b925b96cb851434b, type: 3}
---- !u!1 &2724687053670916716 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: d286aed5c6c978c4b925b96cb851434b,
-    type: 3}
-  m_PrefabInstance: {fileID: 6265040783303670629}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1408309093059252351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: d286aed5c6c978c4b925b96cb851434b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6265040783303670629}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2724687053670916716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: d286aed5c6c978c4b925b96cb851434b,
     type: 3}
   m_PrefabInstance: {fileID: 6265040783303670629}
   m_PrefabAsset: {fileID: 0}
@@ -910,7 +882,7 @@ PrefabInstance:
     - target: {fileID: 4734194815692726185, guid: 008a910ca35361547afd30fe2bf8f53a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 34
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 4734194815692726185, guid: 008a910ca35361547afd30fe2bf8f53a,
         type: 3}

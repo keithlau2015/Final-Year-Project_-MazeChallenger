@@ -12,7 +12,7 @@ public class ememy_movement : MonoBehaviour
 	Rigidbody m_Rigidbody;
 	//set up animation
 	private Animator clip;
-	Golem status;
+	//Golem status;
 
 	//set up state
 	public enum State   {CHASE, PATROL, INVESTIGATE, DIE}
@@ -43,7 +43,7 @@ public class ememy_movement : MonoBehaviour
 
     private void Awake()
     {
-        status = GetComponent<Golem>();
+        //status = GetComponent<Golem>();
 	    //target = PlayerController.instance.player.transform;
 	    player = GameObject.FindWithTag("Player");
 	    target = player.transform;
@@ -105,7 +105,7 @@ public class ememy_movement : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
 	    Gizmos.color = Color.red;
-	    Gizmos.DrawWireSphere(transform.position, lookRadius);
+	    Gizmos.DrawWireSphere(this.transform.position, lookRadius);
     }
 
     private void FaceTarget()
@@ -138,7 +138,7 @@ public class ememy_movement : MonoBehaviour
 
 	    nav.speed = patrol_speed;
 	    nav.SetDestination(movingspot);
-	    transform.rotation = Quaternion.LookRotation(relativePos, Vector3.up);
+        FaceTarget();
 	    if(distances <= lookRadius)
 	    {
 		    state = State.INVESTIGATE;

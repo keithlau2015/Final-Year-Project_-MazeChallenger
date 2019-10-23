@@ -44,36 +44,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: -5495902117074765545, guid: 6ef2df0454cd98841ad54563ae352d81, type: 3}
---- !u!1 &5909571224214437284
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5394562640717956169}
-  m_Layer: 0
-  m_Name: Food Spwaning Position
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5394562640717956169
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5909571224214437284}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -89.57, y: 59.8, z: -48}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5462057077963419401}
-  m_RootOrder: 28
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8244383036819629624
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,9 +100,7 @@ Transform:
   - {fileID: 5672199899919984178}
   - {fileID: 6729409860538047335}
   - {fileID: 939890793983978625}
-  - {fileID: 5394562640717956169}
   - {fileID: 6484806181938489031}
-  - {fileID: 1031030228648415939}
   - {fileID: 611983013713877901}
   - {fileID: 8603581408588632555}
   - {fileID: 8715669151896870432}
@@ -155,44 +123,12 @@ MonoBehaviour:
   exits:
   - {fileID: 2228817583032365498}
   meshCollider: {fileID: 6803413997879929503}
-  spwanPoint_Food:
-  - {fileID: 5394562640717956169}
-  - {fileID: 1031030228648415939}
+  spwanPoint_Food: []
   spwanPoint_Weapon:
   - {fileID: 0}
   spwanPoint_Enemy:
   - {fileID: 0}
   playerStartingPosition: {fileID: 6729409860538047335}
---- !u!1 &9217622310355206803
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1031030228648415939}
-  m_Layer: 0
-  m_Name: Food Spwaning Position_1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1031030228648415939
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9217622310355206803}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -64.41, y: 59.8, z: -47}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5462057077963419401}
-  m_RootOrder: 30
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &429900514019344641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1835,7 +1771,7 @@ PrefabInstance:
     - target: {fileID: 4661859390467455010, guid: 5e1d448b2a15ccb498d91f014839b452,
         type: 3}
       propertyPath: m_RootOrder
-      value: 33
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 4661859390467455010, guid: 5e1d448b2a15ccb498d91f014839b452,
         type: 3}
@@ -2265,11 +2201,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5462057077963419401}
     m_Modifications:
-    - target: {fileID: 7967735812151434715, guid: 7948732aaf8275b45977c66e6a4cb8ce,
-        type: 3}
-      propertyPath: m_Name
-      value: Table_1_fbx
-      objectReference: {fileID: 0}
     - target: {fileID: 6397447217776897992, guid: 7948732aaf8275b45977c66e6a4cb8ce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2308,7 +2239,7 @@ PrefabInstance:
     - target: {fileID: 6397447217776897992, guid: 7948732aaf8275b45977c66e6a4cb8ce,
         type: 3}
       propertyPath: m_RootOrder
-      value: 31
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 6397447217776897992, guid: 7948732aaf8275b45977c66e6a4cb8ce,
         type: 3}
@@ -2325,6 +2256,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -60.000004
       objectReference: {fileID: 0}
+    - target: {fileID: 7967735812151434715, guid: 7948732aaf8275b45977c66e6a4cb8ce,
+        type: 3}
+      propertyPath: m_Name
+      value: Table_1_fbx
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7948732aaf8275b45977c66e6a4cb8ce, type: 3}
 --- !u!4 &611983013713877901 stripped
@@ -2340,11 +2276,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5462057077963419401}
     m_Modifications:
-    - target: {fileID: 3726906472409807455, guid: 7792397589a0ef148b490fe7431121f1,
-        type: 3}
-      propertyPath: m_Name
-      value: Table
-      objectReference: {fileID: 0}
     - target: {fileID: 424455916008622156, guid: 7792397589a0ef148b490fe7431121f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2383,7 +2314,7 @@ PrefabInstance:
     - target: {fileID: 424455916008622156, guid: 7792397589a0ef148b490fe7431121f1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 424455916008622156, guid: 7792397589a0ef148b490fe7431121f1,
         type: 3}
@@ -2399,6 +2330,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -60.000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 3726906472409807455, guid: 7792397589a0ef148b490fe7431121f1,
+        type: 3}
+      propertyPath: m_Name
+      value: Table
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7792397589a0ef148b490fe7431121f1, type: 3}
@@ -2858,7 +2794,7 @@ PrefabInstance:
     - target: {fileID: 430727107796167370, guid: c14f3e7511bc0204ba3cbb431b2bcf80,
         type: 3}
       propertyPath: m_RootOrder
-      value: 32
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 430727107796167370, guid: c14f3e7511bc0204ba3cbb431b2bcf80,
         type: 3}
@@ -3195,11 +3131,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5462057077963419401}
     m_Modifications:
-    - target: {fileID: 1537697908847122132, guid: 3f001662e09fdea4eaa333a72a1710d7,
-        type: 3}
-      propertyPath: m_Name
-      value: Portal_Exit
-      objectReference: {fileID: 0}
     - target: {fileID: 2525492177369785543, guid: 3f001662e09fdea4eaa333a72a1710d7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3238,7 +3169,7 @@ PrefabInstance:
     - target: {fileID: 2525492177369785543, guid: 3f001662e09fdea4eaa333a72a1710d7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 34
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 2525492177369785543, guid: 3f001662e09fdea4eaa333a72a1710d7,
         type: 3}
@@ -3254,6 +3185,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1537697908847122132, guid: 3f001662e09fdea4eaa333a72a1710d7,
+        type: 3}
+      propertyPath: m_Name
+      value: Portal_Exit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f001662e09fdea4eaa333a72a1710d7, type: 3}

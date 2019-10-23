@@ -379,7 +379,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 switch (firstItem.name)
-                {
+                {                    
                     //Weapon
                     case "Spear(Clone)":
                         cleaRightHandObject();

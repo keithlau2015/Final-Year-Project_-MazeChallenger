@@ -6,6 +6,6 @@ public class Weapon : MonoBehaviour
 {
     public int damge;
     public int durability;
-    public float probability;
+    public float spawningRate;
     public string counterType;
 }
