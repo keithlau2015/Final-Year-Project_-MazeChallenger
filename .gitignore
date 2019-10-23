@@ -62,3 +62,5 @@ sysinfo.txt
 crashlytics-build.properties
 
 *.blend1
+*.meta
+Assets/Raw/Blender/Golem.blend1.meta
