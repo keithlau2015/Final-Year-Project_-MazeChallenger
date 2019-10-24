@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
     //Layer Mask
-    private LayerMask clickable;
+    //private LayerMask clickable;
 
     private Transform _selection;
 
@@ -55,10 +55,6 @@ public class Menu : MonoBehaviour
             {
                 bookAnimator.SetBool("play", false);
             }
-            else
-            {
-                var HighlightedRenderer = _selection.GetComponent<Collider>();
-            }
             _selection = null;
         }
 
@@ -68,7 +64,6 @@ public class Menu : MonoBehaviour
             var selection = hit.transform;
             if (selection.CompareTag("Door"))
             {
-                //audioSource.PlayOneShot(click, 0.5f);
                 doorAnimator.SetBool("play", true);
                 if (Input.GetMouseButtonDown(0)) Application.Quit();
                 _selection = selection;
@@ -85,7 +80,7 @@ public class Menu : MonoBehaviour
             if (selection.CompareTag("Credit"))
             {
                 //audioSource.PlayOneShot(click, 0.5f);
-                var selectionCollider = selection.GetComponent<Collider>();
+                //var selectionCollider = selection.GetComponent<Collider>();
                 bookAnimator.SetBool("play", true);
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(2);
                 _selection = selection;
@@ -94,7 +89,7 @@ public class Menu : MonoBehaviour
             if (selection.CompareTag("Setting"))
             {
                 //audioSource.PlayOneShot(click, 0.5f);
-                var selectionCollider = selection.GetComponent<Collider>();
+                ///var selectionCollider = selection.GetComponent<Collider>();
                 cogAnimation.SetBool("play", true);
                 cog_2Animation.SetBool("play", true);
                 cog_3Animation.SetBool("play", true);

@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour
         total_Speed += buff_Speed;
     }
 
-    public float getEnemySpeed(float speed)
+    public float getEnemySpeed()
     {
         return total_Speed;
     }
