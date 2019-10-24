@@ -98,7 +98,7 @@ public class LevelBuilder : MonoBehaviour
         yield return startup;
 
         //10 is the special room spawning rate
-        if (1 >= Random.Range(0, 100))
+        if (1 >= Random.Range(0, 100) && specialRoomPrefab.Length != 0)
         {
             PlaceSpecialRoom();
             Debug.Log("Place a special room");

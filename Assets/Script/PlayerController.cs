@@ -200,25 +200,62 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(soundeffect("wood_touch"));
         }
+
         if(collision.gameObject.tag == "Enemy")
         {
             PlayerStatus.Instance.setHealth(-2, "");
             Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
         }
+
+        /*
+        //Wall
+        if (collision.collider.tag == "Wall" && !isGrounded)
+        {
+            speed = 0;
+        }
+        else
+        {
+            speed = 100;
+        }
+        */
     }
 
     private void OnCollisionStay(Collision collision)
     {
+        //Floor
         if(collision.collider.tag == "Ground")
         {
             countJump = 0;
             isGrounded = true;
         }
+
+        //Enemy
         if(collision.collider.tag == "Enemy")
         {
             PlayerStatus.Instance.setHealth(-1, "");
             Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
         }
+
+        //Ladder
+        if (collision.gameObject.tag == "Ladder")
+        {
+            Vector3 climbMovement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+            Vector3 velocity = transform.TransformDirection(climbMovement) * speed;
+            velocity.y = rigidbody.velocity.y;
+            rigidbody.velocity = velocity;
+        }
+
+        /*
+        //Wall
+        if (collision.collider.tag == "Wall" && !isGrounded)
+        {
+            speed = 0;
+        }
+        else
+        {
+            speed = 100;
+        }
+        */
     }
 
     private void OnCollisionExit(Collision collision)
@@ -226,6 +263,23 @@ public class PlayerController : MonoBehaviour
         if(collision.collider.tag == "Ground")
         {
             isGrounded = false;
+        }
+
+        /*
+        //Wall
+        if(collision.collider.tag == "Wall")
+        {
+            speed = 100;
+        }
+        */
+
+        //Ladder
+        if(collision.collider.tag == "Ladder")
+        {
+            Vector3 movenment = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            Vector3 velocity = transform.TransformDirection(movenment) * speed;
+            velocity.y = rigidbody.velocity.y;
+            rigidbody.velocity = velocity;
         }
     }
 
@@ -236,6 +290,10 @@ public class PlayerController : MonoBehaviour
             //upgrade player status & monster status
             PlayerStatus.Instance.setPlayerGetIntoNextLevel(true);
             PlayerStatus.Instance.resetData();
+        }
+        if (other.gameObject.tag == "LadderBottom")
+        {
+            rigidbody.AddForce(Vector3.up * 1000, ForceMode.Impulse);
         }
     }
 

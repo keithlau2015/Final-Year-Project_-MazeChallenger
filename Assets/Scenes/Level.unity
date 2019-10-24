@@ -1040,13 +1040,13 @@ MonoBehaviour:
   - {fileID: 2255064858518847101, guid: a7a1f1e714fa3a540a1a9fadc8924724, type: 3}
   endRoomPrefab:
   - {fileID: 3378533251212319575, guid: ba60e8239107aad42acfc9bb5c1d5144, type: 3}
-  specialRoomPrefab:
-  - {fileID: 4886433739022568111, guid: 959ccbc8c99036648a0d7fcf5f85dcf3, type: 3}
+  specialRoomPrefab: []
   roomPrefabs:
-  - {fileID: 5143844486444197695, guid: 4caedd7b26e824740983f9ee939f5d31, type: 3}
-  - {fileID: 1015754631834842418, guid: 729756898d9f36c44915ce36398f18c3, type: 3}
   - {fileID: 1679118758360412178, guid: b9ed5add2a2e6b145b92d8d423fe3178, type: 3}
+  - {fileID: 1015754631834842418, guid: 729756898d9f36c44915ce36398f18c3, type: 3}
   - {fileID: 5760011545756883853, guid: c8bc7a1a9f9d9b849a2c6c6dd295d73e, type: 3}
+  - {fileID: 5143844486444197695, guid: 4caedd7b26e824740983f9ee939f5d31, type: 3}
+  - {fileID: 813601866753413953, guid: c04decc8044e6a9438419902b42c0006, type: 3}
   - {fileID: 6877985683987972412, guid: a09bb8fb605b4ed458c82a59926f003e, type: 3}
   weaponPrefabs:
   - {fileID: 1755586793167772730, guid: 3adf5dd70e2c1aa438909259bec2588b, type: 3}

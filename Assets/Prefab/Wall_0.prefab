@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3205583752453707283}
   m_Layer: 0
   m_Name: Wall_0
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -100,6 +100,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7567790918958272928}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 7eaaa51439369964786dc90e5d8bf637,
+        type: 3}
+      propertyPath: m_Name
+      value: Wall_0_Flip (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7eaaa51439369964786dc90e5d8bf637,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7eaaa51439369964786dc90e5d8bf637,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -169,16 +179,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.0241
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 7eaaa51439369964786dc90e5d8bf637,
-        type: 3}
-      propertyPath: m_Name
-      value: Wall_0_Flip (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 7eaaa51439369964786dc90e5d8bf637,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 7eaaa51439369964786dc90e5d8bf637,
         type: 3}

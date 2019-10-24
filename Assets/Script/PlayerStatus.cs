@@ -5,9 +5,17 @@ public class PlayerStatus
 {
     static readonly PlayerStatus instance = new PlayerStatus();
 
+    //Base
     private const int base_Health = 10, base_Hunger = 100;
+    private const float base_Speed = 25;
+
+    //Upgrade
     private int upgradeSlot_Health, upgradeSlot_Hunger;
+    private float upgradeSlot_Speed;
+
+    //Total
     private int total_Health, total_Hunger;
+    private float total_Speed;
 
     private bool playerGetIntoNextLevel, playerAtTheMenu;
 
@@ -23,6 +31,7 @@ public class PlayerStatus
     {
         total_Health = base_Health;
         total_Hunger = base_Hunger;
+        total_Speed = base_Speed;
         playerGetIntoNextLevel = false;
     }
     
