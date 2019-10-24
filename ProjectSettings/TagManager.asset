@@ -15,8 +15,10 @@ TagManager:
   - Credit
   - Teleporter
   - Enemy
-  - LadderBottom
   - Ladder
+  - Wall
+  - Trap
+  - Spike
   layers:
   - Default
   - TransparentFX

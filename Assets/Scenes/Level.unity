@@ -595,7 +595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5109024, g: 0.8396226, b: 0.6368606, a: 1}
+  m_Color: {r: 0.80191535, g: 0.8207547, b: 0.49167854, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1123,7 +1123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3160377, g: 1, b: 0.91098243, a: 1}
+  m_Color: {r: 0.3280082, g: 0.8584906, b: 0.61744165, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2705,7 +2705,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
-  jumpPower: 550
+  jumpPower: 2000
   weapons:
   - {fileID: 2972728332474417104, guid: 9f37bd9b4d9206247bed0a6c14614eb2, type: 3}
   - {fileID: 4900302781632256455, guid: 2eb61297adb80ad4c88c0e069e9edb03, type: 3}

@@ -29187,7 +29187,7 @@ GameObject:
   - component: {fileID: 9205022416997412296}
   - component: {fileID: 519809305206412512}
   - component: {fileID: 1300043553047464989}
-  - component: {fileID: 663261063049336830}
+  - component: {fileID: 7721403311180969166}
   m_Layer: 0
   m_Name: Ladder_fbx (2)
   m_TagString: Ladder
@@ -29259,21 +29259,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &663261063049336830
-MeshCollider:
+--- !u!65 &7721403311180969166
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7829766123537186455, guid: c04decc8044e6a9438419902b42c0006,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902182208549771353}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -5495902117074765545, guid: 55076d81ff362ba428b3785b7b8c5992, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.061000034, y: 0.0060000303, z: 0.18000007}
+  m_Center: {x: 0.0004999987, y: 6.556242e-10, z: -0.0050000004}
 --- !u!1 &1909793267865302600
 GameObject:
   m_ObjectHideFlags: 0
@@ -72771,7 +72769,7 @@ GameObject:
   - component: {fileID: 2299910372418574572}
   - component: {fileID: 2938193483926928593}
   - component: {fileID: 4761704810569314397}
-  - component: {fileID: 8314171659246278619}
+  - component: {fileID: 4238374811367460884}
   m_Layer: 0
   m_Name: Ladder_fbx (3)
   m_TagString: Ladder
@@ -72843,21 +72841,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8314171659246278619
-MeshCollider:
+--- !u!65 &4238374811367460884
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7829766123916054631, guid: c04decc8044e6a9438419902b42c0006,
-    type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4951417195923205751}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -5495902117074765545, guid: 55076d81ff362ba428b3785b7b8c5992, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.061000034, y: 0.0060000303, z: 0.18000007}
+  m_Center: {x: 0.0004999987, y: -0.00000005894902, z: -0.0050000004}
 --- !u!1 &4952548012312705743
 GameObject:
   m_ObjectHideFlags: 0

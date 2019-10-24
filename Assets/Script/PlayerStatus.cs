@@ -35,6 +35,11 @@ public class PlayerStatus
         playerGetIntoNextLevel = false;
     }
     
+    public float getSpeed()
+    {
+        return instance.total_Speed;
+    }
+
     public int getHealth()
     {
         return instance.total_Health;
@@ -45,14 +50,38 @@ public class PlayerStatus
         return instance.total_Hunger;
     }
 
+    public void setSpeed(float speed, string extraBuff)
+    {
+        float temp = this.total_Speed + speed;
+        if(temp >= base_Speed && extraBuff == "")
+        {
+            this.total_Speed = base_Speed;
+        }
+        else if (temp >= base_Speed && extraBuff.Equals("upgradeSpeed"))
+        {
+            if(temp > base_Speed + this.upgradeSlot_Speed)
+            {
+                this.upgradeSlot_Speed = base_Speed + this.upgradeSlot_Speed;
+            }
+            else
+            {
+                this.total_Speed = temp;
+            }
+        }
+        else
+        {
+            this.total_Speed = temp;
+        }
+    }
+
     public void setHealth(int health, string extraBuff)
     {
         int temp = this.total_Health + health;
-        if (temp >= 10 && extraBuff == "")
+        if (temp >= base_Health && extraBuff == "")
         {
             this.total_Health = base_Health;
         }
-        else if(temp >= 10 && extraBuff.Equals("upgradeHP"))
+        else if(temp >= base_Health && extraBuff.Equals("upgradeHP"))
         {
             //the number is over the base health plus the upgrade health
             if(temp > base_Health + this.upgradeSlot_Health)
@@ -82,12 +111,7 @@ public class PlayerStatus
         {
             this.total_Hunger += hunger;
         }
-    }
-    
-    public void setTotalHealth()
-    {
-        this.total_Health = total_Health + 1;
-    }
+    }    
 
     public void setPlayerGetIntoNextLevel(bool playerGetIntoNextLevel)
     {

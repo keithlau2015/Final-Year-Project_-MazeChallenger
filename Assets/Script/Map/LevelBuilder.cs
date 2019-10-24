@@ -368,7 +368,7 @@ public class LevelBuilder : MonoBehaviour
 
     private void onClickUpgradButton()
     {
-        PlayerStatus.Instance.setTotalHealth();
+        PlayerStatus.Instance.setHealth(10, "upgradeHealth");
         PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
     }
 }
