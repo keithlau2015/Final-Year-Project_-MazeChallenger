@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1965399400598731444}
   m_Layer: 0
   m_Name: Pillar
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -87,7 +87,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7523101829087095583}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b25f8bad89828d54282de61ce2d511be, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

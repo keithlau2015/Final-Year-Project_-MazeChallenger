@@ -4,34 +4,29 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public enum State { IDLE, CHASING, DEAD }
     public enum EnemyType { Golem }
 
     public EnemyType enemyType;
-    public State state;
 
     //The Base value
     private const int base_HitPoint = 0;
-    private const float base_Speed = 30;
+    private const float base_Speed = 50;
     private const int base_Health = 50;
     private const float base_SpawningRate = 0;
 
     //The Total value
-    public int total_HitPoint;
-    public float total_Speed;
-    public int total_Health;
-    public float total_spwaningRate;
+    private  int total_HitPoint;
+    private float total_Speed;
+    private int total_Health;
+    private float total_spwaningRate;
 
     //The Buffed value
-    public int buff_HitPoint;
-    public float buff_Speed;
-    public int buff_Health;
-    public float buff_SpwaningRate;
-    public int buffSpeedCounter, buffHealthCounter, buffHitPointCounter, buffSpawningRateCounter;
+    private int buff_HitPoint;
+    private float buff_Speed;
+    private int buff_Health;
+    private float buff_SpwaningRate;
+    private int buffSpeedCounter, buffHealthCounter, buffHitPointCounter, buffSpawningRateCounter;
 
-    public Transform attackAreaPosition;
-    public Transform[] idleWaypoint;
-    public Collider detectPlayer;
 
     public Enemy()
     {
@@ -43,14 +38,12 @@ public class Enemy : MonoBehaviour
         buffHealthCounter = buffHitPointCounter = buffSpawningRateCounter = buffSpeedCounter = 0;
         buff_Health = buff_HitPoint = 0;
         buff_Speed = buff_SpwaningRate = 0;
-
-        state = State.IDLE;
     }
 
     //Health get & set
     public void setEnemyHealth(int health)
     {
-        buff_Health += health;
+        int temp = buff_Health + health;
         total_Health += buff_Health;
         buffHealthCounter++;
     }

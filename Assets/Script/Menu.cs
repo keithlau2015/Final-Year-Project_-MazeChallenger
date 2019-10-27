@@ -80,7 +80,7 @@ public class Menu : MonoBehaviour
             if (selection.CompareTag("Credit"))
             {
                 //audioSource.PlayOneShot(click, 0.5f);
-                //var selectionCollider = selection.GetComponent<Collider>();
+                var selectionCollider = selection.GetComponent<Collider>();
                 bookAnimator.SetBool("play", true);
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(2);
                 _selection = selection;

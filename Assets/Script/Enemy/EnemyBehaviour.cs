@@ -4,133 +4,61 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    private bool collisionWithObject = false, triggerWithPlayer = false;
+    private float[] rotationDir = { 90, -90, 180, -180 };
+    private Animator animator;
+    private Enemy status;
+    private Rigidbody rigidbody;
     [SerializeField]
-    private Transform[] idleWayPoints, attackAreaPosition;
+    private Transform attackAreaPosition;
 
-    private Transform player;
-
-    private List<Transform> walkedPosition;
-
-    private new Rigidbody rigidbody;
-
-    private Animator enemyAnimator;
-
-    private Enemy enemyStatus;
-
-    private GameObject[] attackArea;
-
-    private bool inAttackRange;
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+        rigidbody = GetComponent<Rigidbody>();
+        status = new Enemy();
+    }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
-        enemyAnimator = GetComponent<Animator>();
-        enemyStatus = GetComponent<Enemy>();
-        player = null;
+        //status.setEnemySpeed();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
-    }
-
-    private void EnemyMovement(Transform target)
-    {
-        //At the very beginning
-        if (walkedPosition.Capacity == 0 && target.Equals(null))
+        EnemyRotation();        
+        /*
+        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
         {
-            int rand = Random.Range(0, idleWayPoints.Length);
-            walkedPosition.Add(idleWayPoints[rand]);
-            Vector3 velocity = transform.TransformDirection(idleWayPoints[rand].position) * enemyStatus.getEnemySpeed();
-            rigidbody.velocity = velocity;
-            this.transform.rotation = Quaternion.Euler(0, idleWayPoints[rand].rotation.y, 0);
-
-            //Animation part
-            enemyAnimator.SetBool("walking", true);
-            enemyAnimator.SetBool("idle", false);
+            EnemyIdle();
+            Debug.Log("idle");
         }
-
-        //Walk to another waypoint
-        else if(this.transform.position == walkedPosition[0].position && target.Equals(null))
-        {
-            float idleRate = Random.Range(0f, 1f);
-            int rand = Random.Range(0, idleWayPoints.Length);
-
-            //idle
-            if(this.transform.position == idleWayPoints[rand].position && idleRate <= 0.3)
-            {
-                //Animation part
-                enemyAnimator.SetBool("walking", false);
-                enemyAnimator.SetBool("idle", true);
-            }
-
-            //run this function again
-            else if (this.transform.position == idleWayPoints[rand].position && idleRate > 0.7)
-            {
-                EnemyMovement(target);
-            }
-
-            //walking to another waypoint
-            else
-            {
-                walkedPosition.Clear();
-                walkedPosition.Add(idleWayPoints[rand]);
-                Vector3 velocity = transform.TransformDirection(idleWayPoints[rand].position) * enemyStatus.getEnemySpeed();
-                rigidbody.velocity = velocity;
-                this.transform.rotation = Quaternion.Euler(0, idleWayPoints[rand].rotation.y, 0);
-
-                //Animation part
-                enemyAnimator.SetBool("walking", true);
-                enemyAnimator.SetBool("idle", false);
-            }
-        }
-
-        //when detected player
-        else if(target.tag == "Player")
-        {
-            enemyStatus.setEnemySpeed(10);
-            Vector3 velocity = transform.TransformDirection(target.position) * enemyStatus.getEnemySpeed();
-            this.rigidbody.velocity = velocity;
-            this.transform.rotation = Quaternion.Euler(0, target.rotation.y, 0);
-        }
-
-        //getting expection 
         else
-        {
-            Debug.LogError("got exception in Enemy Movement");
-        }
+        */
+        EnemyWalk();
     }
 
-    private void EnemyWalking()
+    private void EnemyIdle()
     {
-        Transform temp = null;
-        EnemyMovement(temp);
+        //Animation
+        animator.SetBool("idle", true);
+        animator.SetBool("walk", false);
+    }
+
+    private void EnemyWalk()
+    {
+        //Animation
+        animator.SetBool("idle", false);
+        animator.SetBool("walk", true);
+                
+        rigidbody.velocity = transform.forward * Time.deltaTime * status.getEnemySpeed();
     }
 
     private void EnemyAttack()
     {
-        EnemyMovement(player);
-        enemyAnimator.SetBool("walking", false);
-        enemyAnimator.SetBool("attack_1", true);
-        Instantiate(attackArea[0], attackAreaPosition[0]);
-        if (this.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("attack_1"))
-        {
-            enemyAnimator.SetBool("attack_1", false);
-            enemyAnimator.SetBool("attack_2", true);
-            Instantiate(attackArea[1], attackAreaPosition[1]);
-            if (this.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("attack_2"))
-            {
-                enemyAnimator.SetBool("attack_2", false);
-                enemyAnimator.SetBool("attack_3", true);
-                Instantiate(attackArea[2], attackAreaPosition[2]);
-                if (this.enemyAnimator.GetCurrentAnimatorStateInfo(0).IsName("attack_3"))
-                {
-                    enemyAnimator.SetBool("attack_3", false);
-                }
-            }
-        }
+
     }
 
     private void EnemyDie()
@@ -138,36 +66,57 @@ public class EnemyBehaviour : MonoBehaviour
 
     }
 
+    private void DrawRayCast()
+    {
+
+    }
+
+    private void EnemyRotation()
+    {
+        if (collisionWithObject)
+        {
+            int rand = Random.Range(0, rotationDir.Length);
+            Vector3 targetYAxis = new Vector3( rotationDir[rand], this.transform.position.y, rotationDir[rand]);
+            transform.LookAt(targetYAxis);
+        }
+        else if (triggerWithPlayer)
+        {
+            Vector3 targetYAxis = new Vector3(PlayerRef.instance.player.transform.position.x, this.transform.position.y, PlayerRef.instance.player.transform.position.z);
+            transform.LookAt(targetYAxis);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.gameObject.tag == "Player")
         {
-            player = other.transform;
+            //increase speed
+            triggerWithPlayer = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.gameObject.tag == "Player")
         {
-            player = null;
+            //increase speed
+            triggerWithPlayer = false;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.tag == "Player")
+        if(collision.gameObject.tag == "Wall")
         {
-            PlayerStatus.Instance.setSpeed(-20, "");
+            collisionWithObject = true;
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if(collision.collider.tag == "Player")
+        if(collision.gameObject.tag == "Wall")
         {
-            PlayerStatus.Instance.setSpeed(20, "");
+            collisionWithObject = false;
         }
     }
-
 }
