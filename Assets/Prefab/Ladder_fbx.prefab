@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2196326940969642088}
   - component: {fileID: 7143251103706157662}
   - component: {fileID: 3467037664729460391}
-  - component: {fileID: 1793573134099616112}
+  - component: {fileID: -1706123859866293506}
   m_Layer: 0
   m_Name: Ladder_fbx
   m_TagString: Ladder
@@ -80,20 +80,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &1793573134099616112
-MeshCollider:
+--- !u!65 &-1706123859866293506
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2891788628655823483}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b25f8bad89828d54282de61ce2d511be, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -5495902117074765545, guid: 55076d81ff362ba428b3785b7b8c5992, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.060999997, y: 0.0060000014, z: 0.18000005}
+  m_Center: {x: 0.00049999915, y: 0, z: -0.0050000004}
 --- !u!1001 &3546587273591782351
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    private bool collisionWithObject = false, triggerWithPlayer = false;
+    private bool collisionWithObject = false, triggerWithPlayer = false, onGround = false, insideAttackArea = false;
     private float[] rotationDir = { 90, -90, 180, -180 };
+    //private int rotationDirCounter;
     private Animator animator;
     private Enemy status;
     private Rigidbody rigidbody;
@@ -22,22 +23,23 @@ public class EnemyBehaviour : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        //status.setEnemySpeed();
+        status.setEnemySpeed(+10);
+        //rotationDirCounter = 0;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        EnemyRotation();        
+        EnemyRotation();
         /*
-        if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1 && !animator.IsInTransition(0))
-        {
+        else
+        { 
             EnemyIdle();
             Debug.Log("idle");
         }
-        else
         */
-        EnemyWalk();
+        if(onGround) EnemyWalk();
+        //EnemyAttack();
     }
 
     private void EnemyIdle()
@@ -53,14 +55,33 @@ public class EnemyBehaviour : MonoBehaviour
         animator.SetBool("idle", false);
         animator.SetBool("walk", true);
                 
-        rigidbody.velocity = transform.forward * Time.deltaTime * status.getEnemySpeed();
-    }
+        rigidbody.velocity = transform.forward * status.getEnemySpeed();
 
+        //Detect the player is in the attack range
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, 10f))
+        {
+            insideAttackArea = true;
+        }
+        else
+        {
+            insideAttackArea = false;
+        }
+    }
+    /*
     private void EnemyAttack()
     {
-
+        if (insideAttackArea)
+        {
+            attackAreaPosition.gameObject.AddComponent<SphereCollider>();
+            attackAreaPosition.gameObject.GetComponent<SphereCollider>().radius = 5f;
+        }
+        else
+        {
+            Destroy(attackAreaPosition.gameObject.GetComponent<SphereCollider>());
+        }
     }
-
+    */
     private void EnemyDie()
     {
 
@@ -76,10 +97,10 @@ public class EnemyBehaviour : MonoBehaviour
         if (collisionWithObject)
         {
             int rand = Random.Range(0, rotationDir.Length);
-            Vector3 targetYAxis = new Vector3( rotationDir[rand], this.transform.position.y, rotationDir[rand]);
+            Vector3 targetYAxis = new Vector3(rotationDir[rand], this.transform.position.y, rotationDir[rand]);
             transform.LookAt(targetYAxis);
         }
-        else if (triggerWithPlayer)
+        if (triggerWithPlayer)
         {
             Vector3 targetYAxis = new Vector3(PlayerRef.instance.player.transform.position.x, this.transform.position.y, PlayerRef.instance.player.transform.position.z);
             transform.LookAt(targetYAxis);
@@ -92,15 +113,19 @@ public class EnemyBehaviour : MonoBehaviour
         {
             //increase speed
             triggerWithPlayer = true;
+            status.setEnemySpeed(+10);
+            Debug.Log("Enemy speed" + status.getEnemySpeed());
         }
     }
-
+        
     private void OnTriggerExit(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
             //increase speed
             triggerWithPlayer = false;
+            status.setEnemySpeed(-10);
+            Debug.Log("Enemy speed" + status.getEnemySpeed());
         }
     }
 
@@ -110,6 +135,18 @@ public class EnemyBehaviour : MonoBehaviour
         {
             collisionWithObject = true;
         }
+        if(collision.gameObject.tag == "Ground")
+        {
+            onGround = true;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            onGround = true;
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -117,6 +154,10 @@ public class EnemyBehaviour : MonoBehaviour
         if(collision.gameObject.tag == "Wall")
         {
             collisionWithObject = false;
+        }
+        if (collision.gameObject.tag == "Ground")
+        {
+            onGround = false;
         }
     }
 }

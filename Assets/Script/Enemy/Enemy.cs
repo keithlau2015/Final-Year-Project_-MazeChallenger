@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
 
     //The Base value
     private const int base_HitPoint = 0;
-    private const float base_Speed = 50;
+    private const float base_Speed = 10;
     private const int base_Health = 50;
     private const float base_SpawningRate = 0;
 
@@ -61,8 +61,9 @@ public class Enemy : MonoBehaviour
     //Speed get & set
     public void setEnemySpeed(float speed)
     {
-        buff_Speed += speed;
-        total_Speed += buff_Speed;
+        buff_Speed = buff_Speed + speed;
+        total_Speed = buff_Speed + base_Speed;
+        buffSpeedCounter++;
     }
 
     public float getEnemySpeed()
