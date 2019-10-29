@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414726, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1011,6 +1011,7 @@ GameObject:
   m_Component:
   - component: {fileID: 617042930}
   - component: {fileID: 617042929}
+  - component: {fileID: 617042931}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1073,6 +1074,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &617042931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617042928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c648722bcedf494f99194ce745e472c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &703541981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2007,58 +2020,118 @@ MonoBehaviour:
   sounds:
   - name: AK47_atk
     clip: {fileID: 8300000, guid: c99441f2c4d50c94b84e8337860128eb, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: handgun_atk
     clip: {fileID: 8300000, guid: 9fd2a4509e9703c4ab1b53005b3a13f9, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: shortgun_atk
     clip: {fileID: 8300000, guid: ec47d723bcdc7dd4fb96d669776cd153, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: sword_atk
     clip: {fileID: 8300000, guid: 048436ff166980b4f9219b4a74aaf027, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: spear_atk_sound
     clip: {fileID: 8300000, guid: b03a1bc008f35794796198310be4537b, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: gun_break
     clip: {fileID: 8300000, guid: 79ee9582a76a455478cc3348c2bc304a, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: spear_break
     clip: {fileID: 8300000, guid: f41b0cb096f691c4b835e0e10c6565d7, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: sward_break
     clip: {fileID: 8300000, guid: 8df07f167d2e7ab45a72c753e45d48b6, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: gun_pickup
     clip: {fileID: 8300000, guid: 5470d414b92c61549845b538936cdcab, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: spear_pick
     clip: {fileID: 8300000, guid: da61fb1f050f77d4b94632323bc2c58b, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: jumpping_effect
     clip: {fileID: 8300000, guid: 8dd44baf3d6108447903e4f81b338e67, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: walking_effect
     clip: {fileID: 8300000, guid: 1f0303836218af342bb755d5bd81066a, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: arrow_atk
     clip: {fileID: 8300000, guid: 7511132f907bb4fcd8ce083fcb0d4136, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: sword_pickup
     clip: {fileID: 8300000, guid: 0c2a63faedc084d00b7ea2b0df34bf9f, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: wood_pickup
     clip: {fileID: 8300000, guid: a4d282646e3984921a17bcc7c3c7e59f, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: running
     clip: {fileID: 8300000, guid: a622d58cda17f448da96e2d5cffdf0f1, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: great_sword_atk
     clip: {fileID: 8300000, guid: 0f1efd2ab7bd84c65b2d6a9279007948, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: wood_touch
     clip: {fileID: 8300000, guid: d9381b33835d4492ca77b990d4ad4d21, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
+  - name: game_bg
+    clip: {fileID: 8300000, guid: 04265ea4880274f97b65156b3e95255e, type: 3}
+    loop: 1
+    source: {fileID: 0}
+    volume: 0
+    pitch: 0
   instance: {fileID: 0}
   playRate: 1
 --- !u!4 &1621529484
@@ -2821,4 +2894,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848dee52848f1ab41bdfabd457800f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2100989199}
