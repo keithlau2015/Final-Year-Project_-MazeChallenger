@@ -10,7 +10,6 @@ public class Menu : MonoBehaviour
     //private LayerMask clickable;
 
     private Transform _selection;
-
     private Camera camera;
     private RaycastHit hit;
 
@@ -21,6 +20,7 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
+        FindObjectOfType<soundcontrol>().music_playing("menu_bg");
         PlayerStatus.Instance.setPlayerAtTheMenu(true);
         Debug.Log("Player at the menu: " + PlayerStatus.Instance.getPlayerAtTheMenu());
         Debug.Log("Player upgrading: " + PlayerStatus.Instance.getPlayerGetIntoNextLevel());
@@ -45,6 +45,7 @@ public class Menu : MonoBehaviour
                 cog_2Animation.SetBool("play", false);
                 cog_3Animation.SetBool("play", false);
                 cog_4Animation.SetBool("play", false);
+
             }
             else if (_selection.CompareTag("Door"))
             {
@@ -94,6 +95,7 @@ public class Menu : MonoBehaviour
                 cog_2Animation.SetBool("play", true);
                 cog_3Animation.SetBool("play", true);
                 cog_4Animation.SetBool("play", true);
+                //FindObjectOfType<soundcontrol>().wepon_atk("menu_element");   
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(1);
                 _selection = selection;
 
