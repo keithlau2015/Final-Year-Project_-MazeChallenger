@@ -25,6 +25,7 @@ public class CameraControler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            FindObjectOfType<soundcontrol>().character("switching");   
             if (mCurrentIndex < Positions.Length - 1)
             {
                 mCurrentIndex++;
@@ -32,6 +33,7 @@ public class CameraControler : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
+             FindObjectOfType<soundcontrol>().character("switching"); 
             if (mCurrentIndex > 0)
             {
                 mCurrentIndex--;
