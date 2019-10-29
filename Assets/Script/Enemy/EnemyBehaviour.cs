@@ -97,8 +97,8 @@ public class EnemyBehaviour : MonoBehaviour
         if (collisionWithObject)
         {
             int rand = Random.Range(0, rotationDir.Length);
-            Vector3 targetYAxis = new Vector3(rotationDir[rand], this.transform.position.y, rotationDir[rand]);
-            transform.LookAt(targetYAxis);
+            Vector3 targetYAxis = new Vector3(0, rotationDir[rand], 0);
+            transform.rotation = Quaternion.Euler(targetYAxis);
         }
         if (triggerWithPlayer)
         {
