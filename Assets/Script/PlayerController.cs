@@ -206,24 +206,18 @@ public class PlayerController : MonoBehaviour
             PlayerStatus.Instance.setHealth(-2, "");
             Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
         }
-
-        /*
-        //Wall
-        if (collision.collider.tag == "Wall" && !isGrounded)
-        {
-            speed = 0;
-        }
-        else
-        {
-            speed = 100;
-        }
-        */
     }
 
     private void OnCollisionStay(Collision collision)
     {
         //Floor
         if(collision.collider.tag == "Ground")
+        {
+            countJump = 0;
+            isGrounded = true;
+        }
+
+        if(collision.collider.tag == "Trap")
         {
             countJump = 0;
             isGrounded = true;
@@ -239,23 +233,11 @@ public class PlayerController : MonoBehaviour
         //Ladder
         if (collision.gameObject.tag == "Ladder")
         {
-            Vector3 climbMovement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+            Vector3 climbMovement = new Vector3(0, Input.GetAxis("Vertical"), 0);
             Vector3 velocity = transform.TransformDirection(climbMovement) * speed;
-            velocity.y = rigidbody.velocity.y;
+            //velocity.y = rigidbody.velocity.y;
             rigidbody.velocity = velocity;
         }
-
-        /*
-        //Wall
-        if (collision.collider.tag == "Wall" && !isGrounded)
-        {
-            speed = 0;
-        }
-        else
-        {
-            speed = 100;
-        }
-        */
     }
 
     private void OnCollisionExit(Collision collision)
@@ -265,20 +247,17 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
 
-        /*
-        //Wall
-        if(collision.collider.tag == "Wall")
+        if(collision.collider.tag == "Trap")
         {
-            speed = 100;
+            isGrounded = false;
         }
-        */
 
         //Ladder
         if(collision.collider.tag == "Ladder")
         {
             Vector3 movenment = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             Vector3 velocity = transform.TransformDirection(movenment) * speed;
-            velocity.y = rigidbody.velocity.y;
+            //velocity.y = rigidbody.velocity.y;
             rigidbody.velocity = velocity;
         }
     }
