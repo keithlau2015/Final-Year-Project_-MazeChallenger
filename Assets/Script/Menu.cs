@@ -12,7 +12,7 @@ public class Menu : MonoBehaviour
     private Transform _selection;
     private Camera camera;
     private RaycastHit hit;
-
+    private bool ifplay = true;
     //GameObject
     [SerializeField] private Collider cog, cog_2, cog_3, cog_4, door, book;
 
@@ -45,7 +45,6 @@ public class Menu : MonoBehaviour
                 cog_2Animation.SetBool("play", false);
                 cog_3Animation.SetBool("play", false);
                 cog_4Animation.SetBool("play", false);
-
             }
             else if (_selection.CompareTag("Door"))
             {
@@ -66,7 +65,7 @@ public class Menu : MonoBehaviour
             if (selection.CompareTag("Door"))
             {
                 doorAnimator.SetBool("play", true);
-                FindObjectOfType<soundcontrol>().wepon_atk("door");
+                playing_sound(doorAnimator, "door", "Door");
                 if (Input.GetMouseButtonDown(0)) Application.Quit();
                 _selection = selection;
             }
@@ -84,20 +83,21 @@ public class Menu : MonoBehaviour
                 //audioSource.PlayOneShot(click, 0.5f);
                 var selectionCollider = selection.GetComponent<Collider>();
                 bookAnimator.SetBool("play", true);
-                FindObjectOfType<soundcontrol>().wepon_atk("Book");
+                playing_sound(bookAnimator, "Book", "Credit");
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(2);
                 _selection = selection;
             }
 
             if (selection.CompareTag("Setting"))
             {
+
                 //audioSource.PlayOneShot(click, 0.5f);
                 ///var selectionCollider = selection.GetComponent<Collider>();
                 cogAnimation.SetBool("play", true);
                 cog_2Animation.SetBool("play", true);
                 cog_3Animation.SetBool("play", true);
                 cog_4Animation.SetBool("play", true);
-                FindObjectOfType<soundcontrol>().wepon_atk("menu_element");   
+                playing_sound(cogAnimation, "menu_element", "Setting");
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(1);
                 _selection = selection;
 
@@ -165,4 +165,17 @@ public class Menu : MonoBehaviour
         }
     }
     */
+
+    private void playing_sound(Animator name, string music, string tag)
+    {
+        if(name.GetBool("play") && ifplay && _selection.CompareTag(tag))
+        {
+
+            FindObjectOfType<soundcontrol>().wepon_atk(music);
+            ifplay = false;
+        }
+        
+        if(!_selection.CompareTag(tag))
+            ifplay = true;
+    }
 }
