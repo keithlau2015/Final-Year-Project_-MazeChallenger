@@ -64,3 +64,4 @@ crashlytics-build.properties
 *.blend1
 *.meta
 Assets/Raw/Blender/Golem.blend1.meta
+Assets/sound effect/main_menu/main_menu_bg.mp3

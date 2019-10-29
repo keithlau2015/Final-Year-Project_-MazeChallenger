@@ -10010,13 +10010,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: menu_bg
-    clip: {fileID: 8300000, guid: 9fe04b09dc8114da9b4551a7453833bd, type: 3}
+    clip: {fileID: 8300000, guid: e4bc836a8c87e49b8a8ef8cc030c0a33, type: 3}
     loop: 1
     source: {fileID: 0}
     volume: 0.57
     pitch: 1.2
   - name: menu_element
-    clip: {fileID: 8300000, guid: e4b81771cb42f4dac9b8918f1f67d16a, type: 3}
+    clip: {fileID: 8300000, guid: 0977c2a7a6bca4e1db5094a7566844a4, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 1
+    pitch: 1.24
+  - name: door
+    clip: {fileID: 8300000, guid: a28138f2a576348a5bbe3fb1b5c7f684, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 1
+    pitch: 1.24
+  - name: switching
+    clip: {fileID: 8300000, guid: 93bca52a4de324f56b15238465929d53, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 1
+    pitch: 1.24
+  - name: Book
+    clip: {fileID: 8300000, guid: 7fc39c363c75d4a66b2e64a991325ce1, type: 3}
     loop: 0
     source: {fileID: 0}
     volume: 1

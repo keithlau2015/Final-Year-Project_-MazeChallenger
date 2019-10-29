@@ -20,7 +20,7 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
-        FindObjectOfType<soundcontrol>().music_playing("menu_bg");
+        FindObjectOfType<soundcontrol>().music_playing("menu_bg");//play bg music
         PlayerStatus.Instance.setPlayerAtTheMenu(true);
         Debug.Log("Player at the menu: " + PlayerStatus.Instance.getPlayerAtTheMenu());
         Debug.Log("Player upgrading: " + PlayerStatus.Instance.getPlayerGetIntoNextLevel());
@@ -66,6 +66,7 @@ public class Menu : MonoBehaviour
             if (selection.CompareTag("Door"))
             {
                 doorAnimator.SetBool("play", true);
+                FindObjectOfType<soundcontrol>().wepon_atk("door");
                 if (Input.GetMouseButtonDown(0)) Application.Quit();
                 _selection = selection;
             }
@@ -83,6 +84,7 @@ public class Menu : MonoBehaviour
                 //audioSource.PlayOneShot(click, 0.5f);
                 var selectionCollider = selection.GetComponent<Collider>();
                 bookAnimator.SetBool("play", true);
+                FindObjectOfType<soundcontrol>().wepon_atk("Book");
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(2);
                 _selection = selection;
             }
@@ -95,7 +97,7 @@ public class Menu : MonoBehaviour
                 cog_2Animation.SetBool("play", true);
                 cog_3Animation.SetBool("play", true);
                 cog_4Animation.SetBool("play", true);
-                //FindObjectOfType<soundcontrol>().wepon_atk("menu_element");   
+                FindObjectOfType<soundcontrol>().wepon_atk("menu_element");   
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(1);
                 _selection = selection;
 
