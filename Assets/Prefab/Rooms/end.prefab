@@ -382,6 +382,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3642392552957384502}
     m_Modifications:
+    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+        type: 3}
+      propertyPath: m_Name
+      value: WallTorch (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4799515650359929822, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -447,32 +462,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 150.00006
       objectReference: {fileID: 0}
-    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
-        type: 3}
-      propertyPath: m_Name
-      value: WallTorch (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2559476482312199867, guid: 12ec00d15617ff646ad298deea352f16,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -874,6 +874,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3642392552957384502}
     m_Modifications:
+    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+        type: 3}
+      propertyPath: m_Name
+      value: WallTorch (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4799515650359929822, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -939,32 +954,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 150.00006
       objectReference: {fileID: 0}
-    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
-        type: 3}
-      propertyPath: m_Name
-      value: WallTorch (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2559476482312199867, guid: 12ec00d15617ff646ad298deea352f16,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -1189,6 +1189,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3642392552957384502}
     m_Modifications:
+    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+        type: 3}
+      propertyPath: m_Name
+      value: WallTorch (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4799515650359929822, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1259,32 +1274,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 150.00006
       objectReference: {fileID: 0}
-    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
-        type: 3}
-      propertyPath: m_Name
-      value: WallTorch (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2559476482312199867, guid: 12ec00d15617ff646ad298deea352f16,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -2529,6 +2529,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3642392552957384502}
     m_Modifications:
+    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+        type: 3}
+      propertyPath: m_Name
+      value: WallTorch (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4799515650359929822, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2584,32 +2599,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.00001
       objectReference: {fileID: 0}
-    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
-        type: 3}
-      propertyPath: m_Name
-      value: WallTorch (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2559476482312199867, guid: 12ec00d15617ff646ad298deea352f16,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -2724,6 +2724,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3642392552957384502}
     m_Modifications:
+    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+        type: 3}
+      propertyPath: m_Name
+      value: WallTorch
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4799515650359929822, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2779,32 +2794,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90.00001
       objectReference: {fileID: 0}
-    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
-        type: 3}
-      propertyPath: m_Name
-      value: WallTorch
-      objectReference: {fileID: 0}
-    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8412750315949349325, guid: 12ec00d15617ff646ad298deea352f16,
+    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2559476482312199867, guid: 12ec00d15617ff646ad298deea352f16,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 568010733354427930, guid: 12ec00d15617ff646ad298deea352f16,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295

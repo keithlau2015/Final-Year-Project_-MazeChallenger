@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Threading;
 
 public class LevelBuilder : MonoBehaviour
 {
@@ -100,7 +99,7 @@ public class LevelBuilder : MonoBehaviour
 
         yield return startup;
 
-        //10 is the special room spawning rate
+        //1 is the special room spawning rate
         if (1 >= Random.Range(0, 100) && specialRoomPrefab.Length != 0)
         {
             PlaceSpecialRoom();

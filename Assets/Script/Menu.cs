@@ -12,14 +12,16 @@ public class Menu : MonoBehaviour
     private Transform _selection;
     private Camera camera;
     private RaycastHit hit;
-    private bool ifplay = true;
     //GameObject
     [SerializeField] private Collider cog, cog_2, cog_3, cog_4, door, book;
 
     private Animator cogAnimation, cog_2Animation, cog_3Animation, cog_4Animation, doorAnimator, bookAnimator;
 
+    private bool alreadyPlaySound;
+
     private void Start()
     {
+        alreadyPlaySound = false;
         FindObjectOfType<soundcontrol>().music_playing("menu_bg");//play bg music
         PlayerStatus.Instance.setPlayerAtTheMenu(true);
         Debug.Log("Player at the menu: " + PlayerStatus.Instance.getPlayerAtTheMenu());
@@ -59,7 +61,11 @@ public class Menu : MonoBehaviour
                 
             }
             _selection = null;
-            ifplay = true;
+
+        }
+        else if(_selection == null)
+        {
+            alreadyPlaySound = false;
         }
 
         var ray = camera.ScreenPointToRay(Input.mousePosition);
@@ -69,7 +75,11 @@ public class Menu : MonoBehaviour
             if (selection.CompareTag("Door"))
             {
                 doorAnimator.SetBool("play", true);
-                playing_sound(doorAnimator, "door");
+                if (!alreadyPlaySound)
+                {
+                    playing_sound(doorAnimator, "door");
+                    alreadyPlaySound = true;
+                }
                 if (Input.GetMouseButtonDown(0)) Application.Quit();
                 _selection = selection;
             }
@@ -87,7 +97,11 @@ public class Menu : MonoBehaviour
                 //audioSource.PlayOneShot(click, 0.5f);
                 var selectionCollider = selection.GetComponent<Collider>();
                 bookAnimator.SetBool("play", true);
-                playing_sound(bookAnimator, "Book");
+                if (!alreadyPlaySound)
+                {
+                    playing_sound(bookAnimator, "Book");
+                    alreadyPlaySound = true;
+                }
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(2);
                 _selection = selection;
             }
@@ -104,7 +118,6 @@ public class Menu : MonoBehaviour
                 playing_sound(cogAnimation, "menu_element");
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(1);
                 _selection = selection;
-
             }
             /*
             if (selection.CompareTag("Illustration"))
@@ -134,7 +147,6 @@ public class Menu : MonoBehaviour
                 }
                 _selection = selection;
             }
-
             /*
             if (selection.CompareTag("Tutorial"))
             {
@@ -172,11 +184,11 @@ public class Menu : MonoBehaviour
 
     private void playing_sound(Animator name, string music)
     {
-        if(name.GetBool("play") && ifplay)
+        if(name.GetBool("play"))
         {
-            FindObjectOfType<soundcontrol>().wepon_atk(music);
-            ifplay = false;
+            Debug.Log(music);
+            FindObjectOfType<soundcontrol>().wepon_atk(music);         
         }
-        
     }
+
 }

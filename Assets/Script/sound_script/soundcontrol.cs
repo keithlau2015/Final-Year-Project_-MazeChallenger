@@ -56,11 +56,11 @@ public class soundcontrol : MonoBehaviour
 
 		if(Time.time > nextPlayTime && !s.source.isPlaying)
         {
-        Debug.Log("Played");
-        nextPlayTime = Time.time + playRate;
-		s.source.PlayOneShot(s.clip);
+            Debug.Log("Played");
+            nextPlayTime = Time.time + playRate;
+		    s.source.PlayOneShot(s.clip);
 	    }
-     if(s == null)
+        if(s == null)
         {
             Debug.Log("warnning, there is a error, name not found" + "" + name);
             return;
