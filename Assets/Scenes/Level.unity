@@ -1011,7 +1011,6 @@ GameObject:
   m_Component:
   - component: {fileID: 617042930}
   - component: {fileID: 617042929}
-  - component: {fileID: 617042931}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2131,6 +2130,18 @@ MonoBehaviour:
     loop: 1
     source: {fileID: 0}
     volume: 1
+    pitch: 0
+  - name: eatting
+    clip: {fileID: 8300000, guid: 38549478162b2488e901699a926cd86f, type: 3}
+    loop: 1
+    source: {fileID: 0}
+    volume: 0
+    pitch: 0
+  - name: suop_drink
+    clip: {fileID: 8300000, guid: cdcf8b8ca4f684f28880545149f8555e, type: 3}
+    loop: 1
+    source: {fileID: 0}
+    volume: 0
     pitch: 0
   instance: {fileID: 0}
   playRate: 1

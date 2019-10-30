@@ -47,17 +47,21 @@ public class Menu : MonoBehaviour
                 cog_2Animation.SetBool("play", false);
                 cog_3Animation.SetBool("play", false);
                 cog_4Animation.SetBool("play", false);
+                
             }
             else if (_selection.CompareTag("Door"))
             {
                 //Door
                 doorAnimator.SetBool("play", false);
+                
             }
             else if (_selection.CompareTag("Credit"))
             {
                 bookAnimator.SetBool("play", false);
+                
             }
             _selection = null;
+            ifplay = true;
         }
         else if(_selection == null)
         {
@@ -76,6 +80,7 @@ public class Menu : MonoBehaviour
                     playing_sound(doorAnimator, "door", "Door");
                     alreadyPlaySound = true;
                 }
+                playing_sound(doorAnimator, "door");
                 if (Input.GetMouseButtonDown(0)) Application.Quit();
                 _selection = selection;
             }
@@ -98,6 +103,7 @@ public class Menu : MonoBehaviour
                     playing_sound(bookAnimator, "Book", "Credit");
                     alreadyPlaySound = true;
                 }
+                playing_sound(bookAnimator, "Book");
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(2);
                 _selection = selection;
             }
@@ -111,7 +117,7 @@ public class Menu : MonoBehaviour
                 cog_2Animation.SetBool("play", true);
                 cog_3Animation.SetBool("play", true);
                 cog_4Animation.SetBool("play", true);
-                playing_sound(cogAnimation, "menu_element", "Setting");
+                playing_sound(cogAnimation, "menu_element");
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(1);
                 _selection = selection;
             }
@@ -178,7 +184,7 @@ public class Menu : MonoBehaviour
     }
     */
 
-    private void playing_sound(Animator name, string music, string tag)
+    private void playing_sound(Animator name, string music)
     {
         if(name.GetBool("play"))
         {
