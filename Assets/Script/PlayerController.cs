@@ -492,18 +492,21 @@ public class PlayerController : MonoBehaviour
                     //Food
                     case "Bread(Clone)":
                         PlayerStatus.Instance.setHunger(20);
+                        FindObjectOfType<soundcontrol>().wepon_atk("eatting");
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.transform.gameObject);
                         break;
                     case "Soup(Clone)":
                         PlayerStatus.Instance.setHealth(+5, "");
                         PlayerStatus.Instance.setHunger(15);
+                        FindObjectOfType<soundcontrol>().wepon_atk("suop_drink");
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.transform.gameObject);
                         break;
                     case "Apple(Clone)":
                         PlayerStatus.Instance.setHunger(10);
                         PlayerStatus.Instance.setHealth(+1, "");
+                        FindObjectOfType<soundcontrol>().wepon_atk("eatting");
                         Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.transform.gameObject);
@@ -511,6 +514,7 @@ public class PlayerController : MonoBehaviour
                     case "Banana(Clone)":
                         PlayerStatus.Instance.setHealth(+1, "");
                         PlayerStatus.Instance.setHunger(10);
+                        FindObjectOfType<soundcontrol>().wepon_atk("eatting");
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.transform.gameObject);
                         break;
