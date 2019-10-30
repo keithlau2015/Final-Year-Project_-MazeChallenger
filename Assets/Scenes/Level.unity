@@ -1011,7 +1011,6 @@ GameObject:
   m_Component:
   - component: {fileID: 617042930}
   - component: {fileID: 617042929}
-  - component: {fileID: 617042931}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1074,18 +1073,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &617042931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 617042928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c648722bcedf494f99194ce745e472c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &703541981
 GameObject:
   m_ObjectHideFlags: 0
@@ -2128,6 +2115,18 @@ MonoBehaviour:
     pitch: 0
   - name: game_bg
     clip: {fileID: 8300000, guid: 04265ea4880274f97b65156b3e95255e, type: 3}
+    loop: 1
+    source: {fileID: 0}
+    volume: 0
+    pitch: 0
+  - name: eatting
+    clip: {fileID: 8300000, guid: 38549478162b2488e901699a926cd86f, type: 3}
+    loop: 1
+    source: {fileID: 0}
+    volume: 0
+    pitch: 0
+  - name: suop_drink
+    clip: {fileID: 8300000, guid: cdcf8b8ca4f684f28880545149f8555e, type: 3}
     loop: 1
     source: {fileID: 0}
     volume: 0
