@@ -61,7 +61,7 @@ public class Menu : MonoBehaviour
                 
             }
             _selection = null;
-            ifplay = true;
+
         }
         else if(_selection == null)
         {
@@ -77,10 +77,9 @@ public class Menu : MonoBehaviour
                 doorAnimator.SetBool("play", true);
                 if (!alreadyPlaySound)
                 {
-                    playing_sound(doorAnimator, "door", "Door");
+                    playing_sound(doorAnimator, "door");
                     alreadyPlaySound = true;
                 }
-                playing_sound(doorAnimator, "door");
                 if (Input.GetMouseButtonDown(0)) Application.Quit();
                 _selection = selection;
             }
@@ -100,10 +99,9 @@ public class Menu : MonoBehaviour
                 bookAnimator.SetBool("play", true);
                 if (!alreadyPlaySound)
                 {
-                    playing_sound(bookAnimator, "Book", "Credit");
+                    playing_sound(bookAnimator, "Book");
                     alreadyPlaySound = true;
                 }
-                playing_sound(bookAnimator, "Book");
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(2);
                 _selection = selection;
             }
