@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     private const int base_HitPoint = 0;
     private const float base_Speed = 10;
     private const int base_Health = 50;
-    private const float base_SpawningRate = 0;
+    private const float base_SpawningRate = 0.8f;
 
     //The Total value
     private  int total_HitPoint;

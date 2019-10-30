@@ -352,24 +352,28 @@ public class LevelBuilder : MonoBehaviour
 
     private void PlaceWeapon(Weapon weapon, Room room, int spwaningPoint)
     {
-        Weapon currentSpawnedWeapon = Instantiate(weapon, room.spwanPoint_Weapon[spwaningPoint]) as Weapon;
-        currentSpawnedWeapon.transform.parent = this.transform;
-        placedWeapons.Add(currentSpawnedWeapon);
+        float rand = Random.Range(0f, 1f);
+        if (weapon.spawningRate >= rand)
+        {
+            Weapon currentSpawnedWeapon = Instantiate(weapon, room.spwanPoint_Weapon[spwaningPoint]) as Weapon;
+            currentSpawnedWeapon.transform.parent = this.transform;
+            placedWeapons.Add(currentSpawnedWeapon);
+        }
     }
 
     private void PlaceEnemy(Enemy enemy, Room room, int spawningPoint)
     {
-        Enemy currentSpawnedEnemy = Instantiate(enemy, room.spwanPoint_Enemy[spawningPoint]) as Enemy;
-        currentSpawnedEnemy.transform.parent = this.transform;
-        placedEnemys.Add(currentSpawnedEnemy);
+        float rand = Random.Range(0f, 1f);
+        if (enemy.getEnemySpwaningRate() >= rand)
+        {
+            Enemy currentSpawnedEnemy = Instantiate(enemy, room.spwanPoint_Enemy[spawningPoint]) as Enemy;
+            currentSpawnedEnemy.transform.parent = this.transform;
+            placedEnemys.Add(currentSpawnedEnemy);
+        }
     }
 
     private void PlaceFood(Food food, Room room, int spawningPoint)
     {
-        if(food.spawningRate > 1 || food.spawningRate < 0)
-        {
-            Debug.LogError("The food spwaing rate is out of range");
-        }
         float rand = Random.Range(0f, 1f);
         if (food.spawningRate >= rand)
         {

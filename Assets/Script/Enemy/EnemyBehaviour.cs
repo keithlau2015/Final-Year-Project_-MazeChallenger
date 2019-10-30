@@ -10,8 +10,11 @@ public class EnemyBehaviour : MonoBehaviour
     private Animator animator;
     private Enemy status;
     private Rigidbody rigidbody;
+
     [SerializeField]
     private Transform attackAreaPosition;
+    [SerializeField]
+    private GameObject dmgArea;
 
     private void Awake()
     {
@@ -39,7 +42,7 @@ public class EnemyBehaviour : MonoBehaviour
         }
         */
         if(onGround) EnemyWalk();
-        //EnemyAttack();
+        if(insideAttackArea)EnemyAttack();
     }
 
     private void EnemyIdle()
@@ -59,8 +62,11 @@ public class EnemyBehaviour : MonoBehaviour
 
         //Detect the player is in the attack range
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 10f))
+        Physics.Raycast(transform.position, transform.forward, out hit, 10f);
+        var hitTarget = hit.transform;
+        if (hitTarget.CompareTag("Player"))
         {
+            
             insideAttackArea = true;
         }
         else
@@ -68,20 +74,11 @@ public class EnemyBehaviour : MonoBehaviour
             insideAttackArea = false;
         }
     }
-    /*
     private void EnemyAttack()
     {
-        if (insideAttackArea)
-        {
-            attackAreaPosition.gameObject.AddComponent<SphereCollider>();
-            attackAreaPosition.gameObject.GetComponent<SphereCollider>().radius = 5f;
-        }
-        else
-        {
-            Destroy(attackAreaPosition.gameObject.GetComponent<SphereCollider>());
-        }
+        GameObject clone = Instantiate(dmgArea, attackAreaPosition) as GameObject;
+        if(!insideAttackArea)Destroy(clone);
     }
-    */
     private void EnemyDie()
     {
 
