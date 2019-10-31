@@ -60,8 +60,6 @@ public class LevelBuilder : MonoBehaviour
         Upgrade_slot_1.onClick.AddListener(onClickUpgradButton);
         Upgrade_slot_2.onClick.AddListener(onClickUpgradButton);
         Upgrade_slot_3.onClick.AddListener(onClickUpgradButton);
-        //play the bg music
-        FindObjectOfType<soundcontrol>().music_playing("game_bg");
     }
 
     private void Update()
@@ -386,6 +384,7 @@ public class LevelBuilder : MonoBehaviour
     private void onClickUpgradButton()
     {
         PlayerStatus.Instance.setHealth(10, "upgradeHealth");
+        FindObjectOfType<soundcontrol>().music_playing("upgrade_sound");
         PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
     }
 }

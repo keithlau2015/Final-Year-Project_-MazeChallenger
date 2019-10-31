@@ -11,9 +11,7 @@ public class Sound
     public bool loop;
     [HideInInspector]
     public AudioSource source;
-    [Range (0f, 1f)]
+    [Range(0f, 1f)]
     public float volume;
-    [Range(.1f, 3f)]
-    public float pitch;
 
 }
