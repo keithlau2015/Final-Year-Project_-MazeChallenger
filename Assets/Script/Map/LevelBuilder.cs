@@ -66,6 +66,7 @@ public class LevelBuilder : MonoBehaviour
     {
         if (upgradeUI.activeSelf)
         {
+            FindObjectOfType<soundcontrol>().wepon_atk("upgrade_sound");
             ResetLevel();
         }
         if (!finishLevelBuilding)
@@ -87,7 +88,6 @@ public class LevelBuilder : MonoBehaviour
             upgradeUI.SetActive(false);
         }
     }
-
     IEnumerator GenerateLevel()
     {
         finishLevelBuilding = false;
@@ -384,7 +384,6 @@ public class LevelBuilder : MonoBehaviour
     private void onClickUpgradButton()
     {
         PlayerStatus.Instance.setHealth(10, "upgradeHealth");
-        FindObjectOfType<soundcontrol>().music_playing("upgrade_sound");
         PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
     }
 }
