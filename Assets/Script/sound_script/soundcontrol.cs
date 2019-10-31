@@ -30,7 +30,6 @@ public class soundcontrol : MonoBehaviour
 			s.source.clip = s.clip;
             s.source.loop = s.loop;
             s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
 		}
         if(sounds == null)
         {
