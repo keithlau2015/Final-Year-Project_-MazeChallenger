@@ -142,6 +142,7 @@ public class Menu : MonoBehaviour
                 var selectionCollider = selection.GetComponent<Collider>();
                 if (Input.GetMouseButtonDown(0))
                 {
+                    FindObjectOfType<soundcontrol>().music_playing("start_game");
                     PlayerStatus.Instance.setPlayerAtTheMenu(false);
                     SceneManager.LoadScene(2);
                 }

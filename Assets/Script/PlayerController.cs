@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        FindObjectOfType<soundcontrol>().music_playing("game_bg");
         isGrounded = false;
         soundawake = false;
         isGrounded = false;
@@ -375,6 +376,7 @@ public class PlayerController : MonoBehaviour
         if(soundawake)
         {
             FindObjectOfType<soundcontrol>().wepon_atk(name);
+            Debug.Log("Played");
         }
         else{
             Debug.Log("the soundawake did not trigger");
