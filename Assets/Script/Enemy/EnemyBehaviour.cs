@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    private bool collisionWithObject = false, triggerWithPlayer = false, onGround = false, insideAttackArea = false;
+    private bool collisionWithObject = false, triggerWithPlayer = false, onGround = false, insideAttackArea = false, isSpawnAttackArea = false;
     private float[] rotationDir = { 90, -90, 180, -180 };
     //private int rotationDirCounter;
     private Animator animator;
@@ -33,7 +33,6 @@ public class EnemyBehaviour : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        EnemyRotation();
         /*
         else
         { 
@@ -41,8 +40,16 @@ public class EnemyBehaviour : MonoBehaviour
             Debug.Log("idle");
         }
         */
-        if(onGround) EnemyWalk();
-        if(insideAttackArea)EnemyAttack();
+        EnemyRotation();
+        if (insideAttackArea)
+        {
+            rigidbody.velocity = Vector3.zero;
+            EnemyAttack();
+        }
+        else if (onGround)
+        {
+            EnemyWalk();
+        }
     }
 
     private void EnemyIdle()
@@ -62,29 +69,40 @@ public class EnemyBehaviour : MonoBehaviour
 
         //Detect the player is in the attack range
         RaycastHit hit;
-        Physics.Raycast(transform.position, transform.forward, out hit, 10f);
-        var hitTarget = hit.transform;
-        if (hitTarget.CompareTag("Player"))
+        Vector3 offset = new Vector3(0, 3f, 0);
+        if(Physics.Raycast(transform.position + offset, transform.TransformDirection(transform.forward), out hit, 10f))
         {
-            
-            insideAttackArea = true;
-        }
-        else
-        {
-            insideAttackArea = false;
+            var hitTarget = hit.transform;
+            if (hitTarget.CompareTag("Player"))
+            {
+
+                insideAttackArea = true;
+            }
+            else
+            {
+                insideAttackArea = false;
+            }
         }
     }
     private void EnemyAttack()
     {
-        GameObject clone = Instantiate(dmgArea, attackAreaPosition) as GameObject;
-        if(!insideAttackArea)Destroy(clone);
+        onGround = false;
+        animator.SetBool("walk", false);
+        animator.SetBool("attack", true);
+        if (!isSpawnAttackArea )
+        {
+            GameObject clone = Instantiate(dmgArea, attackAreaPosition) as GameObject;
+            isSpawnAttackArea = true;
+            Destroy(clone, 4000);
+        }
+        if (!insideAttackArea)
+        {
+            animator.SetBool("attack", false);
+            animator.SetBool("walk", true);
+        }
+
     }
     private void EnemyDie()
-    {
-
-    }
-
-    private void DrawRayCast()
     {
 
     }

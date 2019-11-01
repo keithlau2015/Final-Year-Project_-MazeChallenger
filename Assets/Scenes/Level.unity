@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -715,7 +715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &427667536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1048,6 +1048,10 @@ MonoBehaviour:
   - {fileID: 5143844486444197695, guid: 4caedd7b26e824740983f9ee939f5d31, type: 3}
   - {fileID: 813601866753413953, guid: c04decc8044e6a9438419902b42c0006, type: 3}
   - {fileID: 6877985683987972412, guid: a09bb8fb605b4ed458c82a59926f003e, type: 3}
+  - {fileID: 5361874649832042142, guid: 6b1e373d6415dbb429b6514a0f61cb82, type: 3}
+  - {fileID: 6848179548702156376, guid: e1e57bc8d6856934ea0d5c27338abc8c, type: 3}
+  - {fileID: 6777727378912678827, guid: 6849fec10d9e847419b351acac7a3470, type: 3}
+  - {fileID: 2686628991450411853, guid: c06c319916993c64e91ddb3273956a24, type: 3}
   weaponPrefabs:
   - {fileID: 1755586793167772730, guid: 3adf5dd70e2c1aa438909259bec2588b, type: 3}
   - {fileID: 2976038040534345075, guid: 99f93adf1b0787d49bfe6bf384106900, type: 3}

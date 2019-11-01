@@ -14,7 +14,7 @@ public class Trap : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag != "Enemy")
         {
             foreach(Animator animator in trapAnimator){
                 animator.SetBool("active", true);
@@ -31,7 +31,7 @@ public class Trap : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if(collision.gameObject.tag != "Enemy")
         {
             foreach (Animator animator in trapAnimator)
             {

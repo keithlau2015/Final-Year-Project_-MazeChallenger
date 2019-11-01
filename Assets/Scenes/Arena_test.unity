@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -447,58 +447,112 @@ MonoBehaviour:
   sounds:
   - name: AK47_atk
     clip: {fileID: 8300000, guid: c99441f2c4d50c94b84e8337860128eb, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: handgun_atk
     clip: {fileID: 8300000, guid: 9fd2a4509e9703c4ab1b53005b3a13f9, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: shortgun_atk
     clip: {fileID: 8300000, guid: ec47d723bcdc7dd4fb96d669776cd153, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: sword_atk
     clip: {fileID: 8300000, guid: 048436ff166980b4f9219b4a74aaf027, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: spear_atk_sound
     clip: {fileID: 8300000, guid: b03a1bc008f35794796198310be4537b, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: gun_break
     clip: {fileID: 8300000, guid: 79ee9582a76a455478cc3348c2bc304a, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: spear_break
     clip: {fileID: 8300000, guid: f41b0cb096f691c4b835e0e10c6565d7, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: sward_break
     clip: {fileID: 8300000, guid: 8df07f167d2e7ab45a72c753e45d48b6, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: gun_pickup
     clip: {fileID: 8300000, guid: 5470d414b92c61549845b538936cdcab, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: spear_pick
     clip: {fileID: 8300000, guid: da61fb1f050f77d4b94632323bc2c58b, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: jumpping_effect
     clip: {fileID: 8300000, guid: 8dd44baf3d6108447903e4f81b338e67, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: walking_effect
     clip: {fileID: 8300000, guid: 1f0303836218af342bb755d5bd81066a, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: arrow_atk
     clip: {fileID: 8300000, guid: 7511132f907bb4fcd8ce083fcb0d4136, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: sword_pickup
     clip: {fileID: 8300000, guid: 0c2a63faedc084d00b7ea2b0df34bf9f, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: wood_pickup
     clip: {fileID: 8300000, guid: a4d282646e3984921a17bcc7c3c7e59f, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: running
     clip: {fileID: 8300000, guid: a622d58cda17f448da96e2d5cffdf0f1, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: great_sword_atk
     clip: {fileID: 8300000, guid: 0f1efd2ab7bd84c65b2d6a9279007948, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   - name: wood_touch
     clip: {fileID: 8300000, guid: d9381b33835d4492ca77b990d4ad4d21, type: 3}
+    loop: 0
     source: {fileID: 0}
+    volume: 0
+    pitch: 0
   instance: {fileID: 0}
   playRate: 1
 --- !u!4 &311060184
