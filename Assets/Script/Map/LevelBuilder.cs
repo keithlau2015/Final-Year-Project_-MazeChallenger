@@ -20,7 +20,7 @@ public class LevelBuilder : MonoBehaviour
     public List<Enemy> enemyPrefabs = new List<Enemy>();
 
     //The array control total rooms in game
-    private int[] iterationRange = {6,7,8,9,11,12,13};
+    private int[] iterationRange = {8,9,11};
 
     //Saving for the exits which still available
     private List<Exit> availableExits = new List<Exit>();
