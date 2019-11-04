@@ -20,7 +20,7 @@ public class LevelBuilder : MonoBehaviour
     public List<Enemy> enemyPrefabs = new List<Enemy>();
 
     //The array control total rooms in game
-    private int[] iterationRange = {8,9,11};
+    private int[] iterationRange = {6,7,8,9};
 
     //Saving for the exits which still available
     private List<Exit> availableExits = new List<Exit>();
@@ -43,6 +43,9 @@ public class LevelBuilder : MonoBehaviour
     private GameObject player;
 
     private bool finishLevelBuilding;
+
+    //Player Hunger
+    private float timer;
 
     private void Start()
     {
@@ -86,6 +89,13 @@ public class LevelBuilder : MonoBehaviour
         else
         {
             upgradeUI.SetActive(false);
+        }
+
+        timer += Time.deltaTime;
+        if (timer > 1f && finishLevelBuilding)
+        {
+            PlayerStatus.Instance.setHunger(-1);
+            timer = 0f;
         }
     }
     IEnumerator GenerateLevel()

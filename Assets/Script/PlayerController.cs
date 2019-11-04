@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private Collider firstItem = null;
     private Dictionary<string, int> itemPriority = new Dictionary<string, int>()
     {
-        {"Item", 0}, {"Intecractable Item", 1}
+        {"Item", 0}
     };
 
     // Start is called before the first frame update
@@ -192,7 +192,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        DrawRayCastLine();        
+        DrawRayCastLine();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -269,7 +269,6 @@ public class PlayerController : MonoBehaviour
         {
             //upgrade player status & monster status
             PlayerStatus.Instance.setPlayerGetIntoNextLevel(true);
-            PlayerStatus.Instance.resetData();
         }
         if (other.gameObject.tag == "LadderBottom")
         {
@@ -335,6 +334,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
             firstItem = null;
         }
     }
@@ -412,9 +412,13 @@ public class PlayerController : MonoBehaviour
     //just like onTriggerStay function
     private void onTriggerLineStay()
     {
-        if (!firstItem) return;
+        if (!firstItem)
+        {
+            return;
+        }
         if(firstItem.tag == "Item")
         {
+            PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(true);
             if (Input.GetKeyDown(KeyCode.E))
             {
                 switch (firstItem.name)
@@ -522,6 +526,6 @@ public class PlayerController : MonoBehaviour
                         break;
                 }
             }
-        }
+        }        
     }
 }

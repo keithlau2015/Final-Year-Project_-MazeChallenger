@@ -13,10 +13,13 @@ public class PlayerStatus : MonoBehaviour
     private float upgradeSlot_Speed;
 
     //Total
-    private int total_Health, total_Hunger;
+    private int total_Health, total_Hunger, total_Coins;
     private float total_Speed;
 
     private bool playerGetIntoNextLevel, playerAtTheMenu;
+
+    //UI
+    private bool playerCanInteractWithOtherObject;
 
     public static PlayerStatus Instance
     {
@@ -31,7 +34,17 @@ public class PlayerStatus : MonoBehaviour
         total_Health = base_Health;
         total_Hunger = base_Hunger;
         total_Speed = base_Speed;
-        playerGetIntoNextLevel = false;
+        playerGetIntoNextLevel = playerCanInteractWithOtherObject = false;
+    }
+
+    public bool getPlayerCanInteractWithOtherObject()
+    {
+        return instance.playerCanInteractWithOtherObject;
+    }
+
+    public int getCoins()
+    {
+        return instance.total_Coins;
     }
     
     public float getSpeed()
@@ -47,6 +60,16 @@ public class PlayerStatus : MonoBehaviour
     public int getHunger()
     {
         return instance.total_Hunger;
+    }
+
+    public void setPlayerCanInteractWithOtherObject(bool interacted)
+    {
+        playerCanInteractWithOtherObject = interacted;
+    }
+
+    public void setCoins(int coins)
+    {
+        this.total_Coins = this.total_Coins + coins;
     }
 
     public void setSpeed(float speed, string extraBuff)
@@ -76,9 +99,9 @@ public class PlayerStatus : MonoBehaviour
     public void setHealth(int health, string extraBuff)
     {
         int temp = this.total_Health + health;
-        if (temp >= base_Health && extraBuff == "")
+        if (temp >= (base_Health + upgradeSlot_Health) && extraBuff == "")
         {
-            this.total_Health = base_Health;
+            this.total_Health = base_Health + upgradeSlot_Health;
         }
         else if(temp >= base_Health && extraBuff.Equals("upgradeHP"))
         {
@@ -101,7 +124,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void setHunger(int hunger)
     {
-        int temp = this.total_Hunger += hunger;
+        int temp = this.total_Hunger + hunger;
         if (temp >= 100)
         {
             this.total_Hunger = base_Hunger;
@@ -136,7 +159,10 @@ public class PlayerStatus : MonoBehaviour
     {
         this.upgradeSlot_Health = 0;
         this.upgradeSlot_Hunger = 0;
+        this.upgradeSlot_Speed = 0;
         this.total_Health = 0;
         this.total_Hunger = 0;
+        this.total_Speed = 0;
+        this.total_Coins = 0;
     }
 }

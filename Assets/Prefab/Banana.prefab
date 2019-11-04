@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1a65effaff47b4a9eda8b95b68efa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  probability: 0.5
+  spawningRate: 0.8
   extraBuff: 
 --- !u!54 &3586182680616815274
 Rigidbody:

@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1a65effaff47b4a9eda8b95b68efa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  probability: 0.3
+  spawningRate: 0.3
   extraBuff: Healing
 --- !u!1001 &1969198573062461863
 PrefabInstance:

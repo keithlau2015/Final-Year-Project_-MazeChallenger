@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     private bool collisionWithObject = false, triggerWithPlayer = false, onGround = false, insideAttackArea = false, isSpawnAttackArea = false;
-    private float[] rotationDir = { 90, -90, 180, -180 };
+    private float[] rotationDir = { 90, -90, 180, 45, -45 };
     //private int rotationDirCounter;
     private Animator animator;
     private Enemy status;
