@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LevelBuilder : MonoBehaviour
 {
     //The user interface components
-    public GameObject upgradeUI, pauseUI, loadingUI;
+    public GameObject upgradeUI, pauseUI, loadingUI, gameOverUI;
     [SerializeField]
     private Button Upgrade_slot_1, Upgrade_slot_2, Upgrade_slot_3;
 
@@ -18,6 +18,7 @@ public class LevelBuilder : MonoBehaviour
     public List<Weapon> weaponPrefabs = new List<Weapon>();
     public List<Food> foodPrefabs = new List<Food>();
     public List<Enemy> enemyPrefabs = new List<Enemy>();
+    public List<Coins> coinsPrefab = new List<Coins>();
 
     //The array control total rooms in game
     private int[] iterationRange = {6,7,8,9};
@@ -35,6 +36,7 @@ public class LevelBuilder : MonoBehaviour
     private List<Weapon> placedWeapons = new List<Weapon>();
     private List<Food> placedFoods = new List<Food>();
     private List<Enemy> placedEnemys = new List<Enemy>();
+    private List<Coins> placedCoins = new List<Coins>();
 
     //For the Room mesh layer
     private LayerMask roomLayerMask;
@@ -92,7 +94,7 @@ public class LevelBuilder : MonoBehaviour
         }
 
         timer += Time.deltaTime;
-        if (timer > 1f && finishLevelBuilding)
+        if (timer > 1f && finishLevelBuilding && PlayerStatus.Instance.getHunger() > 0)
         {
             PlayerStatus.Instance.setHunger(-1);
             timer = 0f;
@@ -151,6 +153,7 @@ public class LevelBuilder : MonoBehaviour
         }
     }
 
+    //Placing different rooms
     private void PlaceStartRoom()
     {
         startRoom = Instantiate(startRoomPrefab[Random.Range(0, startRoomPrefab.Length-1)]) as StartRoom;
@@ -246,6 +249,13 @@ public class LevelBuilder : MonoBehaviour
                         PlaceEnemy(enemyPrefabs[Random.Range(0, enemyPrefabs.Capacity)], currentRoom, i);
                     }
                 }
+                if (!currentRoom.spwanPoint_Coins.Equals(null))
+                {
+                    for (int i = 0; i < currentRoom.spwanPoint_Coins.Length; i++)
+                    {
+                        PlaceCoins(coinsPrefab[Random.Range(0, coinsPrefab.Capacity)], currentRoom, i);
+                    }
+                }
                 if (roomPlaced)
                 {
                     currentExit.gameObject.SetActive(false);
@@ -276,8 +286,13 @@ public class LevelBuilder : MonoBehaviour
         {
             PlaceWeapon(weaponPrefabs[Random.Range(0, weaponPrefabs.Capacity)], specialRoom, i);
         }
+        for(int i = 0; i < specialRoom.spwanPoint_Coins.Length; i++)
+        {
+            PlaceCoins(coinsPrefab[1], specialRoom, i);
+        }
     }
 
+    //Position the room at to the target exit
     private void PositionRoomAtExit(ref Room room, Exit exit, Exit targetExit)
     {
         room.transform.position = Vector3.zero;
@@ -293,6 +308,7 @@ public class LevelBuilder : MonoBehaviour
         room.transform.position = targetExit.transform.position - roomPositionOffset;
     }
 
+    //Check the room is overlap or not
     private bool CheckRoomOverlap(Room room)
     {
         Bounds bounds = room.RoomBounds;
@@ -319,6 +335,7 @@ public class LevelBuilder : MonoBehaviour
         return false;
     }
 
+    //Reset the level
     private void ResetLevel()
     {
         StopCoroutine("GenerateLevel");
@@ -350,14 +367,20 @@ public class LevelBuilder : MonoBehaviour
         {
             if (!enemy.Equals(null)) Destroy(enemy.gameObject);
         }
+        foreach(Coins coins in placedCoins)
+        {
+            if (!coins.Equals(null)) Destroy(coins.gameObject);
+        }
         placedWeapons.Clear();
         placedRooms.Clear();
         placedFoods.Clear();
         placedEnemys.Clear();
+        placedCoins.Clear();
         availableExits.Clear();
         StartCoroutine("GenerateLevel");
     }
 
+    //Placing interactable items or enemy
     private void PlaceWeapon(Weapon weapon, Room room, int spwaningPoint)
     {
         float rand = Random.Range(0f, 1f);
@@ -391,6 +414,25 @@ public class LevelBuilder : MonoBehaviour
         }
     }
 
+    private void PlaceCoins(Coins coins, Room room, int spawningPoint)
+    {
+        float rand = Random.Range(0f, 1f);
+        if(room is SpecialRoom)
+        {
+            Coins currentSpawnedCoins = Instantiate(coins, room.spwanPoint_Coins[spawningPoint]) as Coins;
+            currentSpawnedCoins.transform.parent = this.transform;
+            placedCoins.Add(currentSpawnedCoins);
+        }
+        else if (coins.spawningRate >= rand)
+        {
+            Coins currentSpawnedCoins = Instantiate(coins, room.spwanPoint_Coins[spawningPoint]) as Coins;
+            currentSpawnedCoins.transform.parent = this.transform;
+            placedCoins.Add(currentSpawnedCoins);
+        }
+        
+    }
+
+    //Button
     private void onClickUpgradButton()
     {
         PlayerStatus.Instance.setHealth(10, "upgradeHealth");

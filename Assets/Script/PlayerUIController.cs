@@ -9,7 +9,7 @@ public class PlayerUIController : MonoBehaviour
     private GameObject pickUpSight;
 
     [SerializeField]
-    private Text Health, Hunger;
+    private Text Health, Hunger, Coins;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -17,5 +17,6 @@ public class PlayerUIController : MonoBehaviour
         pickUpSight.SetActive(PlayerStatus.Instance.getPlayerCanInteractWithOtherObject());
         Hunger.text = PlayerStatus.Instance.getHunger().ToString();
         Health.text = PlayerStatus.Instance.getHealth().ToString();
+        Coins.text = PlayerStatus.Instance.getCoins().ToString();
     }
 }

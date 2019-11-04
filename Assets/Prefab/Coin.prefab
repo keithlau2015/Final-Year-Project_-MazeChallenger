@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4070796426184794552}
   - component: {fileID: 7728975907622706497}
   - component: {fileID: 1846692412013570417}
+  - component: {fileID: 5508895033388379247}
   m_Layer: 0
-  m_Name: Coin_fbx
-  m_TagString: Untagged
+  m_Name: Coin
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,6 +95,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: -5495902117074765545, guid: 02a32b028f904f34fa1a3eec61ccf99e, type: 3}
+--- !u!114 &5508895033388379247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8322089917055592861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c260a42c537f8a46a9b6eb2e829d92a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawningRate: 0.9
 --- !u!1001 &6110232144794579101
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -274,6 +274,10 @@ public class PlayerController : MonoBehaviour
         {
             rigidbody.AddForce(Vector3.up * 1000, ForceMode.Impulse);
         }
+        if(other.gameObject.tag == "Spike")
+        {
+            PlayerStatus.Instance.setHealth(-1, "");
+        }
     }
 
     private void DrawRayCastLine() {
@@ -427,7 +431,7 @@ public class PlayerController : MonoBehaviour
                     case "Spear(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[4], rightHand);
-                        Destroy(firstItem.transform.gameObject);
+                        Destroy(firstItem.gameObject);
                         holdingBattleAxe = holdingGreatSword = holdingSword = holdingBow = false;
                         holdingSpear = true;
                         FindObjectOfType<soundcontrol>().wepon_atk("wood_pickup");
@@ -436,7 +440,7 @@ public class PlayerController : MonoBehaviour
                     case "Sword_1(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[0], rightHand);
-                        Destroy(firstItem.transform.gameObject);
+                        Destroy(firstItem.gameObject);
                         holdingSpear = holdingGreatSword = holdingBattleAxe = holdingBow = false;
                         holdingSword = true;
                         FindObjectOfType<soundcontrol>().wepon_atk("sword_pickup");
@@ -445,7 +449,7 @@ public class PlayerController : MonoBehaviour
                     case "Shield_0(Clone)":
                         clearLeftHandObject();
                         Instantiate(weapons[3], leftHand);
-                        Destroy(firstItem.transform.gameObject);
+                        Destroy(firstItem.gameObject);
                         holdingShield = true;
                         FindObjectOfType<soundcontrol>().wepon_atk("wood_pickup");
                         Debug.Log("pick up Shield_0");  
@@ -453,7 +457,7 @@ public class PlayerController : MonoBehaviour
                     case "Shield_1(Clone)":
                         clearLeftHandObject();
                         Instantiate(weapons[1], leftHand);
-                        Destroy(firstItem.transform.gameObject);
+                        Destroy(firstItem.gameObject);
                         holdingShield = true;
                         FindObjectOfType<soundcontrol>().wepon_atk("wood_pickup");
                         Debug.Log("pick up Shield_1");
@@ -461,7 +465,7 @@ public class PlayerController : MonoBehaviour
                     case "Sword_0(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[2], rightHand);
-                        Destroy(firstItem.transform.gameObject);
+                        Destroy(firstItem.gameObject);
                         holdingBattleAxe = holdingGreatSword = holdingSpear = holdingBow = false;
                         holdingSword = true;
                         FindObjectOfType<soundcontrol>().wepon_atk("sword_pickup");
@@ -470,7 +474,7 @@ public class PlayerController : MonoBehaviour
                     case "GreatSword(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[5], rightHand);
-                        Destroy(firstItem.transform.gameObject);
+                        Destroy(firstItem.gameObject);
                         holdingSpear = holdingSword = holdingBattleAxe = holdingBow = false;
                         holdingGreatSword = true;
                         FindObjectOfType<soundcontrol>().wepon_atk("sword_pickup");
@@ -479,7 +483,7 @@ public class PlayerController : MonoBehaviour
                     case "BattleAxe(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[6], rightHand);
-                        Destroy(firstItem.transform.gameObject);
+                        Destroy(firstItem.gameObject);
                         holdingGreatSword = holdingSpear = holdingSword = holdingBow = false;
                         holdingBattleAxe = true;
                         FindObjectOfType<soundcontrol>().wepon_atk("sword_pickup");
@@ -488,7 +492,7 @@ public class PlayerController : MonoBehaviour
                     case "Bow(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[7], rightHand);
-                        Destroy(firstItem.transform.gameObject);
+                        Destroy(firstItem.gameObject);
                         holdingGreatSword = holdingSpear = holdingSword = false;
                         holdingBattleAxe = true;
                         FindObjectOfType<soundcontrol>().wepon_atk("spear_pick");
@@ -500,14 +504,14 @@ public class PlayerController : MonoBehaviour
                         PlayerStatus.Instance.setHunger(20);
                         FindObjectOfType<soundcontrol>().wepon_atk("eatting");
                         //Added Some buff if there have extra buff
-                        Destroy(firstItem.transform.gameObject);
+                        Destroy(firstItem.gameObject);
                         break;
                     case "Soup(Clone)":
                         PlayerStatus.Instance.setHealth(+5, "");
                         PlayerStatus.Instance.setHunger(15);
                         FindObjectOfType<soundcontrol>().wepon_atk("suop_drink");
                         //Added Some buff if there have extra buff
-                        Destroy(firstItem.transform.gameObject);
+                        Destroy(firstItem.gameObject);
                         break;
                     case "Apple(Clone)":
                         PlayerStatus.Instance.setHunger(10);
@@ -515,14 +519,26 @@ public class PlayerController : MonoBehaviour
                         FindObjectOfType<soundcontrol>().wepon_atk("eatting");
                         Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
                         //Added Some buff if there have extra buff
-                        Destroy(firstItem.transform.gameObject);
+                        Destroy(firstItem.gameObject);
                         break;
                     case "Banana(Clone)":
                         PlayerStatus.Instance.setHealth(+1, "");
                         PlayerStatus.Instance.setHunger(10);
                         FindObjectOfType<soundcontrol>().wepon_atk("eatting");
                         //Added Some buff if there have extra buff
-                        Destroy(firstItem.transform.gameObject);
+                        Destroy(firstItem.gameObject);
+                        break;
+
+                    //Coins
+                    case "Coin(Clone)":
+                        PlayerStatus.Instance.setCoins(+1);
+                        Destroy(firstItem.gameObject);
+                        break;
+
+                    case "Coins(Clone)":
+                        int rand = Random.Range(5,25);
+                        PlayerStatus.Instance.setCoins(+rand);
+                        Destroy(firstItem.gameObject);
                         break;
                 }
             }
