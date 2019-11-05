@@ -536,7 +536,7 @@ public class PlayerController : MonoBehaviour
                         break;
 
                     case "Coins(Clone)":
-                        int rand = Random.Range(5,25);
+                        int rand = Random.Range(5,15);
                         PlayerStatus.Instance.setCoins(+rand);
                         Destroy(firstItem.gameObject);
                         break;

@@ -69,8 +69,8 @@ public class EnemyBehaviour : MonoBehaviour
 
         //Detect the player is in the attack range
         RaycastHit hit;
-        Vector3 offset = new Vector3(0, 3f, 0);
-        if(Physics.Raycast(transform.position + offset, transform.TransformDirection(transform.forward), out hit, 10f))
+        Vector3 offset = new Vector3(0, 3, 0);
+        if(Physics.Raycast(transform.position + offset, transform.TransformDirection(transform.forward), out hit, 20f))
         {
             var hitTarget = hit.transform;
             if (hitTarget.CompareTag("Player"))
