@@ -569,11 +569,13 @@ public class PlayerController : MonoBehaviour
                     //Coins
                     case "Coin(Clone)":
                         PlayerStatus.Instance.setCoins(+1);
+                        FindObjectOfType<soundcontrol>().wepon_atk("pick_coin");
                         Destroy(firstItem.gameObject);
                         break;
 
                     case "Coins(Clone)":
                         int rand = Random.Range(5,15);
+                        FindObjectOfType<soundcontrol>().wepon_atk("pick_coin");
                         PlayerStatus.Instance.setCoins(+rand);
                         Destroy(firstItem.gameObject);
                         break;

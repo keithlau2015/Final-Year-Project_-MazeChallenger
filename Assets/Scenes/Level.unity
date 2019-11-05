@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414726, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3003,6 +3003,11 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     volume: 1
+  - name: pick_coin
+    clip: {fileID: 8300000, guid: 7672388a3ae1b4dbab216aef579e9de9, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 1
   instance: {fileID: 0}
   playRate: 1
 --- !u!4 &1621529484
@@ -3850,14 +3855,7 @@ MonoBehaviour:
   - {fileID: 3988820129851971686, guid: 69e2847cc2ee0ba4582827efcb2783ae, type: 3}
   - {fileID: 3896678914595029560, guid: 9825e83f099e32e48b49d34ed929bc1e, type: 3}
   - {fileID: 1615318351608449874, guid: 149a910b06fbd90488179ce71746d6cb, type: 3}
-  dissolve_weapons:
-  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
-  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
-  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
-  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
-  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
-  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
-  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
+  dissolve_weapons: []
   rightHand: {fileID: 1538499490}
   leftHand: {fileID: 557807330}
 --- !u!54 &2100989201
