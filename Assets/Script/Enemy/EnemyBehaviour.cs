@@ -26,7 +26,6 @@ public class EnemyBehaviour : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        status.setEnemySpeed(+10);
         //rotationDirCounter = 0;
     }
 

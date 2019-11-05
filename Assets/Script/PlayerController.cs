@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     private bool checkIsMoving;
 
     [SerializeField]
-    private GameObject[] weapons;
+    private GameObject[] weapons, dissolve_weapons;
 
     [SerializeField]
     private Transform rightHand, leftHand;
@@ -399,8 +399,40 @@ public class PlayerController : MonoBehaviour
 
     private void cleaRightHandObject()
     {
-        if(rightHand.transform.childCount > 0)
+        Vector3 pos = rightHand.transform.position;
+        Quaternion rotation = rightHand.transform.rotation;
+        if (rightHand.transform.childCount > 0)
         {
+            if (rightHand.GetChild(0).gameObject.name == "Sword_1(Clone)")
+            {
+                GameObject dissolve = Instantiate(dissolve_weapons[0], pos, rotation) as GameObject;
+                Dissolve(dissolve);
+                Destroy(dissolve, 5f);
+            }
+            else if (rightHand.GetChild(0).gameObject.name == "Sword_0(Clone)")
+            {
+                GameObject dissolve = Instantiate(dissolve_weapons[0], pos, rotation) as GameObject;
+                Dissolve(dissolve);
+                Destroy(dissolve, 5f);
+            }
+            else if(rightHand.GetChild(0).gameObject.name == "Spear(Clone)")
+            {
+                GameObject dissolve = Instantiate(dissolve_weapons[0], pos, rotation) as GameObject;
+                Dissolve(dissolve);
+                Destroy(dissolve, 5f);
+            }
+            else if(rightHand.GetChild(0).gameObject.name == "GreatSword(Clone)")
+            {
+                GameObject dissolve = Instantiate(dissolve_weapons[0], pos, rotation) as GameObject;
+                Dissolve(dissolve);
+                Destroy(dissolve, 5f);
+            }
+            else if(rightHand.GetChild(0).gameObject.name == "BattleAxe(Clone)")
+            {
+                GameObject dissolve = Instantiate(dissolve_weapons[0], pos, rotation) as GameObject;
+                Dissolve(dissolve);
+                Destroy(dissolve, 5f);
+            }
             Destroy(rightHand.GetChild(0).gameObject);
         }
     }
@@ -411,6 +443,11 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(leftHand.GetChild(0).gameObject);
         }
+    }
+    
+    private void Dissolve(GameObject weapon)
+    {
+        weapon.GetComponent<Renderer>().material.SetFloat("Vector1_5988EEA0", 0.5f);
     }
 
     //just like onTriggerStay function
