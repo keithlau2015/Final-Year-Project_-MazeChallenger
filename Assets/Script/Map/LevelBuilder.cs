@@ -71,7 +71,7 @@ public class LevelBuilder : MonoBehaviour
     {
         if (upgradeUI.activeSelf)
         {
-            FindObjectOfType<soundcontrol>().wepon_atk("upgrade_sound");
+            FindObjectOfType<Soundcontrol>().wepon_atk("upgrade_sound");
             ResetLevel();
         }
         if (!finishLevelBuilding)

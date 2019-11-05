@@ -2,10 +2,10 @@
 using System;
 using UnityEngine;
 
-public class soundcontrol : MonoBehaviour
+public class Soundcontrol : MonoBehaviour
 {
     public Sound[] sounds;
-    public soundcontrol instance;
+    public Soundcontrol instance;
     public float playRate = 1;
     private float nextPlayTime = 0;
 
@@ -68,12 +68,12 @@ public class soundcontrol : MonoBehaviour
 
     public void character(string name)
     {
-     Sound s = Array.Find(sounds, sound => sound.name == name);
-     if(s == null)
-     {
-        Debug.Log("warnning, there is a error, name not found" + "" + name);
-        return;
-     }
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if(s == null)
+        {
+            Debug.Log("warnning, there is a error, name not found" + "" + name);
+            return;
+        }
         s.source.Play(); 
     }
 
