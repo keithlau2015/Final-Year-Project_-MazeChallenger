@@ -406,31 +406,26 @@ public class PlayerController : MonoBehaviour
             if (rightHand.GetChild(0).gameObject.name == "Sword_1(Clone)")
             {
                 GameObject dissolve = Instantiate(dissolve_weapons[0], pos, rotation) as GameObject;
-                Dissolve(dissolve);
                 Destroy(dissolve, 5f);
             }
             else if (rightHand.GetChild(0).gameObject.name == "Sword_0(Clone)")
             {
                 GameObject dissolve = Instantiate(dissolve_weapons[0], pos, rotation) as GameObject;
-                Dissolve(dissolve);
                 Destroy(dissolve, 5f);
             }
             else if(rightHand.GetChild(0).gameObject.name == "Spear(Clone)")
             {
                 GameObject dissolve = Instantiate(dissolve_weapons[0], pos, rotation) as GameObject;
-                Dissolve(dissolve);
                 Destroy(dissolve, 5f);
             }
             else if(rightHand.GetChild(0).gameObject.name == "GreatSword(Clone)")
             {
                 GameObject dissolve = Instantiate(dissolve_weapons[0], pos, rotation) as GameObject;
-                Dissolve(dissolve);
                 Destroy(dissolve, 5f);
             }
             else if(rightHand.GetChild(0).gameObject.name == "BattleAxe(Clone)")
             {
                 GameObject dissolve = Instantiate(dissolve_weapons[0], pos, rotation) as GameObject;
-                Dissolve(dissolve);
                 Destroy(dissolve, 5f);
             }
             Destroy(rightHand.GetChild(0).gameObject);
@@ -443,11 +438,6 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(leftHand.GetChild(0).gameObject);
         }
-    }
-    
-    private void Dissolve(GameObject weapon)
-    {
-        weapon.GetComponent<Renderer>().material.SetFloat("Vector1_5988EEA0", 0.5f);
     }
 
     //just like onTriggerStay function

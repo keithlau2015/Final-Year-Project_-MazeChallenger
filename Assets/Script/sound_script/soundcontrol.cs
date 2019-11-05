@@ -63,8 +63,7 @@ public class soundcontrol : MonoBehaviour
         {
             Debug.Log("warnning, there is a error, name not found" + "" + name);
             return;
-        }
-        
+        }        
     }
 
     public void character(string name)
