@@ -18,11 +18,11 @@ public class enemy_sound_effect : MonoBehaviour
     	timer += Time.deltaTime;
         if(timer > 5f && anim_status.GetBool("idle"))
         {
-        	FindObjectOfType<Soundcontrol>().character("Idle");
+        	FindObjectOfType<soundcontrol>().character("Idle");
         }
         if(anim_status.GetBool("attack"))
         {
-        	FindObjectOfType<Soundcontrol>().wepon_atk("Attack");
+        	FindObjectOfType<soundcontrol>().wepon_atk("Attack");
         }
         if(anim_status.GetBool("hurt"))
         {
@@ -30,7 +30,7 @@ public class enemy_sound_effect : MonoBehaviour
         }
         if(anim_status.GetBool("walk"))
         {
-        	FindObjectOfType<Soundcontrol>().wepon_atk("Walking");
+        	FindObjectOfType<soundcontrol>().wepon_atk("Walking");
         }
 
     }

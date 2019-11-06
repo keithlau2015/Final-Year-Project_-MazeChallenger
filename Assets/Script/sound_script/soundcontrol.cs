@@ -2,10 +2,10 @@
 using System;
 using UnityEngine;
 
-public class Soundcontrol : MonoBehaviour
+public class soundcontrol : MonoBehaviour
 {
     public Sound[] sounds;
-    public Soundcontrol instance;
+    public soundcontrol instance;
     public float playRate = 1;
     private float nextPlayTime = 0;
 

@@ -22,7 +22,7 @@ public class Menu : MonoBehaviour
     private void Start()
     {
         alreadyPlaySound = false;
-        FindObjectOfType<Soundcontrol>().music_playing("menu_bg");//play bg music
+        FindObjectOfType<soundcontrol>().music_playing("menu_bg");//play bg music
         PlayerStatus.Instance.setPlayerAtTheMenu(true);
         Debug.Log("Player at the menu: " + PlayerStatus.Instance.getPlayerAtTheMenu());
         Debug.Log("Player upgrading: " + PlayerStatus.Instance.getPlayerGetIntoNextLevel());
@@ -142,7 +142,7 @@ public class Menu : MonoBehaviour
                 var selectionCollider = selection.GetComponent<Collider>();
                 if (Input.GetMouseButtonDown(0))
                 {
-                    FindObjectOfType<Soundcontrol>().music_playing("start_game");
+                    FindObjectOfType<soundcontrol>().music_playing("start_game");
                     PlayerStatus.Instance.setPlayerAtTheMenu(false);
                     SceneManager.LoadScene(2);
                 }
@@ -188,7 +188,7 @@ public class Menu : MonoBehaviour
         if(name.GetBool("play"))
         {
             Debug.Log(music);
-            FindObjectOfType<Soundcontrol>().wepon_atk(music);         
+            FindObjectOfType<soundcontrol>().wepon_atk(music);         
         }
     }
 
