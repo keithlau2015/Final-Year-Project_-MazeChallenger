@@ -1023,7 +1023,7 @@ RectTransform:
   - {fileID: 1637897144}
   - {fileID: 824162762}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1591,7 +1591,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &631890716
 GameObject:
@@ -2623,6 +2623,57 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1399032735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1399032736}
+  - component: {fileID: 1399032737}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1399032736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399032735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 437, y: 226, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1399032737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399032735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5bfd2926ff244297aca824f12b0888e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: game_bg
+    clip: {fileID: 8300000, guid: 0fcaf9f63d64f4746964f6ea8af82e11, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 1
+  instance: {fileID: 0}
+  playRate: 1
 --- !u!1 &1502858163
 GameObject:
   m_ObjectHideFlags: 0
@@ -3435,7 +3486,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1878735790
 GameObject:
@@ -3711,6 +3762,7 @@ GameObject:
   - component: {fileID: 2100989201}
   - component: {fileID: 2100989206}
   - component: {fileID: 2100989200}
+  - component: {fileID: 2100989207}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -3831,7 +3883,7 @@ Transform:
   m_LocalScale: {x: 7, y: 8, z: 7}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2100989206
 MonoBehaviour:
@@ -3846,3 +3898,73 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2100989199}
+--- !u!114 &2100989207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100989199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5bfd2926ff244297aca824f12b0888e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: eatting
+    clip: {fileID: 8300000, guid: d2b49d495190067429aa6870dafde5d8, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 0
+  - name: jumpping_effect
+    clip: {fileID: 8300000, guid: 282329a7323d51c4a8d497786a0225c1, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 0
+  - name: running
+    clip: {fileID: 8300000, guid: 3622271644593c7468d4654ae1f46b4e, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 0
+  - name: soup_drinking
+    clip: {fileID: 8300000, guid: 9ed6c2180daf0d6419ce315ea1c5d895, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 0
+  - name: take_money
+    clip: {fileID: 8300000, guid: 7672388a3ae1b4dbab216aef579e9de9, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 0
+  - name: upgrade_sound
+    clip: {fileID: 8300000, guid: 275160876c51f524486d299cc0380b47, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 0
+  - name: walking_effect
+    clip: {fileID: 8300000, guid: 9b79c447d31305f4a9c80f42210b63f1, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 1
+  - name: wood_pickup
+    clip: {fileID: 8300000, guid: faa842d056f56334e80757fa59f55491, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 1
+  - name: sowrd_atk
+    clip: {fileID: 8300000, guid: 048436ff166980b4f9219b4a74aaf027, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 0
+  - name: spear_atk_aound
+    clip: {fileID: 8300000, guid: b03a1bc008f35794796198310be4537b, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 0
+  - name: great_sword_atk
+    clip: {fileID: 8300000, guid: 0f1efd2ab7bd84c65b2d6a9279007948, type: 3}
+    loop: 0
+    source: {fileID: 0}
+    volume: 0
+  instance: {fileID: 0}
+  playRate: 1
