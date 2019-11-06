@@ -8,7 +8,7 @@ public class Soundcontrol : MonoBehaviour
     public Soundcontrol instance;
     public float playRate = 1;
     private float nextPlayTime = 0;
-
+    //fuck final project
     //public static AudioManager instance;
 
 	void Awake()
