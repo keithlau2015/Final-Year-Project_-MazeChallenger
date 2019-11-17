@@ -22,7 +22,6 @@ public class Menu : MonoBehaviour
     private void Start()
     {
         alreadyPlaySound = false;
-        FindObjectOfType<soundcontrol>().music_playing("menu_bg");//play bg music
         PlayerStatus.Instance.setPlayerAtTheMenu(true);
         Debug.Log("Player at the menu: " + PlayerStatus.Instance.getPlayerAtTheMenu());
         Debug.Log("Player upgrading: " + PlayerStatus.Instance.getPlayerGetIntoNextLevel());
@@ -77,7 +76,7 @@ public class Menu : MonoBehaviour
                 doorAnimator.SetBool("play", true);
                 if (!alreadyPlaySound)
                 {
-                    playing_sound(doorAnimator, "door");
+                    if (FindObjectOfType<SoundManager>().CheckAudioIsPlaying(3)) playing_sound(doorAnimator, 3);
                     alreadyPlaySound = true;
                 }
                 if (Input.GetMouseButtonDown(0)) Application.Quit();
@@ -99,7 +98,7 @@ public class Menu : MonoBehaviour
                 bookAnimator.SetBool("play", true);
                 if (!alreadyPlaySound)
                 {
-                    playing_sound(bookAnimator, "Book");
+                    if (FindObjectOfType<SoundManager>().CheckAudioIsPlaying(2)) playing_sound(bookAnimator, 2);
                     alreadyPlaySound = true;
                 }
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(2);
@@ -115,7 +114,7 @@ public class Menu : MonoBehaviour
                 cog_2Animation.SetBool("play", true);
                 cog_3Animation.SetBool("play", true);
                 cog_4Animation.SetBool("play", true);
-                playing_sound(cogAnimation, "menu_element");
+                if (FindObjectOfType<SoundManager>().CheckAudioIsPlaying(0)) playing_sound(cogAnimation, 0);
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(1);
                 _selection = selection;
             }
@@ -142,8 +141,7 @@ public class Menu : MonoBehaviour
                 var selectionCollider = selection.GetComponent<Collider>();
                 if (Input.GetMouseButtonDown(0))
                 {
-                    FindObjectOfType<soundcontrol>().music_playing("start_game");
-                    PlayerStatus.Instance.setPlayerAtTheMenu(false);
+                   PlayerStatus.Instance.setPlayerAtTheMenu(false);
                     SceneManager.LoadScene(2);
                 }
                 _selection = selection;
@@ -183,12 +181,11 @@ public class Menu : MonoBehaviour
     }
     */
 
-    private void playing_sound(Animator name, string music)
+    private void playing_sound(Animator name, int id)
     {
         if(name.GetBool("play"))
         {
-            Debug.Log(music);
-            FindObjectOfType<soundcontrol>().wepon_atk(music);         
+            FindObjectOfType<SoundManager>().PlaySoundEffect(id);         
         }
     }
 

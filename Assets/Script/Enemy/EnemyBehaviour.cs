@@ -12,7 +12,7 @@ public class EnemyBehaviour : MonoBehaviour
     private Rigidbody rigidbody;
 
     [SerializeField]
-    private Transform attackAreaPosition;
+    private Transform attackAreaPosition, pivotPoint;
     [SerializeField]
     private GameObject dmgArea;
 
@@ -68,8 +68,8 @@ public class EnemyBehaviour : MonoBehaviour
 
         //Detect the player is in the attack range
         RaycastHit hit;
-        Vector3 offset = new Vector3(0, 3, 0);
-        if(Physics.Raycast(transform.position + offset, transform.TransformDirection(transform.forward), out hit, 20f))
+
+        if (Physics.SphereCast(pivotPoint.position, 5f, transform.forward, out hit, 20f))
         {
             var hitTarget = hit.transform;
             if (hitTarget.CompareTag("Player"))

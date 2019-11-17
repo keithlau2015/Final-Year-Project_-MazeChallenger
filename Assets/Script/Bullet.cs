@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
-    private float speed, tumble;
+    private float speed;
     private Rigidbody rigidbody;
 
     // Start is called before the first frame update
@@ -17,12 +17,6 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
-    }
-
-    private void Move()
-    {
-        rigidbody.velocity = this.transform.forward * speed;
-        rigidbody.angularVelocity = Random.insideUnitSphere * tumble;
+        rigidbody.velocity = this.transform.right * -speed;
     }
 }

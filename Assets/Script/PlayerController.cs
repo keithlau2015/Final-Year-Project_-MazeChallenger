@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float speed, jumpPower;
     private Rigidbody rigidbody;
-    private bool isGrounded, holdingShield, holdingSword, holdingSpear, holdingGreatSword, holdingBattleAxe, holdingBow;
+    private bool isGrounded, holdingShield, holdingSword, holdingSpear, holdingGreatSword, holdingBattleAxe, holdingHandgun;
     private int countJump;
     private Camera cam;
     private Vector3 camOffset;
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private Transform rightHand, leftHand;
 
     // set the trigger
-    private bool soundawake, ismoving, running, walking;
+    private bool ismoving, running, walking;
     // Raycast collider
     private Collider firstItem = null;
     private Dictionary<string, int> itemPriority = new Dictionary<string, int>()
@@ -34,9 +34,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        FindObjectOfType<soundcontrol>().music_playing("game_bg");
         isGrounded = false;
-        soundawake = false;
         isGrounded = false;
         countJump = 0;   
         camOffset = new Vector3(0, 4.5f, 0);
@@ -73,75 +71,59 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButton(0) && holdingSword)
         {
             rightHandAnimator.SetBool("Sword_Swing", true);
-            soundawake = true;
-            StartCoroutine(soundeffect("sword_atk"));
             Debug.Log("Success");
             
         }
         else if (Input.GetMouseButtonUp(0) && holdingSword)
         {
             rightHandAnimator.SetBool("Sword_Swing", false);
-            soundawake = false;
         }
 
         if (Input.GetMouseButton(0) && holdingSpear)
         {
             rightHandAnimator.SetBool("Sting", true);
-            soundawake = true;
-            StartCoroutine(soundeffect("spear_atk_sound"));
-            
         }
         else if (Input.GetMouseButtonUp(0) && holdingSpear)
         {
             rightHandAnimator.SetBool("Sting", false);
-            soundawake = false;
         }
 
         if (Input.GetMouseButton(0) && holdingGreatSword) // change the sound effect, make the sound longer
         {
             rightHandAnimator.SetBool("GreatSword_Swing", true);
-            soundawake = true;
-            StartCoroutine(soundeffect("great_sword_atk"));
-
         }
         else if (Input.GetMouseButtonUp(0) && holdingGreatSword)
         {
             rightHandAnimator.SetBool("GreatSword_Swing", false);
-            soundawake = false;
         }
 
         if (Input.GetMouseButton(0) && holdingBattleAxe)
         {
             rightHandAnimator.SetBool("BattleAxe_Swing", true);
-            soundawake = true;
-            StartCoroutine(soundeffect("sword_atk"));
-
         }
         else if (Input.GetMouseButtonUp(0) && holdingBattleAxe)
         {
             rightHandAnimator.SetBool("BattleAxe_Swing", false);
-            soundawake = false;
         }
 
-        if (Input.GetMouseButton(0) && holdingBow)
+        if (Input.GetMouseButton(0) && holdingHandgun)
         {
             rightHandAnimator.SetBool("Shot", true);
-            soundawake = true;
-            StartCoroutine(soundeffect("arrow_atk"));
-            
+            if (rightHand.GetChild(0).name == "Handgun(Clone)")
+            {
+                rightHand.GetChild(0).GetComponent<Gun>().shooting();
+            }
         }
-        else if (Input.GetMouseButtonUp(0) && holdingBow)
+        else if (Input.GetMouseButtonUp(0) && holdingHandgun)
         {
             rightHandAnimator.SetBool("Shot", false);
-            soundawake = false;
         }
 
         if(Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
         {
             ismoving = true;
             walking = true;
-            running = false;
-           
+            running = false;           
         }
 
         if(Input.GetKeyDown(KeyCode.LeftShift))
@@ -170,7 +152,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            FindObjectOfType<soundcontrol>().character("jumpping_effect");
+            FindObjectOfType<SoundManager>().PlaySoundEffect(3);
             //Double jump
             /*
             countJump++;
@@ -199,7 +181,7 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.name == "Barrel_fbx (2)")
         {
-            StartCoroutine(soundeffect("wood_touch"));
+            FindObjectOfType<SoundManager>().PlaySoundEffect(4);
         }
 
         if(collision.gameObject.tag == "Enemy")
@@ -359,42 +341,8 @@ public class PlayerController : MonoBehaviour
     {
         if(ismoving && walking)
         {
-            soundawake = true;
-            FindObjectOfType<soundcontrol>().character("walking_effect");
-            
+            FindObjectOfType<SoundManager>().PlaySoundEffect(5);
         }
-        else if(ismoving && running)
-        {
-            soundawake = true;
-            FindObjectOfType<soundcontrol>().character("running");
-            Debug.Log("The sound played");
-        }
-        else{
-            soundawake = false;
-        }
-
-    }
-
-    private IEnumerator soundeffect(string name)
-    {
-        if(soundawake)
-        {
-            FindObjectOfType<soundcontrol>().wepon_atk(name);
-            Debug.Log("Played");
-        }
-        else{
-            Debug.Log("the soundawake did not trigger");
-        }
-        yield return 0;
-    }
-
-    private void ifhitthewood()
-    {
-        /*if (Physics.Raycast (transform.position, transform.forward, out rigidbody)){
-         ReceivingClass rc = rigidbody.transform.GetComponent<ReceivingClass>();
-     if(rc != null)
-         FindObjectOfType<soundcontrol>().character("walking_effect");
-     }*/
     }
 
     private void cleaRightHandObject()
@@ -459,18 +407,18 @@ public class PlayerController : MonoBehaviour
                         cleaRightHandObject();
                         Instantiate(weapons[4], rightHand);
                         Destroy(firstItem.gameObject);
-                        holdingBattleAxe = holdingGreatSword = holdingSword = holdingBow = false;
+                        holdingBattleAxe = holdingGreatSword = holdingSword = holdingHandgun = false;
                         holdingSpear = true;
-                        FindObjectOfType<soundcontrol>().wepon_atk("wood_pickup");
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(6);
                         Debug.Log("pick up Spear"); 
                         break;
                     case "Sword_1(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[0], rightHand);
                         Destroy(firstItem.gameObject);
-                        holdingSpear = holdingGreatSword = holdingBattleAxe = holdingBow = false;
+                        holdingSpear = holdingGreatSword = holdingBattleAxe = holdingHandgun = false;
                         holdingSword = true;
-                        FindObjectOfType<soundcontrol>().wepon_atk("sword_pickup");
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(7);
                         Debug.Log("pick up Sword_1");
                         break;
                     case "Shield_0(Clone)":
@@ -478,7 +426,7 @@ public class PlayerController : MonoBehaviour
                         Instantiate(weapons[3], leftHand);
                         Destroy(firstItem.gameObject);
                         holdingShield = true;
-                        FindObjectOfType<soundcontrol>().wepon_atk("wood_pickup");
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(8);
                         Debug.Log("pick up Shield_0");  
                         break;
                     case "Shield_1(Clone)":
@@ -486,64 +434,64 @@ public class PlayerController : MonoBehaviour
                         Instantiate(weapons[1], leftHand);
                         Destroy(firstItem.gameObject);
                         holdingShield = true;
-                        FindObjectOfType<soundcontrol>().wepon_atk("wood_pickup");
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(8);
                         Debug.Log("pick up Shield_1");
                         break;
                     case "Sword_0(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[2], rightHand);
                         Destroy(firstItem.gameObject);
-                        holdingBattleAxe = holdingGreatSword = holdingSpear = holdingBow = false;
+                        holdingBattleAxe = holdingGreatSword = holdingSpear = holdingHandgun = false;
                         holdingSword = true;
-                        FindObjectOfType<soundcontrol>().wepon_atk("sword_pickup");
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(7);
                         Debug.Log("pick up Sword_0");
                         break;
                     case "GreatSword(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[5], rightHand);
                         Destroy(firstItem.gameObject);
-                        holdingSpear = holdingSword = holdingBattleAxe = holdingBow = false;
+                        holdingSpear = holdingSword = holdingBattleAxe = holdingHandgun = false;
                         holdingGreatSword = true;
-                        FindObjectOfType<soundcontrol>().wepon_atk("sword_pickup");
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(7);
                         Debug.Log("pick up GreatSword");
                         break;
                     case "BattleAxe(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[6], rightHand);
                         Destroy(firstItem.gameObject);
-                        holdingGreatSword = holdingSpear = holdingSword = holdingBow = false;
+                        holdingGreatSword = holdingSpear = holdingSword = holdingHandgun = false;
                         holdingBattleAxe = true;
-                        FindObjectOfType<soundcontrol>().wepon_atk("sword_pickup");
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(7);
                         Debug.Log("pick up BattleAxe");
                         break;
-                    case "Bow(Clone)":
+                    case "Handgun(Clone)":
                         cleaRightHandObject();
                         Instantiate(weapons[7], rightHand);
                         Destroy(firstItem.gameObject);
-                        holdingGreatSword = holdingSpear = holdingSword = false;
-                        holdingBattleAxe = true;
-                        FindObjectOfType<soundcontrol>().wepon_atk("spear_pick");
-                        Debug.Log("pick up Bow");
+                        holdingGreatSword = holdingSpear = holdingSword = holdingBattleAxe = false;
+                        holdingHandgun = true;
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(9);
+                        Debug.Log("pick up Handgun");
                         break;
 
                     //Food
                     case "Bread(Clone)":
                         PlayerStatus.Instance.setHunger(20);
-                        FindObjectOfType<soundcontrol>().wepon_atk("eatting");
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(10);
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.gameObject);
                         break;
                     case "Soup(Clone)":
                         PlayerStatus.Instance.setHealth(+5, "");
                         PlayerStatus.Instance.setHunger(15);
-                        FindObjectOfType<soundcontrol>().wepon_atk("suop_drink");
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(11);
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.gameObject);
                         break;
                     case "Apple(Clone)":
                         PlayerStatus.Instance.setHunger(10);
                         PlayerStatus.Instance.setHealth(+1, "");
-                        FindObjectOfType<soundcontrol>().wepon_atk("eatting");
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(10);
                         Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.gameObject);
@@ -551,7 +499,7 @@ public class PlayerController : MonoBehaviour
                     case "Banana(Clone)":
                         PlayerStatus.Instance.setHealth(+1, "");
                         PlayerStatus.Instance.setHunger(10);
-                        FindObjectOfType<soundcontrol>().wepon_atk("eatting");
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(11);
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.gameObject);
                         break;

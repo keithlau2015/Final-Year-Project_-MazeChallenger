@@ -10,7 +10,7 @@ public class CameraControler : MonoBehaviour
 
     //[SerializeField] private Image[] Arrows;
     private int mCurrentIndex = 0;
-
+    
     private void Start()
     {
         transform.position = Positions[0];
@@ -25,15 +25,15 @@ public class CameraControler : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            FindObjectOfType<soundcontrol>().character("switching");   
-            if (mCurrentIndex < Positions.Length - 1)
+            FindObjectOfType<SoundManager>().PlaySoundEffect(0);
+            if (mCurrentIndex < 2)
             {
                 mCurrentIndex++;
             }
         }
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-             FindObjectOfType<soundcontrol>().character("switching"); 
+            FindObjectOfType<SoundManager>().PlaySoundEffect(0);
             if (mCurrentIndex > 0)
             {
                 mCurrentIndex--;
