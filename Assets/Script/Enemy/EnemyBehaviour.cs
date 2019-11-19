@@ -45,7 +45,7 @@ public class EnemyBehaviour : MonoBehaviour
             rigidbody.velocity = Vector3.zero;
             EnemyAttack();
         }
-        else if (onGround)
+        else if(onGround)
         {
             EnemyWalk();
         }
@@ -56,12 +56,14 @@ public class EnemyBehaviour : MonoBehaviour
         //Animation
         animator.SetBool("idle", true);
         animator.SetBool("walk", false);
+        animator.SetBool("attack", false);
     }
 
     private void EnemyWalk()
     {
         //Animation
         animator.SetBool("idle", false);
+        animator.SetBool("attack", false);
         animator.SetBool("walk", true);
                 
         rigidbody.velocity = transform.forward * status.getEnemySpeed();
@@ -87,6 +89,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         onGround = false;
         animator.SetBool("walk", false);
+        animator.SetBool("idle", false);
         animator.SetBool("attack", true);
         if (!isSpawnAttackArea )
         {
@@ -97,13 +100,19 @@ public class EnemyBehaviour : MonoBehaviour
         if (!insideAttackArea)
         {
             animator.SetBool("attack", false);
+            animator.SetBool("idle", false);
             animator.SetBool("walk", true);
         }
 
     }
     private void EnemyDie()
     {
+        //create a die effect
+        //Instantiate()
+        //Destroy()
 
+
+        Destroy(this.gameObject);
     }
 
     private void EnemyRotation()

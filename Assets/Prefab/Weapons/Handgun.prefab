@@ -325,7 +325,6 @@ GameObject:
   - component: {fileID: 7248571167243990925}
   - component: {fileID: 193362617887970111}
   - component: {fileID: 7816440965823568568}
-  - component: {fileID: 2107058706788104708}
   - component: {fileID: 5872034616226539447}
   m_Layer: 0
   m_Name: Handgun
@@ -341,8 +340,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6487529716900513735}
-  m_LocalRotation: {x: -0.0000020191073, y: -0.7071068, z: -0.7071068, w: 0.0000020191073}
-  m_LocalPosition: {x: -1.4995514, y: 0, z: 0.000003454218}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 70, y: 63, z: 70}
   m_Children:
   - {fileID: 5774230462686108901}
@@ -352,7 +351,7 @@ Transform:
   - {fileID: 578051410940818308}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -180.00002}
+  m_LocalEulerAnglesHint: {x: -90.00001, y: 90, z: 0}
 --- !u!33 &2524879167574428896
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -431,21 +430,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.059866663, y: 0.011199997, z: 0.03062742}
   m_Center: {x: -0.011933332, y: 0, z: -0.0056862836}
---- !u!114 &2107058706788104708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6487529716900513735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c049572ae878c4b4c8965e8943557713, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shotSpwan: {fileID: 578051410940818308}
-  bullet: {fileID: 4849863920705268533, guid: 2fa5f2ff076e6aa47a8fd1b9efc7fa19, type: 3}
-  FlipAnimationGameObject: {fileID: 8269867676703278631}
 --- !u!114 &5872034616226539447
 MonoBehaviour:
   m_ObjectHideFlags: 0

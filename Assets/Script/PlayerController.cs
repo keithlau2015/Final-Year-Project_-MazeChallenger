@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float speed, jumpPower;
     private Rigidbody rigidbody;
-    private bool isGrounded, holdingShield, holdingSword, holdingSpear, holdingGreatSword, holdingBattleAxe, holdingHandgun;
+    private bool isShooting ,isGrounded, holdingShield, holdingSword, holdingSpear, holdingGreatSword, holdingBattleAxe, holdingHandgun;
     private int countJump;
     private Camera cam;
     private Vector3 camOffset;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         isGrounded = false;
-        isGrounded = false;
+        isShooting = false;
         countJump = 0;   
         camOffset = new Vector3(0, 4.5f, 0);
         cam = Camera.main;
@@ -106,20 +106,21 @@ public class PlayerController : MonoBehaviour
             rightHandAnimator.SetBool("BattleAxe_Swing", false);
         }
 
-        if (Input.GetMouseButton(0) && holdingHandgun)
+        if (Input.GetMouseButtonDown(0) && holdingHandgun)
         {
             rightHandAnimator.SetBool("Shot", true);
             if (rightHand.GetChild(0).name == "Handgun(Clone)")
             {
-                rightHand.GetChild(0).GetComponent<Gun>().shooting();
+                rightHand.GetChild(0).GetComponent<Gun>().animationTrigger();
             }
         }
         else if (Input.GetMouseButtonUp(0) && holdingHandgun)
         {
             rightHandAnimator.SetBool("Shot", false);
+            isShooting = false;
         }
 
-        if(Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
+        if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
         {
             ismoving = true;
             walking = true;
@@ -518,5 +519,15 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }        
+    }
+
+    public bool getIsShooting()
+    {
+        return isShooting;
+    }
+
+    public void setIsShootingTrue()
+    {
+        isShooting = true;
     }
 }

@@ -10,6 +10,9 @@ public class Gun : MonoBehaviour
     [SerializeField]
     private GameObject FlipAnimationGameObject;
 
+    [SerializeField]
+    private float nextFire, fireRate;
+
     private Animator gunAnimator, flipGunAnimator;
 
     private void Awake()
@@ -18,22 +21,22 @@ public class Gun : MonoBehaviour
         flipGunAnimator = FlipAnimationGameObject.GetComponent<Animator>();
     }
 
-    private void Update()
-    {
-        if(flipGunAnimator.GetBool("Trigger") || gunAnimator.GetBool("Trigger"))
-        {
-            flipGunAnimator.SetBool("trigger", false);
-            gunAnimator.SetBool("trigger", false);
-        }
-    }
-
     public void shooting()
     {
         Vector3 pos = shotSpwan.position;
         Quaternion rotation = shotSpwan.rotation;
+        FindObjectOfType<PlayerController>().setIsShootingTrue();
+        //if (Time.time > nextFire && Time.timeScale != 0)
+        //{
+        //  nextFire = Time.time + fireRate;
         GameObject clone = Instantiate(bullet.gameObject, pos, rotation) as GameObject;
-        flipGunAnimator.SetBool("trigger", true);
-        gunAnimator.SetBool("trigger", true);
-        Destroy(clone, 5f);
+            Destroy(clone, 5f);
+        //}
+    }
+
+    public void animationTrigger()
+    {
+        flipGunAnimator.SetTrigger("Handgun");
+        gunAnimator.SetTrigger("Handgun");
     }
 }

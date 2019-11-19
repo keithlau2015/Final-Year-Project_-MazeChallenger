@@ -54,8 +54,14 @@ public class MouseFollow : MonoBehaviour
         float rot_y = rot.y + distance.x;
         rot_x = Mathf.Clamp(rot_x > 180 ? rot_x - 360 : rot_x, -Y_ROT, Y_ROT);
         rot_y = Mathf.Clamp(rot_y > 180 ? rot_y - 360 : rot_y, -X_ROT, X_ROT);
-        transform.rotation = Quaternion.Euler(rot_x, rot_y, 0);
-        transform.rotation = Quaternion.Euler(rot_x, rot_y, 0);
+        if (FindObjectOfType<PlayerController>().getIsShooting() && Input.GetMouseButtonDown(0))
+        {
+            transform.rotation = Quaternion.Euler(rot_x-1, rot_y, 0);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(rot_x, rot_y, 0);
+        }
     }
 
 }
