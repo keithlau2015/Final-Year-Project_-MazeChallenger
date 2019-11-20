@@ -10,7 +10,7 @@ public class EnemyBehaviour : MonoBehaviour
     private Animator animator;
     private Enemy status;
     private Rigidbody rigidbody;
-
+    private int attack_pattern =0;
     [SerializeField]
     private Transform attackAreaPosition, pivotPoint;
     [SerializeField]
@@ -43,6 +43,7 @@ public class EnemyBehaviour : MonoBehaviour
         if (insideAttackArea)
         {
             rigidbody.velocity = Vector3.zero;
+            animator.SetInteger("Satus", 2);
             EnemyAttack();
         }
         else if(onGround)
@@ -54,17 +55,13 @@ public class EnemyBehaviour : MonoBehaviour
     private void EnemyIdle()
     {
         //Animation
-        animator.SetBool("idle", true);
-        animator.SetBool("walk", false);
-        animator.SetBool("attack", false);
+        animator.SetInteger("Satus", 0);
     }
 
     private void EnemyWalk()
     {
         //Animation
-        animator.SetBool("idle", false);
-        animator.SetBool("attack", false);
-        animator.SetBool("walk", true);
+         animator.SetInteger("Satus", 1);
                 
         rigidbody.velocity = transform.forward * status.getEnemySpeed();
 
@@ -87,22 +84,46 @@ public class EnemyBehaviour : MonoBehaviour
     }
     private void EnemyAttack()
     {
-        onGround = false;
-        animator.SetBool("walk", false);
-        animator.SetBool("idle", false);
-        animator.SetBool("attack", true);
-        if (!isSpawnAttackArea )
-        {
-            GameObject clone = Instantiate(dmgArea, attackAreaPosition) as GameObject;
-            isSpawnAttackArea = true;
-            Destroy(clone, 4000);
-        }
-        if (!insideAttackArea)
-        {
-            animator.SetBool("attack", false);
-            animator.SetBool("idle", false);
-            animator.SetBool("walk", true);
-        }
+        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
+         onGround = false;
+         if(!animator.IsInTransition (0) && currentState.nameHash == Animator.StringToHash ("Base Layer.attack_mode") && insideAttackArea)
+         {
+            if(attack_pattern == 0)
+            {
+                attack_pattern = Random.Range(1,3);
+                if(attack_pattern == 1)
+                {
+                    animator.SetInteger("attackpattern", 1);
+                }
+                if(attack_pattern == 2)
+                {
+                    animator.SetInteger("attackpattern", 2);
+                }
+            }
+            else
+            {
+                attack_pattern = 0;
+            }
+            
+            Debug.Log(attack_pattern);
+            
+         }
+
+         if (!isSpawnAttackArea)
+            {
+                GameObject clone = Instantiate(dmgArea, attackAreaPosition) as GameObject;
+                isSpawnAttackArea = true;
+                Destroy(clone, 4000);
+            }
+
+            
+            if(!insideAttackArea)
+            {   
+                animator.SetInteger("Satus", 1);
+            }
+
+
+        
 
     }
     private void EnemyDie()
@@ -136,6 +157,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             //increase speed
             triggerWithPlayer = true;
+            insideAttackArea = true;
             status.setEnemySpeed(+10);
             Debug.Log("Enemy speed" + status.getEnemySpeed());
         }
@@ -147,6 +169,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             //increase speed
             triggerWithPlayer = false;
+            insideAttackArea = false;
             status.setEnemySpeed(-10);
             Debug.Log("Enemy speed" + status.getEnemySpeed());
         }
