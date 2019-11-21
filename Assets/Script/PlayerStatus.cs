@@ -19,7 +19,8 @@ public class PlayerStatus : MonoBehaviour
     private bool playerGetIntoNextLevel, playerAtTheMenu;
 
     //UI
-    private bool playerCanInteractWithOtherObject;
+    private bool playerCanInteractWithOtherObject, playerCanInteractWithVendingMachine;
+    private string priceUIText;
 
     public static PlayerStatus Instance
     {
@@ -34,12 +35,23 @@ public class PlayerStatus : MonoBehaviour
         total_Health = base_Health;
         total_Hunger = base_Hunger;
         total_Speed = base_Speed;
-        playerGetIntoNextLevel = playerCanInteractWithOtherObject = false;
+        playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = false;
+        priceUIText = "";
+    }
+
+    public string getPriceUIText()
+    {
+        return priceUIText;
     }
 
     public bool getPlayerCanInteractWithOtherObject()
     {
         return instance.playerCanInteractWithOtherObject;
+    }
+
+    public bool getPlayerCanInteractWithVendingMachine()
+    {
+        return instance.playerCanInteractWithVendingMachine;
     }
 
     public int getCoins()
@@ -65,6 +77,11 @@ public class PlayerStatus : MonoBehaviour
     public void setPlayerCanInteractWithOtherObject(bool interacted)
     {
         playerCanInteractWithOtherObject = interacted;
+    }
+
+    public void setPlayerCanInteractWithVendingMachine(bool interacted)
+    {
+        playerCanInteractWithVendingMachine = interacted;
     }
 
     public void setCoins(int coins)
@@ -122,6 +139,11 @@ public class PlayerStatus : MonoBehaviour
         }
     }
 
+    public void setPriceUIText(string price)
+    {
+        priceUIText = price;
+    }
+
     public void setHunger(int hunger)
     {
         int temp = this.total_Hunger + hunger;
@@ -157,6 +179,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void resetData()
     {
+        this.priceUIText = "";
         this.upgradeSlot_Health = 0;
         this.upgradeSlot_Hunger = 0;
         this.upgradeSlot_Speed = 0;

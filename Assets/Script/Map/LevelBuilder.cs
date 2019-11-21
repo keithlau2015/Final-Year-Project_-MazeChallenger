@@ -19,6 +19,7 @@ public class LevelBuilder : MonoBehaviour
     public List<Food> foodPrefabs = new List<Food>();
     public List<Enemy> enemyPrefabs = new List<Enemy>();
     public List<Coins> coinsPrefab = new List<Coins>();
+    public VendingMachine vendingMachinePrefab;
 
     //The array control total rooms in game
     private int[] iterationRange = {6,7,8,9};
@@ -37,6 +38,7 @@ public class LevelBuilder : MonoBehaviour
     private List<Food> placedFoods = new List<Food>();
     private List<Enemy> placedEnemys = new List<Enemy>();
     private List<Coins> placedCoins = new List<Coins>();
+    private List<VendingMachine> placedVendingMachine = new List<VendingMachine>();
 
     //For the Room mesh layer
     private LayerMask roomLayerMask;
@@ -256,6 +258,13 @@ public class LevelBuilder : MonoBehaviour
                         PlaceCoins(coinsPrefab[Random.Range(0, coinsPrefab.Capacity)], currentRoom, i);
                     }
                 }
+                if (!currentRoom.spwanPoint_VendingMachines.Equals(null))
+                {
+                    for (int i = 0; i < currentRoom.spwanPoint_VendingMachines.Length; i++)
+                    {
+                        PlaceVendingMachine(vendingMachinePrefab, currentRoom, i);
+                    }
+                }
                 if (roomPlaced)
                 {
                     currentExit.gameObject.SetActive(false);
@@ -371,11 +380,16 @@ public class LevelBuilder : MonoBehaviour
         {
             if (!coins.Equals(null)) Destroy(coins.gameObject);
         }
+        foreach (VendingMachine vendingMachine in placedVendingMachine)
+        {
+            if (!vendingMachine.Equals(null)) Destroy(vendingMachine.gameObject);
+        }
         placedWeapons.Clear();
         placedRooms.Clear();
         placedFoods.Clear();
         placedEnemys.Clear();
         placedCoins.Clear();
+        placedVendingMachine.Clear();
         availableExits.Clear();
         StartCoroutine("GenerateLevel");
     }
@@ -430,6 +444,13 @@ public class LevelBuilder : MonoBehaviour
             placedCoins.Add(currentSpawnedCoins);
         }
         
+    }
+
+    private void PlaceVendingMachine(VendingMachine vendingMachine, Room room, int spawningPoint)
+    {
+        VendingMachine currentSpawnedVendingMachine = Instantiate(vendingMachine, room.spwanPoint_VendingMachines[spawningPoint]) as VendingMachine;
+        currentSpawnedVendingMachine.transform.parent = this.transform;
+        placedVendingMachine.Add(currentSpawnedVendingMachine);
     }
 
     //Button
