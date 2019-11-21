@@ -6,7 +6,7 @@ public class Room : MonoBehaviour
 {
     public Exit[] exits;
     public MeshCollider meshCollider;
-    public Transform[] spwanPoint_Food, spwanPoint_Weapon, spwanPoint_Enemy, spwanPoint_Coins;
+    public Transform[] spwanPoint_Food, spwanPoint_Weapon, spwanPoint_Enemy, spwanPoint_Coins, spwanPoint_VendingMachines;
 
     public Bounds RoomBounds
     {

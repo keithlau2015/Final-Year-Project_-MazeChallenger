@@ -289,6 +289,7 @@ MonoBehaviour:
   shotSpwan: {fileID: 791563019744614649}
   bullet: {fileID: 4849863920705268533, guid: 2fa5f2ff076e6aa47a8fd1b9efc7fa19, type: 3}
   FlipAnimationGameObject: {fileID: 1918385180029402954}
+  fireVFX: {fileID: 5691637283683603720, guid: d01c82541172b084e9551fce78ae2b0b, type: 3}
   nextFire: 0
   fireRate: 0.5
 --- !u!1 &2924190624520410868
@@ -481,11 +482,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.03326
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: d09ef507cb116964390d907a3f8d9fe0,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d20df7c5fea4e340b243182c0c73ec5, type: 2}
     - target: {fileID: 8833720299871980622, guid: d09ef507cb116964390d907a3f8d9fe0,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: d09ef507cb116964390d907a3f8d9fe0,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: cc543352af7d3bf4c9a0bfffe1083c36, type: 2}
     - target: {fileID: -6166381988907012391, guid: d09ef507cb116964390d907a3f8d9fe0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -561,16 +572,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: d09ef507cb116964390d907a3f8d9fe0,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4d20df7c5fea4e340b243182c0c73ec5, type: 2}
-    - target: {fileID: -6057140222963153312, guid: d09ef507cb116964390d907a3f8d9fe0,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: cc543352af7d3bf4c9a0bfffe1083c36, type: 2}
     - target: {fileID: -2397996973257786244, guid: d09ef507cb116964390d907a3f8d9fe0,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

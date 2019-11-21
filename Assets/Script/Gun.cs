@@ -8,7 +8,7 @@ public class Gun : MonoBehaviour
     private Transform shotSpwan, bullet;
 
     [SerializeField]
-    private GameObject FlipAnimationGameObject;
+    private GameObject FlipAnimationGameObject, fireVFX;
 
     [SerializeField]
     private float nextFire, fireRate;
@@ -29,8 +29,10 @@ public class Gun : MonoBehaviour
         //if (Time.time > nextFire && Time.timeScale != 0)
         //{
         //  nextFire = Time.time + fireRate;
+        GameObject vfx = Instantiate(fireVFX, shotSpwan);
+        Destroy(vfx, 2);
         GameObject clone = Instantiate(bullet.gameObject, pos, rotation) as GameObject;
-            Destroy(clone, 5f);
+        Destroy(clone, 5f);
         //}
     }
 

@@ -56,7 +56,7 @@ public class MouseFollow : MonoBehaviour
         rot_y = Mathf.Clamp(rot_y > 180 ? rot_y - 360 : rot_y, -X_ROT, X_ROT);
         if (FindObjectOfType<PlayerController>().getIsShooting() && Input.GetMouseButtonDown(0))
         {
-            transform.rotation = Quaternion.Euler(rot_x-1, rot_y, 0);
+            transform.rotation = Quaternion.Euler(rot_x-3, rot_y, 0);
         }
         else
         {

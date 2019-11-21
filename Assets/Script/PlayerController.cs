@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
     private Collider firstItem = null;
     private Dictionary<string, int> itemPriority = new Dictionary<string, int>()
     {
-        {"Item", 0}
+        {"Item", 0}, {"VendingMachine", 1}
     };
 
     // Start is called before the first frame update
@@ -322,6 +323,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
+            PlayerStatus.Instance.setPlayerCanInteractWithVendingMachine(false);
             firstItem = null;
         }
     }
@@ -518,7 +520,29 @@ public class PlayerController : MonoBehaviour
                         break;
                 }
             }
-        }        
+        }
+        else if(firstItem.tag == "VendingMachine")
+        {
+            int rand = Random.Range(0, 2);
+            PlayerStatus.Instance.setPlayerCanInteractWithVendingMachine(true);
+            if (!firstItem.GetComponent<VendingMachine>().getCheckIsPurchase()) PlayerStatus.Instance.setPriceUIText("$" + firstItem.GetComponent<VendingMachine>().getPrice());
+            else if (rand == 1) PlayerStatus.Instance.setPriceUIText("Empty");
+            else if (rand == 2) PlayerStatus.Instance.setPriceUIText("What are you looking for?");
+            else PlayerStatus.Instance.setPriceUIText("SOLD OUT");
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                //buying
+                if(PlayerStatus.Instance.getCoins() < firstItem.GetComponent<VendingMachine>().getPrice())
+                {
+                    //play error sound effects
+                }
+                else
+                {
+                    PlayerStatus.Instance.setCoins(-firstItem.GetComponent<VendingMachine>().getPrice());
+                    firstItem.GetComponent<VendingMachine>().purchaseSuccess();
+                }
+            }
+        }
     }
 
     public bool getIsShooting()
