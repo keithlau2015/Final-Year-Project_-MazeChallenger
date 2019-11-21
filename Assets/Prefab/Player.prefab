@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4149596396719799237
+--- !u!1 &561810367646337166
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,13 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4149596396719799263}
-  - component: {fileID: 4149596396719799262}
-  - component: {fileID: 4149596396719799257}
-  - component: {fileID: 4149596396719799256}
-  - component: {fileID: 4149596396719799259}
-  - component: {fileID: 4149596396719799258}
+  - component: {fileID: 561810367646337172}
+  - component: {fileID: 561810367646337173}
+  - component: {fileID: 561810367646337170}
+  - component: {fileID: 561810367646337171}
+  - component: {fileID: 561810367646337168}
+  - component: {fileID: 561810367646337175}
+  - component: {fileID: 561810367646337169}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -21,35 +22,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4149596396719799263
+--- !u!4 &561810367646337172
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4149596396719799237}
+  m_GameObject: {fileID: 561810367646337166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
   m_LocalScale: {x: 7, y: 8, z: 7}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4149596396719799262
+--- !u!33 &561810367646337173
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4149596396719799237}
+  m_GameObject: {fileID: 561810367646337166}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4149596396719799257
+--- !u!23 &561810367646337170
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4149596396719799237}
+  m_GameObject: {fileID: 561810367646337166}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -81,27 +82,27 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &4149596396719799256
+--- !u!136 &561810367646337171
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4149596396719799237}
-  m_Material: {fileID: 13400000, guid: 9a78377219c8d5747a176d673c10da97, type: 2}
+  m_GameObject: {fileID: 561810367646337166}
+  m_Material: {fileID: 13400000, guid: b25f8bad89828d54282de61ce2d511be, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &4149596396719799259
+--- !u!54 &561810367646337168
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4149596396719799237}
+  m_GameObject: {fileID: 561810367646337166}
   serializedVersion: 2
   m_Mass: 30
   m_Drag: 0
@@ -111,27 +112,49 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &4149596396719799258
+--- !u!114 &561810367646337175
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4149596396719799237}
+  m_GameObject: {fileID: 561810367646337166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848dee52848f1ab41bdfabd457800f87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 561810367646337166}
+--- !u!114 &561810367646337169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561810367646337166}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f606ab9b14282234b93a88ed134f8956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 150
   jumpPower: 2000
   weapons:
-  - {fileID: 2972728332474417104, guid: 9f37bd9b4d9206247bed0a6c14614eb2, type: 3}
-  - {fileID: 4900302781632256455, guid: 2eb61297adb80ad4c88c0e069e9edb03, type: 3}
-  - {fileID: 6290182129155082745, guid: 99f93adf1b0787d49bfe6bf384106900, type: 3}
-  - {fileID: 3354089651158136105, guid: edff9a27661b9f040bfb98fd4daff577, type: 3}
-  - {fileID: 3988820129851971686, guid: 74d7a3cd21d35864f85cbbf5818150a8, type: 3}
-  - {fileID: 3896678914595029560, guid: 3adf5dd70e2c1aa438909259bec2588b, type: 3}
-  - {fileID: 1615318351608449874, guid: af68d329db33d43449089069c9500e3e, type: 3}
+  - {fileID: 6290182129155082745, guid: bbdf126803a191a46aca9342da512f74, type: 3}
+  - {fileID: 2972728332474417104, guid: e211cdfb5c60c6046987f7a43f01de7c, type: 3}
+  - {fileID: 3354089651158136105, guid: 62c95620fd72a604bbf64004ffdf34bc, type: 3}
+  - {fileID: 4900302781632256455, guid: 976c411e34bab9d4f8fc6cd6cc4ddd1a, type: 3}
+  - {fileID: 3896678914595029560, guid: 246c24b2bd86db8409196ba5620dda0f, type: 3}
+  - {fileID: 1615318351608449874, guid: 6db0de89a5c2c3747a5b382b6bc4c2c7, type: 3}
+  - {fileID: 3988820129851971686, guid: 55e0aa54835b1854b9367530e05bb7f2, type: 3}
+  - {fileID: 1918385180215619544, guid: c94c45cb21fc31a479cec8db6af1ad32, type: 3}
+  dissolve_weapons:
+  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
+  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
+  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
+  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
+  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
+  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
+  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
   rightHand: {fileID: 0}
   leftHand: {fileID: 0}
