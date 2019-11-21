@@ -23,8 +23,11 @@ public class SoundManager : MonoBehaviour
     {
         this.gameObject.AddComponent<AudioSource>();
         soundEffect = GetComponent<AudioSource>();
-        attackSoundEffectGameObject.AddComponent<AudioSource>();
-        attackSoundEffect = attackSoundEffectGameObject.GetComponent<AudioSource>();
+        if (!attackSoundEffectGameObject.Equals(null))
+        {
+            attackSoundEffectGameObject.AddComponent<AudioSource>();
+            attackSoundEffect = attackSoundEffectGameObject.GetComponent<AudioSource>();
+        }
 
         bgm_volume = 0.2f;
         soundEffect_volume = 1f;
@@ -72,6 +75,6 @@ public class SoundManager : MonoBehaviour
 
     public bool CheckAudioIsPlaying(int id)
     {
-        return !attackSoundEffect.isPlaying;
+        return !soundEffect.isPlaying;
     }
 }

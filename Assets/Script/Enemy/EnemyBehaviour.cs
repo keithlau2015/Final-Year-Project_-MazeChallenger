@@ -95,7 +95,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             GameObject clone = Instantiate(dmgArea, attackAreaPosition) as GameObject;
             isSpawnAttackArea = true;
-            Destroy(clone, 4000);
+            Destroy(clone, 2);
         }
         if (!insideAttackArea)
         {

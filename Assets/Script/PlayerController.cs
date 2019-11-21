@@ -170,7 +170,6 @@ public class PlayerController : MonoBehaviour
         {
             PlayerStatus.Instance.setPlayerAtTheMenu(true);
             PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
-            SceneManager.LoadScene(1);
         }
     }
 
@@ -202,12 +201,6 @@ public class PlayerController : MonoBehaviour
             isGrounded = true;
         }
 
-        if(collision.collider.tag == "Trap")
-        {
-            countJump = 0;
-            isGrounded = true;
-        }
-
         //Enemy
         if(collision.collider.tag == "Enemy")
         {
@@ -232,11 +225,6 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
 
-        if(collision.collider.tag == "Trap")
-        {
-            isGrounded = false;
-        }
-
         //Ladder
         if(collision.collider.tag == "Ladder")
         {
@@ -253,6 +241,8 @@ public class PlayerController : MonoBehaviour
         {
             //upgrade player status & monster status
             PlayerStatus.Instance.setPlayerGetIntoNextLevel(true);
+            PlayerStatus.Instance.setPlayerStagePass(1);
+            Debug.Log("The stage player pass: " + PlayerStatus.Instance.getPlayerStagePass());
         }
         if (other.gameObject.tag == "LadderBottom")
         {

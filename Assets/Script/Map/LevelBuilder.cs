@@ -95,12 +95,25 @@ public class LevelBuilder : MonoBehaviour
             upgradeUI.SetActive(false);
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape) && !pauseUI.activeSelf)
+        {
+            Time.timeScale = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && pauseUI.activeSelf)
+        {
+            Time.timeScale = 1;
+        }
+
+        pauseUI.SetActive(Time.timeScale == 0);
+
+
         timer += Time.deltaTime;
         if (timer > 1f && finishLevelBuilding && PlayerStatus.Instance.getHunger() > 0)
         {
             PlayerStatus.Instance.setHunger(-1);
             timer = 0f;
         }
+
     }
     IEnumerator GenerateLevel()
     {
@@ -112,7 +125,7 @@ public class LevelBuilder : MonoBehaviour
         yield return startup;
 
         //1 is the special room spawning rate
-        if (50 >= Random.Range(0, 100) && specialRoomPrefab.Length != 0)
+        if (5 >= Random.Range(0, 100) && specialRoomPrefab.Length != 0)
         {
             PlaceSpecialRoom();
             Debug.Log("Place a special room");
