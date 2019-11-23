@@ -27,6 +27,11 @@ public class Enemy : MonoBehaviour
     private float buff_SpwaningRate;
     private int buffSpeedCounter, buffHealthCounter, buffHitPointCounter, buffSpawningRateCounter;
 
+    //Behaviour
+    private bool collisionWithObject = false, triggerWithPlayer = false, onGround = false, insideAttackArea = false, isSpawnAttackArea = false;
+
+    //Animation
+    private int attack_pattern = 0;
 
     public Enemy()
     {
@@ -39,6 +44,8 @@ public class Enemy : MonoBehaviour
         buff_Health = buff_HitPoint = 0;
         buff_Speed = buff_SpwaningRate = 0;
     }
+
+    
 
     //Health get & set
     public void setEnemyHealth(int health)
@@ -110,6 +117,68 @@ public class Enemy : MonoBehaviour
     public int getEnemyBuffHitPointCounter()
     {
         return buffHitPointCounter;
+    }
+
+    //Behaviour get & set
+    public void setEnemyCollisionWithObject(bool set)
+    {
+        this.collisionWithObject = set;
+    }
+
+    public bool getEnemyCollisionWithObject()
+    {
+        return this.collisionWithObject;
+    }
+
+    public void setEnemyTriggerWithPlayer(bool set)
+    {
+        this.triggerWithPlayer = set;
+    }
+
+    public bool getEnemyTriggerWithPlayer()
+    {
+        return this.triggerWithPlayer;
+    }
+
+    public void setOnGround(bool set)
+    {
+        this.onGround = set;
+    }
+
+    public bool getOnGround()
+    {
+        return this.onGround;
+    }
+
+    public void setInsideAttackArea(bool set)
+    {
+        this.insideAttackArea = set;
+    }
+
+    public bool getInsideAttackArea()
+    {
+        return this.insideAttackArea;
+    }
+
+    public void setIsSpawnAttackArea(bool set)
+    {
+        this.isSpawnAttackArea = set;
+    }
+
+    public bool getIsSpawnAttackArea()
+    {
+        return this.isSpawnAttackArea;
+    }
+
+    //Animator get & set
+    public void setAttack_pattern(int attack_pattern)
+    {
+        this.attack_pattern = attack_pattern;
+    }
+
+    public int getAttack_pattern()
+    {
+        return this.attack_pattern;
     }
 
     //Reset

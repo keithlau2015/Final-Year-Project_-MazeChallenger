@@ -3,62 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
-{
-    private bool collisionWithObject = false, triggerWithPlayer = false, onGround = false, insideAttackArea = false, isSpawnAttackArea = false;
+{    
     private float[] rotationDir = { 90, -90, 180, 45, -45 };
     //private int rotationDirCounter;
     private Animator animator;
     private Enemy status;
     private Rigidbody rigidbody;
-    private int attack_pattern =0;
     [SerializeField]
     private Transform attackAreaPosition, pivotPoint;
     [SerializeField]
-    private GameObject dmgArea;
+    private GameObject deadEffect;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
-        status = new Enemy();
+        status = GetComponent<Enemy>();
     }
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        //rotationDirCounter = 0;
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        /*
-        else
-        { 
-            EnemyIdle();
-            Debug.Log("idle");
-        }
-        */
-        EnemyRotation();
-        if (insideAttackArea)
-        {
-            rigidbody.velocity = Vector3.zero;
-            animator.SetInteger("Satus", 2);
-            EnemyAttack();
-        }
-        else if(onGround)
-        {
-            EnemyWalk();
-        }
-    }
-
-    private void EnemyIdle()
-    {
-        //Animation
-        animator.SetInteger("Satus", 0);
-    }
-
-    private void EnemyWalk()
+    
+    public void EnemyWalk()
     {
         //Animation
          animator.SetInteger("Satus", 1);
@@ -74,92 +37,32 @@ public class EnemyBehaviour : MonoBehaviour
             if (hitTarget.CompareTag("Player"))
             {
 
-                insideAttackArea = true;
+                status.setInsideAttackArea(true);
             }
             else
             {
-                insideAttackArea = false;
+                status.setInsideAttackArea(false);
             }
         }
     }
-    private void EnemyAttack()
-    {
-/*
-        onGround = false;
-        animator.SetBool("walk", false);
-        animator.SetBool("idle", false);
-        animator.SetBool("attack", true);
-        if (!isSpawnAttackArea )
-        {
-            GameObject clone = Instantiate(dmgArea, attackAreaPosition) as GameObject;
-            isSpawnAttackArea = true;
-            Destroy(clone, 2);
-        }
-        if (!insideAttackArea)
-        {
-            animator.SetBool("attack", false);
-            animator.SetBool("idle", false);
-            animator.SetBool("walk", true);
-        }
-*/
-        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
-         onGround = false;
-         if(!animator.IsInTransition (0) && currentState.fullPathHash == Animator.StringToHash ("Base Layer.attack_mode") && insideAttackArea)
-         {
-            if(attack_pattern == 0)
-            {
-                attack_pattern = Random.Range(1,3);
-                if(attack_pattern == 1)
-                {
-                    animator.SetInteger("attackpattern", 1);
-                }
-                if(attack_pattern == 2)
-                {
-                    animator.SetInteger("attackpattern", 2);
-                }
-            }
-            else
-            {
-                attack_pattern = 0;
-            }
-            
-            Debug.Log(attack_pattern);
-            
-         }
 
-         if (!isSpawnAttackArea)
-            {
-                GameObject clone = Instantiate(dmgArea, attackAreaPosition) as GameObject;
-                isSpawnAttackArea = true;
-                Destroy(clone, 4000);
-            }
-
-            
-            if(!insideAttackArea)
-            {   
-                animator.SetInteger("Satus", 1);
-            }
-
-    }
-    private void EnemyDie()
+    public void EnemyDie()
     {
         //create a die effect
-        //Instantiate()
-        //Destroy()
-
-
+        GameObject clone = Instantiate(deadEffect, this.transform) as GameObject;
+        Destroy(clone, 5);
         Destroy(this.gameObject);
     }
 
-    private void EnemyRotation()
+    public void EnemyRotation()
     {
-        if (collisionWithObject)
+        if (status.getEnemyCollisionWithObject())
         {
             int rand = Random.Range(0, rotationDir.Length);
             Vector3 targetYAxis = new Vector3(0, rotationDir[rand], 0);
             transform.rotation = Quaternion.Euler(targetYAxis);
         }
-        if (triggerWithPlayer)
+        if (status.getEnemyTriggerWithPlayer())
         {
             Vector3 targetYAxis = new Vector3(PlayerRef.instance.player.transform.position.x, this.transform.position.y, PlayerRef.instance.player.transform.position.z);
             transform.LookAt(targetYAxis);
@@ -171,8 +74,8 @@ public class EnemyBehaviour : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             //increase speed
-            triggerWithPlayer = true;
-            insideAttackArea = true;
+            status.setEnemyTriggerWithPlayer(true);
+            status.setInsideAttackArea(true);
             status.setEnemySpeed(+10);
             Debug.Log("Enemy speed" + status.getEnemySpeed());
         }
@@ -183,8 +86,8 @@ public class EnemyBehaviour : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             //increase speed
-            triggerWithPlayer = false;
-            insideAttackArea = false;
+            status.setEnemyTriggerWithPlayer(false);
+            status.setInsideAttackArea(false);
             status.setEnemySpeed(-10);
             Debug.Log("Enemy speed" + status.getEnemySpeed());
         }
@@ -194,19 +97,19 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(collision.gameObject.tag == "Wall")
         {
-            collisionWithObject = true;
+            status.setEnemyCollisionWithObject(true);
         }
-        if(collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground")
         {
-            onGround = true;
+            status.setOnGround(true);
         }
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground")
         {
-            onGround = true;
+            status.setOnGround(true);
         }
     }
 
@@ -214,11 +117,11 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(collision.gameObject.tag == "Wall")
         {
-            collisionWithObject = false;
+            status.setEnemyCollisionWithObject(false);
         }
         if (collision.gameObject.tag == "Ground")
         {
-            onGround = false;
+            status.setOnGround(false);
         }
     }
 }

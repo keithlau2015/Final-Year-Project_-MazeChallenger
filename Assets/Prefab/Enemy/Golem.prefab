@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 9152023904824696513}
   - component: {fileID: -7673784262249868969}
   - component: {fileID: 2810736288955237037}
+  - component: {fileID: 2139531324494633776}
   m_Layer: 0
   m_Name: Golem
   m_TagString: Enemy
@@ -100,6 +101,8 @@ MonoBehaviour:
   attackAreaPosition: {fileID: 4242046710684994650}
   pivotPoint: {fileID: 5770145511951855988}
   dmgArea: {fileID: 7767101551959266466, guid: 434ddeadda031c241b880692875092f4, type: 3}
+  deadEffect: {fileID: 1653333534184185868, guid: 8dce7c301d1f75b4f8c2b998bd94b406,
+    type: 3}
 --- !u!54 &-7673784262249868969
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -129,6 +132,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20, y: 6, z: 20}
   m_Center: {x: 0, y: 3, z: -0.00000333786}
+--- !u!114 &2139531324494633776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6671632001260194145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6838a2451646a764497c5e2625606bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7506919332760982429
 GameObject:
   m_ObjectHideFlags: 0
