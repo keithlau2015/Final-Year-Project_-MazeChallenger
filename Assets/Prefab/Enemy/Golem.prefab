@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6762892722837742553}
   - component: {fileID: 4543482393671671249}
   - component: {fileID: 9152023904824696513}
-  - component: {fileID: 2127832582484961424}
   - component: {fileID: -7673784262249868969}
   - component: {fileID: 2810736288955237037}
   m_Layer: 0
@@ -101,36 +100,6 @@ MonoBehaviour:
   attackAreaPosition: {fileID: 4242046710684994650}
   pivotPoint: {fileID: 5770145511951855988}
   dmgArea: {fileID: 7767101551959266466, guid: 434ddeadda031c241b880692875092f4, type: 3}
---- !u!114 &2127832582484961424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6671632001260194145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5bfd2926ff244297aca824f12b0888e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - name: Idle
-    clip: {fileID: 8300000, guid: b8628e65b4b6944f8a4f4679ed406e2d, type: 3}
-    loop: 0
-    source: {fileID: 0}
-    volume: 0
-  - name: Attack
-    clip: {fileID: 8300000, guid: f9a5886be021d4d1abfddf941e03f041, type: 3}
-    loop: 0
-    source: {fileID: 0}
-    volume: 0
-  - name: Walking
-    clip: {fileID: 8300000, guid: b80eb24049e264221a3cdd012d6af553, type: 3}
-    loop: 0
-    source: {fileID: 0}
-    volume: 0
-  instance: {fileID: 0}
-  playRate: 1
 --- !u!54 &-7673784262249868969
 Rigidbody:
   m_ObjectHideFlags: 0

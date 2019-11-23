@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField]
-    private AudioClip bgm_source;
+    private AudioClip bgm_source, speacial_source;
 
     [SerializeField]
     private List<AudioClip> source = new List<AudioClip>();
@@ -38,11 +38,14 @@ public class SoundManager : MonoBehaviour
     private void Update()
     {
         bgm.volume = bgm_volume;
+        soundEffect.volume = soundEffect_volume;
     }
-    private void PlayBGM()
+
+    public  void PlayBGM()
     {
         bgmGameObject.AddComponent<AudioSource>();
         bgm = bgmGameObject.GetComponent<AudioSource>();
+        bgm.clip = speacial_source;
         bgm.clip = bgm_source;
         bgm.playOnAwake = true;
         bgm.loop = true;

@@ -104,7 +104,7 @@ public class EnemyBehaviour : MonoBehaviour
 */
         AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
          onGround = false;
-         if(!animator.IsInTransition (0) && currentState.nameHash == Animator.StringToHash ("Base Layer.attack_mode") && insideAttackArea)
+         if(!animator.IsInTransition (0) && currentState.fullPathHash == Animator.StringToHash ("Base Layer.attack_mode") && insideAttackArea)
          {
             if(attack_pattern == 0)
             {

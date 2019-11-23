@@ -18,13 +18,6 @@ public class PlayerUIController : MonoBehaviour
     [SerializeField]
     private GameObject warningPanel, volumeSettingPanel;
 
-    // Update is called once per frame
-    private void Awake()
-    {
-        warningPanel.SetActive(false);
-        volumeSettingPanel.SetActive(false);
-    }
-
     private void FixedUpdate()
     {
         Price.enabled = PlayerStatus.Instance.getPlayerCanInteractWithVendingMachine();
