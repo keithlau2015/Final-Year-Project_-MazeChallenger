@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public enum EnemyType { Golem }
-
     public EnemyType enemyType;
 
     //The Base value
@@ -26,7 +25,6 @@ public class Enemy : MonoBehaviour
     private int buff_Health;
     private float buff_SpwaningRate;
     private int buffSpeedCounter, buffHealthCounter, buffHitPointCounter, buffSpawningRateCounter;
-
 
     public Enemy()
     {

@@ -4,128 +4,34 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    private bool collisionWithObject = false, triggerWithPlayer = false, onGround = false, insideAttackArea = false, isSpawnAttackArea = false;
+    private bool collisionWithObject = false, triggerWithPlayer = false, onGround = false;
     private float[] rotationDir = { 90, -90, 180, 45, -45 };
     //private int rotationDirCounter;
     private Animator animator;
+    private enemySound soundcontrol;
     private Enemy status;
     private Rigidbody rigidbody;
-    private int attack_pattern =0;
-    [SerializeField]
-    private Transform attackAreaPosition, pivotPoint;
-    [SerializeField]
-    private GameObject dmgArea;
-
     private void Awake()
     {
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
         status = new Enemy();
     }
-
-    // Start is called before the first frame update
-    private void Start()
+    private void update()
     {
-        //rotationDirCounter = 0;
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        /*
-        else
-        { 
-            EnemyIdle();
-            Debug.Log("idle");
-        }
-        */
-        EnemyRotation();
-        if (insideAttackArea)
-        {
-            rigidbody.velocity = Vector3.zero;
-            animator.SetInteger("Satus", 2);
-            EnemyAttack();
-        }
-        else if(onGround)
+        if(onGround)
         {
             EnemyWalk();
         }
     }
 
-    private void EnemyIdle()
+    public void EnemyWalk()
     {
-        //Animation
-        animator.SetInteger("Satus", 0);
-    }
-
-    private void EnemyWalk()
-    {
-        //Animation
-         animator.SetInteger("Satus", 1);
-                
         rigidbody.velocity = transform.forward * status.getEnemySpeed();
-
-        //Detect the player is in the attack range
-        RaycastHit hit;
-
-        if (Physics.SphereCast(pivotPoint.position, 5f, transform.forward, out hit, 20f))
-        {
-            var hitTarget = hit.transform;
-            if (hitTarget.CompareTag("Player"))
-            {
-
-                insideAttackArea = true;
-            }
-            else
-            {
-                insideAttackArea = false;
-            }
-        }
     }
-    private void EnemyAttack()
-    {
-        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
-         onGround = false;
-         if(!animator.IsInTransition (0) && currentState.nameHash == Animator.StringToHash ("Base Layer.attack_mode") && insideAttackArea)
-         {
-            if(attack_pattern == 0)
-            {
-                attack_pattern = Random.Range(1,3);
-                if(attack_pattern == 1)
-                {
-                    animator.SetInteger("attackpattern", 1);
-                }
-                if(attack_pattern == 2)
-                {
-                    animator.SetInteger("attackpattern", 2);
-                }
-            }
-            else
-            {
-                attack_pattern = 0;
-            }
-            
-            Debug.Log(attack_pattern);
-            
-         }
 
-         if (!isSpawnAttackArea)
-            {
-                GameObject clone = Instantiate(dmgArea, attackAreaPosition) as GameObject;
-                isSpawnAttackArea = true;
-                Destroy(clone, 4000);
-            }
+    
 
-            
-            if(!insideAttackArea)
-            {   
-                animator.SetInteger("Satus", 1);
-            }
-
-
-        
-
-    }
     private void EnemyDie()
     {
         //create a die effect
@@ -136,7 +42,7 @@ public class EnemyBehaviour : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    private void EnemyRotation()
+     public void EnemyRotation()
     {
         if (collisionWithObject)
         {
@@ -149,31 +55,10 @@ public class EnemyBehaviour : MonoBehaviour
             Vector3 targetYAxis = new Vector3(PlayerRef.instance.player.transform.position.x, this.transform.position.y, PlayerRef.instance.player.transform.position.z);
             transform.LookAt(targetYAxis);
         }
+        
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Player")
-        {
-            //increase speed
-            triggerWithPlayer = true;
-            insideAttackArea = true;
-            status.setEnemySpeed(+10);
-            Debug.Log("Enemy speed" + status.getEnemySpeed());
-        }
-    }
-        
-    private void OnTriggerExit(Collider other)
-    {
-        if(other.gameObject.tag == "Player")
-        {
-            //increase speed
-            triggerWithPlayer = false;
-            insideAttackArea = false;
-            status.setEnemySpeed(-10);
-            Debug.Log("Enemy speed" + status.getEnemySpeed());
-        }
-    }
+    
 
     private void OnCollisionEnter(Collision collision)
     {
