@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311918, g: 0.3807398, b: 0.35872716, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1570,9 +1570,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeUI: {fileID: 1503012845}
-  pauseUI: {fileID: 0}
+  pauseUI: {fileID: 1637897143}
   loadingUI: {fileID: 1363152534}
-  gameOverUI: {fileID: 0}
+  gameOverUI: {fileID: 824162761}
   Upgrade_slot_1: {fileID: 703541985}
   Upgrade_slot_2: {fileID: 944625025}
   Upgrade_slot_3: {fileID: 281856039}

@@ -145,6 +145,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1afc7546db67d9544988fbd7e1e0cd2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackAreaPosition: {fileID: 0}
+  pivotPoint: {fileID: 0}
+  deadEffect: {fileID: 1653333534184185868, guid: 8dce7c301d1f75b4f8c2b998bd94b406,
+    type: 3}
 --- !u!114 &7900784755668138230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +163,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackAreaPosition: {fileID: 4242046710684994650}
   pivotPoint: {fileID: 5770145511951855988}
-  dmgArea: {fileID: 7506919332760982429}
 --- !u!54 &-7673784262249868969
 Rigidbody:
   m_ObjectHideFlags: 0

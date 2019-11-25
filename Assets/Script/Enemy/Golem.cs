@@ -1,72 +1,64 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * This class is only for Golem Behaviour
+*/
 public class Golem : MonoBehaviour
 {
-	private bool triggerWithPlayer = false, onGround = false, 
-	insideAttackArea = false, isSpawnAttackArea = false, attacking = false;
-
 	private Animator animator;
 	private int attack_pattern = 0;
 	private EnemyBehaviour enemyBehaviour;
-    [SerializeField]
-    private Transform attackAreaPosition, pivotPoint;
-    [SerializeField]
-    private GameObject dmgArea;
     private Enemy status;
     private Rigidbody rigidbody;
-    
+
+
+
+    //Draw the line from the piovt point
+    [SerializeField]
+    private Transform attackAreaPosition, pivotPoint;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
         enemyBehaviour = GetComponent<EnemyBehaviour>();
-        
+        status = GetComponent<Enemy>();
     }
-     private void update()
-     {
-     	AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
-        if (insideAttackArea)
-        {
-            rigidbody.velocity = Vector3.zero;
-            animator.SetInteger("Satus", 2);
-            EnemyAttack(currentState);
-            attacking = true;
-        }
-        else 
+
+     private void Update()
+     {	
+        if(status.getEnemyHealth() == 0) 
         {
             Vector3 offset = new Vector3(0, 5, 0);
             enemyBehaviour.EnemyDie(offset);
-		    attacking = false;
         }
+        EnemyDetection();
+        enemyBehaviour.EnemyRotation();
      }
      
      private void EnemyDetection()
      {
-     	animator.SetInteger("Satus", 1);
-     	RaycastHit hit;
-
+        RaycastHit hit;
         if (Physics.SphereCast(pivotPoint.position, 5f, transform.forward, out hit, 20f))
         {
             var hitTarget = hit.transform;
             if (hitTarget.CompareTag("Player"))
             {
-                insideAttackArea = true;
-            }
-            else
-            {
-                insideAttackArea = false;
+                //Attack
             }
         }
-     }
+        else
+        {
+            enemyBehaviour.EnemyWalk();
+        }
+    }
 
-    	private void EnemyAttack(AnimatorStateInfo currentState)
-    	{
-         onGround = false;
-         float TotalSpeed = status.getEnemySpeed();
-         if(!animator.IsInTransition (0) && currentState.nameHash == Animator.StringToHash ("Base Layer.attack_mode") && insideAttackArea)
+/*
+ *  Tom 呢度你整, 整完你同我講, 我要問你個animation
+    private void EnemyAttack(AnimatorStateInfo currentState)
+    {
+        if(!animator.IsInTransition (0) && currentState.fullPathHash == Animator.StringToHash ("Base Layer.attack_mode") && insideAttackArea)
          {
             if(attack_pattern == 0)
             {
@@ -85,45 +77,30 @@ public class Golem : MonoBehaviour
                 attack_pattern = 0;
             }
 
-            if(attacking)
+            if()
             {
             //speed is 0
-                status.setEnemySpeed(-TotalSpeed);
+                status.setEnemySpeed(,"");
             }
             else
             {
             //speed is back nonormal
-                status.setEnemySpeed(TotalSpeed);
+                status.setEnemySpeed(,"");
             }       
-         }
+        }
+        if()
+        {   
+            animator.SetInteger("Satus", 1);
+        }
+    }
+*/
 
-         if(currentState.nameHash == Animator.StringToHash ("Base Layer.Armature|attack_1") || currentState.nameHash == Animator.StringToHash ("Base Layer.Armature|attack_1"))
-         {
-
-            FindObjectOfType<enemySound>().PlaySoundEffect(0);
-         }
-
-         if (!isSpawnAttackArea)
-            {
-                GameObject clone = Instantiate(dmgArea, attackAreaPosition) as GameObject;
-                isSpawnAttackArea = true;
-                Destroy(clone, 4000);
-            }
-
-            if(!insideAttackArea)
-            {   
-                animator.SetInteger("Satus", 1);
-            }
-    	}
-
-    	private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            attacking = true;
             //increase speed
-            triggerWithPlayer = true;
-            status.setEnemySpeed(+10);
+            status.setEnemySpeed(+10, "");
             Debug.Log("Enemy speed" + status.getEnemySpeed());
         }
     }
@@ -133,10 +110,7 @@ public class Golem : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             //increase speed
-            triggerWithPlayer = false;
-            insideAttackArea = false;
-            attacking =false;
-            status.setEnemySpeed(-10);
+            status.setEnemySpeed(-10, "");
             Debug.Log("Enemy speed" + status.getEnemySpeed());
         }
     }

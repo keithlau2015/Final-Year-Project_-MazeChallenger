@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
-    private bool collisionWithObject = false, triggerWithPlayer = false, onGround = false;
+    //rotation angles
     private float[] rotationDir = { 90, -90, 180, 45, -45 };
-    //private int rotationDirCounter;
-    private Animator animator;
-    private enemySound soundcontrol;
-    private Enemy status;
-    private Rigidbody rigidbody;
 
     [SerializeField]
     private Transform attackAreaPosition, pivotPoint;
+
+    //The Dead effect
     [SerializeField]
     private GameObject deadEffect;
 
+    //check about is this enemy being attacked
     private bool beingAttack;
+    private bool collisionWithObject, triggerWithPlayer, onGround, insideAttackArea;
+
+    //Need component 
+    private Enemy status;
+    private Animator animator;
+    private enemySound soundcontrol;
+    private Rigidbody rigidbody;
 
     private void Awake()
     {
@@ -26,22 +31,16 @@ public class EnemyBehaviour : MonoBehaviour
         status = GetComponent<Enemy>();
         beingAttack = false;
     }
-    private void update()
-    {
-        if(onGround)
-        {
-            EnemyWalk();
-        }
-    }
 
     public void EnemyWalk()
     {
+        //The animation of the walking
         rigidbody.velocity = transform.forward * status.getEnemySpeed();
     }
 
     public void EnemyDie(Vector3 offset)
     {
-        //create a die effect
+        //create a die effect & delete this obj and the effect obj
         Vector3 pos = this.transform.position;
         Quaternion rotation = this.transform.rotation;
         GameObject clone = Instantiate(deadEffect, pos+ offset, rotation) as GameObject;
@@ -51,6 +50,7 @@ public class EnemyBehaviour : MonoBehaviour
 
      public void EnemyRotation()
     {
+        //Whenever this obj is collision sth tag is wall
         if (collisionWithObject)
         {
             int rand = Random.Range(0, rotationDir.Length);
@@ -69,8 +69,8 @@ public class EnemyBehaviour : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             //increase speed
-            status.setEnemyTriggerWithPlayer(true);
-            status.setInsideAttackArea(true);
+            triggerWithPlayer = true;
+            insideAttackArea = true;
             status.setEnemySpeed(+10, "");
             Debug.Log("Enemy speed" + status.getEnemySpeed());
         }
@@ -81,8 +81,8 @@ public class EnemyBehaviour : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             //increase speed
-            status.setEnemyTriggerWithPlayer(false);
-            status.setInsideAttackArea(false);
+            triggerWithPlayer = false;
+            insideAttackArea = false;
             status.setEnemySpeed(-10, "");
             Debug.Log("Enemy speed" + status.getEnemySpeed());
         }

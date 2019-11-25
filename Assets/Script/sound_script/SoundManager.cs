@@ -72,6 +72,6 @@ public class SoundManager : MonoBehaviour
 
     public bool CheckAudioIsPlaying(int id)
     {
-        return !attackSoundEffect.isPlaying;
+        return !soundEffect.isPlaying;
     }
 }

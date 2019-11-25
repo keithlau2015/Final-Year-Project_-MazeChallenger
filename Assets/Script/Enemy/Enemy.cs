@@ -13,9 +13,6 @@ public class Enemy : MonoBehaviour
     private int health;
     private float spawningRate;
 
-    //Behaviour
-    private bool collisionWithObject, triggerWithPlayer, onGround, insideAttackArea, isSpawnAttackArea;
-
     //Animation
     private int attack_pattern;
 
