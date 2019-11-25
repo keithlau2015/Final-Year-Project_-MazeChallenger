@@ -17,9 +17,6 @@ public class PlayerStatus : MonoBehaviour
     private bool playerCanInteractWithOtherObject, playerCanInteractWithVendingMachine;
     private string priceUIText;
 
-    //Stage that player pass
-    private int playerStagePass;
-
     public static PlayerStatus Instance
     {
         get
@@ -37,13 +34,7 @@ public class PlayerStatus : MonoBehaviour
         current_Hunger = total_Hunger;
         current_Speed = total_Speed;
         playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = false;
-        playerStagePass = 0;
         priceUIText = "";
-    }
-
-    public int getPlayerStagePass()
-    {
-        return playerStagePass;
     }
 
     public string getPriceUIText()
@@ -79,11 +70,6 @@ public class PlayerStatus : MonoBehaviour
     public int getHunger()
     {
         return instance.current_Hunger;
-    }
-
-    public void setPlayerStagePass(int stagePass)
-    {
-        this.playerStagePass = this.playerStagePass + stagePass;
     }
 
     public void setPlayerCanInteractWithOtherObject(bool interacted)

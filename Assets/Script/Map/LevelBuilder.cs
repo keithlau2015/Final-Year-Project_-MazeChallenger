@@ -115,14 +115,12 @@ public class LevelBuilder : MonoBehaviour
 
         pauseUI.SetActive(Time.timeScale == 0);
 
-
         timer += Time.deltaTime;
         if (timer > 1f && finishLevelBuilding && PlayerStatus.Instance.getHunger() > 0)
         {
             PlayerStatus.Instance.setHunger(-1, "");
             timer = 0f;
         }
-
     }
     IEnumerator GenerateLevel()
     {
@@ -308,7 +306,7 @@ public class LevelBuilder : MonoBehaviour
 
     private void PlaceSpecialRoom()
     {
-        specialRoom = Instantiate(specialRoomPrefab[1]) as SpecialRoom;
+        specialRoom = Instantiate(specialRoomPrefab[Random.Range(0, startRoomPrefab.Length - 1)]) as SpecialRoom;
         specialRoom.transform.parent = this.transform;
 
         specialRoom.transform.position = Vector3.zero;
