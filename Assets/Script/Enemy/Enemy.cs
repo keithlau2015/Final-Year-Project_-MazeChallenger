@@ -8,115 +8,76 @@ public class Enemy : MonoBehaviour
 
     public EnemyType enemyType;
 
-    //The Base value
-    private const int base_HitPoint = 0;
-    private const float base_Speed = 10;
-    private const int base_Health = 50;
-    private const float base_SpawningRate = 0.8f;
-
     //The Total value
-    private  int total_HitPoint;
-    private float total_Speed;
-    private int total_Health;
-    private float total_spwaningRate;
-
-    //The Buffed value
-    private int buff_HitPoint;
-    private float buff_Speed;
-    private int buff_Health;
-    private float buff_SpwaningRate;
-    private int buffSpeedCounter, buffHealthCounter, buffHitPointCounter, buffSpawningRateCounter;
+    private  int hitPoint;
+    private float speed;
+    private int health;
+    private float spawningRate;
 
     //Behaviour
-    private bool collisionWithObject = false, triggerWithPlayer = false, onGround = false, insideAttackArea = false, isSpawnAttackArea = false;
+    private bool collisionWithObject, triggerWithPlayer, onGround, insideAttackArea, isSpawnAttackArea;
 
     //Animation
-    private int attack_pattern = 0;
+    private int attack_pattern;
 
     public Enemy()
     {
-        total_Health = base_Health;
-        total_HitPoint = base_HitPoint;
-        total_Speed = base_Speed;
-        total_spwaningRate = base_SpawningRate;
+        hitPoint = 1;
+        speed = 10;
+        health = 3;
+        spawningRate = 0.8f;
 
-        buffHealthCounter = buffHitPointCounter = buffSpawningRateCounter = buffSpeedCounter = 0;
-        buff_Health = buff_HitPoint = 0;
-        buff_Speed = buff_SpwaningRate = 0;
-    }
+        attack_pattern = 0;
 
-    
+        collisionWithObject = triggerWithPlayer = onGround = insideAttackArea = isSpawnAttackArea = false;
+    }    
 
     //Health get & set
-    public void setEnemyHealth(int health)
+    public void setEnemyHealth(int health, string extraBuff)
     {
-        int temp = buff_Health + health;
-        total_Health += buff_Health;
-        buffHealthCounter++;
+        if (extraBuff == "") this.health += health;
+        else if (extraBuff == "upgradeEnemy") this.health += health;
     }
 
     public int getEnemyHealth()
     {
-        return total_Health;
-    }
-
-    public int getEnemyHealthBuffCounter()
-    {
-        return buffHealthCounter;
+        return health;
     }
 
     //Speed get & set
-    public void setEnemySpeed(float speed)
+    public void setEnemySpeed(float speed, string extraBuff)
     {
-        buff_Speed = buff_Speed + speed;
-        total_Speed = buff_Speed + base_Speed;
-        buffSpeedCounter++;
+        if (extraBuff == "") this.speed += speed;
+        else if (extraBuff == "upgradeEnemy") this.speed += speed;
     }
 
     public float getEnemySpeed()
     {
-        return total_Speed;
-    }
-
-    public int getEnemyBuffSpeedCounter()
-    {
-        return buffSpeedCounter;
+        return speed;
     }
 
     //Spawning rate get & set
-    public void setEnemySpawningRate(float spawningRate)
+    public void setEnemySpawningRate(float spawningRate, string extraBuff)
     {
-        buff_SpwaningRate += spawningRate;
-        total_spwaningRate += buff_SpwaningRate;
-
+        if (extraBuff == "") this.spawningRate += spawningRate;
+        else if (extraBuff == "upgradeEnemy") this.spawningRate += spawningRate;
     }
 
     public float getEnemySpwaningRate()
     {
-        return total_spwaningRate;
-    }
-
-    public int getEnemyBuffSpawningRateCounter()
-    {
-        return buffSpawningRateCounter;
+        return spawningRate;
     }
 
     //Hit point get & set
-    public void setEnemyHitPoint(int hitPoint)
+    public void setEnemyHitPoint(int hitPoint, string extraBuff)
     {
-        buff_HitPoint += hitPoint;
-        total_HitPoint += buff_HitPoint;
-        buffHitPointCounter++;
+        if (extraBuff == "") this.hitPoint += hitPoint;
+        else if (extraBuff == "upgradeEnemy") this.hitPoint += hitPoint;
     }
 
     public int getEnemyHitPoint()
     {
-        return total_HitPoint;
-    }
-
-    public int getEnemyBuffHitPointCounter()
-    {
-        return buffHitPointCounter;
+        return hitPoint;
     }
 
     //Behaviour get & set
@@ -184,13 +145,13 @@ public class Enemy : MonoBehaviour
     //Reset
     public void resetEnemyValue()
     {
-        total_Health = base_Health;
-        total_HitPoint = base_HitPoint;
-        total_Speed = base_Speed;
-        total_spwaningRate = base_SpawningRate;
+        hitPoint = 1;
+        speed = 10;
+        health = 3;
+        spawningRate = 0.8f;
 
-        buffHealthCounter = buffHitPointCounter = buffSpawningRateCounter = buffSpeedCounter = 0;
-        buff_Health = buff_HitPoint = 0;
-        buff_Speed = buff_SpwaningRate = 0;
+        attack_pattern = 0;
+
+        collisionWithObject = triggerWithPlayer = onGround = insideAttackArea = isSpawnAttackArea = false;
     }
 }

@@ -394,7 +394,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 switch (firstItem.name)
-                {                    
+                {
                     //Weapon
                     case "Spear(Clone)":
                         cleaRightHandObject();
@@ -403,7 +403,7 @@ public class PlayerController : MonoBehaviour
                         holdingBattleAxe = holdingGreatSword = holdingSword = holdingHandgun = false;
                         holdingSpear = true;
                         FindObjectOfType<SoundManager>().PlaySoundEffect(6);
-                        Debug.Log("pick up Spear"); 
+                        Debug.Log("pick up Spear");
                         break;
                     case "Sword_1(Clone)":
                         cleaRightHandObject();
@@ -420,7 +420,7 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.gameObject);
                         holdingShield = true;
                         FindObjectOfType<SoundManager>().PlaySoundEffect(8);
-                        Debug.Log("pick up Shield_0");  
+                        Debug.Log("pick up Shield_0");
                         break;
                     case "Shield_1(Clone)":
                         clearLeftHandObject();
@@ -466,23 +466,22 @@ public class PlayerController : MonoBehaviour
                         FindObjectOfType<SoundManager>().PlaySoundEffect(9);
                         Debug.Log("pick up Handgun");
                         break;
-
                     //Food
                     case "Bread(Clone)":
-                        PlayerStatus.Instance.setHunger(20);
+                        PlayerStatus.Instance.setHunger(20, "");
                         FindObjectOfType<SoundManager>().PlaySoundEffect(10);
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.gameObject);
                         break;
                     case "Soup(Clone)":
                         PlayerStatus.Instance.setHealth(+5, "");
-                        PlayerStatus.Instance.setHunger(15);
+                        PlayerStatus.Instance.setHunger(15, "");
                         FindObjectOfType<SoundManager>().PlaySoundEffect(11);
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.gameObject);
                         break;
                     case "Apple(Clone)":
-                        PlayerStatus.Instance.setHunger(10);
+                        PlayerStatus.Instance.setHunger(10, "");
                         PlayerStatus.Instance.setHealth(+1, "");
                         FindObjectOfType<SoundManager>().PlaySoundEffect(10);
                         Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
@@ -491,7 +490,7 @@ public class PlayerController : MonoBehaviour
                         break;
                     case "Banana(Clone)":
                         PlayerStatus.Instance.setHealth(+1, "");
-                        PlayerStatus.Instance.setHunger(10);
+                        PlayerStatus.Instance.setHunger(10, "");
                         FindObjectOfType<SoundManager>().PlaySoundEffect(11);
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.gameObject);

@@ -3,17 +3,12 @@
 public class PlayerStatus : MonoBehaviour
 {
     static readonly PlayerStatus instance = new PlayerStatus();
-
-    //Base
-    private const int base_Health = 10, base_Hunger = 100;
-    private const float base_Speed = 25;
-
-    //Upgrade
-    private int upgradeSlot_Health, upgradeSlot_Hunger;
-    private float upgradeSlot_Speed;
+    //Current
+    private int current_Health, current_Hunger, current_Coins;
+    private float current_Speed;
 
     //Total
-    private int total_Health, total_Hunger, total_Coins;
+    private int total_Health, total_Hunger;
     private float total_Speed;
 
     private bool playerGetIntoNextLevel, playerAtTheMenu;
@@ -35,9 +30,12 @@ public class PlayerStatus : MonoBehaviour
 
     private PlayerStatus()
     {
-        total_Health = base_Health;
-        total_Hunger = base_Hunger;
-        total_Speed = base_Speed;
+        total_Health = 10;
+        total_Hunger = 100;
+        total_Speed = 50;
+        current_Health = total_Health;
+        current_Hunger = total_Hunger;
+        current_Speed = total_Speed;
         playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = false;
         playerStagePass = 0;
         priceUIText = "";
@@ -65,22 +63,22 @@ public class PlayerStatus : MonoBehaviour
 
     public int getCoins()
     {
-        return instance.total_Coins;
+        return instance.current_Coins;
     }
     
     public float getSpeed()
     {
-        return instance.total_Speed;
+        return instance.current_Speed;
     }
 
     public int getHealth()
     {
-        return instance.total_Health;
+        return instance.current_Health;
     }
 
     public int getHunger()
     {
-        return instance.total_Hunger;
+        return instance.current_Hunger;
     }
 
     public void setPlayerStagePass(int stagePass)
@@ -100,56 +98,42 @@ public class PlayerStatus : MonoBehaviour
 
     public void setCoins(int coins)
     {
-        this.total_Coins = this.total_Coins + coins;
+        this.current_Coins = this.current_Coins + coins;
     }
 
     public void setSpeed(float speed, string extraBuff)
     {
-        float temp = this.total_Speed + speed;
-        if(temp >= base_Speed && extraBuff == "")
+        if(extraBuff == "")
         {
-            this.total_Speed = base_Speed;
+            return;
         }
-        else if (temp >= base_Speed && extraBuff.Equals("upgradeSpeed"))
+        else if(extraBuff == "upgradeSpeed")
         {
-            if(temp > base_Speed + this.upgradeSlot_Speed)
-            {
-                this.upgradeSlot_Speed = base_Speed + this.upgradeSlot_Speed;
-            }
-            else
-            {
-                this.total_Speed = temp;
-            }
-        }
-        else
-        {
-            this.total_Speed = temp;
+            total_Speed += speed;
+            current_Speed = total_Speed;
         }
     }
 
     public void setHealth(int health, string extraBuff)
     {
-        int temp = this.total_Health + health;
-        if (temp >= (base_Health + upgradeSlot_Health) && extraBuff == "")
+        if(extraBuff == "")
         {
-            this.total_Health = base_Health + upgradeSlot_Health;
-        }
-        else if(temp >= base_Health && extraBuff.Equals("upgradeHP"))
-        {
-            //the number is over the base health plus the upgrade health
-            if(temp > base_Health + this.upgradeSlot_Health)
+            if(current_Health + health >= total_Health)
             {
-                //full health
-               this.total_Health = base_Health + this.upgradeSlot_Health;
+                current_Health = total_Health;
+            }
+            else if(current_Health + health <= 0)
+            {
+                current_Health = 0;
             }
             else
             {
-                this.total_Health = temp;
+                current_Health += health;
             }
         }
-        else
+        else if(extraBuff == "upgradeHealth")
         {
-            this.total_Health += health;
+            total_Health += health;
         }
     }
 
@@ -158,16 +142,18 @@ public class PlayerStatus : MonoBehaviour
         priceUIText = price;
     }
 
-    public void setHunger(int hunger)
+    public void setHunger(int hunger, string extraBuff)
     {
-        int temp = this.total_Hunger + hunger;
-        if (temp >= 100)
+        if(extraBuff == "")
         {
-            this.total_Hunger = base_Hunger;
-        }
-        else
-        {
-            this.total_Hunger += hunger;
+            if (this.current_Hunger + hunger >= total_Hunger)
+            {
+                this.current_Hunger = total_Hunger;
+            }
+            else
+            {
+                this.current_Hunger += hunger;
+            }
         }
     }    
 
@@ -194,12 +180,12 @@ public class PlayerStatus : MonoBehaviour
     public void resetData()
     {
         this.priceUIText = "";
-        this.upgradeSlot_Health = 0;
-        this.upgradeSlot_Hunger = 0;
-        this.upgradeSlot_Speed = 0;
+        this.current_Health = 0;
+        this.current_Hunger = 0;
+        this.current_Speed = 0;
         this.total_Health = 0;
         this.total_Hunger = 0;
         this.total_Speed = 0;
-        this.total_Coins = 0;
+        this.current_Coins = 0;
     }
 }

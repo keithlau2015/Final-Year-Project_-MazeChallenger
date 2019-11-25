@@ -14,11 +14,14 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject deadEffect;
 
+    private bool beingAttack;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
         status = GetComponent<Enemy>();
+        beingAttack = false;
     }
     
     public void EnemyWalk()
@@ -46,11 +49,13 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    public void EnemyDie()
+    public void EnemyDie(Vector3 offset)
     {
         //create a die effect
-        GameObject clone = Instantiate(deadEffect, this.transform) as GameObject;
-        Destroy(clone, 5);
+        Vector3 pos = this.transform.position;
+        Quaternion rotation = this.transform.rotation;
+        GameObject clone = Instantiate(deadEffect, pos+ offset, rotation) as GameObject;
+        Destroy(clone, 10);
         Destroy(this.gameObject);
     }
 
@@ -76,7 +81,7 @@ public class EnemyBehaviour : MonoBehaviour
             //increase speed
             status.setEnemyTriggerWithPlayer(true);
             status.setInsideAttackArea(true);
-            status.setEnemySpeed(+10);
+            status.setEnemySpeed(+10, "");
             Debug.Log("Enemy speed" + status.getEnemySpeed());
         }
     }
@@ -88,7 +93,7 @@ public class EnemyBehaviour : MonoBehaviour
             //increase speed
             status.setEnemyTriggerWithPlayer(false);
             status.setInsideAttackArea(false);
-            status.setEnemySpeed(-10);
+            status.setEnemySpeed(-10, "");
             Debug.Log("Enemy speed" + status.getEnemySpeed());
         }
     }
@@ -103,6 +108,12 @@ public class EnemyBehaviour : MonoBehaviour
         {
             status.setOnGround(true);
         }
+        if(collision.gameObject.tag == "Weapon" && !beingAttack)
+        {
+            beingAttack = true;
+            status.setEnemyHealth(-1, "");
+            Debug.Log("Enemy Health: " + status.getEnemyHealth());
+        }
     }
 
     private void OnCollisionStay(Collision collision)
@@ -110,6 +121,10 @@ public class EnemyBehaviour : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             status.setOnGround(true);
+        }
+        if(collision.gameObject.tag == "Weapon")
+        {
+            beingAttack = true;
         }
     }
 
@@ -122,6 +137,10 @@ public class EnemyBehaviour : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             status.setOnGround(false);
+        }
+        if(collision.gameObject.tag == "Weapon")
+        {
+            beingAttack = false;
         }
     }
 }

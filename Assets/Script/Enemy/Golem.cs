@@ -33,7 +33,8 @@ public class Golem : MonoBehaviour
 
         if(status.getEnemyHealth() == 0)
         {
-            enemyBehaviour.EnemyDie();
+            Vector3 offset = new Vector3(0, 5, 0);
+            enemyBehaviour.EnemyDie(offset);
         }
     }
 

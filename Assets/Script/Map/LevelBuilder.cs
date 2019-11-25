@@ -70,7 +70,7 @@ public class LevelBuilder : MonoBehaviour
     }
 
     private void Update()
-    {
+    {        
         if (upgradeUI.activeSelf)
         {
             FindObjectOfType<SoundManager>().PlaySoundEffect(12);
@@ -95,6 +95,15 @@ public class LevelBuilder : MonoBehaviour
             upgradeUI.SetActive(false);
         }
 
+        if (PlayerStatus.Instance.getHealth() == 0)
+        {
+            gameOverUI.SetActive(true);
+        }
+        else
+        {
+            gameOverUI.SetActive(false);
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape) && !pauseUI.activeSelf)
         {
             Time.timeScale = 0;
@@ -110,7 +119,7 @@ public class LevelBuilder : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > 1f && finishLevelBuilding && PlayerStatus.Instance.getHunger() > 0)
         {
-            PlayerStatus.Instance.setHunger(-1);
+            PlayerStatus.Instance.setHunger(-1, "");
             timer = 0f;
         }
 
@@ -125,7 +134,7 @@ public class LevelBuilder : MonoBehaviour
         yield return startup;
 
         //1 is the special room spawning rate
-        if (50 >= Random.Range(0, 100) && specialRoomPrefab.Length != 0)
+        if (1 >= Random.Range(0, 100) && specialRoomPrefab.Length != 0)
         {
             PlaceSpecialRoom();
             Debug.Log("Place a special room");
@@ -410,13 +419,9 @@ public class LevelBuilder : MonoBehaviour
     //Placing interactable items or enemy
     private void PlaceWeapon(Weapon weapon, Room room, int spwaningPoint)
     {
-        float rand = Random.Range(0f, 1f);
-        if (weapon.spawningRate >= rand)
-        {
             Weapon currentSpawnedWeapon = Instantiate(weapon, room.spwanPoint_Weapon[spwaningPoint]) as Weapon;
             currentSpawnedWeapon.transform.parent = this.transform;
             placedWeapons.Add(currentSpawnedWeapon);
-        }
     }
 
     private void PlaceEnemy(Enemy enemy, Room room, int spawningPoint)
