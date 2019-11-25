@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public enum EnemyType { Golem }
-
     public EnemyType enemyType;
 
     //The Total value
@@ -78,68 +77,6 @@ public class Enemy : MonoBehaviour
     public int getEnemyHitPoint()
     {
         return hitPoint;
-    }
-
-    //Behaviour get & set
-    public void setEnemyCollisionWithObject(bool set)
-    {
-        this.collisionWithObject = set;
-    }
-
-    public bool getEnemyCollisionWithObject()
-    {
-        return this.collisionWithObject;
-    }
-
-    public void setEnemyTriggerWithPlayer(bool set)
-    {
-        this.triggerWithPlayer = set;
-    }
-
-    public bool getEnemyTriggerWithPlayer()
-    {
-        return this.triggerWithPlayer;
-    }
-
-    public void setOnGround(bool set)
-    {
-        this.onGround = set;
-    }
-
-    public bool getOnGround()
-    {
-        return this.onGround;
-    }
-
-    public void setInsideAttackArea(bool set)
-    {
-        this.insideAttackArea = set;
-    }
-
-    public bool getInsideAttackArea()
-    {
-        return this.insideAttackArea;
-    }
-
-    public void setIsSpawnAttackArea(bool set)
-    {
-        this.isSpawnAttackArea = set;
-    }
-
-    public bool getIsSpawnAttackArea()
-    {
-        return this.isSpawnAttackArea;
-    }
-
-    //Animator get & set
-    public void setAttack_pattern(int attack_pattern)
-    {
-        this.attack_pattern = attack_pattern;
-    }
-
-    public int getAttack_pattern()
-    {
-        return this.attack_pattern;
     }
 
     //Reset

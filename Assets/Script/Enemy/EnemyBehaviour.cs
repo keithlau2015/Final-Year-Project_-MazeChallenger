@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
-{    
+{
+    private bool collisionWithObject = false, triggerWithPlayer = false, onGround = false;
     private float[] rotationDir = { 90, -90, 180, 45, -45 };
     //private int rotationDirCounter;
     private Animator animator;
+    private enemySound soundcontrol;
     private Enemy status;
     private Rigidbody rigidbody;
+
     [SerializeField]
     private Transform attackAreaPosition, pivotPoint;
     [SerializeField]
@@ -23,30 +26,17 @@ public class EnemyBehaviour : MonoBehaviour
         status = GetComponent<Enemy>();
         beingAttack = false;
     }
-    
+    private void update()
+    {
+        if(onGround)
+        {
+            EnemyWalk();
+        }
+    }
+
     public void EnemyWalk()
     {
-        //Animation
-         animator.SetInteger("Satus", 1);
-                
         rigidbody.velocity = transform.forward * status.getEnemySpeed();
-
-        //Detect the player is in the attack range
-        RaycastHit hit;
-
-        if (Physics.SphereCast(pivotPoint.position, 5f, transform.forward, out hit, 20f))
-        {
-            var hitTarget = hit.transform;
-            if (hitTarget.CompareTag("Player"))
-            {
-
-                status.setInsideAttackArea(true);
-            }
-            else
-            {
-                status.setInsideAttackArea(false);
-            }
-        }
     }
 
     public void EnemyDie(Vector3 offset)
@@ -59,15 +49,15 @@ public class EnemyBehaviour : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    public void EnemyRotation()
+     public void EnemyRotation()
     {
-        if (status.getEnemyCollisionWithObject())
+        if (collisionWithObject)
         {
             int rand = Random.Range(0, rotationDir.Length);
             Vector3 targetYAxis = new Vector3(0, rotationDir[rand], 0);
             transform.rotation = Quaternion.Euler(targetYAxis);
         }
-        if (status.getEnemyTriggerWithPlayer())
+        if (triggerWithPlayer)
         {
             Vector3 targetYAxis = new Vector3(PlayerRef.instance.player.transform.position.x, this.transform.position.y, PlayerRef.instance.player.transform.position.z);
             transform.LookAt(targetYAxis);
@@ -98,15 +88,17 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
+    
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Wall")
         {
-            status.setEnemyCollisionWithObject(true);
+            collisionWithObject = true;
         }
-        if (collision.gameObject.tag == "Ground")
+        if(collision.gameObject.tag == "Ground")
         {
-            status.setOnGround(true);
+            onGround = true;
         }
         if(collision.gameObject.tag == "Weapon" && !beingAttack)
         {
@@ -118,9 +110,9 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        if(collision.gameObject.tag == "Ground")
         {
-            status.setOnGround(true);
+            onGround = true;
         }
         if(collision.gameObject.tag == "Weapon")
         {
@@ -132,11 +124,11 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if(collision.gameObject.tag == "Wall")
         {
-            status.setEnemyCollisionWithObject(false);
+            collisionWithObject = false;
         }
         if (collision.gameObject.tag == "Ground")
         {
-            status.setOnGround(false);
+            onGround = false;
         }
         if(collision.gameObject.tag == "Weapon")
         {
