@@ -24,8 +24,6 @@ public class Enemy : MonoBehaviour
         spawningRate = 0.8f;
 
         attack_pattern = 0;
-
-        collisionWithObject = triggerWithPlayer = onGround = insideAttackArea = isSpawnAttackArea = false;
     }    
 
     //Health get & set
@@ -85,7 +83,5 @@ public class Enemy : MonoBehaviour
         spawningRate = 0.8f;
 
         attack_pattern = 0;
-
-        collisionWithObject = triggerWithPlayer = onGround = insideAttackArea = isSpawnAttackArea = false;
     }
 }
