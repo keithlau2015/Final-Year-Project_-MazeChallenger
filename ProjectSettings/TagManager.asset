@@ -19,6 +19,8 @@ TagManager:
   - Wall
   - Trap
   - Spike
+  - VendingMachine
+  - StayWithHK
   layers:
   - Default
   - TransparentFX
