@@ -13,4 +13,9 @@ public class AnimationEvents : MonoBehaviour
     {
         FindObjectOfType<SoundManager>().PlayWeaponAttackEffect(1);
     }
+
+    public void SetPlayerFinishedAttack()
+    {
+        PlayerStatus.Instance.setPlayerAttacking(false);
+    }
 }

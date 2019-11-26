@@ -100,7 +100,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             onGround = true;
         }
-        if(collision.gameObject.tag == "Weapon" && !beingAttack)
+        if(collision.gameObject.tag == "Weapon" && !beingAttack && PlayerStatus.Instance.getPlayerAttacking())
         {
             beingAttack = true;
             status.setEnemyHealth(-1, "");

@@ -11,7 +11,7 @@ public class PlayerStatus : MonoBehaviour
     private int total_Health, total_Hunger;
     private float total_Speed;
 
-    private bool playerGetIntoNextLevel, playerAtTheMenu;
+    private bool playerGetIntoNextLevel, playerAtTheMenu, attacking;
 
     //UI
     private bool playerCanInteractWithOtherObject, playerCanInteractWithVendingMachine;
@@ -33,7 +33,7 @@ public class PlayerStatus : MonoBehaviour
         current_Health = total_Health;
         current_Hunger = total_Hunger;
         current_Speed = total_Speed;
-        playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = false;
+        playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking = false;
         priceUIText = "";
     }
 
@@ -161,6 +161,16 @@ public class PlayerStatus : MonoBehaviour
     public bool getPlayerAtTheMenu()
     {
         return this.playerAtTheMenu;
+    }
+
+    public void setPlayerAttacking(bool set)
+    {
+        this.attacking = set;
+    }
+
+    public bool getPlayerAttacking()
+    {
+        return attacking;
     }
 
     public void resetData()

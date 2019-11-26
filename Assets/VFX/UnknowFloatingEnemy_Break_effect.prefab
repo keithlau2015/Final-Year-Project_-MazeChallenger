@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5275357520102086364}
   - component: {fileID: 3959975066152243686}
   m_Layer: 0
-  m_Name: Golem_Break_effect
+  m_Name: UnknowFloatingEnemy_Break_effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4806,7 +4806,7 @@ ParticleSystemRenderer:
   m_ApplyActiveColorSpace: 1
   m_AllowRoll: 1
   m_VertexStreams: 00010304
-  m_Mesh: {fileID: -5495902117074765545, guid: 777b48fa3791a9544989a07694e8ee7b, type: 3}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}

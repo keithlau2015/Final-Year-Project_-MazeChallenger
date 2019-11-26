@@ -60,6 +60,9 @@ public class PlayerController : MonoBehaviour
         float x = rigidbody.velocity.x;
         float z = rigidbody.velocity.z;
 
+        //Check Player is Attacking or not
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) PlayerStatus.Instance.setPlayerAttacking(true);
+
         if (Input.GetMouseButtonDown(1) && holdingShield)
         {
             leftHandAnimator.SetBool("Blocking", true);
@@ -72,8 +75,6 @@ public class PlayerController : MonoBehaviour
         if(Input.GetMouseButton(0) && holdingSword)
         {
             rightHandAnimator.SetBool("Sword_Swing", true);
-            Debug.Log("Success");
-            
         }
         else if (Input.GetMouseButtonUp(0) && holdingSword)
         {
@@ -165,13 +166,6 @@ public class PlayerController : MonoBehaviour
             */
             rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            PlayerStatus.Instance.setPlayerAtTheMenu(true);
-            PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
-            SceneManager.LoadScene(1);
-        }
     }
 
     private void FixedUpdate()
@@ -188,7 +182,7 @@ public class PlayerController : MonoBehaviour
 
         if(collision.gameObject.tag == "Enemy")
         {
-            PlayerStatus.Instance.setHealth(-2, "");
+            PlayerStatus.Instance.setHealth(-1, "");
             Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
         }
     }
