@@ -45,24 +45,36 @@ public class Golem : MonoBehaviour
             var hitTarget = hit.transform;
             if (hitTarget.CompareTag("Player"))
             {
-                //Attack
+            	animator.SetInteger("Satus", 2);
+                EnemyAttack();
             }
         }
         else
         {
+        	animator.SetInteger("Satus", 1);
             enemyBehaviour.EnemyWalk();
         }
     }
 
-/*
- *  Tom 呢度你整, 整完你同我講, 我要問你個animation
-    private void EnemyAttack(AnimatorStateInfo currentState)
+
+  // Tom 呢度你整, 整完你同我講, 我要問你個animation
+    private void EnemyAttack()
     {
-        if(!animator.IsInTransition (0) && currentState.fullPathHash == Animator.StringToHash ("Base Layer.attack_mode") && insideAttackArea)
+    	AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
+    	bool attack = false;
+        if(!animator.IsInTransition (0) && currentState.fullPathHash == Animator.StringToHash ("Base Layer.Armature|walking"))
          {
-            if(attack_pattern == 0)
+            if(attack_pattern == 0 && !attack)
             {
-                attack_pattern = Random.Range(1,3);
+            	attack = true;
+                if(Random.value > 0.7)
+                {
+                	attack_pattern = 2;
+                }
+                if(Random.value > 0.3)
+                {
+                	attack_pattern = 1;
+                }
                 if(attack_pattern == 1)
                 {
                     animator.SetInteger("attackpattern", 1);
@@ -74,26 +86,14 @@ public class Golem : MonoBehaviour
             }
             else
             {
+            	attack = false;
                 attack_pattern = 0;
             }
+        }
 
-            if()
-            {
-            //speed is 0
-                status.setEnemySpeed(,"");
-            }
-            else
-            {
-            //speed is back nonormal
-                status.setEnemySpeed(,"");
-            }       
-        }
-        if()
-        {   
-            animator.SetInteger("Satus", 1);
-        }
+            
     }
-*/
+
 
     private void OnTriggerEnter(Collider other)
     {
