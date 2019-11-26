@@ -3,6 +3,10 @@
 public class PlayerStatus : MonoBehaviour
 {
     static readonly PlayerStatus instance = new PlayerStatus();
+    //Default
+    private const int HEALTH = 10, HUNGER = 100, COINS = 0;
+    private const float SPEED = 50;
+
     //Current
     private int current_Health, current_Hunger, current_Coins;
     private float current_Speed;
@@ -15,7 +19,10 @@ public class PlayerStatus : MonoBehaviour
 
     //UI
     private bool playerCanInteractWithOtherObject, playerCanInteractWithVendingMachine;
-    private string priceUIText;
+    private string priceUIText, killedBy;
+
+    //Stage
+    private int reachedLevels;
 
     public static PlayerStatus Instance
     {
@@ -27,14 +34,15 @@ public class PlayerStatus : MonoBehaviour
 
     private PlayerStatus()
     {
-        total_Health = 10;
-        total_Hunger = 100;
-        total_Speed = 50;
+        total_Health = HEALTH;
+        total_Hunger = HUNGER;
+        total_Speed = SPEED;
+        reachedLevels = 0;
         current_Health = total_Health;
         current_Hunger = total_Hunger;
         current_Speed = total_Speed;
         playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking = false;
-        priceUIText = "";
+        priceUIText = killedBy = "";
     }
 
     public string getPriceUIText()
@@ -173,15 +181,36 @@ public class PlayerStatus : MonoBehaviour
         return attacking;
     }
 
+    public void setPlayerReachLevels(int level)
+    {
+        this.reachedLevels = level;
+    }
+
+    public int getPlayerReachLevels()
+    {
+        return this.reachedLevels;
+    }
+
+    public void setPlayerKilledBy(string killedBy)
+    {
+        this.killedBy = killedBy;
+    }
+
+    public string getPlayerKilledBy()
+    {
+        return this.killedBy;
+    }
+
     public void resetData()
     {
-        this.priceUIText = "";
-        this.current_Health = 0;
-        this.current_Hunger = 0;
-        this.current_Speed = 0;
-        this.total_Health = 0;
-        this.total_Hunger = 0;
-        this.total_Speed = 0;
-        this.current_Coins = 0;
+        this.priceUIText = this.killedBy = "";
+        this.current_Health = HEALTH;
+        this.current_Hunger = HUNGER;
+        this.current_Speed = SPEED;
+        this.total_Health = HEALTH;
+        this.total_Hunger = HUNGER;
+        this.total_Speed = SPEED;
+        this.current_Coins = COINS;
+        this.reachedLevels = 0;
     }
 }

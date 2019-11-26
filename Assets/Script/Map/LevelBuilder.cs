@@ -57,6 +57,7 @@ public class LevelBuilder : MonoBehaviour
         finishLevelBuilding = false;
         loadingUI.SetActive(false);
         upgradeUI.SetActive(false);
+        pauseUI.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player");
         roomLayerMask = LayerMask.GetMask("Room");
 
@@ -93,11 +94,23 @@ public class LevelBuilder : MonoBehaviour
         else
         {
             upgradeUI.SetActive(false);
+        }      
+
+        //For Death reason
+        if (PlayerStatus.Instance.getHunger() == 0)
+        {
+            PlayerStatus.Instance.setPlayerKilledBy("Starve to death");
+        }
+        //The excpetion of Player die at the 0 level
+        else if (PlayerStatus.Instance.getPlayerReachLevels() == 0 && PlayerStatus.Instance.getHealth() == 0 || PlayerStatus.Instance.getHunger() == 0)
+        {
+            PlayerStatus.Instance.setPlayerKilledBy("Do you really trying");
         }
 
-        if (PlayerStatus.Instance.getHealth() == 0)
+        if (PlayerStatus.Instance.getHealth() == 0 || PlayerStatus.Instance.getHunger() == 0)
         {
             gameOverUI.SetActive(true);
+            Time.timeScale = 0;
         }
         else
         {
@@ -108,12 +121,13 @@ public class LevelBuilder : MonoBehaviour
         {
             Time.timeScale = 0;
         }
+
         if (Input.GetKeyDown(KeyCode.Escape) && pauseUI.activeSelf)
         {
             Time.timeScale = 1;
         }
 
-        pauseUI.SetActive(Time.timeScale == 0);
+        pauseUI.SetActive(Time.timeScale == 0 && !gameOverUI.activeSelf);
 
         timer += Time.deltaTime;
         if (timer > 1f && finishLevelBuilding && PlayerStatus.Instance.getHunger() > 0)
