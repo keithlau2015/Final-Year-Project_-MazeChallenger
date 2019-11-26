@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float speed, jumpPower;
+    private float jumpPower;
     private Rigidbody rigidbody;
     private bool isShooting ,isGrounded, holdingShield, holdingSword, holdingSpear, holdingGreatSword, holdingBattleAxe, holdingHandgun;
     private int countJump;
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Vector3 movenment = new Vector3(Input.GetAxis("Horizontal"), 0 , Input.GetAxis("Vertical"));
-        Vector3 velocity = transform.TransformDirection(movenment) * speed;
+        Vector3 velocity = transform.TransformDirection(movenment) * PlayerStatus.Instance.getSpeed();
         velocity.y = rigidbody.velocity.y;
         rigidbody.velocity = velocity;
         cam.transform.position = gameObject.transform.position + camOffset;
@@ -136,12 +136,12 @@ public class PlayerController : MonoBehaviour
                 ismoving = true;
                 running = true;
                 walking = false;
-                speed = 40;
+                PlayerStatus.Instance.setSpeed(+10, "");
             }
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            speed = 20;
+            PlayerStatus.Instance.setSpeed(-10, "");
             ismoving = true;
             walking = true;
             running = false;
@@ -207,13 +207,17 @@ public class PlayerController : MonoBehaviour
         {
             PlayerStatus.Instance.setHealth(-1, "");
             Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
+            if(PlayerStatus.Instance.getHealth() == 0)
+            {
+                PlayerStatus.Instance.setPlayerKilledBy(collision.gameObject.name + "tear you apart");
+            }
         }
 
         //Ladder
         if (collision.gameObject.tag == "Ladder")
         {
             Vector3 climbMovement = new Vector3(0, Input.GetAxis("Vertical"), 0);
-            Vector3 velocity = transform.TransformDirection(climbMovement) * speed;
+            Vector3 velocity = transform.TransformDirection(climbMovement) * PlayerStatus.Instance.getSpeed();
             //velocity.y = rigidbody.velocity.y;
             rigidbody.velocity = velocity;
         }
@@ -235,7 +239,7 @@ public class PlayerController : MonoBehaviour
         if(collision.collider.tag == "Ladder")
         {
             Vector3 movenment = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            Vector3 velocity = transform.TransformDirection(movenment) * speed;
+            Vector3 velocity = transform.TransformDirection(movenment) * PlayerStatus.Instance.getSpeed();
             //velocity.y = rigidbody.velocity.y;
             rigidbody.velocity = velocity;
         }
@@ -247,6 +251,7 @@ public class PlayerController : MonoBehaviour
         {
             //upgrade player status & monster status
             PlayerStatus.Instance.setPlayerGetIntoNextLevel(true);
+            PlayerStatus.Instance.setPlayerReachLevels(+1);
         }
         if (other.gameObject.tag == "LadderBottom")
         {
@@ -255,6 +260,10 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.tag == "Spike")
         {
             PlayerStatus.Instance.setHealth(-1, "");
+            if(PlayerStatus.Instance.getHealth() == 0)
+            {
+                PlayerStatus.Instance.setPlayerKilledBy("Jump into the Spike");
+            }
         }
     }
 
