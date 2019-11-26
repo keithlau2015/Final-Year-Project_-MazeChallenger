@@ -101,6 +101,7 @@ public class LevelBuilder : MonoBehaviour
         {
             PlayerStatus.Instance.setPlayerKilledBy("Starve to death");
         }
+
         //The excpetion of Player die at the 0 level
         else if (PlayerStatus.Instance.getPlayerReachLevels() == 0 && PlayerStatus.Instance.getHealth() == 0 || PlayerStatus.Instance.getHunger() == 0)
         {
