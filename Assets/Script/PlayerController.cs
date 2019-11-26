@@ -203,7 +203,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Enemy
-        if(collision.collider.tag == "Enemy")
+        if(collision.collider.tag == "attack_point")
         {
             PlayerStatus.Instance.setHealth(-1, "");
             Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());

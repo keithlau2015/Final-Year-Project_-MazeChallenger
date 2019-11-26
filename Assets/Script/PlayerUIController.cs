@@ -30,7 +30,8 @@ public class PlayerUIController : MonoBehaviour
         Health.text = PlayerStatus.Instance.getHealth().ToString();
         Coins.text = PlayerStatus.Instance.getCoins().ToString();
         Result.text = "You had reach to " + PlayerStatus.Instance.getPlayerReachLevels() + " Levels !";
-        if(PlayerStatus.Instance.getPlayerReachLevels() > 0)DeathReason.text = PlayerStatus.Instance.getPlayerKilledBy();
+        if (PlayerStatus.Instance.getPlayerReachLevels() > 0) DeathReason.text = PlayerStatus.Instance.getPlayerKilledBy();
+        else DeathReason.text = PlayerStatus.Instance.getPlayerKilledBy();
     }
 
     public void SoundEffectVolumeSlide()
