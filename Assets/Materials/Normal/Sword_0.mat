@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sword_0
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 8fe0531ee099cbc4b825b1296f9d4359,
+    type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,6 +20,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_92FDC00:
+        m_Texture: {fileID: 2800000, guid: 1e35881a303f3894884d41919913303a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_F200E421:
         m_Texture: {fileID: 2800000, guid: a5cba89d841b75348a8b2bcbb9a743c1, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -77,6 +82,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_335266FA: 0
+    - Vector1_4E07BD88: 0.03
+    - Vector1_5988EEA0: -1
     - Vector1_84DF06D8: -0.02
     - Vector1_9B82F687: 0.76
     - Vector1_C1430443: 1
@@ -110,7 +117,9 @@ Material:
     m_Colors:
     - Color_202EADEE: {r: 0.5471698, g: 0.5471698, b: 0.5471698, a: 0}
     - Color_4EED99A5: {r: 0, g: 0, b: 0, a: 0}
+    - Color_5303363D: {r: 1, g: 1, b: 1, a: 0}
     - Color_535898C: {r: 1, g: 1, b: 1, a: 0}
+    - Color_CAAE29F0: {r: 1.335078, g: 0.4764398, b: 0, a: 0}
     - Color_EB6ECEFE: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
