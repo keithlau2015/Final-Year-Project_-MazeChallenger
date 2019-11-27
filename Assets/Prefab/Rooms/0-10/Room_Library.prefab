@@ -27176,7 +27176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556479681350773737}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -84.1, y: -24.9, z: -35}
+  m_LocalPosition: {x: -84.1, y: -24.05, z: -35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4207366637778303521}
@@ -109460,6 +109460,8 @@ MonoBehaviour:
   spwanPoint_Enemy:
   - {fileID: 4105369483129591481}
   - {fileID: 7017601847114195038}
+  spwanPoint_Coins: []
+  spwanPoint_VendingMachines: []
 --- !u!1 &7287454717663104550
 GameObject:
   m_ObjectHideFlags: 0

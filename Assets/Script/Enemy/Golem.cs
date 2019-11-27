@@ -10,7 +10,6 @@ public class Golem : MonoBehaviour
 	private int attack_pattern = 0;
 	private EnemyBehaviour enemyBehaviour;
     private Enemy status;
-    private Rigidbody rigidbody;
     private bool attack = false;
     public PlayerController player;
     public GameObject atk_point;
@@ -24,7 +23,6 @@ public class Golem : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        rigidbody = GetComponent<Rigidbody>();
         enemyBehaviour = GetComponent<EnemyBehaviour>();
         status = GetComponent<Enemy>();
 
@@ -50,13 +48,13 @@ public class Golem : MonoBehaviour
             var hitTarget = hit.transform;
             if (hitTarget.CompareTag("Player"))
             {
-            	animator.SetInteger("Satus", 2);
+            	animator.SetInteger("Status", 2);
                 EnemyAttack();
             }
         }
         else
         {
-        	animator.SetInteger("Satus", 1);
+        	animator.SetInteger("Status", 1);
             enemyBehaviour.EnemyWalk();
         }
     }

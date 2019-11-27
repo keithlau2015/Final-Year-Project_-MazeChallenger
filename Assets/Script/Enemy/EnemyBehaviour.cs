@@ -7,9 +7,6 @@ public class EnemyBehaviour : MonoBehaviour
     //rotation angles
     private float[] rotationDir = { 90, -90, 180, 45, -45 };
 
-    [SerializeField]
-    private Transform attackAreaPosition, pivotPoint;
-
     //The Dead effect
     [SerializeField]
     private GameObject deadEffect;

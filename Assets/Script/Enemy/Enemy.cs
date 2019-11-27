@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public enum EnemyType { Golem }
+    public enum EnemyType { Golem, FloatingEnemy }
     public EnemyType enemyType;
 
     //The Total value
