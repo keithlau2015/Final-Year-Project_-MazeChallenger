@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 camOffset;
     private Animator leftHandAnimator, rightHandAnimator;
     private bool checkIsMoving;
-
+    public static bool already_atk;
     [SerializeField]
     private GameObject[] weapons, dissolve_weapons;
 
@@ -180,7 +180,7 @@ public class PlayerController : MonoBehaviour
             FindObjectOfType<SoundManager>().PlaySoundEffect(4);
         }
 
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "attack_point")
         {
             PlayerStatus.Instance.setHealth(-1, "");
             Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
@@ -265,6 +265,20 @@ public class PlayerController : MonoBehaviour
                 PlayerStatus.Instance.setPlayerKilledBy("Jump into the Spike");
             }
         }
+        if(other.gameObject.tag == "attack_point")
+        {
+            if(!already_atk)
+            {
+                PlayerStatus.Instance.setHealth(-1, "");
+                already_atk = true;
+            }
+            Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
+        }
+    }
+
+    private void OnTriggerExit()
+    {
+        already_atk = false;
     }
 
     private void DrawRayCastLine() {

@@ -19,6 +19,9 @@ TagManager:
   - Wall
   - Trap
   - Spike
+  - Weapon
+  - VendingMachine
+  - attack_point
   layers:
   - Default
   - TransparentFX

@@ -11,7 +11,10 @@ public class Golem : MonoBehaviour
 	private EnemyBehaviour enemyBehaviour;
     private Enemy status;
     private Rigidbody rigidbody;
-
+    private bool attack = false;
+    public PlayerController player;
+    public GameObject atk_point;
+    public GameObject atk_area;
 
 
     //Draw the line from the piovt point
@@ -61,9 +64,9 @@ public class Golem : MonoBehaviour
     private void EnemyAttack()
     {
     	AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
-    	bool attack = false;
         if(!animator.IsInTransition (0) && currentState.fullPathHash == Animator.StringToHash ("Base Layer.Armature|walking"))
-         {
+        {
+        	player.already_atk = false;
             if(attack_pattern == 0 && !attack)
             {
             	attack = true;
@@ -87,11 +90,17 @@ public class Golem : MonoBehaviour
             else
             {
             	attack = false;
-                attack_pattern = 0;
+                attack_pattern = 0;  
             }
         }
+        else if(attack && animator.IsInTransition(0))
+        {
+        	GameObject clone = Instantiate(atk_area, atk_point.transform.position, atk_point.transform.rotation) as GameObject;
+        	Destroy(clone, 1);
+        	Debug.Log("Spawn sccess");
+        }
 
-            
+
     }
 
 
