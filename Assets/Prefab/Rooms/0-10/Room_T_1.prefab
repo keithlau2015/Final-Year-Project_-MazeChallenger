@@ -162,6 +162,8 @@ MonoBehaviour:
   - {fileID: 3420343462088535406}
   spwanPoint_Weapon: []
   spwanPoint_Enemy: []
+  spwanPoint_Coins: []
+  spwanPoint_VendingMachines: []
 --- !u!1001 &535776149519182910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -554,11 +556,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 788667088551886028}
     m_Modifications:
-    - target: {fileID: 4886847771603876127, guid: 5ed10f63a1a1d394eb4398d578c7a7f8,
-        type: 3}
-      propertyPath: m_Name
-      value: FloorTrap_fbx (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 8469806285008489228, guid: 5ed10f63a1a1d394eb4398d578c7a7f8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -619,6 +616,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 4.9999995
       objectReference: {fileID: 0}
+    - target: {fileID: 4886847771603876127, guid: 5ed10f63a1a1d394eb4398d578c7a7f8,
+        type: 3}
+      propertyPath: m_Name
+      value: FloorTrap_fbx (3)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ed10f63a1a1d394eb4398d578c7a7f8, type: 3}
 --- !u!4 &7582652715584253645 stripped
@@ -634,11 +636,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 788667088551886028}
     m_Modifications:
-    - target: {fileID: 4886847771603876127, guid: 5ed10f63a1a1d394eb4398d578c7a7f8,
-        type: 3}
-      propertyPath: m_Name
-      value: FloorTrap_fbx (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 8469806285008489228, guid: 5ed10f63a1a1d394eb4398d578c7a7f8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -698,6 +695,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 4.9999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886847771603876127, guid: 5ed10f63a1a1d394eb4398d578c7a7f8,
+        type: 3}
+      propertyPath: m_Name
+      value: FloorTrap_fbx (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ed10f63a1a1d394eb4398d578c7a7f8, type: 3}
@@ -1181,11 +1183,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 788667088551886028}
     m_Modifications:
-    - target: {fileID: 4886847771603876127, guid: 5ed10f63a1a1d394eb4398d578c7a7f8,
-        type: 3}
-      propertyPath: m_Name
-      value: 'FloorTrap_fbx '
-      objectReference: {fileID: 0}
     - target: {fileID: 8469806285008489228, guid: 5ed10f63a1a1d394eb4398d578c7a7f8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1245,6 +1242,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 4.9999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886847771603876127, guid: 5ed10f63a1a1d394eb4398d578c7a7f8,
+        type: 3}
+      propertyPath: m_Name
+      value: 'FloorTrap_fbx '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ed10f63a1a1d394eb4398d578c7a7f8, type: 3}
@@ -1336,11 +1338,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 788667088551886028}
     m_Modifications:
-    - target: {fileID: 4886847771603876127, guid: 5ed10f63a1a1d394eb4398d578c7a7f8,
-        type: 3}
-      propertyPath: m_Name
-      value: FloorTrap_fbx (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 8469806285008489228, guid: 5ed10f63a1a1d394eb4398d578c7a7f8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1400,6 +1397,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 4.9999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4886847771603876127, guid: 5ed10f63a1a1d394eb4398d578c7a7f8,
+        type: 3}
+      propertyPath: m_Name
+      value: FloorTrap_fbx (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ed10f63a1a1d394eb4398d578c7a7f8, type: 3}

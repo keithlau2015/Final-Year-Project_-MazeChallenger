@@ -27,6 +27,8 @@ public class Golem : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         enemyBehaviour = GetComponent<EnemyBehaviour>();
         status = GetComponent<Enemy>();
+
+        status.setEnemyHealth(2, "");
     }
 
      private void Update()

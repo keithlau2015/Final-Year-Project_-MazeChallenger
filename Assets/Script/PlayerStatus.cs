@@ -4,7 +4,7 @@ public class PlayerStatus : MonoBehaviour
 {
     static readonly PlayerStatus instance = new PlayerStatus();
     //Default
-    private const int HEALTH = 10, HUNGER = 100, COINS = 0;
+    private const int HEALTH = 3, HUNGER = 100, COINS = 0;
     private const float SPEED = 50;
 
     //Current
@@ -101,7 +101,7 @@ public class PlayerStatus : MonoBehaviour
         {
             return;
         }
-        else if(extraBuff == "upgradeSpeed")
+        else if(extraBuff == "upgradeSpeed" && total_Speed < 150f)
         {
             total_Speed += speed;
             current_Speed = total_Speed;

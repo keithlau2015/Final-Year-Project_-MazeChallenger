@@ -65,9 +65,9 @@ public class LevelBuilder : MonoBehaviour
         StartCoroutine("GenerateLevel");
 
         //Button listener
-        Upgrade_slot_1.onClick.AddListener(onClickUpgradButton);
-        Upgrade_slot_2.onClick.AddListener(onClickUpgradButton);
-        Upgrade_slot_3.onClick.AddListener(onClickUpgradButton);
+        Upgrade_slot_1.onClick.AddListener(onClickUpgradeHealthButton);
+        Upgrade_slot_2.onClick.AddListener(onClickUpgradeHealthButton);
+        Upgrade_slot_3.onClick.AddListener(onClickUpgradeSpeedButton);
     }
 
     private void Update()
@@ -485,9 +485,26 @@ public class LevelBuilder : MonoBehaviour
     }
 
     //Button
-    private void onClickUpgradButton()
+    private void onClickUpgradeHealthButton()
     {
-        PlayerStatus.Instance.setHealth(10, "upgradeHealth");
+        PlayerStatus.Instance.setHealth(2, "upgradeHealth");
+        PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
+    }
+
+    private void onClickUpgradeSpeedButton()
+    {
+        PlayerStatus.Instance.setSpeed(5, "upgradeSpeed");
+        PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
+    }
+
+    private void onClickUpgradeHealingButton()
+    {
+
+    }
+
+    private void onClickRestoringToFullHealth()
+    {
+        PlayerStatus.Instance.setHealth(100, "");
         PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
     }
 }
