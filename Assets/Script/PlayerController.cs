@@ -45,12 +45,12 @@ public class PlayerController : MonoBehaviour
         rightHandAnimator = rightHand.GetComponent<Animator>();
         InvokeRepeating ("walkandrun", 0.0f, 0.5f);
     }
-   
+
 
     // Update is called once per frame
     private void Update()
     {
-        Vector3 movenment = new Vector3(Input.GetAxis("Horizontal"), 0 , Input.GetAxis("Vertical"));
+        Vector3 movenment = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         Vector3 velocity = transform.TransformDirection(movenment) * PlayerStatus.Instance.getSpeed();
         velocity.y = rigidbody.velocity.y;
         rigidbody.velocity = velocity;
@@ -61,7 +61,10 @@ public class PlayerController : MonoBehaviour
         float z = rigidbody.velocity.z;
 
         //Check Player is Attacking or not
-        if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0)) PlayerStatus.Instance.setPlayerAttacking(true);
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
+        {
+            PlayerStatus.Instance.setPlayerAttacking(true);
+        }
 
         if (Input.GetMouseButtonDown(1) && holdingShield)
         {
@@ -72,7 +75,7 @@ public class PlayerController : MonoBehaviour
             leftHandAnimator.SetBool("Blocking", false);
         }
 
-        if(Input.GetMouseButton(0) && holdingSword)
+        if (Input.GetMouseButton(0) && holdingSword)
         {
             rightHandAnimator.SetBool("Sword_Swing", true);
         }
@@ -126,12 +129,12 @@ public class PlayerController : MonoBehaviour
         {
             ismoving = true;
             walking = true;
-            running = false;           
+            running = false;
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            if(z>0 || x>0)
+            if (z > 0 || x > 0)
             {
                 ismoving = true;
                 running = true;
@@ -146,8 +149,8 @@ public class PlayerController : MonoBehaviour
             walking = true;
             running = false;
         }
-        
-        if(Mathf.Approximately(rigidbody.velocity.x, 0) && Mathf.Approximately(rigidbody.velocity.z, 0))
+
+        if (Mathf.Approximately(rigidbody.velocity.x, 0) && Mathf.Approximately(rigidbody.velocity.z, 0))
         {
             ismoving = false;
         }
@@ -166,8 +169,18 @@ public class PlayerController : MonoBehaviour
             */
             rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
         }
-    }
 
+        //Weapon are 0 durability
+        if (rightHand.childCount > 0)
+        {
+            if (rightHand.GetChild(0).GetComponent<Weapon>().durability == 0) cleaRightHandObject();
+        }
+
+        if (leftHand.childCount > 0)
+        {
+            if (leftHand.GetChild(0).GetComponent<Weapon>().durability == 0) clearLeftHandObject();
+        }
+    }
     private void FixedUpdate()
     {
         DrawRayCastLine();
@@ -204,17 +217,6 @@ public class PlayerController : MonoBehaviour
         {
             countJump = 0;
             isGrounded = true;
-        }
-
-        //Enemy
-        if(collision.collider.tag == "attack_point")
-        {
-            PlayerStatus.Instance.setHealth(-1, "");
-            Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
-            if(PlayerStatus.Instance.getHealth() == 0)
-            {
-                PlayerStatus.Instance.setPlayerKilledBy(collision.gameObject.name + "tear you apart");
-            }
         }
 
         //Ladder
@@ -274,6 +276,10 @@ public class PlayerController : MonoBehaviour
             if(!already_atk)
             {
                 PlayerStatus.Instance.setHealth(-1, "");
+                if (PlayerStatus.Instance.getHealth() == 0)
+                {
+                    PlayerStatus.Instance.setPlayerKilledBy(other.transform.name + "Tear you apart");
+                }
                 already_atk = true;
             }
             Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());

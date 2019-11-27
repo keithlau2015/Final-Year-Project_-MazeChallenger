@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damge: 5
-  durability: 20
+  durability: 5
   spawningRate: 0.8
   counterType: 
 --- !u!1001 &8220414259931484324

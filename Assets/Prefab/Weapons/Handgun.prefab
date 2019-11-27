@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 7248571167243990925}
   - component: {fileID: 193362617887970111}
   - component: {fileID: 7816440965823568568}
-  - component: {fileID: 5872034616226539447}
+  - component: {fileID: 7981958678587405645}
   m_Layer: 0
   m_Name: Handgun
   m_TagString: Item
@@ -430,7 +430,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.059866663, y: 0.011199997, z: 0.03062742}
   m_Center: {x: -0.011933332, y: 0, z: -0.0056862836}
---- !u!114 &5872034616226539447
+--- !u!114 &7981958678587405645
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -443,8 +443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damge: 0
-  durability: 50
-  spawningRate: 0.8
+  durability: 0
+  spawningRate: 0
   counterType: 
 --- !u!1 &6650618837252791275
 GameObject:

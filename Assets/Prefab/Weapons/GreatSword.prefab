@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9012714079544461853}
   - component: {fileID: 3327912594817365732}
   - component: {fileID: 61779327456264253}
-  - component: {fileID: 1755586793167772730}
+  - component: {fileID: -6949885878551596730}
   m_Layer: 9
   m_Name: GreatSword
   m_TagString: Item
@@ -95,7 +95,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: -5495902117074765545, guid: 303e18d6533b0fc47a9295268087492e, type: 3}
---- !u!114 &1755586793167772730
+--- !u!114 &-6949885878551596730
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,9 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc347b910f09f5f4582fd57b8902c3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damge: 20
-  durability: 50
-  spawningRate: 0.3
+  damge: 0
+  durability: 0
+  spawningRate: 0
   counterType: 
 --- !u!1001 &3027887189099067913
 PrefabInstance:

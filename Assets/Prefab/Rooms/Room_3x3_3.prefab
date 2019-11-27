@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 502193858026958583}
   m_Layer: 0
-  m_Name: Equipment Spawning Point
+  m_Name: Food Spawning Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6848179548361204658}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 65.56, y: -9.91, z: -17.7}
+  m_LocalPosition: {x: 67.58, y: -6.91, z: -24.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6848179548702156377}
@@ -245,10 +245,12 @@ MonoBehaviour:
   meshCollider: {fileID: 1887441378275018875}
   spwanPoint_Food:
   - {fileID: 6848179548361204659}
+  - {fileID: 502193858026958583}
   spwanPoint_Weapon:
   - {fileID: 6848179548562844679}
   spwanPoint_Enemy: []
   spwanPoint_Coins: []
+  spwanPoint_VendingMachines: []
 --- !u!64 &8239670663768226567
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -451,11 +453,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6848179548702156377}
     m_Modifications:
-    - target: {fileID: 8150628378140162284, guid: b4d2aae38706da74b8345a2b5589e06e,
-        type: 3}
-      propertyPath: m_Name
-      value: Scroll
-      objectReference: {fileID: 0}
     - target: {fileID: 5136215237092297471, guid: b4d2aae38706da74b8345a2b5589e06e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -510,6 +507,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8150628378140162284, guid: b4d2aae38706da74b8345a2b5589e06e,
+        type: 3}
+      propertyPath: m_Name
+      value: Scroll
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4d2aae38706da74b8345a2b5589e06e, type: 3}
@@ -1156,11 +1158,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2113996201474487974}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 49f0b2dfbce08f349ad016e04b4b0ac3,
-        type: 3}
-      propertyPath: m_Name
-      value: WineShelf_Flip
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 49f0b2dfbce08f349ad016e04b4b0ac3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1231,21 +1228,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.0100001
       objectReference: {fileID: 0}
-    - target: {fileID: -113181020801827196, guid: 49f0b2dfbce08f349ad016e04b4b0ac3,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4d20df7c5fea4e340b243182c0c73ec5, type: 2}
-    - target: {fileID: 1066910053003865102, guid: 49f0b2dfbce08f349ad016e04b4b0ac3,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4d20df7c5fea4e340b243182c0c73ec5, type: 2}
     - target: {fileID: 8833720299871980622, guid: 49f0b2dfbce08f349ad016e04b4b0ac3,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 2.847
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 49f0b2dfbce08f349ad016e04b4b0ac3,
+        type: 3}
+      propertyPath: m_Name
+      value: WineShelf_Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066910053003865102, guid: 49f0b2dfbce08f349ad016e04b4b0ac3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d20df7c5fea4e340b243182c0c73ec5, type: 2}
+    - target: {fileID: -113181020801827196, guid: 49f0b2dfbce08f349ad016e04b4b0ac3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d20df7c5fea4e340b243182c0c73ec5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f0b2dfbce08f349ad016e04b4b0ac3, type: 3}
 --- !u!1001 &6215909246666924022
@@ -1346,11 +1348,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6848179548702156377}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: e19188f732981f541b5b923f0431ce5d,
-        type: 3}
-      propertyPath: m_Name
-      value: WineShelf
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: e19188f732981f541b5b923f0431ce5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1421,12 +1418,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: -113181020801827196, guid: e19188f732981f541b5b923f0431ce5d,
+    - target: {fileID: -927199367670048503, guid: e19188f732981f541b5b923f0431ce5d,
+        type: 3}
+      propertyPath: m_Name
+      value: WineShelf
+      objectReference: {fileID: 0}
+    - target: {fileID: 1066910053003865102, guid: e19188f732981f541b5b923f0431ce5d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5365f87c0e76cca4cb956852bf26cdbf, type: 2}
-    - target: {fileID: 1066910053003865102, guid: e19188f732981f541b5b923f0431ce5d,
+    - target: {fileID: -113181020801827196, guid: e19188f732981f541b5b923f0431ce5d,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2144,6 +2146,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6848179548702156377}
     m_Modifications:
+    - target: {fileID: 5466420819675450788, guid: 1e701eb088d802f4d87136eb2477767a,
+        type: 3}
+      propertyPath: m_Name
+      value: Exit
+      objectReference: {fileID: 0}
     - target: {fileID: 9045472279581491127, guid: 1e701eb088d802f4d87136eb2477767a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2198,11 +2205,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90.00001
-      objectReference: {fileID: 0}
-    - target: {fileID: 5466420819675450788, guid: 1e701eb088d802f4d87136eb2477767a,
-        type: 3}
-      propertyPath: m_Name
-      value: Exit
       objectReference: {fileID: 0}
     - target: {fileID: 4106524007861581828, guid: 1e701eb088d802f4d87136eb2477767a,
         type: 3}
@@ -2491,6 +2493,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6848179548702156377}
     m_Modifications:
+    - target: {fileID: 5466420819675450788, guid: 1e701eb088d802f4d87136eb2477767a,
+        type: 3}
+      propertyPath: m_Name
+      value: Exit (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 9045472279581491127, guid: 1e701eb088d802f4d87136eb2477767a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2560,11 +2567,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 300.00012
-      objectReference: {fileID: 0}
-    - target: {fileID: 5466420819675450788, guid: 1e701eb088d802f4d87136eb2477767a,
-        type: 3}
-      propertyPath: m_Name
-      value: Exit (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4106524007861581828, guid: 1e701eb088d802f4d87136eb2477767a,
         type: 3}
@@ -6735,6 +6737,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: 31baf975c3561444da1a1b4b58ef7550,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 31baf975c3561444da1a1b4b58ef7550,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6804,11 +6811,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 99
-      objectReference: {fileID: 0}
-    - target: {fileID: -1504981713932161579, guid: 31baf975c3561444da1a1b4b58ef7550,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31baf975c3561444da1a1b4b58ef7550, type: 3}

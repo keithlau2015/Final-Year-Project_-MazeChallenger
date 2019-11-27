@@ -113,7 +113,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6671632001260194145}
-  m_Material: {fileID: 13400000, guid: b25f8bad89828d54282de61ce2d511be, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 1.5818948
@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a5cff0cb9f34c7ea91c8f5f7687fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   atk_point: {fileID: 7577742233019067286}
   atk_area: {fileID: 7767101551959266466, guid: 434ddeadda031c241b880692875092f4,
     type: 3}

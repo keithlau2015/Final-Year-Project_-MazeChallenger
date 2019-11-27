@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8960894017140740163}
   - component: {fileID: 3415967994920250554}
   - component: {fileID: 5828977222741446106}
-  - component: {fileID: 4468180040234849014}
+  - component: {fileID: -988527181160452145}
   m_Layer: 9
   m_Name: Spear
   m_TagString: Item
@@ -95,7 +95,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 2534964839176971238, guid: 3a151419c4b15a949b8bba6a62a087b3, type: 3}
---- !u!114 &4468180040234849014
+--- !u!114 &-988527181160452145
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc347b910f09f5f4582fd57b8902c3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damge: 5
-  durability: 35
+  damge: 0
+  durability: 0
   spawningRate: 0
   counterType: 
 --- !u!1001 &8346996845685294857
