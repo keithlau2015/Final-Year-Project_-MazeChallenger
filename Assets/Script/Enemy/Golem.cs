@@ -66,7 +66,7 @@ public class Golem : MonoBehaviour
     	AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
         if(!animator.IsInTransition (0) && currentState.fullPathHash == Animator.StringToHash ("Base Layer.Armature|walking"))
         {
-        	player.already_atk = false;
+        	//player.already_atk = false;
             if(attack_pattern == 0 && !attack)
             {
             	attack = true;
