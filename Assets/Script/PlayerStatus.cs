@@ -183,7 +183,7 @@ public class PlayerStatus : MonoBehaviour
 
     public void setPlayerReachLevels(int level)
     {
-        this.reachedLevels = level;
+        this.reachedLevels += level;
     }
 
     public int getPlayerReachLevels()

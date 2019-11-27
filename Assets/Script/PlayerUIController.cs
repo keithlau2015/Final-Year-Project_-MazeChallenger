@@ -20,7 +20,7 @@ public class PlayerUIController : MonoBehaviour
         volumeSettingPanel.SetActive(false);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         Price.enabled = PlayerStatus.Instance.getPlayerCanInteractWithVendingMachine();
         Price.text = PlayerStatus.Instance.getPriceUIText();
@@ -31,7 +31,7 @@ public class PlayerUIController : MonoBehaviour
         Coins.text = PlayerStatus.Instance.getCoins().ToString();
         Result.text = "You had reach to " + PlayerStatus.Instance.getPlayerReachLevels() + " Levels !";
         if (PlayerStatus.Instance.getPlayerReachLevels() > 0) DeathReason.text = PlayerStatus.Instance.getPlayerKilledBy();
-        else DeathReason.text = PlayerStatus.Instance.getPlayerKilledBy();
+        else DeathReason.text = "Do you even trying?";
     }
 
     public void SoundEffectVolumeSlide()

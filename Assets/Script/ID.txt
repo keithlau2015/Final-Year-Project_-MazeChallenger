@@ -1,0 +1,9 @@
+Weapon ID:
+0 Sword_0
+1 Sword_1
+2 Shield_0
+3 Shield_1
+4 GreatSword
+5 BattleAxe
+6 Spear
+7 Handgun

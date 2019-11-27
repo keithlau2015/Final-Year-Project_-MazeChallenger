@@ -184,6 +184,10 @@ public class PlayerController : MonoBehaviour
         {
             PlayerStatus.Instance.setHealth(-1, "");
             Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
+            if(PlayerStatus.Instance.getHealth() == 0)
+            {
+                PlayerStatus.Instance.setPlayerKilledBy(collision.gameObject.name + "Tear you apart");
+            }
         }
     }
 
@@ -373,7 +377,7 @@ public class PlayerController : MonoBehaviour
         {
             if (rightHand.GetChild(0).gameObject.name == "Sword_1(Clone)")
             {
-                GameObject dissolve = Instantiate(dissolve_weapons[0], pos, rotation) as GameObject;
+                GameObject dissolve = Instantiate(dissolve_weapons[1], pos, rotation) as GameObject;
                 Destroy(dissolve, 5f);
             }
             else if (rightHand.GetChild(0).gameObject.name == "Sword_0(Clone)")
@@ -383,17 +387,17 @@ public class PlayerController : MonoBehaviour
             }
             else if(rightHand.GetChild(0).gameObject.name == "Spear(Clone)")
             {
-                GameObject dissolve = Instantiate(dissolve_weapons[0], pos, rotation) as GameObject;
+                GameObject dissolve = Instantiate(dissolve_weapons[6], pos, rotation) as GameObject;
                 Destroy(dissolve, 5f);
             }
             else if(rightHand.GetChild(0).gameObject.name == "GreatSword(Clone)")
             {
-                GameObject dissolve = Instantiate(dissolve_weapons[0], pos, rotation) as GameObject;
+                GameObject dissolve = Instantiate(dissolve_weapons[4], pos, rotation) as GameObject;
                 Destroy(dissolve, 5f);
             }
             else if(rightHand.GetChild(0).gameObject.name == "BattleAxe(Clone)")
             {
-                GameObject dissolve = Instantiate(dissolve_weapons[0], pos, rotation) as GameObject;
+                GameObject dissolve = Instantiate(dissolve_weapons[5], pos, rotation) as GameObject;
                 Destroy(dissolve, 5f);
             }
             Destroy(rightHand.GetChild(0).gameObject);
@@ -425,7 +429,7 @@ public class PlayerController : MonoBehaviour
                     //Weapon
                     case "Spear(Clone)":
                         cleaRightHandObject();
-                        Instantiate(weapons[4], rightHand);
+                        Instantiate(weapons[6], rightHand);
                         Destroy(firstItem.gameObject);
                         holdingBattleAxe = holdingGreatSword = holdingSword = holdingHandgun = false;
                         holdingSpear = true;
@@ -434,7 +438,7 @@ public class PlayerController : MonoBehaviour
                         break;
                     case "Sword_1(Clone)":
                         cleaRightHandObject();
-                        Instantiate(weapons[0], rightHand);
+                        Instantiate(weapons[1], rightHand);
                         Destroy(firstItem.gameObject);
                         holdingSpear = holdingGreatSword = holdingBattleAxe = holdingHandgun = false;
                         holdingSword = true;
@@ -443,7 +447,7 @@ public class PlayerController : MonoBehaviour
                         break;
                     case "Shield_0(Clone)":
                         clearLeftHandObject();
-                        Instantiate(weapons[3], leftHand);
+                        Instantiate(weapons[2], leftHand);
                         Destroy(firstItem.gameObject);
                         holdingShield = true;
                         FindObjectOfType<SoundManager>().PlaySoundEffect(8);
@@ -451,7 +455,7 @@ public class PlayerController : MonoBehaviour
                         break;
                     case "Shield_1(Clone)":
                         clearLeftHandObject();
-                        Instantiate(weapons[1], leftHand);
+                        Instantiate(weapons[3], leftHand);
                         Destroy(firstItem.gameObject);
                         holdingShield = true;
                         FindObjectOfType<SoundManager>().PlaySoundEffect(8);
@@ -459,7 +463,7 @@ public class PlayerController : MonoBehaviour
                         break;
                     case "Sword_0(Clone)":
                         cleaRightHandObject();
-                        Instantiate(weapons[2], rightHand);
+                        Instantiate(weapons[0], rightHand);
                         Destroy(firstItem.gameObject);
                         holdingBattleAxe = holdingGreatSword = holdingSpear = holdingHandgun = false;
                         holdingSword = true;
@@ -468,7 +472,7 @@ public class PlayerController : MonoBehaviour
                         break;
                     case "GreatSword(Clone)":
                         cleaRightHandObject();
-                        Instantiate(weapons[5], rightHand);
+                        Instantiate(weapons[4], rightHand);
                         Destroy(firstItem.gameObject);
                         holdingSpear = holdingSword = holdingBattleAxe = holdingHandgun = false;
                         holdingGreatSword = true;
@@ -477,7 +481,7 @@ public class PlayerController : MonoBehaviour
                         break;
                     case "BattleAxe(Clone)":
                         cleaRightHandObject();
-                        Instantiate(weapons[6], rightHand);
+                        Instantiate(weapons[5], rightHand);
                         Destroy(firstItem.gameObject);
                         holdingGreatSword = holdingSpear = holdingSword = holdingHandgun = false;
                         holdingBattleAxe = true;

@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4594857540960543066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4594857540960543064}
+  - component: {fileID: 4594857540960543067}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4594857540960543064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594857540960543066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4594857540960543067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594857540960543066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e7b03c2ff2b8c4a9129d3a99edef85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeUI: {fileID: 0}
+  pauseUI: {fileID: 0}
+  loadingUI: {fileID: 0}
+  gameOverUI: {fileID: 0}
+  Upgrade_slot_1: {fileID: 0}
+  Upgrade_slot_2: {fileID: 0}
+  Upgrade_slot_3: {fileID: 0}
+  startRoomPrefab:
+  - {fileID: 2255064858518847101, guid: a7a1f1e714fa3a540a1a9fadc8924724, type: 3}
+  endRoomPrefab:
+  - {fileID: 3378533251212319575, guid: ba60e8239107aad42acfc9bb5c1d5144, type: 3}
+  specialRoomPrefab:
+  - {fileID: 4886433739022568111, guid: 959ccbc8c99036648a0d7fcf5f85dcf3, type: 3}
+  - {fileID: 2576125009177566701, guid: a8ffdd94c31fb7b4980d1e54e1146e0c, type: 3}
+  roomPrefabs:
+  - {fileID: 7803769553565623044, guid: e3fe83bb0a5bf2e4ca544f3d765e6f64, type: 3}
+  - {fileID: 5361874649832042142, guid: 6b1e373d6415dbb429b6514a0f61cb82, type: 3}
+  - {fileID: 1447916871752373658, guid: 3456845c2b2566d408c1e275196bd347, type: 3}
+  - {fileID: 2686628991450411853, guid: c06c319916993c64e91ddb3273956a24, type: 3}
+  - {fileID: 1679118758360412178, guid: b9ed5add2a2e6b145b92d8d423fe3178, type: 3}
+  - {fileID: 1015754631834842418, guid: 729756898d9f36c44915ce36398f18c3, type: 3}
+  - {fileID: 5760011545756883853, guid: c8bc7a1a9f9d9b849a2c6c6dd295d73e, type: 3}
+  - {fileID: 6848179548702156376, guid: e1e57bc8d6856934ea0d5c27338abc8c, type: 3}
+  - {fileID: 6777727378912678827, guid: 6849fec10d9e847419b351acac7a3470, type: 3}
+  - {fileID: 5165088312506368514, guid: 309af1907def6ed44a57bbfcf94a0ed6, type: 3}
+  - {fileID: 5143844486444197695, guid: 4caedd7b26e824740983f9ee939f5d31, type: 3}
+  - {fileID: 813601866753413953, guid: c04decc8044e6a9438419902b42c0006, type: 3}
+  - {fileID: 6877985683987972412, guid: a09bb8fb605b4ed458c82a59926f003e, type: 3}
+  weaponPrefabs:
+  - {fileID: 2976038040534345075, guid: 99f93adf1b0787d49bfe6bf384106900, type: 3}
+  - {fileID: 1755586793167772730, guid: 3adf5dd70e2c1aa438909259bec2588b, type: 3}
+  - {fileID: 2279295924587724363, guid: 9f37bd9b4d9206247bed0a6c14614eb2, type: 3}
+  - {fileID: 4416207752992146039, guid: af68d329db33d43449089069c9500e3e, type: 3}
+  - {fileID: 5872034616226539447, guid: 5ec4aaa7ef1e5ea448a5656f2e7dfa09, type: 3}
+  foodPrefabs:
+  - {fileID: 3711289124881072101, guid: 259c8c3420b4a694d8c86c6888ab90e8, type: 3}
+  - {fileID: 6877844382337505765, guid: 8a638990fff124845bb6c0894a1371e0, type: 3}
+  - {fileID: 2624974896441616915, guid: ee49448b0b4532e43b7494f7a776d829, type: 3}
+  enemyPrefabs:
+  - {fileID: 4543482393671671249, guid: 62bd8494399595140b0a6c954804ca8c, type: 3}
+  coinsPrefab:
+  - {fileID: 5508895033388379247, guid: 103c25a87b0b6f642bfc1f6484a15657, type: 3}
+  - {fileID: -6164634658408536423, guid: baf238071066fd74fab1568dbe204a21, type: 3}
+  vendingMachinePrefab: {fileID: 8865205512623447356, guid: 24d0aadb3d1a28a41800e22517773fe6,
+    type: 3}
