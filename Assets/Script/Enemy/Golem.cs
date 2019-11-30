@@ -31,13 +31,13 @@ public class Golem : MonoBehaviour
 
      private void Update()
      {	
-        if(status.getEnemyHealth() == 0) 
+        if(status.getEnemyHealth() <= 0) 
         {
             Vector3 offset = new Vector3(0, 5, 0);
             enemyBehaviour.EnemyDie(offset);
         }
-        EnemyDetection();
         enemyBehaviour.EnemyRotation();
+        EnemyDetection();
      }
      
      private void EnemyDetection()

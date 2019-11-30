@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class LevelBuilder : MonoBehaviour
 {
     //The user interface components
-    public GameObject upgradeUI, pauseUI, loadingUI, gameOverUI;
+    public GameObject upgradeUI, pauseUI, loadingUI, gameOverUI, ObjectiveText;
     [SerializeField]
-    private Button Upgrade_slot_1, Upgrade_slot_2, Upgrade_slot_3;
+    private Button Gift_slot_1, Gift_slot_2, Gift_slot_3, Gift_slot_4, Gift_slot_5, Gift_slot_6;
 
     //The needed Prefabs
     public Room[] startRoomPrefab, endRoomPrefab, specialRoomPrefab;
@@ -58,6 +58,7 @@ public class LevelBuilder : MonoBehaviour
         loadingUI.SetActive(false);
         upgradeUI.SetActive(false);
         pauseUI.SetActive(false);
+        ObjectiveText.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player");
         roomLayerMask = LayerMask.GetMask("Room");
 
@@ -65,13 +66,17 @@ public class LevelBuilder : MonoBehaviour
         StartCoroutine("GenerateLevel");
 
         //Button listener
-        Upgrade_slot_1.onClick.AddListener(onClickUpgradeHealthButton);
-        Upgrade_slot_2.onClick.AddListener(onClickUpgradeHealthButton);
-        Upgrade_slot_3.onClick.AddListener(onClickUpgradeSpeedButton);
+        Gift_slot_1.onClick.AddListener(onClickUpgradeHealingButton);
+        Gift_slot_2.onClick.AddListener(onClickUpgradeHealthButton);
+        Gift_slot_3.onClick.AddListener(onClickUpgradeSpeedButton);
     }
 
     private void Update()
-    {        
+    {
+        if (finishLevelBuilding)
+        {
+            ObjectiveText.SetActive(true);
+        }
         if (upgradeUI.activeSelf)
         {
             FindObjectOfType<SoundManager>().PlaySoundEffect(12);
@@ -99,7 +104,7 @@ public class LevelBuilder : MonoBehaviour
         //For Death reason
         if (PlayerStatus.Instance.getHunger() == 0)
         {
-            PlayerStatus.Instance.setPlayerKilledBy("Starve to death");
+            PlayerStatus.Instance.setPlayerKilledBy("Starved to death");
         }
 
         //The excpetion of Player die at the 0 level
@@ -499,7 +504,9 @@ public class LevelBuilder : MonoBehaviour
 
     private void onClickUpgradeHealingButton()
     {
-
+        if (!PlayerStatus.Instance.getActiveHealingSkill()) PlayerStatus.Instance.setActiveHealingSkill(true);
+        else PlayerStatus.Instance.setHealingTime(1);
+        PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
     }
 
     private void onClickRestoringToFullHealth()

@@ -15,6 +15,7 @@ public class PlayerStatus : MonoBehaviour
     private int total_Health, total_Hunger;
     private float total_Speed;
 
+    //Check player status
     private bool playerGetIntoNextLevel, playerAtTheMenu, attacking;
 
     //UI
@@ -23,6 +24,11 @@ public class PlayerStatus : MonoBehaviour
 
     //Stage
     private int reachedLevels;
+
+    //Skill
+    private bool healingSkill, dualBladeSkill, bladeThrowingSkill;
+    private float timer;
+    private int healingTime;
 
     public static PlayerStatus Instance
     {
@@ -38,10 +44,12 @@ public class PlayerStatus : MonoBehaviour
         total_Hunger = HUNGER;
         total_Speed = SPEED;
         reachedLevels = 0;
+        timer = 0;
+        healingTime = 10;
         current_Health = total_Health;
         current_Hunger = total_Hunger;
         current_Speed = total_Speed;
-        playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking = false;
+        healingSkill = playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking = false;
         priceUIText = killedBy = "";
     }
 
@@ -201,6 +209,33 @@ public class PlayerStatus : MonoBehaviour
         return this.killedBy;
     }
 
+    //Skill
+    public void setActiveHealingSkill(bool active)
+    {
+        healingSkill = active;
+    }
+
+    public bool getActiveHealingSkill()
+    {
+        return healingSkill;
+    }
+
+    public void HealingSkill()
+    {
+        timer += Time.deltaTime;
+        if (timer > healingTime && current_Health > 0 && Time.timeScale > 0 && !playerAtTheMenu && !playerGetIntoNextLevel)
+        {
+            setHealth(1, "");
+            timer = 0f;
+        }
+    }
+
+    public void setHealingTime(int set)
+    {
+        if(this.healingTime > 2)this.healingTime -= set;
+    }
+
+    //reset
     public void resetData()
     {
         this.priceUIText = this.killedBy = "";
@@ -212,5 +247,6 @@ public class PlayerStatus : MonoBehaviour
         this.total_Speed = SPEED;
         this.current_Coins = COINS;
         this.reachedLevels = 0;
+        healingSkill = playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking = false;
     }
 }

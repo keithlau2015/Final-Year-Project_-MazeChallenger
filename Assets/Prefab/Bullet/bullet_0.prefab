@@ -49,7 +49,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bd967c6327e895c4fa0e7058b8268901, type: 2}
+  - {fileID: 2100000, guid: a29650758c336b146bb19243da4fbb20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -226,8 +226,8 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8436777375253403942}
-  m_Material: {fileID: 13400000, guid: ac62b30b32fbbfa4599778b8f706eac7, type: 2}
-  m_IsTrigger: 0
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.035883922, y: 0.020591347, z: 0.020000005}

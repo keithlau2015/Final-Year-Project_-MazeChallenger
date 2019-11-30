@@ -173,17 +173,22 @@ public class PlayerController : MonoBehaviour
         //Weapon are 0 durability
         if (rightHand.childCount > 0)
         {
-            if (rightHand.GetChild(0).GetComponent<Weapon>().durability == 0) cleaRightHandObject();
+            if (rightHand.GetChild(0).GetComponent<Weapon>().durability <= 0) cleaRightHandObject();
         }
 
         if (leftHand.childCount > 0)
         {
-            if (leftHand.GetChild(0).GetComponent<Weapon>().durability == 0) clearLeftHandObject();
+            if (leftHand.GetChild(0).GetComponent<Weapon>().durability <= 0) clearLeftHandObject();
         }
     }
     private void FixedUpdate()
     {
         DrawRayCastLine();
+        //skill
+        if (PlayerStatus.Instance.getActiveHealingSkill())
+        {
+            PlayerStatus.Instance.HealingSkill();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -9,35 +9,12 @@ public class Weapon : MonoBehaviour
     public float spawningRate;
     public string counterType;
 
-    private bool isDurabilityMinus;
-
-    private void Awake()
-    {
-        isDurabilityMinus = false;
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
-        if (PlayerStatus.Instance.getPlayerAttacking() && collision.gameObject.tag == "Enemy" && !isDurabilityMinus)
+        if (PlayerStatus.Instance.getPlayerAttacking() && collision.gameObject.tag == "Enemy")
         {
             durability--;
-            isDurabilityMinus = true;
-        }
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            isDurabilityMinus = true;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if(collision.gameObject.tag == "Enemy")
-        {
-            isDurabilityMinus = false;
+            Debug.Log(this.gameObject.name + " : " + durability);
         }
     }
 }

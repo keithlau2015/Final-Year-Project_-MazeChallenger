@@ -30,7 +30,7 @@ public class UnknownFloatingEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (status.getEnemyHealth() == 0)
+        if (status.getEnemyHealth() <= 0)
         {
             Vector3 offset = new Vector3(0, 2, 0);
             enemyBehaviour.EnemyDie(offset);
@@ -67,19 +67,11 @@ public class UnknownFloatingEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            //increase speed
-            status.setEnemySpeed(20, "");
-        }
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            //increase speed
-            status.setEnemySpeed(20, "");
-        }
+        
     }
 }

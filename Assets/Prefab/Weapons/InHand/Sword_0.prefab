@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc347b910f09f5f4582fd57b8902c3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damge: 10
+  damge: 2
   durability: 10
   spawningRate: 0.5
   counterType: 
