@@ -299,8 +299,8 @@ public class PlayerController : MonoBehaviour
     private void DrawRayCastLine() {
         //const
         const int accuracy = 5;
-        const float radius = 0.1f;
-        const float length = 15f;
+        const float radius = 0.5f;
+        const float length = 20f;
         
         //getting camera transformation
         Vector3 unitForward = cam.transform.TransformDirection(Vector3.forward);
@@ -533,7 +533,7 @@ public class PlayerController : MonoBehaviour
                     case "Banana(Clone)":
                         PlayerStatus.Instance.setHealth(+1, "");
                         PlayerStatus.Instance.setHunger(10, "");
-                        FindObjectOfType<SoundManager>().PlaySoundEffect(11);
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(10);
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.gameObject);
                         break;

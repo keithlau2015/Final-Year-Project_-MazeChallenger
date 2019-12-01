@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8162065688104391797}
   - component: {fileID: 2484282841347008652}
   - component: {fileID: 359954461446054564}
+  - component: {fileID: 7356705349623136126}
   m_Layer: 0
   m_Name: HeadSkull
   m_TagString: Untagged
@@ -91,9 +92,25 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: -5495902117074765545, guid: ec8f26ff3765a36418e7757c7bb48bce, type: 3}
+--- !u!54 &7356705349623136126
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4198801914391174224}
+  serializedVersion: 2
+  m_Mass: 5
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &6204055819804636514
 PrefabInstance:
   m_ObjectHideFlags: 0

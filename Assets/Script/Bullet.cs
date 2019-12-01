@@ -19,4 +19,12 @@ public class Bullet : MonoBehaviour
     {
         rigidbody.velocity = this.transform.right * -speed;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            PlayerStatus.Instance.setHealth(-1, "");
+        }
+    }
 }

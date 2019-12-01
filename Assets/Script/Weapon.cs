@@ -11,7 +11,12 @@ public class Weapon : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (PlayerStatus.Instance.getPlayerAttacking() && collision.gameObject.tag == "Enemy")
+        if (PlayerStatus.Instance.getPlayerAttacking() && collision.gameObject.CompareTag("Enemy"))
+        {
+            durability--;
+            Debug.Log(this.gameObject.name + " : " + durability);
+        }
+        if (PlayerStatus.Instance.getPlayerAttacking() && collision.gameObject.CompareTag("Breakable"))
         {
             durability--;
             Debug.Log(this.gameObject.name + " : " + durability);

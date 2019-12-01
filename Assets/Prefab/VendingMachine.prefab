@@ -197,6 +197,11 @@ MonoBehaviour:
   effect: []
   sellableObjects:
   - {fileID: 6487529716900513735, guid: 5ec4aaa7ef1e5ea448a5656f2e7dfa09, type: 3}
+  - {fileID: 6290182129155082745, guid: 99f93adf1b0787d49bfe6bf384106900, type: 3}
+  - {fileID: 2972728332474417104, guid: 9f37bd9b4d9206247bed0a6c14614eb2, type: 3}
+  - {fileID: 1615318351608449874, guid: af68d329db33d43449089069c9500e3e, type: 3}
+  - {fileID: 1933904038962624494, guid: 259c8c3420b4a694d8c86c6888ab90e8, type: 3}
+  - {fileID: 3684726905960711513, guid: 8a638990fff124845bb6c0894a1371e0, type: 3}
   vendingMachine: []
   glass: {fileID: 8576136409105642433}
   spawningRate: 0.5
