@@ -198,7 +198,10 @@ public class LevelBuilder : MonoBehaviour
     //Placing different rooms
     private void PlaceStartRoom()
     {
-        startRoom = Instantiate(startRoomPrefab[Random.Range(0, startRoomPrefab.Length-1)]) as StartRoom;
+        int index = 0;
+        if (PlayerStatus.Instance.getPlayerReachLevels() < 10) index = 0;
+        else if (PlayerStatus.Instance.getPlayerReachLevels() >= 10 && PlayerStatus.Instance.getPlayerReachLevels() < 20) index = 1;
+        startRoom = Instantiate(startRoomPrefab[index]) as StartRoom;
         startRoom.transform.parent = this.transform;
 
         AddExitsToList(startRoom, ref availableExits);
@@ -209,7 +212,10 @@ public class LevelBuilder : MonoBehaviour
 
     private void PlaceEndRoom()
     {
-        endRoom = Instantiate(endRoomPrefab[Random.Range(0, endRoomPrefab.Length - 1)]) as EndRoom;
+        int index = 0;
+        if (PlayerStatus.Instance.getPlayerReachLevels() < 10) index = 0;
+        else if (PlayerStatus.Instance.getPlayerReachLevels() >= 10 && PlayerStatus.Instance.getPlayerReachLevels() < 20) index = 1;
+        endRoom = Instantiate(endRoomPrefab[index]) as EndRoom;
         endRoom.transform.parent = this.transform;
 
         List<Exit> allAvailabeExits = new List<Exit>(availableExits);
@@ -244,7 +250,20 @@ public class LevelBuilder : MonoBehaviour
 
     private void PlaceRoom()
     {
-        Room currentRoom = Instantiate(roomPrefabs[Random.Range(0, roomPrefabs.Count)]) as Room;
+        int minRange = 0, maxRange = 0;
+        if(PlayerStatus.Instance.getPlayerReachLevels() < 10)
+        {
+            maxRange = 12;
+            //minRange = 13;
+            //maxRange = 23;
+        }
+        else if(PlayerStatus.Instance.getPlayerReachLevels() >= 10 && PlayerStatus.Instance.getPlayerReachLevels() < 20)
+        {
+            maxRange = 12;
+            //minRange = 13;
+            //maxRange = 23;
+        }
+        Room currentRoom = Instantiate(roomPrefabs[Random.Range(minRange, maxRange)]) as Room;
         currentRoom.transform.parent = this.transform;
 
         List<Exit> allAvailableExits = new List<Exit>(availableExits);

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerUIController : MonoBehaviour
 {
     [SerializeField]
-    private Text Health, Hunger, Coins, Price, Result, DeathReason;
+    private Text Health, Hunger, Coins, Price, Result, DeathReason, ReadingMaterials;
 
     [SerializeField]
     private Slider bgmVolumeSlider, soundEffectVolumeSlider;

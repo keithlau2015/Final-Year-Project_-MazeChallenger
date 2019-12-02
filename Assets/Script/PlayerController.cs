@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     private Collider firstItem = null;
     private Dictionary<string, int> itemPriority = new Dictionary<string, int>()
     {
-        {"Item", 0}, {"VendingMachine", 1}
+        {"Item", 0}, {"VendingMachine", 1}, {"Readable", 2}
     };
 
     // Start is called before the first frame update
@@ -437,6 +437,7 @@ public class PlayerController : MonoBehaviour
                         holdingSpear = true;
                         FindObjectOfType<SoundManager>().PlaySoundEffect(6);
                         Debug.Log("pick up Spear");
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
                     case "Sword_1(Clone)":
                         cleaRightHandObject();
@@ -446,6 +447,7 @@ public class PlayerController : MonoBehaviour
                         holdingSword = true;
                         FindObjectOfType<SoundManager>().PlaySoundEffect(7);
                         Debug.Log("pick up Sword_1");
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
                     case "Shield_0(Clone)":
                         clearLeftHandObject();
@@ -454,6 +456,7 @@ public class PlayerController : MonoBehaviour
                         holdingShield = true;
                         FindObjectOfType<SoundManager>().PlaySoundEffect(8);
                         Debug.Log("pick up Shield_0");
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
                     case "Shield_1(Clone)":
                         clearLeftHandObject();
@@ -462,6 +465,7 @@ public class PlayerController : MonoBehaviour
                         holdingShield = true;
                         FindObjectOfType<SoundManager>().PlaySoundEffect(8);
                         Debug.Log("pick up Shield_1");
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
                     case "Sword_0(Clone)":
                         cleaRightHandObject();
@@ -471,6 +475,7 @@ public class PlayerController : MonoBehaviour
                         holdingSword = true;
                         FindObjectOfType<SoundManager>().PlaySoundEffect(7);
                         Debug.Log("pick up Sword_0");
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
                     case "GreatSword(Clone)":
                         cleaRightHandObject();
@@ -480,6 +485,7 @@ public class PlayerController : MonoBehaviour
                         holdingGreatSword = true;
                         FindObjectOfType<SoundManager>().PlaySoundEffect(7);
                         Debug.Log("pick up GreatSword");
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
                     case "BattleAxe(Clone)":
                         cleaRightHandObject();
@@ -489,6 +495,7 @@ public class PlayerController : MonoBehaviour
                         holdingBattleAxe = true;
                         FindObjectOfType<SoundManager>().PlaySoundEffect(7);
                         Debug.Log("pick up BattleAxe");
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
                     case "Handgun(Clone)":
                         cleaRightHandObject();
@@ -498,6 +505,7 @@ public class PlayerController : MonoBehaviour
                         holdingHandgun = true;
                         FindObjectOfType<SoundManager>().PlaySoundEffect(9);
                         Debug.Log("pick up Handgun");
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
                     //Food
                     case "Bread(Clone)":
@@ -505,6 +513,7 @@ public class PlayerController : MonoBehaviour
                         FindObjectOfType<SoundManager>().PlaySoundEffect(10);
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.gameObject);
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
                     case "Soup(Clone)":
                         PlayerStatus.Instance.setHealth(+5, "");
@@ -512,6 +521,7 @@ public class PlayerController : MonoBehaviour
                         FindObjectOfType<SoundManager>().PlaySoundEffect(11);
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.gameObject);
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
                     case "Apple(Clone)":
                         PlayerStatus.Instance.setHunger(10, "");
@@ -520,6 +530,7 @@ public class PlayerController : MonoBehaviour
                         Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.gameObject);
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
                     case "Banana(Clone)":
                         PlayerStatus.Instance.setHealth(+1, "");
@@ -527,18 +538,21 @@ public class PlayerController : MonoBehaviour
                         FindObjectOfType<SoundManager>().PlaySoundEffect(10);
                         //Added Some buff if there have extra buff
                         Destroy(firstItem.gameObject);
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
 
                     //Coins
                     case "Coin(Clone)":
                         PlayerStatus.Instance.setCoins(+1);
                         Destroy(firstItem.gameObject);
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
 
                     case "Coins(Clone)":
                         int rand = Random.Range(5,15);
                         PlayerStatus.Instance.setCoins(+rand);
                         Destroy(firstItem.gameObject);
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
                 }
             }
@@ -562,6 +576,20 @@ public class PlayerController : MonoBehaviour
                 {
                     PlayerStatus.Instance.setCoins(-firstItem.GetComponent<VendingMachine>().getPrice());
                     firstItem.GetComponent<VendingMachine>().purchaseSuccess();
+                }
+            }
+        }
+        else if(firstItem.tag == "Readable")
+        {
+            float rand = Random.Range(0, 1);
+            if (rand < 0.5) PlayerStatus.Instance.setReadingMaterials("Blank");
+            else PlayerStatus.Instance.setReadingMaterials("100 Ways to survive in this dungeon");
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (rand >= 0.5)
+                {
+                    Destroy(firstItem.gameObject);
+                    PlayerStatus.Instance.setReadingMaterials("");
                 }
             }
         }

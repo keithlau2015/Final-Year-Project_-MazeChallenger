@@ -14,12 +14,11 @@ public class BreakableObject : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Weapon") && PlayerStatus.Instance.getPlayerAttacking())
         {
-            Debug.Log("Break");
             Vector3 pos = this.transform.position;
             Quaternion rotation = this.transform.rotation;
             GameObject clone = Instantiate(deadEffect, pos, rotation) as GameObject;
             clone.transform.localScale = this.gameObject.transform.localScale;
-            Instantiate(Object[Random.Range(0, Object.Capacity)], pos, rotation);
+            if(Object.Capacity > 0)Instantiate(Object[Random.Range(0, Object.Capacity)], pos, rotation);
             Destroy(clone, 10);
             Destroy(this.gameObject);
         }
