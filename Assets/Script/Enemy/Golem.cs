@@ -15,6 +15,7 @@ public class Golem : MonoBehaviour
     public GameObject atk_point;
     public GameObject atk_area;
     private GameObject clone;
+    private int layerMask;
 
 
     //Draw the line from the piovt point
@@ -23,10 +24,10 @@ public class Golem : MonoBehaviour
 
     private void Awake()
     {
+        layerMask = LayerMask.GetMask("Player");
         animator = GetComponent<Animator>();
         enemyBehaviour = GetComponent<EnemyBehaviour>();
         status = GetComponent<Enemy>();
-
         status.setEnemyHealth(2, "");
     }
 
@@ -44,8 +45,9 @@ public class Golem : MonoBehaviour
      private void EnemyDetection()
      {
         RaycastHit hit;
-        if (Physics.SphereCast(pivotPoint.position, 5f, transform.forward, out hit, 20f))
+        if (Physics.SphereCast(pivotPoint.position, 5f, transform.forward, out hit, 20f, layerMask))
         {
+            Debug.Log("engadge");
             var hitTarget = hit.transform;
             if (hitTarget.CompareTag("Player"))
             {
@@ -55,7 +57,8 @@ public class Golem : MonoBehaviour
         }
         else
         {
-        	animator.SetInteger("Status", 1);
+            Debug.Log("walk");
+            animator.SetInteger("Status", 1);
             enemyBehaviour.EnemyWalk();
         }
     }
@@ -102,7 +105,6 @@ public class Golem : MonoBehaviour
             {
                 attack_pattern = 0;
             }
-            Debug.Log(attack_pattern);
         }
     }
 
