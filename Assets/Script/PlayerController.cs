@@ -60,6 +60,21 @@ public class PlayerController : MonoBehaviour
         float x = rigidbody.velocity.x;
         float z = rigidbody.velocity.z;
 
+        if(PlayerStatus.Instance.getSanity() <= 75 && PlayerStatus.Instance.getSanity() > 25)
+        {
+            PlayerStatus.Instance.setHunger(75, "Total Hunger");
+        }
+        else if(PlayerStatus.Instance.getSanity() < 25 && PlayerStatus.Instance.getSanity() > 0)
+        {
+            PlayerStatus.Instance.setHunger(50, "Total Hunger");
+            PlayerStatus.Instance.setSpeed(-10, "");
+        }
+        else if (PlayerStatus.Instance.getSanity() == 0)
+        {
+            PlayerStatus.Instance.setSpeed(0, "set2zero");
+            PlayerStatus.Instance.setPlayerKilledBy("You have Collapse");
+        }
+
         //Check Player is Attacking or not
         if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
         {
@@ -271,6 +286,7 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.tag == "Spike")
         {
             PlayerStatus.Instance.setHealth(-1, "");
+            PlayerStatus.Instance.setSanity(-5);
             if(PlayerStatus.Instance.getHealth() == 0)
             {
                 PlayerStatus.Instance.setPlayerKilledBy("Jump into the Spike");
@@ -278,11 +294,12 @@ public class PlayerController : MonoBehaviour
         }
         if(other.gameObject.tag == "attack_point")
         {
-                PlayerStatus.Instance.setHealth(-1, "");
-                if (PlayerStatus.Instance.getHealth() == 0)
-                {
-                    PlayerStatus.Instance.setPlayerKilledBy(other.transform.name + "Tear you apart");
-                }
+            PlayerStatus.Instance.setHealth(-1, "");
+            PlayerStatus.Instance.setSanity(-5);
+            if (PlayerStatus.Instance.getHealth() == 0)
+            {
+                PlayerStatus.Instance.setPlayerKilledBy(other.transform.name + "Tear you apart");
+            }
             Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
         }
     }
@@ -554,6 +571,15 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.gameObject);
                         PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
+
+                    //Scorll
+                    case "Scroll(Clone)":
+                        PlayerStatus.Instance.setSanity(+5);
+                        Destroy(firstItem.gameObject);
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
+                        break;
+
+
                 }
             }
         }
@@ -584,14 +610,6 @@ public class PlayerController : MonoBehaviour
             float rand = Random.Range(0, 1);
             if (rand < 0.5) PlayerStatus.Instance.setReadingMaterials("Blank");
             else PlayerStatus.Instance.setReadingMaterials("100 Ways to survive in this dungeon");
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                if (rand >= 0.5)
-                {
-                    Destroy(firstItem.gameObject);
-                    PlayerStatus.Instance.setReadingMaterials("");
-                }
-            }
         }
     }
 

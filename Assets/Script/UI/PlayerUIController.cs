@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerUIController : MonoBehaviour
 {
     [SerializeField]
-    private Text Health, Hunger, Coins, Price, Result, DeathReason, ReadingMaterials;
+    private Text Health, Hunger, Coins, Price, Sanity, Result, DeathReason, ReadingMaterials;
 
     [SerializeField]
     private Slider bgmVolumeSlider, soundEffectVolumeSlider;
@@ -29,6 +29,8 @@ public class PlayerUIController : MonoBehaviour
         Hunger.text = PlayerStatus.Instance.getHunger().ToString();
         Health.text = PlayerStatus.Instance.getHealth().ToString();
         Coins.text = PlayerStatus.Instance.getCoins().ToString();
+        Sanity.text = PlayerStatus.Instance.getSanity().ToString();
+        ReadingMaterials.text = PlayerStatus.Instance.getReadingMaterials();
         Result.text = "You had reach to " + PlayerStatus.Instance.getPlayerReachLevels() + " Levels !";
         if (PlayerStatus.Instance.getPlayerReachLevels() > 0) DeathReason.text = PlayerStatus.Instance.getPlayerKilledBy();
         else DeathReason.text = "Do you even trying?";

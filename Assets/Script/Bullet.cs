@@ -25,6 +25,7 @@ public class Bullet : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             PlayerStatus.Instance.setHealth(-1, "");
+            PlayerStatus.Instance.setSanity(-5);
         }
     }
 }

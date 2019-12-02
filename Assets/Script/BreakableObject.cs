@@ -10,6 +10,17 @@ public class BreakableObject : MonoBehaviour
     [SerializeField]
     private List<GameObject> Object = new List<GameObject>();
 
+    private int rand;
+
+    private void Awake()
+    {
+        rand = Random.Range(0, Object.Capacity);
+        if (this.gameObject.name == "HeadSkull(Clone)")
+        {
+            PlayerStatus.Instance.setSanity(-5);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Weapon") && PlayerStatus.Instance.getPlayerAttacking())
@@ -18,7 +29,10 @@ public class BreakableObject : MonoBehaviour
             Quaternion rotation = this.transform.rotation;
             GameObject clone = Instantiate(deadEffect, pos, rotation) as GameObject;
             clone.transform.localScale = this.gameObject.transform.localScale;
-            if(Object.Capacity > 0)Instantiate(Object[Random.Range(0, Object.Capacity)], pos, rotation);
+            if (Object.Capacity > 0)
+            {
+                Instantiate(Object[rand], pos, rotation);
+            }
             Destroy(clone, 10);
             Destroy(this.gameObject);
         }

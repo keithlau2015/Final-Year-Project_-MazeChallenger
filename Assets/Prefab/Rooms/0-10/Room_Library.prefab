@@ -26378,9 +26378,11 @@ GameObject:
   - component: {fileID: 5730001500855986345}
   - component: {fileID: 4428508206643446448}
   - component: {fileID: 5399943546244919644}
+  - component: {fileID: 3936280610223652405}
+  - component: {fileID: 6470124670117382908}
   m_Layer: 0
   m_Name: Crate (2)
-  m_TagString: Wall
+  m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26463,6 +26465,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20.934162, y: 20.614252, z: 20.62021}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3936280610223652405
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380797914861000832}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &6470124670117382908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380797914861000832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0406a1584f1e2b748b34cdfc7029225e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadEffect: {fileID: 4611637025730928876, guid: 67542657736efbc4a800332eea5e83e9,
+    type: 3}
+  Object:
+  - {fileID: 8150628378140162284, guid: b4d2aae38706da74b8345a2b5589e06e, type: 3}
+  - {fileID: 4198801914391174224, guid: f319dd3e3b2952c46bbf4632fa34259b, type: 3}
+  - {fileID: 8322089917055592861, guid: 103c25a87b0b6f642bfc1f6484a15657, type: 3}
+  - {fileID: 3684726905960711513, guid: 8a638990fff124845bb6c0894a1371e0, type: 3}
+  - {fileID: 1933904038962624494, guid: 259c8c3420b4a694d8c86c6888ab90e8, type: 3}
 --- !u!1 &1395366647760799641
 GameObject:
   m_ObjectHideFlags: 0
@@ -60964,9 +61002,11 @@ GameObject:
   - component: {fileID: 1578578414820994504}
   - component: {fileID: 7718440352615232179}
   - component: {fileID: 1869673543016770485}
+  - component: {fileID: 2245555533410473176}
+  - component: {fileID: 1947960202346969323}
   m_Layer: 0
   m_Name: Crate (1)
-  m_TagString: Wall
+  m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61049,6 +61089,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20.934162, y: 20.614252, z: 20.62021}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2245555533410473176
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4403296929034499791}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1947960202346969323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4403296929034499791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0406a1584f1e2b748b34cdfc7029225e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadEffect: {fileID: 4611637025730928876, guid: 67542657736efbc4a800332eea5e83e9,
+    type: 3}
+  Object:
+  - {fileID: 8150628378140162284, guid: b4d2aae38706da74b8345a2b5589e06e, type: 3}
+  - {fileID: 4198801914391174224, guid: f319dd3e3b2952c46bbf4632fa34259b, type: 3}
+  - {fileID: 8322089917055592861, guid: 103c25a87b0b6f642bfc1f6484a15657, type: 3}
+  - {fileID: 3684726905960711513, guid: 8a638990fff124845bb6c0894a1371e0, type: 3}
+  - {fileID: 1933904038962624494, guid: 259c8c3420b4a694d8c86c6888ab90e8, type: 3}
 --- !u!1 &4434335160456958894
 GameObject:
   m_ObjectHideFlags: 0
@@ -73462,9 +73538,11 @@ GameObject:
   - component: {fileID: 1127863429807449029}
   - component: {fileID: 403036461082945667}
   - component: {fileID: 2211599361432971390}
+  - component: {fileID: 6016235049121246058}
+  - component: {fileID: 8392395075437736899}
   m_Layer: 0
   m_Name: Crate (4)
-  m_TagString: Wall
+  m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73547,6 +73625,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20.934162, y: 20.614252, z: 20.62021}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &6016235049121246058
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5082389011228713216}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8392395075437736899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5082389011228713216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0406a1584f1e2b748b34cdfc7029225e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadEffect: {fileID: 4611637025730928876, guid: 67542657736efbc4a800332eea5e83e9,
+    type: 3}
+  Object:
+  - {fileID: 8150628378140162284, guid: b4d2aae38706da74b8345a2b5589e06e, type: 3}
+  - {fileID: 4198801914391174224, guid: f319dd3e3b2952c46bbf4632fa34259b, type: 3}
+  - {fileID: 8322089917055592861, guid: 103c25a87b0b6f642bfc1f6484a15657, type: 3}
+  - {fileID: 3684726905960711513, guid: 8a638990fff124845bb6c0894a1371e0, type: 3}
+  - {fileID: 1933904038962624494, guid: 259c8c3420b4a694d8c86c6888ab90e8, type: 3}
 --- !u!1 &5088625517639937761
 GameObject:
   m_ObjectHideFlags: 0
@@ -114827,9 +114941,11 @@ GameObject:
   - component: {fileID: 1919866849477731149}
   - component: {fileID: 5686118375743700371}
   - component: {fileID: 7996170163732577724}
+  - component: {fileID: 7706190326762439143}
+  - component: {fileID: 3015868098175589310}
   m_Layer: 0
   m_Name: Crate (3)
-  m_TagString: Wall
+  m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114912,6 +115028,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20.934162, y: 20.614252, z: 20.62021}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7706190326762439143
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7501996774656924273}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3015868098175589310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7501996774656924273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0406a1584f1e2b748b34cdfc7029225e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadEffect: {fileID: 4611637025730928876, guid: 67542657736efbc4a800332eea5e83e9,
+    type: 3}
+  Object:
+  - {fileID: 8150628378140162284, guid: b4d2aae38706da74b8345a2b5589e06e, type: 3}
+  - {fileID: 4198801914391174224, guid: f319dd3e3b2952c46bbf4632fa34259b, type: 3}
+  - {fileID: 8322089917055592861, guid: 103c25a87b0b6f642bfc1f6484a15657, type: 3}
+  - {fileID: 3684726905960711513, guid: 8a638990fff124845bb6c0894a1371e0, type: 3}
+  - {fileID: 1933904038962624494, guid: 259c8c3420b4a694d8c86c6888ab90e8, type: 3}
 --- !u!1 &7509289455528506880
 GameObject:
   m_ObjectHideFlags: 0
@@ -120425,9 +120577,11 @@ GameObject:
   - component: {fileID: 7849032081404899482}
   - component: {fileID: 5281802905230649599}
   - component: {fileID: 1577889834406437943}
+  - component: {fileID: 7280389838118099322}
+  - component: {fileID: 8273746554349699708}
   m_Layer: 0
   m_Name: Crate
-  m_TagString: Wall
+  m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120510,6 +120664,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20.934162, y: 20.614252, z: 20.62021}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &7280389838118099322
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7653897833044665131}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8273746554349699708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7653897833044665131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0406a1584f1e2b748b34cdfc7029225e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadEffect: {fileID: 4611637025730928876, guid: 67542657736efbc4a800332eea5e83e9,
+    type: 3}
+  Object:
+  - {fileID: 8150628378140162284, guid: b4d2aae38706da74b8345a2b5589e06e, type: 3}
+  - {fileID: 4198801914391174224, guid: f319dd3e3b2952c46bbf4632fa34259b, type: 3}
+  - {fileID: 8322089917055592861, guid: 103c25a87b0b6f642bfc1f6484a15657, type: 3}
+  - {fileID: 3684726905960711513, guid: 8a638990fff124845bb6c0894a1371e0, type: 3}
+  - {fileID: 1933904038962624494, guid: 259c8c3420b4a694d8c86c6888ab90e8, type: 3}
 --- !u!1 &7672912291455477492
 GameObject:
   m_ObjectHideFlags: 0

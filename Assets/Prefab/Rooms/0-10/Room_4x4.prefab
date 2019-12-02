@@ -458,7 +458,7 @@ PrefabInstance:
     - target: {fileID: 8150628378140162284, guid: b4d2aae38706da74b8345a2b5589e06e,
         type: 3}
       propertyPath: m_Name
-      value: Scroll
+      value: Scroll(Clone)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4d2aae38706da74b8345a2b5589e06e, type: 3}

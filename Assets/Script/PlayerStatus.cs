@@ -4,11 +4,11 @@ public class PlayerStatus : MonoBehaviour
 {
     static readonly PlayerStatus instance = new PlayerStatus();
     //Default
-    private const int HEALTH = 3, HUNGER = 100, COINS = 0;
+    private const int HEALTH = 3, HUNGER = 100, COINS = 0, SANITY = 100;
     private const float SPEED = 50;
 
     //Current
-    private int current_Health, current_Hunger, current_Coins;
+    private int current_Health, current_Hunger, current_Coins, current_Sanity;
     private float current_Speed;
 
     //Total
@@ -49,18 +49,25 @@ public class PlayerStatus : MonoBehaviour
         current_Health = total_Health;
         current_Hunger = total_Hunger;
         current_Speed = total_Speed;
+        current_Sanity = SANITY;
+        current_Coins = 0;
         healingSkill = playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking  = false;
         priceUIText = killedBy = readingMaterials = "";
     }
 
+    public int getSanity()
+    {
+        return instance.current_Sanity;
+    }
+
     public string getReadingMaterials()
     {
-        return readingMaterials;
+        return instance.readingMaterials;
     }
 
     public string getPriceUIText()
     {
-        return priceUIText;
+        return instance.priceUIText;
     }
 
     public bool getPlayerCanInteractWithOtherObject()
@@ -124,6 +131,10 @@ public class PlayerStatus : MonoBehaviour
             total_Speed += speed;
             current_Speed = total_Speed;
         }
+        else if(extraBuff == "set2zero")
+        {
+            current_Speed = 0;
+        }
     }
 
     public void setHealth(int health, string extraBuff)
@@ -167,7 +178,23 @@ public class PlayerStatus : MonoBehaviour
                 this.current_Hunger += hunger;
             }
         }
-    }    
+        else if(extraBuff == "Total Hunger")
+        {
+            total_Hunger = hunger;
+        }
+    }
+    
+    public void setSanity(int sanity)
+    {
+        if (this.current_Sanity + sanity >= SANITY)
+        {
+            this.current_Sanity = SANITY;
+        }
+        else
+        {
+            this.current_Sanity += sanity;
+        }
+    }
 
     public void setPlayerGetIntoNextLevel(bool playerGetIntoNextLevel)
     {
@@ -252,10 +279,11 @@ public class PlayerStatus : MonoBehaviour
         this.current_Health = HEALTH;
         this.current_Hunger = HUNGER;
         this.current_Speed = SPEED;
+        this.current_Coins = COINS;
+        this.current_Sanity = SANITY;
         this.total_Health = HEALTH;
         this.total_Hunger = HUNGER;
         this.total_Speed = SPEED;
-        this.current_Coins = COINS;
         this.reachedLevels = 0;
         healingSkill = playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking = false;
     }
