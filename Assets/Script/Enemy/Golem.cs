@@ -10,10 +10,12 @@ public class Golem : MonoBehaviour
 	private int attack_pattern = 0;
 	private EnemyBehaviour enemyBehaviour;
     private Enemy status;
-    private bool attack = false;
+    private bool attack = false, spawn = false;
     public PlayerController player;
     public GameObject atk_point;
     public GameObject atk_area;
+    private GameObject clone;
+    private int layerMask;
 
 
     //Draw the line from the piovt point
@@ -22,10 +24,10 @@ public class Golem : MonoBehaviour
 
     private void Awake()
     {
+        layerMask = LayerMask.GetMask("Player");
         animator = GetComponent<Animator>();
         enemyBehaviour = GetComponent<EnemyBehaviour>();
         status = GetComponent<Enemy>();
-
         status.setEnemyHealth(2, "");
     }
 
@@ -43,8 +45,9 @@ public class Golem : MonoBehaviour
      private void EnemyDetection()
      {
         RaycastHit hit;
-        if (Physics.SphereCast(pivotPoint.position, 5f, transform.forward, out hit, 20f))
+        if (Physics.SphereCast(pivotPoint.position, 5f, transform.forward, out hit, 20f, layerMask))
         {
+            Debug.Log("engadge");
             var hitTarget = hit.transform;
             if (hitTarget.CompareTag("Player"))
             {
@@ -54,7 +57,8 @@ public class Golem : MonoBehaviour
         }
         else
         {
-        	animator.SetInteger("Status", 1);
+            Debug.Log("walk");
+            animator.SetInteger("Status", 1);
             enemyBehaviour.EnemyWalk();
         }
     }
@@ -63,13 +67,23 @@ public class Golem : MonoBehaviour
   // Tom 呢度你整, 整完你同我講, 我要問你個animation
     private void EnemyAttack()
     {
-    	AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
-        if(!animator.IsInTransition (0) && currentState.fullPathHash == Animator.StringToHash ("Base Layer.Armature|walking"))
+        if(animator.GetInteger("Status") == 2 && animator.IsInTransition(0) && clone == null)
         {
-        	//player.already_atk = false;
+            spawn = true;
+            attack = true;
+            clone = Instantiate(atk_area, atk_point.transform.position, atk_point.transform.rotation) as GameObject;
+            Destroy(clone, 2);
+        }
+        else
+        {
+            spawn = false;
+        }
+
+        if(!animator.IsInTransition (0) && animator.GetInteger("Status") == 2)
+        {
+            attack = false;
             if(attack_pattern == 0 && !attack)
             {
-            	attack = true;
                 if(Random.value > 0.7)
                 {
                 	attack_pattern = 2;
@@ -89,18 +103,9 @@ public class Golem : MonoBehaviour
             }
             else
             {
-            	attack = false;
-                attack_pattern = 0;  
+                attack_pattern = 0;
             }
         }
-        else if(attack && animator.IsInTransition(0))
-        {
-        	GameObject clone = Instantiate(atk_area, atk_point.transform.position, atk_point.transform.rotation) as GameObject;
-        	Destroy(clone, 1);
-        	Debug.Log("Spawn sccess");
-        }
-
-
     }
 
 

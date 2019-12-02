@@ -12,8 +12,7 @@ public class EnemyBehaviour : MonoBehaviour
     private GameObject deadEffect;
 
     //check about is this enemy being attacked
-    private bool beingAttack;
-    private bool collisionWithObject, triggerWithPlayer, onGround, insideAttackArea;
+    private bool collisionWithObject, triggerWithPlayer, onGround, insideAttackArea, beingAttack;
 
     //Need component 
     private Enemy status;
@@ -26,7 +25,6 @@ public class EnemyBehaviour : MonoBehaviour
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
         status = GetComponent<Enemy>();
-        beingAttack = false;
     }
 
     public void EnemyWalk()
@@ -132,4 +130,6 @@ public class EnemyBehaviour : MonoBehaviour
             beingAttack = false;
         }
     }
+
+    
 }

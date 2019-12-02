@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 camOffset;
     private Animator leftHandAnimator, rightHandAnimator;
     private bool checkIsMoving;
-    public static bool already_atk;
+    public EnemyBehaviour enemy;
     [SerializeField]
     private GameObject[] weapons, dissolve_weapons;
 
@@ -278,22 +278,13 @@ public class PlayerController : MonoBehaviour
         }
         if(other.gameObject.tag == "attack_point")
         {
-            if(!already_atk)
-            {
                 PlayerStatus.Instance.setHealth(-1, "");
                 if (PlayerStatus.Instance.getHealth() == 0)
                 {
                     PlayerStatus.Instance.setPlayerKilledBy(other.transform.name + "Tear you apart");
                 }
-                already_atk = true;
-            }
             Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
         }
-    }
-
-    private void OnTriggerExit()
-    {
-        already_atk = false;
     }
 
     private void DrawRayCastLine() {
