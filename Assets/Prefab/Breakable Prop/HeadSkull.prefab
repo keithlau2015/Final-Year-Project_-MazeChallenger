@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2484282841347008652}
   - component: {fileID: 359954461446054564}
   - component: {fileID: 7356705349623136126}
+  - component: {fileID: 1884280780961447796}
   m_Layer: 0
   m_Name: HeadSkull
   m_TagString: Untagged
@@ -28,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4198801914391174224}
   m_LocalRotation: {x: 0.7010574, y: -0.4304595, z: -0.09229678, w: -0.5609854}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 216.00002, y: 180, z: 162}
+  m_LocalPosition: {x: 0.0095588, y: -0.0078045, z: -0.0095587}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1397117725532216952}
   m_Father: {fileID: 0}
@@ -111,6 +112,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1884280780961447796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4198801914391174224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0406a1584f1e2b748b34cdfc7029225e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deadEffect: {fileID: 8868837129371125619, guid: 374133fa341a7624cbebe5b39db848e0,
+    type: 3}
+  Object: []
 --- !u!1001 &6204055819804636514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -118,11 +134,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 873273644062797379}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: f84cbd24363a2c14d89f46ce7c8becd3,
-        type: 3}
-      propertyPath: m_Name
-      value: HeadSkull_Flip
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f84cbd24363a2c14d89f46ce7c8becd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -192,6 +203,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.0399998
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f84cbd24363a2c14d89f46ce7c8becd3,
+        type: 3}
+      propertyPath: m_Name
+      value: HeadSkull_Flip
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: f84cbd24363a2c14d89f46ce7c8becd3,
         type: 3}

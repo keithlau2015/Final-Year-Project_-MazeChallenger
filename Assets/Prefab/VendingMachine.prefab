@@ -54,13 +54,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5539668142519484217}
-  m_LocalRotation: {x: 0.50000006, y: -0.4999987, z: -0.5, w: 0.5000014}
-  m_LocalPosition: {x: -0.00000021997023, y: -0.003300657, z: 0.040005174}
-  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
+  m_LocalRotation: {x: 0.00000013240823, y: -0.7071068, z: -0.7071068, w: -0.00000013240823}
+  m_LocalPosition: {x: -0.00000021997023, y: -0.0033, z: 0.0333}
+  m_LocalScale: {x: 0.0025, y: 0.0025, z: 0.0025}
   m_Children: []
   m_Father: {fileID: 4784316512721100511}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: -90.00001, z: -90.00001}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -180.00002}
 --- !u!95 &8620811797832045230
 Animator:
   serializedVersion: 3
@@ -196,12 +196,9 @@ MonoBehaviour:
   spawnPickablePoint: {fileID: 3253645838503043092}
   effect: []
   sellableObjects:
-  - {fileID: 6487529716900513735, guid: 5ec4aaa7ef1e5ea448a5656f2e7dfa09, type: 3}
+  - {fileID: 1615318351608449874, guid: af68d329db33d43449089069c9500e3e, type: 3}
   - {fileID: 6290182129155082745, guid: 99f93adf1b0787d49bfe6bf384106900, type: 3}
   - {fileID: 2972728332474417104, guid: 9f37bd9b4d9206247bed0a6c14614eb2, type: 3}
-  - {fileID: 1615318351608449874, guid: af68d329db33d43449089069c9500e3e, type: 3}
-  - {fileID: 1933904038962624494, guid: 259c8c3420b4a694d8c86c6888ab90e8, type: 3}
-  - {fileID: 3684726905960711513, guid: 8a638990fff124845bb6c0894a1371e0, type: 3}
   vendingMachine: []
   glass: {fileID: 8576136409105642433}
   spawningRate: 0.5

@@ -20,7 +20,7 @@ public class PlayerStatus : MonoBehaviour
 
     //UI
     private bool playerCanInteractWithOtherObject, playerCanInteractWithVendingMachine;
-    private string priceUIText, killedBy;
+    private string priceUIText, killedBy, readingMaterials;
 
     //Stage
     private int reachedLevels;
@@ -49,8 +49,13 @@ public class PlayerStatus : MonoBehaviour
         current_Health = total_Health;
         current_Hunger = total_Hunger;
         current_Speed = total_Speed;
-        healingSkill = playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking = false;
-        priceUIText = killedBy = "";
+        healingSkill = playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking  = false;
+        priceUIText = killedBy = readingMaterials = "";
+    }
+
+    public string getReadingMaterials()
+    {
+        return readingMaterials;
     }
 
     public string getPriceUIText()
@@ -86,6 +91,11 @@ public class PlayerStatus : MonoBehaviour
     public int getHunger()
     {
         return instance.current_Hunger;
+    }
+
+    public void setReadingMaterials(string materials)
+    {
+        readingMaterials = materials;
     }
 
     public void setPlayerCanInteractWithOtherObject(bool interacted)
