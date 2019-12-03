@@ -380,7 +380,7 @@ public class LevelBuilder : MonoBehaviour
     private bool CheckRoomOverlap(Room room)
     {
         Bounds bounds = room.RoomBounds;
-        bounds.Expand(-2.15f);
+        bounds.Expand(-2.13f);
 
         Collider[] colliders = Physics.OverlapBox(bounds.center, bounds.size / 2, room.transform.rotation, roomLayerMask);
         if(colliders.Length > 0)
@@ -511,7 +511,7 @@ public class LevelBuilder : MonoBehaviour
     //Button
     private void onClickUpgradeHealthButton()
     {
-        PlayerStatus.Instance.setHealth(2, "upgradeHealth");
+        PlayerStatus.Instance.setHealth(2, "Total Health");
         PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
     }
 

@@ -20,10 +20,10 @@ public class Weapon : MonoBehaviour
         {
             durability--;
             Debug.Log(this.gameObject.name + " : " + durability);
-        }
-        if (collision.gameObject.name == "HeadSkull(Clone)")
-        {
-            PlayerStatus.Instance.setSanity(+4);
+            if (collision.gameObject.name == "HeadSkull(Clone)")
+            {
+                PlayerStatus.Instance.setSanity(+2);
+            }
         }
     }
 }

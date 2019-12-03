@@ -25,7 +25,7 @@ public class PlayerUIController : MonoBehaviour
         Price.enabled = PlayerStatus.Instance.getPlayerCanInteractWithVendingMachine();
         Price.text = PlayerStatus.Instance.getPriceUIText();
         pickUpSight.SetActive(PlayerStatus.Instance.getPlayerCanInteractWithOtherObject());
-        frontSight.SetActive(!PlayerStatus.Instance.getPlayerCanInteractWithVendingMachine());
+        frontSight.SetActive(!PlayerStatus.Instance.getPlayerCanInteractWithVendingMachine() || PlayerStatus.Instance.getPlayerCanInteractWithReadingMaterial());
         Hunger.text = PlayerStatus.Instance.getHunger().ToString();
         Health.text = PlayerStatus.Instance.getHealth().ToString();
         Coins.text = PlayerStatus.Instance.getCoins().ToString();

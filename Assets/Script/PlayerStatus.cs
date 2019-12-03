@@ -4,7 +4,7 @@ public class PlayerStatus : MonoBehaviour
 {
     static readonly PlayerStatus instance = new PlayerStatus();
     //Default
-    private const int HEALTH = 3, HUNGER = 100, COINS = 0, SANITY = 100;
+    private const int HEALTH = 3, HUNGER = 100, COINS = 0, SANITY = 50;
     private const float SPEED = 50;
 
     //Current
@@ -19,7 +19,7 @@ public class PlayerStatus : MonoBehaviour
     private bool playerGetIntoNextLevel, playerAtTheMenu, attacking;
 
     //UI
-    private bool playerCanInteractWithOtherObject, playerCanInteractWithVendingMachine;
+    private bool playerCanInteractWithOtherObject, playerCanInteractWithVendingMachine, playerCanInteractWithReadingMaterial;
     private string priceUIText, killedBy, readingMaterials;
 
     //Stage
@@ -51,8 +51,13 @@ public class PlayerStatus : MonoBehaviour
         current_Speed = total_Speed;
         current_Sanity = SANITY;
         current_Coins = 0;
-        healingSkill = playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking  = false;
+        healingSkill = playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking = playerCanInteractWithReadingMaterial = false;
         priceUIText = killedBy = readingMaterials = "";
+    }
+
+    public bool getPlayerCanInteractWithReadingMaterial()
+    {
+        return instance.playerCanInteractWithReadingMaterial;
     }
 
     public int getSanity()
@@ -98,6 +103,11 @@ public class PlayerStatus : MonoBehaviour
     public int getHunger()
     {
         return instance.current_Hunger;
+    }
+
+    public void setPlayerCanInteractReadingMaterial(bool interacted)
+    {
+        playerCanInteractWithReadingMaterial = interacted;
     }
 
     public void setReadingMaterials(string materials)
@@ -154,7 +164,7 @@ public class PlayerStatus : MonoBehaviour
                 current_Health += health;
             }
         }
-        else if(extraBuff == "upgradeHealth")
+        else if(extraBuff == "Total Health")
         {
             total_Health += health;
         }

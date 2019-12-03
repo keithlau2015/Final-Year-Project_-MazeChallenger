@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3049774990931790670}
   - component: {fileID: 6271821639509553528}
   - component: {fileID: 303278182656167297}
+  - component: {fileID: -4586793309746744766}
+  - component: {fileID: 307520956329866370}
   m_Layer: 0
   m_Name: Book_Blue
   m_TagString: Readable
@@ -79,6 +81,31 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &-4586793309746744766
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020326136705907037}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.018869406, y: 0.007523542, z: 0.02700002}
+  m_Center: {x: -0.0024396742, y: 0.0010646032, z: 0.012411851}
+--- !u!114 &307520956329866370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020326136705907037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a7627c0d0331244840283be41451b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1104612051625552150
 PrefabInstance:
   m_ObjectHideFlags: 0

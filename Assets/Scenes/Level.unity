@@ -1224,6 +1224,11 @@ PrefabInstance:
       propertyPath: m_ReferenceResolution.y
       value: 600
       objectReference: {fileID: 0}
+    - target: {fileID: 3315035585184166272, guid: 606ccb8fe16545c4c859d92f69ac4bca,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 606ccb8fe16545c4c859d92f69ac4bca, type: 3}
 --- !u!1001 &4594857541568901802

@@ -29,6 +29,7 @@ public class Golem : MonoBehaviour
         enemyBehaviour = GetComponent<EnemyBehaviour>();
         status = GetComponent<Enemy>();
         status.setEnemyHealth(2, "");
+        status.setEnemySpeed(+10, "");
     }
 
      private void Update()
@@ -63,8 +64,6 @@ public class Golem : MonoBehaviour
         }
     }
 
-
-  // Tom 呢度你整, 整完你同我講, 我要問你個animation
     private void EnemyAttack()
     {
         if(animator.GetInteger("Status") == 2 && animator.IsInTransition(0) && clone == null)
@@ -72,7 +71,8 @@ public class Golem : MonoBehaviour
             spawn = true;
             attack = true;
             clone = Instantiate(atk_area, atk_point.transform.position, atk_point.transform.rotation) as GameObject;
-            Destroy(clone, 2);
+            if (this.gameObject != null) Destroy(clone, 2);
+            else Destroy(clone);
         }
         else
         {

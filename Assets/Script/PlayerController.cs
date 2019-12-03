@@ -60,11 +60,11 @@ public class PlayerController : MonoBehaviour
         float x = rigidbody.velocity.x;
         float z = rigidbody.velocity.z;
 
-        if(PlayerStatus.Instance.getSanity() <= 75 && PlayerStatus.Instance.getSanity() > 25)
+        if(PlayerStatus.Instance.getSanity() <= 35 && PlayerStatus.Instance.getSanity() > 20)
         {
             PlayerStatus.Instance.setHunger(75, "Total Hunger");
         }
-        else if(PlayerStatus.Instance.getSanity() < 25 && PlayerStatus.Instance.getSanity() > 0)
+        else if(PlayerStatus.Instance.getSanity() < 20 && PlayerStatus.Instance.getSanity() > 0)
         {
             PlayerStatus.Instance.setHunger(50, "Total Hunger");
             PlayerStatus.Instance.setSpeed(-10, "");
@@ -364,6 +364,7 @@ public class PlayerController : MonoBehaviour
         {
             PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
             PlayerStatus.Instance.setPlayerCanInteractWithVendingMachine(false);
+            PlayerStatus.Instance.setPlayerCanInteractReadingMaterial(false);
             firstItem = null;
         }
     }
@@ -533,7 +534,6 @@ public class PlayerController : MonoBehaviour
                         PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
                     case "Soup(Clone)":
-                        PlayerStatus.Instance.setHealth(+5, "");
                         PlayerStatus.Instance.setHunger(15, "");
                         FindObjectOfType<SoundManager>().PlaySoundEffect(11);
                         //Added Some buff if there have extra buff
@@ -542,7 +542,6 @@ public class PlayerController : MonoBehaviour
                         break;
                     case "Apple(Clone)":
                         PlayerStatus.Instance.setHunger(10, "");
-                        PlayerStatus.Instance.setHealth(+1, "");
                         FindObjectOfType<SoundManager>().PlaySoundEffect(10);
                         Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
                         //Added Some buff if there have extra buff
@@ -550,7 +549,6 @@ public class PlayerController : MonoBehaviour
                         PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
                     case "Banana(Clone)":
-                        PlayerStatus.Instance.setHealth(+1, "");
                         PlayerStatus.Instance.setHunger(10, "");
                         FindObjectOfType<SoundManager>().PlaySoundEffect(10);
                         //Added Some buff if there have extra buff
@@ -605,11 +603,9 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        else if(firstItem.tag == "Readable")
+        else if(firstItem.tag == "Readable" && !PlayerStatus.Instance.getPlayerCanInteractWithReadingMaterial())
         {
-            float rand = Random.Range(0, 1);
-            if (rand < 0.5) PlayerStatus.Instance.setReadingMaterials("Blank");
-            else PlayerStatus.Instance.setReadingMaterials("100 Ways to survive in this dungeon");
+            PlayerStatus.Instance.setPlayerCanInteractReadingMaterial(true);            
         }
     }
 

@@ -20,11 +20,16 @@ public class UnknownFloatingEnemy : MonoBehaviour
     private float nextFire, fireRate;
 
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
         enemyBehaviour = GetComponent<EnemyBehaviour>();
         status = GetComponent<Enemy>();
+    }
+
+    private void Start()
+    {
+        status.setEnemySpeed(+10, "");
     }
 
     // Update is called once per frame
