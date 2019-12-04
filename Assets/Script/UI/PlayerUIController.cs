@@ -25,12 +25,14 @@ public class PlayerUIController : MonoBehaviour
         Price.enabled = PlayerStatus.Instance.getPlayerCanInteractWithVendingMachine();
         Price.text = PlayerStatus.Instance.getPriceUIText();
         pickUpSight.SetActive(PlayerStatus.Instance.getPlayerCanInteractWithOtherObject());
-        frontSight.SetActive(!PlayerStatus.Instance.getPlayerCanInteractWithVendingMachine() || PlayerStatus.Instance.getPlayerCanInteractWithReadingMaterial());
+        if (PlayerStatus.Instance.getPlayerCanInteractWithReadingMaterial() || PlayerStatus.Instance.getPlayerCanInteractWithVendingMachine()) frontSight.SetActive(false);
+        else frontSight.SetActive(true);
         Hunger.text = PlayerStatus.Instance.getHunger().ToString();
         Health.text = PlayerStatus.Instance.getHealth().ToString();
         Coins.text = PlayerStatus.Instance.getCoins().ToString();
         Sanity.text = PlayerStatus.Instance.getSanity().ToString();
         ReadingMaterials.text = PlayerStatus.Instance.getReadingMaterials();
+        ReadingMaterials.enabled = PlayerStatus.Instance.getPlayerCanInteractWithReadingMaterial();
         Result.text = "You had reach to " + PlayerStatus.Instance.getPlayerReachLevels() + " Levels !";
         if (PlayerStatus.Instance.getPlayerReachLevels() > 0) DeathReason.text = PlayerStatus.Instance.getPlayerKilledBy();
         else DeathReason.text = "Do you even trying?";

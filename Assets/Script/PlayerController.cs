@@ -525,6 +525,7 @@ public class PlayerController : MonoBehaviour
                         Debug.Log("pick up Handgun");
                         PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
+
                     //Food
                     case "Bread(Clone)":
                         PlayerStatus.Instance.setHunger(20, "");
@@ -577,7 +578,12 @@ public class PlayerController : MonoBehaviour
                         PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
 
-
+                    //Healing potion
+                    case "RestoreHealthBottle(Clone)":
+                        PlayerStatus.Instance.setHealth(+2, "");
+                        Destroy(firstItem.gameObject);
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
+                        break;
                 }
             }
         }
@@ -603,9 +609,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        else if(firstItem.tag == "Readable" && !PlayerStatus.Instance.getPlayerCanInteractWithReadingMaterial())
+        else if(firstItem.tag == "Readable")
         {
-            PlayerStatus.Instance.setPlayerCanInteractReadingMaterial(true);            
+            PlayerStatus.Instance.setPlayerCanInteractReadingMaterial(true);
+            PlayerStatus.Instance.setReadingMaterials(firstItem.GetComponent<Books>().getReadMaterial());
         }
     }
 

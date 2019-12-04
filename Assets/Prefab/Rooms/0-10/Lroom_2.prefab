@@ -147,14 +147,15 @@ MonoBehaviour:
   - {fileID: 5350442853019337724}
   - {fileID: 5350442852736044975}
   meshCollider: {fileID: 3547085514774264936}
-  spwanPoint_Food:
+  spawnPoint_Food:
   - {fileID: 3297517326696503595}
-  spwanPoint_Weapon: []
-  spwanPoint_Enemy:
+  spawnPoint_Weapon: []
+  spawnPoint_Enemy:
   - {fileID: 514466695585858264}
-  spwanPoint_Coins:
+  spawnPoint_Coins:
   - {fileID: 2990001026993270170}
-  spwanPoint_VendingMachines: []
+  spawnPoint_VendingMachines: []
+  spawnPoint_Books: []
 --- !u!1 &8487417641566859368
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,12 +406,12 @@ PrefabInstance:
     - target: {fileID: 6500865360811967136, guid: 5f7678c9a898b714b9038a56bd7b2424,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.099999
+      value: -7.28
       objectReference: {fileID: 0}
     - target: {fileID: 6500865360811967136, guid: 5f7678c9a898b714b9038a56bd7b2424,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.300001
+      value: -10.91
       objectReference: {fileID: 0}
     - target: {fileID: 6500865360811967136, guid: 5f7678c9a898b714b9038a56bd7b2424,
         type: 3}

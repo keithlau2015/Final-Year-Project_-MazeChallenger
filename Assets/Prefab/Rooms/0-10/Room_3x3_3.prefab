@@ -242,14 +242,15 @@ MonoBehaviour:
   - {fileID: 8275236843967927109}
   - {fileID: 8275236844037089046}
   meshCollider: {fileID: 1887441378275018875}
-  spwanPoint_Food:
+  spawnPoint_Food:
   - {fileID: 6848179548361204659}
   - {fileID: 502193858026958583}
-  spwanPoint_Weapon:
+  spawnPoint_Weapon:
   - {fileID: 6848179548562844679}
-  spwanPoint_Enemy: []
-  spwanPoint_Coins: []
-  spwanPoint_VendingMachines: []
+  spawnPoint_Enemy: []
+  spawnPoint_Coins: []
+  spawnPoint_VendingMachines: []
+  spawnPoint_Books: []
 --- !u!64 &8239670663768226567
 MeshCollider:
   m_ObjectHideFlags: 0

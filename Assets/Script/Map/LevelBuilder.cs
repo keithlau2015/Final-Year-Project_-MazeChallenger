@@ -15,10 +15,11 @@ public class LevelBuilder : MonoBehaviour
 
     //The List of prefabs
     public List<Room> roomPrefabs = new List<Room>();
-    public List<Weapon> weaponPrefabs = new List<Weapon>();
+    public List<Weapon> weaponPrefab = new List<Weapon>();
     public List<Food> foodPrefabs = new List<Food>();
-    public List<Enemy> enemyPrefabs = new List<Enemy>();
+    public List<Enemy> enemyPrefab = new List<Enemy>();
     public List<Coins> coinsPrefab = new List<Coins>();
+    public List<Books> booksPrefab = new List<Books>();
     public VendingMachine vendingMachinePrefab;
 
     //The array control total rooms in game
@@ -38,6 +39,7 @@ public class LevelBuilder : MonoBehaviour
     private List<Food> placedFoods = new List<Food>();
     private List<Enemy> placedEnemys = new List<Enemy>();
     private List<Coins> placedCoins = new List<Coins>();
+    private List<Books> placedBooks = new List<Books>();
     private List<VendingMachine> placedVendingMachine = new List<VendingMachine>();
 
     //For the Room mesh layer
@@ -289,37 +291,44 @@ public class LevelBuilder : MonoBehaviour
 
                 placedRooms.Add(currentRoom);
 
-                if (!currentRoom.spwanPoint_Weapon.Equals(null))
+                if (!currentRoom.spawnPoint_Weapon.Equals(null))
                 {
-                    for(int i = 0; i < currentRoom.spwanPoint_Weapon.Length; i++)
+                    for(int i = 0; i < currentRoom.spawnPoint_Weapon.Length; i++)
                     {
-                        PlaceWeapon(weaponPrefabs[Random.Range(0, weaponPrefabs.Capacity)], currentRoom, i);
+                        PlaceWeapon(weaponPrefab[Random.Range(0, weaponPrefab.Capacity)], currentRoom, i);
                     }
                 }
-                if (!currentRoom.spwanPoint_Food.Equals(null))
+                if (!currentRoom.spawnPoint_Books.Equals(null))
                 {
-                    for(int i = 0; i < currentRoom.spwanPoint_Food.Length; i++)
+                    for (int i = 0; i < currentRoom.spawnPoint_Books.Length; i++)
+                    {
+                        PlaceBooks(booksPrefab[Random.Range(0, booksPrefab.Capacity)], currentRoom, i);
+                    }
+                }
+                if (!currentRoom.spawnPoint_Food.Equals(null))
+                {
+                    for(int i = 0; i < currentRoom.spawnPoint_Food.Length; i++)
                     {
                         PlaceFood(foodPrefabs[Random.Range(0, foodPrefabs.Capacity)], currentRoom, i);
                     }
                 }
-                if (!currentRoom.spwanPoint_Enemy.Equals(null))
+                if (!currentRoom.spawnPoint_Enemy.Equals(null))
                 {
-                    for(int i = 0; i < currentRoom.spwanPoint_Enemy.Length; i++)
+                    for(int i = 0; i < currentRoom.spawnPoint_Enemy.Length; i++)
                     {
-                        PlaceEnemy(enemyPrefabs[Random.Range(0, enemyPrefabs.Capacity)], currentRoom, i);
+                        PlaceEnemy(enemyPrefab[Random.Range(0, enemyPrefab.Capacity)], currentRoom, i);
                     }
                 }
-                if (!currentRoom.spwanPoint_Coins.Equals(null))
+                if (!currentRoom.spawnPoint_Coins.Equals(null))
                 {
-                    for (int i = 0; i < currentRoom.spwanPoint_Coins.Length; i++)
+                    for (int i = 0; i < currentRoom.spawnPoint_Coins.Length; i++)
                     {
                         PlaceCoins(coinsPrefab[Random.Range(0, coinsPrefab.Capacity)], currentRoom, i);
                     }
                 }
-                if (!currentRoom.spwanPoint_VendingMachines.Equals(null))
+                if (!currentRoom.spawnPoint_VendingMachines.Equals(null))
                 {
-                    for (int i = 0; i < currentRoom.spwanPoint_VendingMachines.Length; i++)
+                    for (int i = 0; i < currentRoom.spawnPoint_VendingMachines.Length; i++)
                     {
                         PlaceVendingMachine(vendingMachinePrefab, currentRoom, i);
                     }
@@ -350,11 +359,11 @@ public class LevelBuilder : MonoBehaviour
 
         specialRoom.transform.position = Vector3.zero;
         specialRoom.transform.rotation = Quaternion.identity;
-        for (int i = 0; i < specialRoom.spwanPoint_Weapon.Length; i++)
+        for (int i = 0; i < specialRoom.spawnPoint_Weapon.Length; i++)
         {
-            PlaceWeapon(weaponPrefabs[Random.Range(0, weaponPrefabs.Capacity)], specialRoom, i);
+            PlaceWeapon(weaponPrefab[Random.Range(0, weaponPrefab.Capacity)], specialRoom, i);
         }
-        for(int i = 0; i < specialRoom.spwanPoint_Coins.Length; i++)
+        for(int i = 0; i < specialRoom.spawnPoint_Coins.Length; i++)
         {
             PlaceCoins(coinsPrefab[1], specialRoom, i);
         }
@@ -443,20 +452,32 @@ public class LevelBuilder : MonoBehaviour
         {
             if (!vendingMachine.Equals(null)) Destroy(vendingMachine.gameObject);
         }
+        foreach (Books books in placedBooks)
+        {
+            if (!books.Equals(null)) Destroy(books.gameObject);
+        }
         placedWeapons.Clear();
         placedRooms.Clear();
         placedFoods.Clear();
         placedEnemys.Clear();
         placedCoins.Clear();
         placedVendingMachine.Clear();
+        placedBooks.Clear();
         availableExits.Clear();
         StartCoroutine("GenerateLevel");
     }
 
     //Placing interactable items or enemy
-    private void PlaceWeapon(Weapon weapon, Room room, int spwaningPoint)
+    private void PlaceBooks(Books books, Room room , int spawningPoint)
     {
-            Weapon currentSpawnedWeapon = Instantiate(weapon, room.spwanPoint_Weapon[spwaningPoint]) as Weapon;
+        Books currentSpawnedBooks = Instantiate(books, room.spawnPoint_Books[spawningPoint]) as Books;
+        currentSpawnedBooks.transform.parent = this.transform;
+        placedBooks.Add(currentSpawnedBooks);
+    }
+
+    private void PlaceWeapon(Weapon weapon, Room room, int spawningPoint)
+    {
+            Weapon currentSpawnedWeapon = Instantiate(weapon, room.spawnPoint_Weapon[spawningPoint]) as Weapon;
             currentSpawnedWeapon.transform.parent = this.transform;
             placedWeapons.Add(currentSpawnedWeapon);
     }
@@ -466,7 +487,7 @@ public class LevelBuilder : MonoBehaviour
         float rand = Random.Range(0f, 1f);
         if (enemy.getEnemySpwaningRate() >= rand)
         {
-            Enemy currentSpawnedEnemy = Instantiate(enemy, room.spwanPoint_Enemy[spawningPoint]) as Enemy;
+            Enemy currentSpawnedEnemy = Instantiate(enemy, room.spawnPoint_Enemy[spawningPoint]) as Enemy;
             currentSpawnedEnemy.transform.parent = this.transform;
             placedEnemys.Add(currentSpawnedEnemy);
         }
@@ -477,7 +498,7 @@ public class LevelBuilder : MonoBehaviour
         float rand = Random.Range(0f, 1f);
         if (food.spawningRate >= rand)
         {
-            Food currentSpawnedFood = Instantiate(food, room.spwanPoint_Food[spawningPoint]) as Food;
+            Food currentSpawnedFood = Instantiate(food, room.spawnPoint_Food[spawningPoint]) as Food;
             currentSpawnedFood.transform.parent = this.transform;
             placedFoods.Add(currentSpawnedFood);
         }
@@ -488,13 +509,13 @@ public class LevelBuilder : MonoBehaviour
         float rand = Random.Range(0f, 1f);
         if(room is SpecialRoom)
         {
-            Coins currentSpawnedCoins = Instantiate(coins, room.spwanPoint_Coins[spawningPoint]) as Coins;
+            Coins currentSpawnedCoins = Instantiate(coins, room.spawnPoint_Coins[spawningPoint]) as Coins;
             currentSpawnedCoins.transform.parent = this.transform;
             placedCoins.Add(currentSpawnedCoins);
         }
         else if (coins.spawningRate >= rand)
         {
-            Coins currentSpawnedCoins = Instantiate(coins, room.spwanPoint_Coins[spawningPoint]) as Coins;
+            Coins currentSpawnedCoins = Instantiate(coins, room.spawnPoint_Coins[spawningPoint]) as Coins;
             currentSpawnedCoins.transform.parent = this.transform;
             placedCoins.Add(currentSpawnedCoins);
         }
@@ -503,7 +524,7 @@ public class LevelBuilder : MonoBehaviour
 
     private void PlaceVendingMachine(VendingMachine vendingMachine, Room room, int spawningPoint)
     {
-        VendingMachine currentSpawnedVendingMachine = Instantiate(vendingMachine, room.spwanPoint_VendingMachines[spawningPoint]) as VendingMachine;
+        VendingMachine currentSpawnedVendingMachine = Instantiate(vendingMachine, room.spawnPoint_VendingMachines[spawningPoint]) as VendingMachine;
         currentSpawnedVendingMachine.transform.parent = this.transform;
         placedVendingMachine.Add(currentSpawnedVendingMachine);
     }

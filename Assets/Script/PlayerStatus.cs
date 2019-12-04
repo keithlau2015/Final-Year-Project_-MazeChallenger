@@ -5,7 +5,7 @@ public class PlayerStatus : MonoBehaviour
     static readonly PlayerStatus instance = new PlayerStatus();
     //Default
     private const int HEALTH = 3, HUNGER = 100, COINS = 0, SANITY = 50;
-    private const float SPEED = 50;
+    private const float SPEED = 50f, LUCKY = 0.01f;
 
     //Current
     private int current_Health, current_Hunger, current_Coins, current_Sanity;

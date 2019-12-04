@@ -1325,6 +1325,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
         type: 3}
+      propertyPath: foodPrefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
+        type: 3}
+      propertyPath: weaponPrefab.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
+        type: 3}
+      propertyPath: enemyPrefab.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
+        type: 3}
+      propertyPath: booksPrefab.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
+        type: 3}
       propertyPath: upgradeUI
       value: 
       objectReference: {fileID: 1503012845}
@@ -1484,6 +1504,66 @@ PrefabInstance:
       propertyPath: startRoomPrefab.Array.data[1]
       value: 
       objectReference: {fileID: 1843390348568251112, guid: 10fb7d94e4c365549a32c5b07358a3aa,
+        type: 3}
+    - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
+        type: 3}
+      propertyPath: foodPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 4011618851028447682, guid: 47129c87eb8f81f4dab558162889e146,
+        type: 3}
+    - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
+        type: 3}
+      propertyPath: weaponPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 1147243702350094307, guid: 99f93adf1b0787d49bfe6bf384106900,
+        type: 3}
+    - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
+        type: 3}
+      propertyPath: weaponPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 2043341713991314543, guid: 9f37bd9b4d9206247bed0a6c14614eb2,
+        type: 3}
+    - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
+        type: 3}
+      propertyPath: weaponPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: -6949885878551596730, guid: 3adf5dd70e2c1aa438909259bec2588b,
+        type: 3}
+    - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
+        type: 3}
+      propertyPath: weaponPrefab.Array.data[3]
+      value: 
+      objectReference: {fileID: -6384177220456913954, guid: af68d329db33d43449089069c9500e3e,
+        type: 3}
+    - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
+        type: 3}
+      propertyPath: enemyPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 6462341885479516011, guid: 855fe99e2907cfc4ead41376ea0152f7,
+        type: 3}
+    - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
+        type: 3}
+      propertyPath: enemyPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: 4543482393671671249, guid: 62bd8494399595140b0a6c954804ca8c,
+        type: 3}
+    - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
+        type: 3}
+      propertyPath: booksPrefab.Array.data[0]
+      value: 
+      objectReference: {fileID: 307520956329866370, guid: 957bf8564f17e1042a763ee2fa5e2833,
+        type: 3}
+    - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
+        type: 3}
+      propertyPath: booksPrefab.Array.data[1]
+      value: 
+      objectReference: {fileID: -7488963303057134840, guid: 7ab2eb96ad8bc574285d357263c2ffd2,
+        type: 3}
+    - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
+        type: 3}
+      propertyPath: booksPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: -3328586808947040263, guid: ca41d1a9f735b3c42a3f6bf7feec2fc9,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d3a8fbc67f032e4eb7635b63a0352c5, type: 3}
