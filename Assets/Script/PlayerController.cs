@@ -584,6 +584,12 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.gameObject);
                         PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
+
+                    //Lucky Statue
+                    /*
+                    case "LittleStatue":
+                        PlayerStatus.Instance.set
+                        */
                 }
             }
         }

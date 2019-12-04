@@ -9,11 +9,11 @@ public class PlayerStatus : MonoBehaviour
 
     //Current
     private int current_Health, current_Hunger, current_Coins, current_Sanity;
-    private float current_Speed;
+    private float current_Speed, current_Lucky;
 
     //Total
     private int total_Health, total_Hunger;
-    private float total_Speed;
+    private float total_Speed, total_Lucky;
 
     //Check player status
     private bool playerGetIntoNextLevel, playerAtTheMenu, attacking;
@@ -43,6 +43,7 @@ public class PlayerStatus : MonoBehaviour
         total_Health = HEALTH;
         total_Hunger = HUNGER;
         total_Speed = SPEED;
+        total_Lucky = LUCKY;
         reachedLevels = 0;
         timer = 0;
         healingTime = 10;
@@ -50,9 +51,15 @@ public class PlayerStatus : MonoBehaviour
         current_Hunger = total_Hunger;
         current_Speed = total_Speed;
         current_Sanity = SANITY;
+        current_Lucky = total_Lucky;
         current_Coins = 0;
         healingSkill = playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking = playerCanInteractWithReadingMaterial = false;
         priceUIText = killedBy = readingMaterials = "";
+    }
+
+    public float getLucky()
+    {
+        return instance.current_Lucky;
     }
 
     public bool getPlayerCanInteractWithReadingMaterial()
@@ -129,6 +136,20 @@ public class PlayerStatus : MonoBehaviour
     {
         this.current_Coins = this.current_Coins + coins;
     }
+    /*
+    public void setLucky(float lucky)
+    {
+        else if (extraBuff == "upgradeSpeed" && total_Speed < 150f)
+        {
+            total_Speed += speed;
+            current_Speed = total_Speed;
+        }
+        else if (extraBuff == "set2zero")
+        {
+            current_Speed = 0;
+        }
+    }
+    */
 
     public void setSpeed(float speed, string extraBuff)
     {
