@@ -17,7 +17,7 @@ public class VendingMachine : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        price = Random.Range(50, 200);
+        price = Random.Range(50, 100);
         Debug.Log(price);
         health = 100;
         rand = Random.Range(0, sellableObjects.Capacity);

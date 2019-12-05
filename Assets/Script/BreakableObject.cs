@@ -37,4 +37,18 @@ public class BreakableObject : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    //For the exception, rigibody enable Kinematic
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Weapon") && PlayerStatus.Instance.getPlayerAttacking() && this.name == "Wall_0_Breakable")
+        {
+            Vector3 pos = this.transform.position;
+            Quaternion rotation = this.transform.rotation;
+            GameObject clone = Instantiate(deadEffect, pos, rotation) as GameObject;
+            clone.transform.localScale = this.gameObject.transform.localScale;
+            Destroy(clone, 10);
+            Destroy(this.gameObject);
+        }
+    }
 }

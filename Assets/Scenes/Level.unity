@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 1
+  m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -657,15 +657,16 @@ MonoBehaviour:
   - {fileID: 4900302781632256455, guid: 976c411e34bab9d4f8fc6cd6cc4ddd1a, type: 3}
   - {fileID: 3896678914595029560, guid: 246c24b2bd86db8409196ba5620dda0f, type: 3}
   - {fileID: 1615318351608449874, guid: 6db0de89a5c2c3747a5b382b6bc4c2c7, type: 3}
-  - {fileID: 3988820129851971686, guid: 55e0aa54835b1854b9367530e05bb7f2, type: 3}
+  - {fileID: 5863036304385175247, guid: 8a859ba4206d61f4db1b67afd43657c1, type: 3}
   - {fileID: 1918385180215619544, guid: c94c45cb21fc31a479cec8db6af1ad32, type: 3}
   dissolve_weapons:
   - {fileID: 6290182129155082745, guid: ba2268abe8c9edb4c907b14f7f700bbd, type: 3}
   - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
-  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
+  - {fileID: 5863036304385175247, guid: ce792542f0c803a4bb419c879f888886, type: 3}
   - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
   - {fileID: 3896678914595029560, guid: 661a8cbdded2ad84fbdca231c284f950, type: 3}
   - {fileID: 1615318351608449874, guid: 95081b59d003875488c9dcff1551f8b9, type: 3}
+  - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
   - {fileID: 2972728332474417104, guid: c70e9cb63a7789f488a37d320d2447a4, type: 3}
   rightHand: {fileID: 1538499490}
   leftHand: {fileID: 557807330}
@@ -1326,7 +1327,7 @@ PrefabInstance:
     - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
         type: 3}
       propertyPath: foodPrefabs.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
         type: 3}
@@ -1565,6 +1566,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -3328586808947040263, guid: ca41d1a9f735b3c42a3f6bf7feec2fc9,
         type: 3}
+    - target: {fileID: 4594857540960543067, guid: 2d3a8fbc67f032e4eb7635b63a0352c5,
+        type: 3}
+      propertyPath: foodPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 4089081442472137451, guid: b44d4fda192677641ae9c03b6fa195b4,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d3a8fbc67f032e4eb7635b63a0352c5, type: 3}
 --- !u!1001 &6207723291885252052
@@ -1753,5 +1760,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7805955930808860057, guid: 35b2902437a4d0a49bf4dc0990a3c10f,
+        type: 3}
+      propertyPath: source.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7805955930808860057, guid: 35b2902437a4d0a49bf4dc0990a3c10f,
+        type: 3}
+      propertyPath: source.Array.data[13]
+      value: 
+      objectReference: {fileID: 8300000, guid: 8df07f167d2e7ab45a72c753e45d48b6, type: 3}
+    - target: {fileID: 7805955930808860057, guid: 35b2902437a4d0a49bf4dc0990a3c10f,
+        type: 3}
+      propertyPath: source.Array.data[14]
+      value: 
+      objectReference: {fileID: 8300000, guid: 501ced472d5294f489ace464299aa206, type: 3}
+    - target: {fileID: 7805955930808860057, guid: 35b2902437a4d0a49bf4dc0990a3c10f,
+        type: 3}
+      propertyPath: source.Array.data[15]
+      value: 
+      objectReference: {fileID: 8300000, guid: 7672388a3ae1b4dbab216aef579e9de9, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35b2902437a4d0a49bf4dc0990a3c10f, type: 3}

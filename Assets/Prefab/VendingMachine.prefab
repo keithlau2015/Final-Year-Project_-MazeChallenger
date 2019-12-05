@@ -199,6 +199,7 @@ MonoBehaviour:
   - {fileID: 1615318351608449874, guid: af68d329db33d43449089069c9500e3e, type: 3}
   - {fileID: 6290182129155082745, guid: 99f93adf1b0787d49bfe6bf384106900, type: 3}
   - {fileID: 2972728332474417104, guid: 9f37bd9b4d9206247bed0a6c14614eb2, type: 3}
+  - {fileID: 4683330150040704360, guid: 83e8415848bbad240b915d5059d5d3c6, type: 3}
   vendingMachine: []
   glass: {fileID: 8576136409105642433}
   spawningRate: 0.5

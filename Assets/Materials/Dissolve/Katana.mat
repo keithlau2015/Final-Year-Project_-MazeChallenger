@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sword_1_D 3
+  m_Name: Katana
   m_Shader: {fileID: -6465566751694194690, guid: 8fe0531ee099cbc4b825b1296f9d4359,
     type: 3}
   m_ShaderKeywords: _GLOSSINESS_FROM_BASE_ALPHA _SPECULAR_COLOR
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_92FDC00:
-        m_Texture: {fileID: 2800000, guid: a5cba89d841b75348a8b2bcbb9a743c1, type: 3}
+        m_Texture: {fileID: 2800000, guid: e6fd38fdaa3db6642812f6823c689cb6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_F200E421:
