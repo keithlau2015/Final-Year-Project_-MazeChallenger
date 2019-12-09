@@ -25,6 +25,7 @@ TagManager:
   - ForceShield
   - Breakable
   - Readable
+  - Drawer
   layers:
   - Default
   - TransparentFX
