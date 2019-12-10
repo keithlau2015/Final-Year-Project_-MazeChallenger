@@ -5,18 +5,18 @@ public class PlayerStatus : MonoBehaviour
     static readonly PlayerStatus instance = new PlayerStatus();
     //Default
     private const int HEALTH = 3, HUNGER = 100, COINS = 0, SANITY = 50;
-    private const float SPEED = 50f, LUCKY = 0.01f;
+    private const float SPEED = 50f, LUCKY = 0.01f, HUNGER_TIME = 1;
 
     //Current
     private int current_Health, current_Hunger, current_Coins, current_Sanity;
-    private float current_Speed, current_Lucky;
+    private float current_Speed, current_Lucky, current_HungerTime;
 
     //Total
     private int total_Health, total_Hunger;
     private float total_Speed, total_Lucky;
 
     //Check player status
-    private bool playerGetIntoNextLevel, playerAtTheMenu, attacking;
+    private bool playerGetIntoNextLevel, playerAtTheMenu, attacking, playerInTheSafeHouse, playerIsBlocking;
 
     //UI
     private bool playerCanInteractWithOtherObject, playerCanInteractWithVendingMachine, playerCanInteractWithReadingMaterial;
@@ -51,10 +51,26 @@ public class PlayerStatus : MonoBehaviour
         current_Hunger = total_Hunger;
         current_Speed = total_Speed;
         current_Sanity = SANITY;
+        current_HungerTime = HUNGER_TIME;
         current_Lucky = total_Lucky;
         current_Coins = 0;
-        healingSkill = playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking = playerCanInteractWithReadingMaterial = false;
+        healingSkill = playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking = playerCanInteractWithReadingMaterial = playerInTheSafeHouse = playerIsBlocking = false;
         priceUIText = killedBy = readingMaterials = "";
+    }
+
+    public bool getPlayerIsBlocking()
+    {
+        return instance.playerIsBlocking;
+    }
+
+    public float getHungerTime()
+    {
+        return instance.current_HungerTime;
+    }
+
+    public bool getPlayerInTheSafeHouse()
+    {
+        return instance.playerInTheSafeHouse;
     }
 
     public float getLucky()
@@ -92,6 +108,16 @@ public class PlayerStatus : MonoBehaviour
         return instance.playerCanInteractWithVendingMachine;
     }
 
+    public int getTotalHealth()
+    {
+        return instance.total_Health;
+    }
+
+    public int getTotalHunger()
+    {
+        return instance.total_Hunger;
+    }
+
     public int getCoins()
     {
         return instance.current_Coins;
@@ -110,6 +136,21 @@ public class PlayerStatus : MonoBehaviour
     public int getHunger()
     {
         return instance.current_Hunger;
+    }
+
+    public void setHungerTime()
+    {
+        current_HungerTime += 0.2f;
+    }
+
+    public void setPlayerIsBlocking(bool blocking)
+    {
+        this.playerIsBlocking = blocking;
+    }
+
+    public void setPlayerInTheSafeHouse(bool inSafeHouse)
+    {
+        this.playerInTheSafeHouse = inSafeHouse;
     }
 
     public void setPlayerCanInteractReadingMaterial(bool interacted)
@@ -159,12 +200,12 @@ public class PlayerStatus : MonoBehaviour
         }
         else if(extraBuff == "upgradeSpeed" && total_Speed < 150f)
         {
-            total_Speed += speed;
-            current_Speed = total_Speed;
+            this.total_Speed += speed;
+            this.current_Speed = total_Speed;
         }
         else if(extraBuff == "set2zero")
         {
-            current_Speed = 0;
+            this.current_Speed = 0;
         }
     }
 
@@ -174,20 +215,20 @@ public class PlayerStatus : MonoBehaviour
         {
             if(current_Health + health >= total_Health)
             {
-                current_Health = total_Health;
+                this.current_Health = total_Health;
             }
             else if(current_Health + health <= 0)
             {
-                current_Health = 0;
+                this.current_Health = 0;
             }
             else
             {
-                current_Health += health;
+                this.current_Health += health;
             }
         }
         else if(extraBuff == "Total Health")
         {
-            total_Health += health;
+            this.total_Health += health;
         }
     }
 
@@ -204,6 +245,10 @@ public class PlayerStatus : MonoBehaviour
             {
                 this.current_Hunger = total_Hunger;
             }
+            else if (current_Hunger + hunger <= 0)
+            {
+                current_Hunger = 0;
+            }
             else
             {
                 this.current_Hunger += hunger;
@@ -211,7 +256,7 @@ public class PlayerStatus : MonoBehaviour
         }
         else if(extraBuff == "Total Hunger")
         {
-            total_Hunger = hunger;
+            this.total_Hunger += hunger;
         }
     }
     

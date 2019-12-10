@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4683330150040704360}
   m_LocalRotation: {x: 0.000000081460335, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 70, y: 70, z: 70}
   m_Children:
   - {fileID: 1640237955279022202}
   m_Father: {fileID: 0}
@@ -118,11 +118,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8549483755316406139}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: b22c60f9b66aa0b4c892b0109c2ed2b2,
-        type: 3}
-      propertyPath: m_Name
-      value: Katana_Flip
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b22c60f9b66aa0b4c892b0109c2ed2b2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -192,6 +187,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.0559295
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b22c60f9b66aa0b4c892b0109c2ed2b2,
+        type: 3}
+      propertyPath: m_Name
+      value: Katana_Flip
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: b22c60f9b66aa0b4c892b0109c2ed2b2,
         type: 3}

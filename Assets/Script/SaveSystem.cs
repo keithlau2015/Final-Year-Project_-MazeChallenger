@@ -1,31 +1,32 @@
 ﻿
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public static class SaveSystem
 {
-    public static void SavingCount(OpeningVideo ov)
+    public static void SavingData(OpeningVideo ov)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/untitled.dontyoudareopenit";
+        string path = Application.persistentDataPath + "/untitled.player";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        PlayerData data = new PlayerData(ov);
+        OpenGameCounting data = new OpenGameCounting(ov);
 
         formatter.Serialize(stream, data);
         stream.Close();
     }
 
-    public static PlayerData LoadData()
+    public static OpenGameCounting LoadData()
     {
-        string path = Application.persistentDataPath + "/untitled.dontyoudareopenit";
+        string path = Application.persistentDataPath + "/untitled.player";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            PlayerData data = formatter.Deserialize(stream) as PlayerData;
+            OpenGameCounting data = formatter.Deserialize(stream) as OpenGameCounting;
             stream.Close();
 
             return data;

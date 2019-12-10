@@ -6,7 +6,7 @@ using Unity.Mathematics;
 [RequireComponent(typeof(Camera))]
 public class MouseFollow : MonoBehaviour
 {
-    private const int Y_ROT = 50; //up 70 + down 70 = 140
+    private const int Y_ROT = 80; //up 70 + down 70 = 140
     
     private const int X_ROT = 180; //left 180 + right 180 = 360
     public float rotationSpeed = 10; //cursor speed

@@ -7,8 +7,12 @@ public class LevelBuilder : MonoBehaviour
 {
     //The user interface components
     public GameObject upgradeUI, pauseUI, loadingUI, gameOverUI, ObjectiveText;
+
     [SerializeField]
     private Button Gift_slot_1, Gift_slot_2, Gift_slot_3, Gift_slot_4, Gift_slot_5, Gift_slot_6;
+
+    [SerializeField]
+    private GameObject Gift_1, Gift_2, Gift_3, Gift_4, Gift_5, Gift_6;
 
     //The needed Prefabs
     public Room[] startRoomPrefab, endRoomPrefab, specialRoomPrefab;
@@ -48,10 +52,13 @@ public class LevelBuilder : MonoBehaviour
     //Spawning the player in the right place
     private GameObject player;
 
-    private bool finishLevelBuilding;
+    private bool finishLevelBuilding, generationOnce;
 
     //Player Hunger
-    private float timer;
+    private float timer, hungerTime;
+
+    //checking is sanity is drop
+    private int sanityStage;
 
     private void Start()
     {
@@ -61,6 +68,14 @@ public class LevelBuilder : MonoBehaviour
         upgradeUI.SetActive(false);
         pauseUI.SetActive(false);
         ObjectiveText.SetActive(false);
+        Gift_1.SetActive(false);
+        Gift_2.SetActive(false);
+        Gift_3.SetActive(false);
+        Gift_4.SetActive(false);
+        Gift_5.SetActive(false);
+        Gift_6.SetActive(false);
+        generationOnce = false;
+        sanityStage = 0;
         player = GameObject.FindGameObjectWithTag("Player");
         roomLayerMask = LayerMask.GetMask("Room");
 
@@ -71,10 +86,30 @@ public class LevelBuilder : MonoBehaviour
         Gift_slot_1.onClick.AddListener(onClickUpgradeHealingButton);
         Gift_slot_2.onClick.AddListener(onClickUpgradeHealthButton);
         Gift_slot_3.onClick.AddListener(onClickUpgradeSpeedButton);
+        Gift_slot_4.onClick.AddListener(onClickUpgradeHungerButton);
+        Gift_slot_5.onClick.AddListener(onClickRestoringToFullHealth);
+        Gift_slot_6.onClick.AddListener(onClickRestoringToFullHunger);
     }
 
     private void Update()
     {
+        if (PlayerStatus.Instance.getSanity() <= 35 && PlayerStatus.Instance.getSanity() > 20 && sanityStage == 0)
+        {
+            PlayerStatus.Instance.setHunger(-25, "Total Hunger");
+            sanityStage = 1;
+        }
+        else if (PlayerStatus.Instance.getSanity() < 20 && PlayerStatus.Instance.getSanity() > 0 && sanityStage == 1)
+        {
+            PlayerStatus.Instance.setHunger(-25, "Total Hunger");
+            PlayerStatus.Instance.setSpeed(-10, "");
+            sanityStage = 2;
+        }
+        else if (PlayerStatus.Instance.getSanity() <= 0 && sanityStage == 2)
+        {
+            PlayerStatus.Instance.setSpeed(0, "set2zero");
+            PlayerStatus.Instance.setPlayerKilledBy("You have Collapse");
+        }
+
         if (finishLevelBuilding)
         {
             ObjectiveText.SetActive(true);
@@ -87,11 +122,13 @@ public class LevelBuilder : MonoBehaviour
         if (!finishLevelBuilding)
         {
             loadingUI.SetActive(true);
+            if(!generationOnce) RandomPickGift();
             AudioListener.volume = 0f;
         }
         else
         {
             loadingUI.SetActive(false);
+            generationOnce = false;
             AudioListener.volume = 1f;
         }
         if (PlayerStatus.Instance.getPlayerGetIntoNextLevel())
@@ -101,19 +138,13 @@ public class LevelBuilder : MonoBehaviour
         else
         {
             upgradeUI.SetActive(false);
-        }      
+        }
 
         //For Death reason
         if (PlayerStatus.Instance.getHunger() == 0)
         {
             PlayerStatus.Instance.setPlayerKilledBy("Starved to death");
-        }
-
-        //The excpetion of Player die at the 0 level
-        else if (PlayerStatus.Instance.getPlayerReachLevels() == 0 && PlayerStatus.Instance.getHealth() == 0 || PlayerStatus.Instance.getHunger() == 0)
-        {
-            PlayerStatus.Instance.setPlayerKilledBy("Do you really trying");
-        }
+        }     
 
         if (PlayerStatus.Instance.getHealth() == 0 || PlayerStatus.Instance.getHunger() == 0)
         {
@@ -138,10 +169,15 @@ public class LevelBuilder : MonoBehaviour
         pauseUI.SetActive(Time.timeScale == 0 && !gameOverUI.activeSelf);
 
         timer += Time.deltaTime;
-        if (timer > 1f && finishLevelBuilding && PlayerStatus.Instance.getHunger() > 0)
+        if (timer > 0.5f)
+        {
+            hungerTime+=0.5f;
+            timer = 0f;
+        }
+        if(hungerTime >= PlayerStatus.Instance.getHungerTime() && finishLevelBuilding && PlayerStatus.Instance.getHunger() > 0 && !PlayerStatus.Instance.getPlayerInTheSafeHouse())
         {
             PlayerStatus.Instance.setHunger(-1, "");
-            timer = 0f;
+            hungerTime = 0;
         }
     }
     IEnumerator GenerateLevel()
@@ -156,6 +192,7 @@ public class LevelBuilder : MonoBehaviour
         //1 is the special room spawning rate
         if (1 >= Random.Range(0, 100) && specialRoomPrefab.Length != 0)
         {
+            PlayerStatus.Instance.setPlayerInTheSafeHouse(true);
             PlaceSpecialRoom();
             Debug.Log("Place a special room");
             player.transform.position = specialRoom.playerStartingPosition.position;
@@ -164,6 +201,7 @@ public class LevelBuilder : MonoBehaviour
         }
         else
         {
+            PlayerStatus.Instance.setPlayerInTheSafeHouse(false);
             PlaceStartRoom();
             Debug.Log("Place start room");
             yield return interval;
@@ -185,6 +223,10 @@ public class LevelBuilder : MonoBehaviour
             player.transform.rotation = Quaternion.identity;
 
             finishLevelBuilding = true;
+
+            //restore litte bit of hunger
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().popDescriptionText("+ Hunger");
+            PlayerStatus.Instance.setHunger(15, "");
         }
     }
 
@@ -217,11 +259,11 @@ public class LevelBuilder : MonoBehaviour
         int index = 0;
         if (PlayerStatus.Instance.getPlayerReachLevels() < 10) index = 0;
         else if (PlayerStatus.Instance.getPlayerReachLevels() >= 10 && PlayerStatus.Instance.getPlayerReachLevels() < 20) index = 1;
-        endRoom = Instantiate(endRoomPrefab[index]) as EndRoom;
+        endRoom = Instantiate(endRoomPrefab[Random.Range(0, endRoomPrefab.Length)]) as EndRoom;
         endRoom.transform.parent = this.transform;
 
         List<Exit> allAvailabeExits = new List<Exit>(availableExits);
-        Exit exit = endRoom.exits[0];
+        Exit exit = endRoom.exits[Random.Range(0,1)];
 
         bool roomPlaced = false;
 
@@ -229,6 +271,21 @@ public class LevelBuilder : MonoBehaviour
         {
             Room room = (Room)endRoom;
             PositionRoomAtExit(ref room, exit, availableExit);
+
+            if (!endRoom.spawnPoint_Weapon.Equals(null))
+            {
+                for (int i = 0; i < endRoom.spawnPoint_Weapon.Length; i++)
+                {
+                    PlaceWeapon(weaponPrefab[Random.Range(0, weaponPrefab.Capacity)], endRoom, i);
+                }
+            }
+            if (!endRoom.spawnPoint_Books.Equals(null))
+            {
+                for (int i = 0; i < endRoom.spawnPoint_Books.Length; i++)
+                {
+                    PlaceBooks(booksPrefab[Random.Range(0, booksPrefab.Capacity)], endRoom, i);
+                }
+            }
 
             if (CheckRoomOverlap(room))
             {
@@ -298,6 +355,13 @@ public class LevelBuilder : MonoBehaviour
                         PlaceWeapon(weaponPrefab[Random.Range(0, weaponPrefab.Capacity)], currentRoom, i);
                     }
                 }
+                if (!currentRoom.spawnPoint_Coins.Equals(null))
+                {
+                    for (int i = 0; i < currentRoom.spawnPoint_Coins.Length; i++)
+                    {
+                        PlaceCoins(coinsPrefab[Random.Range(0, coinsPrefab.Capacity)], currentRoom, i);
+                    }
+                }
                 if (!currentRoom.spawnPoint_Books.Equals(null))
                 {
                     for (int i = 0; i < currentRoom.spawnPoint_Books.Length; i++)
@@ -354,7 +418,7 @@ public class LevelBuilder : MonoBehaviour
 
     private void PlaceSpecialRoom()
     {
-        specialRoom = Instantiate(specialRoomPrefab[Random.Range(0, startRoomPrefab.Length - 1)]) as SpecialRoom;
+        specialRoom = Instantiate(specialRoomPrefab[Random.Range(0, startRoomPrefab.Length)]) as SpecialRoom;
         specialRoom.transform.parent = this.transform;
 
         specialRoom.transform.position = Vector3.zero;
@@ -389,9 +453,9 @@ public class LevelBuilder : MonoBehaviour
     private bool CheckRoomOverlap(Room room)
     {
         Bounds bounds = room.RoomBounds;
-        bounds.Expand(-2.13f);
+        bounds.Expand(-0.2f);
 
-        Collider[] colliders = Physics.OverlapBox(bounds.center, bounds.size / 2, room.transform.rotation, roomLayerMask);
+        Collider[] colliders = Physics.OverlapBox(bounds.center, bounds.size/2, room.transform.rotation, roomLayerMask);
         if(colliders.Length > 0)
         {
             foreach(Collider c in colliders)
@@ -530,9 +594,15 @@ public class LevelBuilder : MonoBehaviour
     }
 
     //Button
+    private void onClickUpgradeHungerButton()
+    {
+        PlayerStatus.Instance.setHunger(10, "Total Hunger");
+        PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
+    }
+
     private void onClickUpgradeHealthButton()
     {
-        PlayerStatus.Instance.setHealth(2, "Total Health");
+        PlayerStatus.Instance.setHealth(1, "Total Health");
         PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
     }
 
@@ -551,7 +621,76 @@ public class LevelBuilder : MonoBehaviour
 
     private void onClickRestoringToFullHealth()
     {
-        PlayerStatus.Instance.setHealth(100, "");
+        PlayerStatus.Instance.setHealth(PlayerStatus.Instance.getTotalHealth(), "");
         PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
+    }
+
+    private void onClickRestoringToFullHunger()
+    {
+        PlayerStatus.Instance.setHunger(PlayerStatus.Instance.getTotalHunger(), "");
+        PlayerStatus.Instance.setPlayerGetIntoNextLevel(false);
+    }
+
+    private void RandomPickGift()
+    {
+        generationOnce = true;
+        int rand = Random.Range(0, 6);
+        switch(rand)
+        {
+            case 1:
+                Gift_1.SetActive(true);
+                Gift_2.SetActive(true);
+                Gift_3.SetActive(true);
+                
+                Gift_4.SetActive(false);
+                Gift_5.SetActive(false);
+                Gift_6.SetActive(false);
+                break;
+            case 2:
+                Gift_4.SetActive(true);
+                Gift_2.SetActive(true);
+                Gift_3.SetActive(true);
+
+                Gift_1.SetActive(false);
+                Gift_5.SetActive(false);
+                Gift_6.SetActive(false);
+                break;
+            case 3:
+                Gift_1.SetActive(true);
+                Gift_5.SetActive(true);
+                Gift_3.SetActive(true);
+
+                Gift_2.SetActive(false);
+                Gift_4.SetActive(false);
+                Gift_6.SetActive(false);
+                break;
+            case 4:
+                Gift_1.SetActive(true);
+                Gift_2.SetActive(true);
+                Gift_6.SetActive(true);
+
+                Gift_3.SetActive(false);
+                Gift_4.SetActive(false);
+                Gift_5.SetActive(false);
+                break;
+            case 5:
+                Gift_4.SetActive(true);
+                Gift_5.SetActive(true);
+                Gift_6.SetActive(true);
+
+                Gift_1.SetActive(false);
+                Gift_2.SetActive(false);
+                Gift_3.SetActive(false);
+                break;
+            case 6:
+                Gift_4.SetActive(true);
+                Gift_5.SetActive(true);
+                Gift_3.SetActive(true);
+
+                Gift_1.SetActive(false);
+                Gift_2.SetActive(false);
+                Gift_6.SetActive(false);
+                break;
+        }
     }
 }

@@ -17,6 +17,7 @@ public class BreakableObject : MonoBehaviour
         rand = Random.Range(0, Object.Capacity);
         if (this.gameObject.name == "HeadSkull(Clone)")
         {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().popDescriptionText("- Sanity");
             PlayerStatus.Instance.setSanity(-5);
         }
     }
@@ -33,6 +34,16 @@ public class BreakableObject : MonoBehaviour
             {
                 Instantiate(Object[rand], pos, rotation);
             }
+            Destroy(clone, 10);
+            Destroy(this.gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Weapon") && PlayerStatus.Instance.getPlayerAttacking() && this.name == "Wall_0_Breakable")
+        {
+            Vector3 pos = this.transform.position;
+            Quaternion rotation = this.transform.rotation;
+            GameObject clone = Instantiate(deadEffect, pos, rotation) as GameObject;
+            clone.transform.localScale = this.gameObject.transform.localScale;
             Destroy(clone, 10);
             Destroy(this.gameObject);
         }

@@ -23,6 +23,7 @@ public class Weapon : MonoBehaviour
             if (collision.gameObject.name == "HeadSkull(Clone)")
             {
                 PlayerStatus.Instance.setSanity(+2);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().popDescriptionText("+ Sanity");
             }
         }
     }

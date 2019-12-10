@@ -12,7 +12,12 @@ public class PlayerUIController : MonoBehaviour
     private Slider bgmVolumeSlider, soundEffectVolumeSlider;
 
     [SerializeField]
-    private GameObject warningPanel, volumeSettingPanel, pickUpSight, frontSight;
+    private GameObject warningPanel, volumeSettingPanel, pickUpSight, frontSight, getHurtPanel;
+
+    [SerializeField]
+    private Transform getHurtSpawningPoint;
+
+    private int playerHpTemp;
 
     private void Awake()
     {
@@ -34,8 +39,14 @@ public class PlayerUIController : MonoBehaviour
         ReadingMaterials.text = PlayerStatus.Instance.getReadingMaterials();
         ReadingMaterials.enabled = PlayerStatus.Instance.getPlayerCanInteractWithReadingMaterial();
         Result.text = "You had reach to " + PlayerStatus.Instance.getPlayerReachLevels() + " Levels !";
-        if (PlayerStatus.Instance.getPlayerReachLevels() > 0) DeathReason.text = PlayerStatus.Instance.getPlayerKilledBy();
-        else DeathReason.text = "Do you even trying?";
+        DeathReason.text = PlayerStatus.Instance.getPlayerKilledBy();
+        if (PlayerStatus.Instance.getHealth() > playerHpTemp) playerHpTemp = PlayerStatus.Instance.getHealth();
+        else if(PlayerStatus.Instance.getHealth() < playerHpTemp)
+        {
+            playerHpTemp = PlayerStatus.Instance.getHealth();
+            GameObject clone = Instantiate(getHurtPanel, getHurtSpawningPoint) as GameObject;
+            Destroy(clone, 2);
+        }
     }
 
     public void SoundEffectVolumeSlide()

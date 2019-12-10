@@ -53,8 +53,8 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|attack_1
-      takeName: Armature|attack_1
+      name: Armature|Armature|Armature|attack_1|Armature|attack_1
+      takeName: Armature|Armature|Armature|attack_1|Armature|attack_1
       internalID: -8205601528029246726
       firstFrame: 0
       lastFrame: 90
@@ -82,8 +82,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|attack_2
-      takeName: Armature|attack_2
+      name: Armature|Armature|Armature|attack_2|Armature|attack_2
+      takeName: Armature|Armature|Armature|attack_2|Armature|attack_2
       internalID: 5124216671764640631
       firstFrame: 0
       lastFrame: 29
@@ -111,8 +111,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|idle
-      takeName: Armature|idle
+      name: Armature|Armature|Armature|idle|Armature|idle
+      takeName: Armature|Armature|Armature|idle|Armature|idle
       internalID: -3573736947081105909
       firstFrame: 0
       lastFrame: 260
@@ -140,8 +140,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|walking
-      takeName: Armature|walking
+      name: Armature|Armature|Armature|walking|Armature|walking
+      takeName: Armature|Armature|Armature|walking|Armature|walking
       internalID: 7168293901883076996
       firstFrame: 0
       lastFrame: 100
@@ -169,8 +169,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Start_Walk
-      takeName: Armature|Start_Walk
+      name: Armature|Armature|Armature|Start_Walk|Armature|Start_Walk
+      takeName: Armature|Armature|Armature|Start_Walk|Armature|Start_Walk
       internalID: 6894161584782395824
       firstFrame: 0
       lastFrame: 120
@@ -198,8 +198,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|attack_3
-      takeName: Armature|attack_3
+      name: Armature|Armature|Armature|attack_3|Armature|attack_3
+      takeName: Armature|Armature|Armature|attack_3|Armature|attack_3
       internalID: -9108108380027318821
       firstFrame: 0
       lastFrame: 100

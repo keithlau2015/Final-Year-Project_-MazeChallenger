@@ -78,12 +78,12 @@ MonoBehaviour:
   - {fileID: 7224728484374208270}
   - {fileID: 335398971326170058}
   meshCollider: {fileID: 3022798288290253417}
-  spwanPoint_Food:
-  - {fileID: 0}
-  spwanPoint_Weapon:
-  - {fileID: 0}
-  spwanPoint_Enemy:
-  - {fileID: 0}
+  spawnPoint_Food: []
+  spawnPoint_Weapon: []
+  spawnPoint_Enemy: []
+  spawnPoint_Coins: []
+  spawnPoint_VendingMachines: []
+  spawnPoint_Books: []
 --- !u!64 &3022798288290253417
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -900,17 +900,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 49eda5f0da1b38c4cba14a73dba07825,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.98
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 49eda5f0da1b38c4cba14a73dba07825,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.98
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 49eda5f0da1b38c4cba14a73dba07825,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.98
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 49eda5f0da1b38c4cba14a73dba07825,
         type: 3}

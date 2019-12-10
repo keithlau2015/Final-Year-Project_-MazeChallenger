@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0406a1584f1e2b748b34cdfc7029225e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deadEffect: {fileID: 3834794433605191387, guid: acbe3761fedb3ce4db7d5cce97f61f03,
+  deadEffect: {fileID: 5932364787678968213, guid: acbe3761fedb3ce4db7d5cce97f61f03,
     type: 3}
   Object: []
 --- !u!65 &7711021876348013484
@@ -170,22 +170,22 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 356e3d59f80c4a24dafbb43bf9b3e10e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 356e3d59f80c4a24dafbb43bf9b3e10e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 356e3d59f80c4a24dafbb43bf9b3e10e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 356e3d59f80c4a24dafbb43bf9b3e10e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 356e3d59f80c4a24dafbb43bf9b3e10e,
         type: 3}

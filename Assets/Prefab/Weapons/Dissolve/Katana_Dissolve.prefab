@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3622630793420980396}
   - component: {fileID: 4899615684966076635}
   m_Layer: 0
-  m_Name: Katana
+  m_Name: Katana_Dissolve
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc347b910f09f5f4582fd57b8902c3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damge: 30
+  damge: 5
   durability: 15
   spawningRate: 1
   counterType: 

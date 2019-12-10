@@ -146,6 +146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deadEffect: {fileID: 1653333534184185868, guid: 022e81889fa8f2c44b13e25f5ade9ef2,
     type: 3}
+  reward:
+  - {fileID: 8150628378140162284, guid: b4d2aae38706da74b8345a2b5589e06e, type: 3}
 --- !u!114 &8091202033027570187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +164,7 @@ MonoBehaviour:
     type: 3}
   shotSpawn: {fileID: 5182877924589433245}
   nextFire: 0
-  fireRate: 1
+  fireRate: 0.7
 --- !u!95 &9006586011560186528
 Animator:
   serializedVersion: 3
@@ -193,7 +195,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 20, y: 5, z: 20}
+  m_Size: {x: 25, y: 5, z: 25}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-5634257924474784002
 Rigidbody:

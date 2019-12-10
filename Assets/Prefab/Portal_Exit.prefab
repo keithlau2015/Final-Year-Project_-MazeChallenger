@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4391961858019056759
 Transform:
@@ -87,10 +87,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179141284878778408}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1537697908847122132
@@ -104,13 +104,12 @@ GameObject:
   - component: {fileID: 2525492177369785543}
   - component: {fileID: 6798007157945556721}
   - component: {fileID: 967101932447703560}
-  - component: {fileID: 455566445189495313}
   m_Layer: 0
   m_Name: Portal_Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2525492177369785543
 Transform:
@@ -174,20 +173,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &455566445189495313
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1537697908847122132}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -5495902117074765545, guid: 6d544dc02b8e529489ec935a06722b74, type: 3}
 --- !u!1001 &5521586357694790662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199,6 +184,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Portal_Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4149ede655f86a242be9f416a866d785,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 4149ede655f86a242be9f416a866d785,
         type: 3}

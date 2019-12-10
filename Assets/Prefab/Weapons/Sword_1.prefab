@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3566172127095835404}
   - component: {fileID: 2538450789767195118}
   - component: {fileID: 2043341713991314543}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Sword_1
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: bfd6d3216a7d51b4b8a7c54d9322747f,
         type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: bfd6d3216a7d51b4b8a7c54d9322747f,
         type: 3}

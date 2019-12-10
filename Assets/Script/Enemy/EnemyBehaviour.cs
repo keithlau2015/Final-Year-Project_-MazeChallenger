@@ -11,6 +11,9 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField]
     private GameObject deadEffect;
 
+    [SerializeField]
+    private GameObject[] reward;
+
     //check about is this enemy being attacked
     private bool collisionWithObject, triggerWithPlayer, onGround, insideAttackArea, beingAttack;
 
@@ -39,6 +42,7 @@ public class EnemyBehaviour : MonoBehaviour
         Vector3 pos = this.transform.position;
         Quaternion rotation = this.transform.rotation;
         GameObject clone = Instantiate(deadEffect, pos+ offset, rotation) as GameObject;
+        GameObject rewardClone = Instantiate(reward[Random.Range(0, reward.Length)], pos, rotation) as GameObject;
         Destroy(clone, 10);
         Destroy(this.gameObject);
     }
@@ -56,6 +60,16 @@ public class EnemyBehaviour : MonoBehaviour
         {
             Vector3 targetYAxis = new Vector3(PlayerRef.instance.player.transform.position.x, this.transform.position.y, PlayerRef.instance.player.transform.position.z);
             transform.LookAt(targetYAxis);
+        }
+        RaycastHit hit;
+        if (Physics.Raycast(this.gameObject.transform.position, transform.forward, out hit, 10f))
+        {
+            if (hit.collider.CompareTag("Wall") || hit.collider.CompareTag("Breakable") || hit.collider.CompareTag("VendingMachine"))
+            {
+                int rand = Random.Range(0, rotationDir.Length);
+                Vector3 targetYAxis = new Vector3(0, rotationDir[rand], 0);
+                transform.rotation = Quaternion.Euler(targetYAxis);
+            }
         }
     }
 
@@ -117,7 +131,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject.tag == "Wall")
+        if(collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breakable") || collision.gameObject.CompareTag("VendingMachine"))
         {
             collisionWithObject = false;
         }

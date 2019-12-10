@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5410303598134332901}
   - component: {fileID: 2787191948753999982}
   - component: {fileID: 3964872237696060077}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4886977885710833672}
   - component: {fileID: 1927290564015599784}
   - component: {fileID: 7047192527845723682}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 7619690613977764760}
   - component: {fileID: 8411153482629616244}
   - component: {fileID: -2977926446197571608}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Handgun
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 1380698469629016735}
   - component: {fileID: 5056143754714107691}
   - component: {fileID: 7453731387107564255}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 791563019744614649}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bullet Spawning Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -428,6 +428,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Handgun_Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d09ef507cb116964390d907a3f8d9fe0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4695666576454475813, guid: d09ef507cb116964390d907a3f8d9fe0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7469484624682501897, guid: d09ef507cb116964390d907a3f8d9fe0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -492420421572216379, guid: d09ef507cb116964390d907a3f8d9fe0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d09ef507cb116964390d907a3f8d9fe0,
         type: 3}

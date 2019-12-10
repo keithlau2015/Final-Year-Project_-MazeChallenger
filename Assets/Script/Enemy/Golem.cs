@@ -10,13 +10,12 @@ public class Golem : MonoBehaviour
 	private int attack_pattern = 0;
 	private EnemyBehaviour enemyBehaviour;
     private Enemy status;
-    private bool attack = false, spawn = false;
+    private bool attack = false;
     public PlayerController player;
     public GameObject atk_point;
     public GameObject atk_area;
     private GameObject clone;
     private int layerMask;
-
 
     //Draw the line from the piovt point
     [SerializeField]
@@ -41,12 +40,16 @@ public class Golem : MonoBehaviour
         }
         enemyBehaviour.EnemyRotation();
         EnemyDetection();
+        if (!this.gameObject)
+        {
+            Destroy(clone);
+        }
      }
      
      private void EnemyDetection()
      {
         RaycastHit hit;
-        if (Physics.SphereCast(pivotPoint.position, 5f, transform.forward, out hit, 20f, layerMask))
+        if (Physics.Raycast(pivotPoint.position, transform.forward, out hit, 15f, layerMask))
         {
             Debug.Log("engadge");
             var hitTarget = hit.transform;
@@ -55,10 +58,14 @@ public class Golem : MonoBehaviour
             	animator.SetInteger("Status", 2);
                 EnemyAttack();
             }
+            else
+            {
+                animator.SetInteger("Status", 1);
+                enemyBehaviour.EnemyWalk();
+            }
         }
         else
         {
-            Debug.Log("walk");
             animator.SetInteger("Status", 1);
             enemyBehaviour.EnemyWalk();
         }
@@ -68,15 +75,13 @@ public class Golem : MonoBehaviour
     {
         if(animator.GetInteger("Status") == 2 && animator.IsInTransition(0) && clone == null)
         {
-            spawn = true;
             attack = true;
-            clone = Instantiate(atk_area, atk_point.transform.position, atk_point.transform.rotation) as GameObject;
-            if (this.gameObject != null) Destroy(clone, 2);
-            else Destroy(clone);
-        }
-        else
-        {
-            spawn = false;
+            if (animator.GetCurrentAnimatorStateInfo(0).IsTag("1"))
+            {
+                StartCoroutine(Delay(1));
+                clone = Instantiate(atk_area, atk_point.transform) as GameObject;
+                Destroy(clone, 1.5f);
+            }      
         }
 
         if(!animator.IsInTransition (0) && animator.GetInteger("Status") == 2)
@@ -127,5 +132,11 @@ public class Golem : MonoBehaviour
             status.setEnemySpeed(-10, "");
             Debug.Log("Enemy speed" + status.getEnemySpeed());
         }
+    }
+
+    private IEnumerator Delay(float seconds)
+    {
+        WaitForSeconds waitForSeconds = new WaitForSeconds(seconds);
+        yield return waitForSeconds;
     }
 }

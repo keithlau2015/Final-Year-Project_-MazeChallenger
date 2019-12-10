@@ -6,13 +6,14 @@ using System;
 
 public class OpeningVideo : MonoBehaviour
 {
-    private string path_Char = Application.persistentDataPath + "/Subject_Adam.Char";
+    private string path_Char;
     private VideoPlayer videoPlayer;
     public int count = 0;
     // Start is called before the first frame update
     void Start()
     {
-        count = SaveSystem.LoadData().count;
+        path_Char = "/Subject_Adam.Char";
+        if(count != 0)count = SaveSystem.LoadData().count;
         videoPlayer = GetComponent<VideoPlayer>();
         videoPlayer.loopPointReached += LoadScene;
 
@@ -23,6 +24,7 @@ public class OpeningVideo : MonoBehaviour
                 try
                 {
                     FileStream fs = File.Create(path_Char);
+                    count++;
                 }
                 catch (Exception ex)
                 {
@@ -44,7 +46,7 @@ public class OpeningVideo : MonoBehaviour
 
     private void SavePlayerData()
     {
-        SaveSystem.SavingCount(this);
+        SaveSystem.SavingData(this);
     }
 
     private void LoadScene(VideoPlayer vp)

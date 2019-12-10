@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1033036766301962126}
   - component: {fileID: 3543331271875974300}
   - component: {fileID: -6384177220456913954}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: BattleAxe
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: cc43e6c6ffda59b4f860c77a75e6151a,
         type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: cc43e6c6ffda59b4f860c77a75e6151a,
         type: 3}

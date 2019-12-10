@@ -87,9 +87,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2209028584625336077}
-  - component: {fileID: 7159539038260621910}
   - component: {fileID: 2901310372718777025}
   - component: {fileID: 4089081442472137451}
+  - component: {fileID: 4153895229137646789}
   m_Layer: 0
   m_Name: Donut
   m_TagString: Item
@@ -114,20 +114,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &7159539038260621910
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2950792426086735134}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
 --- !u!54 &2901310372718777025
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -158,6 +144,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawningRate: 0.8
   extraBuff: 
+--- !u!65 &4153895229137646789
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2950792426086735134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6175658, y: 0.5554129, z: 1.5980644}
+  m_Center: {x: 0.003250599, y: 0.026553823, z: 0.019502068}
 --- !u!1 &6980338566631783448
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,16 +242,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2209028584625336077}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: fd00faded4de69643876aee8d91e8f80,
-        type: 3}
-      propertyPath: m_Name
-      value: Donut_Flip
-      objectReference: {fileID: 0}
-    - target: {fileID: -4735064939027224939, guid: fd00faded4de69643876aee8d91e8f80,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4d20df7c5fea4e340b243182c0c73ec5, type: 2}
     - target: {fileID: -4216859302048453862, guid: fd00faded4de69643876aee8d91e8f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -323,12 +312,22 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 102
       objectReference: {fileID: 0}
-    - target: {fileID: -1466969956381694019, guid: fd00faded4de69643876aee8d91e8f80,
+    - target: {fileID: -927199367670048503, guid: fd00faded4de69643876aee8d91e8f80,
+        type: 3}
+      propertyPath: m_Name
+      value: Donut_Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: fd00faded4de69643876aee8d91e8f80,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 4d20df7c5fea4e340b243182c0c73ec5, type: 2}
-    - target: {fileID: -1504981713932161579, guid: fd00faded4de69643876aee8d91e8f80,
+    - target: {fileID: -4735064939027224939, guid: fd00faded4de69643876aee8d91e8f80,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d20df7c5fea4e340b243182c0c73ec5, type: 2}
+    - target: {fileID: -1466969956381694019, guid: fd00faded4de69643876aee8d91e8f80,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

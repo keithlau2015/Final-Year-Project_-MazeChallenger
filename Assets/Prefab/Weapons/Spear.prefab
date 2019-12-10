@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3415967994920250554}
   - component: {fileID: 5828977222741446106}
   - component: {fileID: -988527181160452145}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Spear
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -118,6 +118,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 72192965758937717}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 3dde1cc08c6d4e74a9c04b646149f0b6,
+        type: 3}
+      propertyPath: m_Name
+      value: Spear_Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3dde1cc08c6d4e74a9c04b646149f0b6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3dde1cc08c6d4e74a9c04b646149f0b6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -187,16 +197,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.20637
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 3dde1cc08c6d4e74a9c04b646149f0b6,
-        type: 3}
-      propertyPath: m_Name
-      value: Spear_Flip
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 3dde1cc08c6d4e74a9c04b646149f0b6,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 3dde1cc08c6d4e74a9c04b646149f0b6,
         type: 3}

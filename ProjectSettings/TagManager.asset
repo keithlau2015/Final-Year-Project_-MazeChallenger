@@ -25,6 +25,7 @@ TagManager:
   - ForceShield
   - Breakable
   - Readable
+  - SafeHouse
   layers:
   - Default
   - TransparentFX

@@ -147,6 +147,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deadEffect: {fileID: 1653333534184185868, guid: 8dce7c301d1f75b4f8c2b998bd94b406,
     type: 3}
+  reward:
+  - {fileID: 8150628378140162284, guid: b4d2aae38706da74b8345a2b5589e06e, type: 3}
+  - {fileID: 3623286802925799863, guid: baf238071066fd74fab1568dbe204a21, type: 3}
 --- !u!114 &7900784755668138230
 MonoBehaviour:
   m_ObjectHideFlags: 0
