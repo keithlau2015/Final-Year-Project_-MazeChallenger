@@ -8,7 +8,7 @@ public class PlayerStatus : MonoBehaviour
     private const float SPEED = 50f, LUCKY = 0.01f, HUNGER_TIME = 1;
 
     //Current
-    private int current_Health, current_Hunger, current_Coins, current_Sanity;
+    private int current_Health, current_Hunger, current_Coins, current_Sanity, current_Reinforcement;
     private float current_Speed, current_Lucky, current_HungerTime;
 
     //Total
@@ -56,6 +56,11 @@ public class PlayerStatus : MonoBehaviour
         current_Coins = 0;
         healingSkill = playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking = playerCanInteractWithReadingMaterial = playerInTheSafeHouse = playerIsBlocking = false;
         priceUIText = killedBy = readingMaterials = "";
+    }
+
+    public int getReinforcement()
+    {
+        return instance.current_Reinforcement;
     }
 
     public bool getPlayerIsBlocking()
@@ -136,6 +141,11 @@ public class PlayerStatus : MonoBehaviour
     public int getHunger()
     {
         return instance.current_Hunger;
+    }
+
+    public void setReinforcement(int reinforcement)
+    {
+        this.current_Reinforcement += reinforcement;
     }
 
     public void setHungerTime()

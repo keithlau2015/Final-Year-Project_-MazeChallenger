@@ -19,6 +19,14 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_B0BA48CF:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_C1662585:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -44,6 +52,20 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_1048421C: 0.05
+    - Vector1_14279438: 5
+    - Vector1_3329961F: 0
+    - Vector1_489A6B55: 1
+    - Vector1_5A91CEFB: 2
+    - Vector1_7246523C: 0.5
+    - Vector1_7B8FE118: 5
+    - Vector1_80F251B2: 5
+    - Vector1_8A6D7587: 0
+    - Vector1_946B072: 0.75
+    - Vector1_99999E7B: 0.6
+    - Vector1_AF533BA3: 10
+    - Vector1_B757EF9B: 1
+    - Vector1_C48129C7: 3.25
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -52,17 +74,25 @@ Material:
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
+    - _GlossinessSource: 0
     - _GlossyReflections: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _ReceiveShadows: 1
+    - _Shininess: 0.5
     - _SmoothnessTextureChannel: 0
+    - _SpecSource: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_663FC99A: {r: 2.165539, g: 5.51781, b: 5.811321, a: 0}
+    - Color_AD4E7AA: {r: 1.921569, g: 1.294118, b: 0.3686275, a: 0}
+    - Color_D0B95BE6: {r: 0.4716981, g: 0.9774861, b: 1.886792, a: 0}
+    - Color_FA689E92: {r: 0.1664738, g: 0.5891969, b: 0.8207547, a: 0}
+    - Vector2_2A5C1EB0: {r: 0.1, g: -0.1, b: 0, a: 0}
     - _Color: {r: 0.3962264, g: 0.3228819, b: 0.2710039, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}

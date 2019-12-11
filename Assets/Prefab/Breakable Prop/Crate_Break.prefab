@@ -829,16 +829,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7724053744658056209}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: d8c8280e157ada944a0583d872717729,
-        type: 3}
-      propertyPath: m_Name
-      value: Crate_broken_Part5_Flip
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: d8c8280e157ada944a0583d872717729,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d8c8280e157ada944a0583d872717729,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -908,6 +898,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d8c8280e157ada944a0583d872717729,
+        type: 3}
+      propertyPath: m_Name
+      value: Crate_broken_Part5_Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d8c8280e157ada944a0583d872717729,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: d8c8280e157ada944a0583d872717729,
         type: 3}
@@ -929,16 +929,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 225438056568361333}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 85caf80037eb2564ca84d86ad81dd8f5,
-        type: 3}
-      propertyPath: m_Name
-      value: Crate_broken_Part3_Flip
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 85caf80037eb2564ca84d86ad81dd8f5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 85caf80037eb2564ca84d86ad81dd8f5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1009,6 +999,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.05
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 85caf80037eb2564ca84d86ad81dd8f5,
+        type: 3}
+      propertyPath: m_Name
+      value: Crate_broken_Part3_Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 85caf80037eb2564ca84d86ad81dd8f5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 85caf80037eb2564ca84d86ad81dd8f5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1029,16 +1029,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8083046601897419050}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: bb1b0a75d42c53d45a87301fbafcf499,
-        type: 3}
-      propertyPath: m_Name
-      value: Crate_broken_Part0_Flip
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: bb1b0a75d42c53d45a87301fbafcf499,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: bb1b0a75d42c53d45a87301fbafcf499,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1109,6 +1099,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.05
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bb1b0a75d42c53d45a87301fbafcf499,
+        type: 3}
+      propertyPath: m_Name
+      value: Crate_broken_Part0_Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: bb1b0a75d42c53d45a87301fbafcf499,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: bb1b0a75d42c53d45a87301fbafcf499,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1129,16 +1129,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5365975811596002717}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 031439a3069fc044ca9af663d710f7e2,
-        type: 3}
-      propertyPath: m_Name
-      value: Crate_broken_Part4_Flip
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 031439a3069fc044ca9af663d710f7e2,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 031439a3069fc044ca9af663d710f7e2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1208,6 +1198,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 031439a3069fc044ca9af663d710f7e2,
+        type: 3}
+      propertyPath: m_Name
+      value: Crate_broken_Part4_Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 031439a3069fc044ca9af663d710f7e2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 031439a3069fc044ca9af663d710f7e2,
         type: 3}
@@ -1229,16 +1229,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2404999315789646044}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 3eb5bc7da98b6ee4b978756a5ac48a82,
-        type: 3}
-      propertyPath: m_Name
-      value: Crate_broken_Part2_Flip
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 3eb5bc7da98b6ee4b978756a5ac48a82,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 3eb5bc7da98b6ee4b978756a5ac48a82,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1308,6 +1298,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3eb5bc7da98b6ee4b978756a5ac48a82,
+        type: 3}
+      propertyPath: m_Name
+      value: Crate_broken_Part2_Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 3eb5bc7da98b6ee4b978756a5ac48a82,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 3eb5bc7da98b6ee4b978756a5ac48a82,
         type: 3}
@@ -1329,16 +1329,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6538251333906317237}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: be4efff33f8fd3646b2b1d50795343e5,
-        type: 3}
-      propertyPath: m_Name
-      value: Crate_broken_Part1_Flip
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: be4efff33f8fd3646b2b1d50795343e5,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: be4efff33f8fd3646b2b1d50795343e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1408,6 +1398,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: be4efff33f8fd3646b2b1d50795343e5,
+        type: 3}
+      propertyPath: m_Name
+      value: Crate_broken_Part1_Flip
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: be4efff33f8fd3646b2b1d50795343e5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: be4efff33f8fd3646b2b1d50795343e5,
         type: 3}

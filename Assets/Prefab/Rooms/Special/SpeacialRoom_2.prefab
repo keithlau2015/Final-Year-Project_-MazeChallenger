@@ -2419,6 +2419,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Portal_SpecialEnter
       objectReference: {fileID: 0}
+    - target: {fileID: 179141284878778408, guid: 72271de519a870b43abc28cf42697f22,
+        type: 3}
+      propertyPath: m_TagString
+      value: Teleporter
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72271de519a870b43abc28cf42697f22, type: 3}
 --- !u!4 &7545283413078544106 stripped

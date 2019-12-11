@@ -61,5 +61,15 @@ public class BreakableObject : MonoBehaviour
             Destroy(clone, 10);
             Destroy(this.gameObject);
         }
+
+        if (other.gameObject.CompareTag("Spike"))
+        {
+            Vector3 pos = this.transform.position;
+            Quaternion rotation = this.transform.rotation;
+            GameObject clone = Instantiate(deadEffect, pos, rotation) as GameObject;
+            clone.transform.localScale = this.gameObject.transform.localScale;
+            Destroy(clone, 10);
+            Destroy(this.gameObject);
+        }
     }
 }

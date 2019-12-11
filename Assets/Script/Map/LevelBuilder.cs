@@ -243,8 +243,8 @@ public class LevelBuilder : MonoBehaviour
     private void PlaceStartRoom()
     {
         int index = 0;
-        if (PlayerStatus.Instance.getPlayerReachLevels() < 10) index = 0;
-        else if (PlayerStatus.Instance.getPlayerReachLevels() >= 10 && PlayerStatus.Instance.getPlayerReachLevels() < 20) index = 1;
+        //if (PlayerStatus.Instance.getPlayerReachLevels() < 10) index = 0;
+        //else if (PlayerStatus.Instance.getPlayerReachLevels() >= 10 && PlayerStatus.Instance.getPlayerReachLevels() < 20) index = 0;
         startRoom = Instantiate(startRoomPrefab[index]) as StartRoom;
         startRoom.transform.parent = this.transform;
 
@@ -257,8 +257,8 @@ public class LevelBuilder : MonoBehaviour
     private void PlaceEndRoom()
     {
         int index = 0;
-        if (PlayerStatus.Instance.getPlayerReachLevels() < 10) index = 0;
-        else if (PlayerStatus.Instance.getPlayerReachLevels() >= 10 && PlayerStatus.Instance.getPlayerReachLevels() < 20) index = 1;
+        //if (PlayerStatus.Instance.getPlayerReachLevels() < 10) index = 0;
+        //else if (PlayerStatus.Instance.getPlayerReachLevels() >= 10 && PlayerStatus.Instance.getPlayerReachLevels() < 20) index = 0;
         endRoom = Instantiate(endRoomPrefab[Random.Range(0, endRoomPrefab.Length)]) as EndRoom;
         endRoom.transform.parent = this.transform;
 
@@ -271,6 +271,12 @@ public class LevelBuilder : MonoBehaviour
         {
             Room room = (Room)endRoom;
             PositionRoomAtExit(ref room, exit, availableExit);
+
+            if (CheckRoomOverlap(endRoom))
+            {
+                Destroy(endRoom.gameObject);
+                ResetLevel();
+            }
 
             if (!endRoom.spawnPoint_Weapon.Equals(null))
             {
@@ -312,13 +318,13 @@ public class LevelBuilder : MonoBehaviour
         int minRange = 0, maxRange = 0;
         if(PlayerStatus.Instance.getPlayerReachLevels() < 10)
         {
-            maxRange = 12;
+            maxRange = 13;
             //minRange = 13;
             //maxRange = 23;
         }
         else if(PlayerStatus.Instance.getPlayerReachLevels() >= 10 && PlayerStatus.Instance.getPlayerReachLevels() < 20)
         {
-            maxRange = 12;
+            maxRange = 13;
             //minRange = 13;
             //maxRange = 23;
         }
@@ -418,7 +424,7 @@ public class LevelBuilder : MonoBehaviour
 
     private void PlaceSpecialRoom()
     {
-        specialRoom = Instantiate(specialRoomPrefab[Random.Range(0, startRoomPrefab.Length)]) as SpecialRoom;
+        specialRoom = Instantiate(specialRoomPrefab[Random.Range(0, specialRoomPrefab.Length)]) as SpecialRoom;
         specialRoom.transform.parent = this.transform;
 
         specialRoom.transform.position = Vector3.zero;
@@ -541,20 +547,16 @@ public class LevelBuilder : MonoBehaviour
 
     private void PlaceWeapon(Weapon weapon, Room room, int spawningPoint)
     {
-            Weapon currentSpawnedWeapon = Instantiate(weapon, room.spawnPoint_Weapon[spawningPoint]) as Weapon;
-            currentSpawnedWeapon.transform.parent = this.transform;
-            placedWeapons.Add(currentSpawnedWeapon);
+        Weapon currentSpawnedWeapon = Instantiate(weapon, room.spawnPoint_Weapon[spawningPoint]) as Weapon;
+        currentSpawnedWeapon.transform.parent = this.transform;
+        placedWeapons.Add(currentSpawnedWeapon);
     }
 
     private void PlaceEnemy(Enemy enemy, Room room, int spawningPoint)
     {
-        float rand = Random.Range(0f, 1f);
-        if (enemy.getEnemySpwaningRate() >= rand)
-        {
-            Enemy currentSpawnedEnemy = Instantiate(enemy, room.spawnPoint_Enemy[spawningPoint]) as Enemy;
-            currentSpawnedEnemy.transform.parent = this.transform;
-            placedEnemys.Add(currentSpawnedEnemy);
-        }
+        Enemy currentSpawnedEnemy = Instantiate(enemy, room.spawnPoint_Enemy[spawningPoint]) as Enemy;
+        currentSpawnedEnemy.transform.parent = this.transform;
+        placedEnemys.Add(currentSpawnedEnemy);
     }
 
     private void PlaceFood(Food food, Room room, int spawningPoint)

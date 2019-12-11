@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().popDescriptionText("- Health");
             PlayerStatus.Instance.setSanity(-5);
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().popDescriptionText("- Sanity");
-            if (PlayerStatus.Instance.getHealth() == 0) PlayerStatus.Instance.setPlayerKilledBy("You are brought knife to a gun fight");
+            if (PlayerStatus.Instance.getHealth() == 0) PlayerStatus.Instance.setPlayerKilledBy("You brought knife to a gun fight");
         }
     }
 }

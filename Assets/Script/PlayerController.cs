@@ -661,12 +661,20 @@ public class PlayerController : MonoBehaviour
                         PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
 
-                    //Scorll
-                    case "Scroll(Clone)":
+                    //Well
+                    case "well":
                         popDescriptionText("+ Sanity");
-                        PlayerStatus.Instance.setSanity(+10);
-                        Destroy(firstItem.gameObject);
-                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
+                        PlayerStatus.Instance.setSanity(+15);
+                        if (firstItem.GetComponent<Well>().useableTime <= 0)
+                        {
+                            firstItem.transform.GetChild(1).GetComponent<Animator>().SetBool("Dry", true);
+                            firstItem.gameObject.tag = "Untagged";
+                            PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
+                        }
+                        else
+                        {
+                            firstItem.GetComponent<Well>().useableTime--;
+                        }
                         break;
 
                     //Healing potion
@@ -676,10 +684,19 @@ public class PlayerController : MonoBehaviour
                         Destroy(firstItem.gameObject);
                         PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
-
+                    
+                    //Little Statue
                     case "LittleStatue":
                         popDescriptionText("- Hunger Speed");
                         PlayerStatus.Instance.setHungerTime();
+                        Destroy(firstItem.gameObject);
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
+                        break;
+
+                    //Scroll
+                    case "Scroll(Clone)":
+                        popDescriptionText("+ Exp");
+                        PlayerStatus.Instance.setReinforcement(+1);
                         Destroy(firstItem.gameObject);
                         PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
@@ -755,6 +772,10 @@ public class PlayerController : MonoBehaviour
 
             case "+ Coin":
                 description.color = new Color(0.9803922f, 1f, 0.4103774f);
+                break;
+
+            case "+ Exp":
+                description.color = new Color(0.3568627f, 0.9333333f, 0.5708299f);
                 break;
         }
         clone = Instantiate(description, descriptionUISpawningPoint[Random.Range(0, descriptionUISpawningPoint.Length)]) as Text;

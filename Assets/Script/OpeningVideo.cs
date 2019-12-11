@@ -14,6 +14,7 @@ public class OpeningVideo : MonoBehaviour
     {
         path_Char = "/Subject_Adam.Char";
         if(count != 0)count = SaveSystem.LoadData().count;
+        PlayerStatus.Instance.setReinforcement(SaveSystem.LoadData().tempReinforcement);
         videoPlayer = GetComponent<VideoPlayer>();
         videoPlayer.loopPointReached += LoadScene;
 

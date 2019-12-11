@@ -30,6 +30,11 @@ public class EnemyBehaviour : MonoBehaviour
         status = GetComponent<Enemy>();
     }
 
+    private void FixedUpdate()
+    {
+
+    }
+
     public void EnemyWalk()
     {
         //The animation of the walking
@@ -123,10 +128,6 @@ public class EnemyBehaviour : MonoBehaviour
         {
             onGround = true;
         }
-        if(collision.gameObject.tag == "Weapon")
-        {
-            beingAttack = true;
-        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -145,5 +146,14 @@ public class EnemyBehaviour : MonoBehaviour
         }
     }
 
-    
+    public void setBeingAttack(bool beingAttack)
+    {
+        this.beingAttack = beingAttack;
+    }
+
+    public bool getBeingAttack()
+    {
+        return this.beingAttack;
+    }
+
 }
