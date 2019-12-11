@@ -12,6 +12,7 @@ public class Menu : MonoBehaviour
     private Transform _selection;
     private Camera camera;
     private RaycastHit hit;
+    public GameObject Buying;
     //GameObject
     [SerializeField] private Collider cog, cog_2, cog_3, cog_4, door, book;
 
@@ -36,6 +37,7 @@ public class Menu : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
         MouseFollow.CursorControl();
         if (_selection != null)
         {
@@ -116,6 +118,15 @@ public class Menu : MonoBehaviour
                 cog_4Animation.SetBool("play", true);
                 if (FindObjectOfType<SoundManager>().CheckAudioIsPlaying(0)) playing_sound(cogAnimation, 0);
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(1);
+                _selection = selection;
+            }
+            if(selection.CompareTag("VendingMachine"))
+            {
+                var selectionCollider = selection.GetComponent<Collider>();
+                if (Input.GetMouseButtonDown(0))
+                {
+                  Buying.SetActive(true);
+                }
                 _selection = selection;
             }
             /*
