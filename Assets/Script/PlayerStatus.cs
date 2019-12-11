@@ -30,6 +30,9 @@ public class PlayerStatus : MonoBehaviour
     private float timer;
     private int healingTime;
 
+    //Reinforcement
+    private int selectBetterWeapon, selectUpgradeSkill, randomStartUpMoney;
+
     public static PlayerStatus Instance
     {
         get
@@ -57,6 +60,7 @@ public class PlayerStatus : MonoBehaviour
         healingSkill = playerGetIntoNextLevel = playerCanInteractWithOtherObject = playerCanInteractWithVendingMachine = attacking = playerCanInteractWithReadingMaterial = playerInTheSafeHouse = playerIsBlocking = false;
         priceUIText = killedBy = readingMaterials = "";
     }
+
 
     public int getReinforcement()
     {
@@ -141,6 +145,21 @@ public class PlayerStatus : MonoBehaviour
     public int getHunger()
     {
         return instance.current_Hunger;
+    }
+
+    public void setSelectBetterWeapon(int rand)
+    {
+        this.selectBetterWeapon = rand;
+    }
+
+    public void setSelectUpgradeSkill(int rand)
+    {
+        this.selectUpgradeSkill = rand;
+    }
+
+    public void setRandomStartUpMoney(int rand)
+    {
+        this.randomStartUpMoney = rand;
     }
 
     public void setReinforcement(int reinforcement)

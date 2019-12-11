@@ -15,7 +15,6 @@ public class Weapon : MonoBehaviour
         {
             durability--;
             Debug.Log(this.gameObject.name + " : " + durability);
-            collision.gameObject.GetComponent<EnemyBehaviour>().setBeingAttack(false);
         }
         if (PlayerStatus.Instance.getPlayerAttacking() && collision.gameObject.CompareTag("Breakable"))
         {
