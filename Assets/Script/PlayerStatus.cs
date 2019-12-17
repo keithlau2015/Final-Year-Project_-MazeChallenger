@@ -31,7 +31,7 @@ public class PlayerStatus : MonoBehaviour
     private int healingTime;
 
     //Reinforcement
-    private int selectBetterWeapon, selectUpgradeSkill, randomStartUpMoney;
+    private int selectBetterWeapon = 1, selectUpgradeSkill, randomStartUpMoney;
 
     public static PlayerStatus Instance
     {
@@ -61,6 +61,20 @@ public class PlayerStatus : MonoBehaviour
         priceUIText = killedBy = readingMaterials = "";
     }
 
+    public int getRandomStartUpMoney()
+    {
+        return instance.randomStartUpMoney;
+    }
+
+    public int getSelectUpgradeSkill()
+    {
+        return instance.selectUpgradeSkill;
+    }
+
+    public int getSelectBetterWeapon()
+    {
+        return instance.selectBetterWeapon;
+    }
 
     public int getReinforcement()
     {
@@ -164,7 +178,14 @@ public class PlayerStatus : MonoBehaviour
 
     public void setReinforcement(int reinforcement)
     {
-        this.current_Reinforcement += reinforcement;
+        if(this.current_Reinforcement + reinforcement < 0)
+        {
+            this.current_Reinforcement = 0;
+        }
+        else
+        {
+            this.current_Reinforcement += reinforcement;
+        }
     }
 
     public void setHungerTime()

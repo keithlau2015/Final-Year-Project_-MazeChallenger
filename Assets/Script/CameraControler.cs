@@ -26,7 +26,7 @@ public class CameraControler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             FindObjectOfType<SoundManager>().PlaySoundEffect(0);
-            if (mCurrentIndex < 2)
+            if (mCurrentIndex < 3)
             {
                 mCurrentIndex++;
             }

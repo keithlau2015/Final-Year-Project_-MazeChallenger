@@ -15,7 +15,7 @@ public class EnemyBehaviour : MonoBehaviour
     private GameObject[] reward;
 
     //check about is this enemy being attacked
-    private bool collisionWithObject, triggerWithPlayer, onGround, insideAttackArea, beingAttack;
+    private bool collisionWithObject, triggerWithPlayer, onGround, insideAttackArea, beingAttack, buffedUpSpeed;
 
     //Need component 
     private Enemy status;
@@ -28,6 +28,7 @@ public class EnemyBehaviour : MonoBehaviour
         animator = GetComponent<Animator>();
         rigidbody = GetComponent<Rigidbody>();
         status = GetComponent<Enemy>();
+        buffedUpSpeed = false;
     }
 
     private void FixedUpdate()
@@ -80,12 +81,13 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && !buffedUpSpeed)
         {
             //increase speed
+            buffedUpSpeed = true;
             triggerWithPlayer = true;
             insideAttackArea = true;
-            status.setEnemySpeed(+10, "");
+            this.status.setEnemySpeed(+20, "");
             Debug.Log("Enemy speed" + status.getEnemySpeed());
         }
     }
@@ -95,9 +97,10 @@ public class EnemyBehaviour : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             //increase speed
+            buffedUpSpeed = false;
             triggerWithPlayer = false;
             insideAttackArea = false;
-            status.setEnemySpeed(-10, "");
+            this.status.setEnemySpeed(-20, "");
             Debug.Log("Enemy speed" + status.getEnemySpeed());
         }
     }
@@ -106,7 +109,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Wall")
+        if(collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Enemy")
         {
             collisionWithObject = true;
         }
@@ -132,7 +135,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breakable") || collision.gameObject.CompareTag("VendingMachine"))
+        if(collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Breakable") || collision.gameObject.CompareTag("VendingMachine") || collision.gameObject.tag == "Enemy")
         {
             collisionWithObject = false;
         }

@@ -28,14 +28,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020326136705907037}
-  m_LocalRotation: {x: -0.0000002940141, y: 0.7071068, z: 0.7071068, w: 0.00000032782552}
+  m_LocalRotation: {x: 0.000000014130508, y: 0.022223813, z: 0.99975306, w: 0.0000004401298}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5345467095441736204}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 180.00002}
+  m_LocalEulerAnglesHint: {x: -2.5470002, y: 0, z: 180.00002}
 --- !u!33 &6271821639509553528
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a7627c0d0331244840283be41451b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randTip: 0
 --- !u!54 &8595538810780491118
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -130,11 +131,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3049774990931790670}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: d210497e1b58c7f45a84733090895dc9,
-        type: 3}
-      propertyPath: m_Name
-      value: Book_Flip
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d210497e1b58c7f45a84733090895dc9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -204,6 +200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d210497e1b58c7f45a84733090895dc9,
+        type: 3}
+      propertyPath: m_Name
+      value: Book_Flip
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: d210497e1b58c7f45a84733090895dc9,
         type: 3}

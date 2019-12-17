@@ -227,6 +227,8 @@ public class LevelBuilder : MonoBehaviour
             //restore litte bit of hunger
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().popDescriptionText("+ Hunger");
             PlayerStatus.Instance.setHunger(15, "");
+
+            PlayerStatus.Instance.setCoins(+PlayerStatus.Instance.getRandomStartUpMoney());
         }
     }
 
@@ -249,6 +251,19 @@ public class LevelBuilder : MonoBehaviour
         startRoom.transform.parent = this.transform;
 
         AddExitsToList(startRoom, ref availableExits);
+
+        if (!startRoom.startUpWeapon.Equals(null) && PlayerStatus.Instance.getSelectBetterWeapon() == 1)
+        {
+            Weapon currentSpawnedWeapon = Instantiate(weaponPrefab[1], startRoom.startUpWeapon) as Weapon;
+            currentSpawnedWeapon.transform.parent = this.transform;
+            placedWeapons.Add(currentSpawnedWeapon);
+        }
+        else
+        {
+            Weapon currentSpawnedWeapon = Instantiate(weaponPrefab[PlayerStatus.Instance.getSelectBetterWeapon()], startRoom.startUpWeapon) as Weapon;
+            currentSpawnedWeapon.transform.parent = this.transform;
+            placedWeapons.Add(currentSpawnedWeapon);
+        }
 
         startRoom.transform.position = Vector3.zero;
         startRoom.transform.rotation = Quaternion.identity;
@@ -318,13 +333,13 @@ public class LevelBuilder : MonoBehaviour
         int minRange = 0, maxRange = 0;
         if(PlayerStatus.Instance.getPlayerReachLevels() < 10)
         {
-            maxRange = 13;
+            maxRange = 15;
             //minRange = 13;
             //maxRange = 23;
         }
         else if(PlayerStatus.Instance.getPlayerReachLevels() >= 10 && PlayerStatus.Instance.getPlayerReachLevels() < 20)
         {
-            maxRange = 13;
+            maxRange = 15;
             //minRange = 13;
             //maxRange = 23;
         }
@@ -334,7 +349,6 @@ public class LevelBuilder : MonoBehaviour
         List<Exit> allAvailableExits = new List<Exit>(availableExits);
         List<Exit> currentExits = new List<Exit>();
         AddExitsToList(currentRoom, ref currentExits);
-
         AddExitsToList(currentRoom, ref availableExits);
 
         bool roomPlaced = false;
@@ -459,7 +473,7 @@ public class LevelBuilder : MonoBehaviour
     private bool CheckRoomOverlap(Room room)
     {
         Bounds bounds = room.RoomBounds;
-        bounds.Expand(-0.2f);
+        bounds.Expand(-0.1f);
 
         Collider[] colliders = Physics.OverlapBox(bounds.center, bounds.size/2, room.transform.rotation, roomLayerMask);
         if(colliders.Length > 0)

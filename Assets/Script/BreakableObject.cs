@@ -26,6 +26,7 @@ public class BreakableObject : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Weapon") && PlayerStatus.Instance.getPlayerAttacking())
         {
+            Debug.Log(PlayerStatus.Instance.getPlayerAttacking());
             Vector3 pos = this.transform.position;
             Quaternion rotation = this.transform.rotation;
             GameObject clone = Instantiate(deadEffect, pos, rotation) as GameObject;

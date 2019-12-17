@@ -113,7 +113,7 @@ public class Golem : MonoBehaviour
         }
     }
 
-
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
@@ -133,6 +133,7 @@ public class Golem : MonoBehaviour
             Debug.Log("Enemy speed" + status.getEnemySpeed());
         }
     }
+    */
 
     private IEnumerator Delay(float seconds)
     {

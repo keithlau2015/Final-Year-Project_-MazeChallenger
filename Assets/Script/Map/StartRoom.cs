@@ -5,4 +5,5 @@ using UnityEngine;
 public class StartRoom : Room
 {
     public Transform playerStartingPosition;
+    public Transform startUpWeapon;
 }

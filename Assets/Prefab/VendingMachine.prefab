@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 5539668142519484217}
   m_LocalRotation: {x: 0.00000013240823, y: -0.7071068, z: -0.7071068, w: -0.00000013240823}
   m_LocalPosition: {x: -0.00000021997023, y: -0.0033, z: 0.0333}
-  m_LocalScale: {x: 0.00225, y: 0.00225, z: 0.00225}
+  m_LocalScale: {x: 0.0018, y: 0.0018, z: 0.0018}
   m_Children: []
   m_Father: {fileID: 4784316512721100511}
   m_RootOrder: 2
@@ -196,9 +196,9 @@ MonoBehaviour:
   spawnPickablePoint: {fileID: 3253645838503043092}
   effect: []
   sellableObjects:
-  - {fileID: 1615318351608449874, guid: af68d329db33d43449089069c9500e3e, type: 3}
+  - {fileID: 5232433358772052451, guid: 972940a3195cffb469a0d920e1f860aa, type: 3}
   - {fileID: 5744940003138593336, guid: f29a86d934a5d1b4cac38a90b63da87f, type: 3}
-  - {fileID: 2972728332474417104, guid: 9f37bd9b4d9206247bed0a6c14614eb2, type: 3}
+  - {fileID: 3354089651158136105, guid: edff9a27661b9f040bfb98fd4daff577, type: 3}
   - {fileID: 4683330150040704360, guid: 83e8415848bbad240b915d5059d5d3c6, type: 3}
   vendingMachine: []
   glass: {fileID: 8576136409105642433}

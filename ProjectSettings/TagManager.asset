@@ -26,6 +26,7 @@ TagManager:
   - Breakable
   - Readable
   - SafeHouse
+  - DeadZone
   layers:
   - Default
   - TransparentFX

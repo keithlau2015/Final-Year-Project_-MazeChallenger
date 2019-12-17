@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerUIController : MonoBehaviour
 {
     [SerializeField]
-    private Text Health, Hunger, Coins, Price, Sanity, Result, DeathReason, ReadingMaterials;
+    private Text Health, Hunger, Coins, Price, Sanity, Reinforcement, Result, DeathReason, ReadingMaterials;
 
     [SerializeField]
     private Slider bgmVolumeSlider, soundEffectVolumeSlider;
@@ -36,6 +36,7 @@ public class PlayerUIController : MonoBehaviour
         Health.text = PlayerStatus.Instance.getHealth().ToString();
         Coins.text = PlayerStatus.Instance.getCoins().ToString();
         Sanity.text = PlayerStatus.Instance.getSanity().ToString();
+        Reinforcement.text = PlayerStatus.Instance.getReinforcement().ToString();
         ReadingMaterials.text = PlayerStatus.Instance.getReadingMaterials();
         ReadingMaterials.enabled = PlayerStatus.Instance.getPlayerCanInteractWithReadingMaterial();
         Result.text = "You had reach to " + PlayerStatus.Instance.getPlayerReachLevels() + " Levels !";

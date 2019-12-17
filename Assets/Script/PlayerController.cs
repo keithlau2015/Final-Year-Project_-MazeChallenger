@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rigidbody;
     private bool isShooting ,isGrounded, 
                  /*check holding what*/
-                 holdingShield, holdingSword, holdingSpear, holdingGreatSword, holdingBattleAxe, holdingHandgun, holdingKatana, holdingPan;
+                 holdingShield, holdingSword, holdingSpear, holdingGreatSword, holdingBattleAxe, holdingHandgun, holdingKatana, holdingPan, holdingLance;
+    /*skill to have double jump*/
     private int countJump;
     private Camera cam;
     private Vector3 camOffset;
@@ -52,6 +53,7 @@ public class PlayerController : MonoBehaviour
         leftHandAnimator = leftHand.GetComponent<Animator>();
         rightHandAnimator = rightHand.GetComponent<Animator>();
         InvokeRepeating ("walkandrun", 0.0f, 0.5f);
+        PlayerStatus.Instance.setPlayerAttacking(false);
     }
 
 
@@ -68,26 +70,12 @@ public class PlayerController : MonoBehaviour
         float x = rigidbody.velocity.x;
         float z = rigidbody.velocity.z;
 
-        //reset the is attacking boolean
-        if (rightHandAnimator.GetCurrentAnimatorStateInfo(0).IsName("idle"))
+        if (rightHandAnimator.GetNextAnimatorStateInfo(0).IsName("idle"))
         {
             PlayerStatus.Instance.setPlayerAttacking(false);
         }
 
         //Check Player is Attacking or not
-        if (Input.GetMouseButton(0) && holdingKatana)
-        {
-            rightHandAnimator.SetBool("Sword_Swing", true);
-        }
-        else if (Input.GetMouseButtonUp(0) && holdingKatana)
-        {
-            rightHandAnimator.SetBool("Sword_Swing", false);
-        }
-        if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
-        {
-            PlayerStatus.Instance.setPlayerAttacking(true);
-        }
-
         if (Input.GetMouseButtonDown(1) && holdingShield)
         {
             leftHandAnimator.SetBool("Blocking", true);
@@ -102,6 +90,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0) && holdingSword)
         {
             rightHandAnimator.SetBool("Sword_Swing", true);
+            PlayerStatus.Instance.setPlayerAttacking(true);
         }
         else if (Input.GetMouseButtonUp(0) && holdingSword)
         {
@@ -111,15 +100,27 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0) && holdingSpear)
         {
             rightHandAnimator.SetBool("Sting", true);
+            PlayerStatus.Instance.setPlayerAttacking(true);
         }
         else if (Input.GetMouseButtonUp(0) && holdingSpear)
         {
             rightHandAnimator.SetBool("Sting", false);
         }
 
-        if (Input.GetMouseButton(0) && holdingGreatSword) // change the sound effect, make the sound longer
+        if (Input.GetMouseButton(0) && holdingLance)
+        {
+            rightHandAnimator.SetBool("Sting", true);
+            PlayerStatus.Instance.setPlayerAttacking(true);
+        }
+        else if (Input.GetMouseButtonUp(0) && holdingLance)
+        {
+            rightHandAnimator.SetBool("Sting", false);
+        }
+
+        if (Input.GetMouseButton(0) && holdingGreatSword)
         {
             rightHandAnimator.SetBool("GreatSword_Swing", true);
+            PlayerStatus.Instance.setPlayerAttacking(true);
         }
         else if (Input.GetMouseButtonUp(0) && holdingGreatSword)
         {
@@ -129,6 +130,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0) && holdingBattleAxe)
         {
             rightHandAnimator.SetBool("BattleAxe_Swing", true);
+            PlayerStatus.Instance.setPlayerAttacking(true);
         }
         else if (Input.GetMouseButtonUp(0) && holdingBattleAxe)
         {
@@ -138,6 +140,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButton(0) && holdingPan)
         {
             rightHandAnimator.SetBool("Sword_Swing", true);
+            PlayerStatus.Instance.setPlayerAttacking(true);
+        }
+        else if (Input.GetMouseButtonUp(0) && holdingPan)
+        {
+            rightHandAnimator.SetBool("Sword_Swing", false);
+        }
+
+        if (Input.GetMouseButton(0) && holdingKatana)
+        {
+            rightHandAnimator.SetBool("Sword_Swing", true);
+            PlayerStatus.Instance.setPlayerAttacking(true);
         }
         else if (Input.GetMouseButtonUp(0) && holdingPan)
         {
@@ -222,8 +235,8 @@ public class PlayerController : MonoBehaviour
         }
 
         if (leftHand.childCount > 0)
-        {
-            if (leftHand.GetChild(0).GetComponent<Weapon>().durability <= 0)
+        {       
+            if (leftHand.GetChild(0).GetComponent<Shield>().durability <= 0)
             {
                 clearLeftHandObject();
                 FindObjectOfType<SoundManager>().PlaySoundEffect(13);
@@ -320,6 +333,10 @@ public class PlayerController : MonoBehaviour
             PlayerStatus.Instance.setPlayerGetIntoNextLevel(true);
             PlayerStatus.Instance.setPlayerReachLevels(+1);
         }
+        if(other.gameObject.tag == "Back2MainMenu")
+        {
+            SceneManager.LoadScene(1);
+        }
         if (other.gameObject.tag == "LadderBottom")
         {
             rigidbody.AddForce(Vector3.up * 1000, ForceMode.Impulse);
@@ -335,7 +352,7 @@ public class PlayerController : MonoBehaviour
                 PlayerStatus.Instance.setPlayerKilledBy("Jump into the Spike");
             }
         }
-        if(other.gameObject.tag == "attack_point")
+        if(other.gameObject.tag == "attack_point" && !PlayerStatus.Instance.getPlayerIsBlocking())
         {
             PlayerStatus.Instance.setHealth(-1, "");
             popDescriptionText("- Sanity");
@@ -345,7 +362,11 @@ public class PlayerController : MonoBehaviour
             {
                 PlayerStatus.Instance.setPlayerKilledBy(other.transform.parent.parent.name + "Tear you apart");
             }
-            Debug.Log("Player Health: " + PlayerStatus.Instance.getHealth());
+        }
+        if(other.gameObject.tag == "DeadZone")
+        {
+            PlayerStatus.Instance.setHealth(-PlayerStatus.Instance.getTotalHealth(), "");
+            PlayerStatus.Instance.setPlayerKilledBy("Fall into spikes");
         }
     }
 
@@ -470,7 +491,18 @@ public class PlayerController : MonoBehaviour
                 GameObject dissolve = Instantiate(dissolve_weapons[5], pos, rotation) as GameObject;
                 Destroy(dissolve, 5f);
             }
+            else if (rightHand.GetChild(0).gameObject.name == "Spear(Clone)")
+            {
+                GameObject dissolve = Instantiate(dissolve_weapons[5], pos, rotation) as GameObject;
+                Destroy(dissolve, 5f);
+            }
+            else if (rightHand.GetChild(0).gameObject.name == "Lance(Clone)")
+            {
+                GameObject dissolve = Instantiate(dissolve_weapons[5], pos, rotation) as GameObject;
+                Destroy(dissolve, 5f);
+            }
             Destroy(rightHand.GetChild(0).gameObject);
+            PlayerStatus.Instance.setPlayerAttacking(false);
         }
     }
 
@@ -499,9 +531,19 @@ public class PlayerController : MonoBehaviour
                     //Weapon
                     case "Spear(Clone)":
                         cleaRightHandObject();
-                        Instantiate(weapons[6], rightHand);
+                        Instantiate(weapons[8], rightHand);
                         Destroy(firstItem.gameObject);
-                        holdingBattleAxe = holdingGreatSword = holdingSword = holdingHandgun = holdingKatana = holdingPan = false;
+                        holdingBattleAxe = holdingGreatSword = holdingSword = holdingHandgun = holdingKatana = holdingPan = holdingLance = false;
+                        holdingSpear = true;
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(6);
+                        Debug.Log("pick up Spear");
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
+                        break;
+                    case "Lance(Clone)":
+                        cleaRightHandObject();
+                        Instantiate(weapons[9], rightHand);
+                        Destroy(firstItem.gameObject);
+                        holdingBattleAxe = holdingGreatSword = holdingSword = holdingHandgun = holdingKatana = holdingPan = holdingSpear = false;
                         holdingSpear = true;
                         FindObjectOfType<SoundManager>().PlaySoundEffect(6);
                         Debug.Log("pick up Spear");
@@ -511,17 +553,67 @@ public class PlayerController : MonoBehaviour
                         cleaRightHandObject();
                         Instantiate(weapons[1], rightHand);
                         Destroy(firstItem.gameObject);
-                        holdingSpear = holdingGreatSword = holdingBattleAxe = holdingHandgun = holdingKatana = holdingPan = false;
+                        holdingSpear = holdingGreatSword = holdingBattleAxe = holdingHandgun = holdingKatana = holdingPan = holdingLance = false;
                         holdingSword = true;
                         FindObjectOfType<SoundManager>().PlaySoundEffect(7);
                         Debug.Log("pick up Sword_1");
                         PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
+                    case "Sword_0(Clone)":
+                        cleaRightHandObject();
+                        Instantiate(weapons[0], rightHand);
+                        Destroy(firstItem.gameObject);
+                        holdingBattleAxe = holdingGreatSword = holdingSpear = holdingHandgun = holdingKatana = holdingPan = holdingLance = false;
+                        holdingSword = true;
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(7);
+                        Debug.Log("pick up Sword_0");
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
+                        break;
+                    case "GreatSword(Clone)":
+                        cleaRightHandObject();
+                        Instantiate(weapons[4], rightHand);
+                        Destroy(firstItem.gameObject);
+                        holdingSpear = holdingSword = holdingBattleAxe = holdingHandgun = holdingKatana = holdingPan = holdingLance = false;
+                        holdingGreatSword = true;
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(7);
+                        Debug.Log("pick up GreatSword");
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
+                        break;
+                    case "BattleAxe(Clone)":
+                        cleaRightHandObject();
+                        Instantiate(weapons[5], rightHand);
+                        Destroy(firstItem.gameObject);
+                        holdingGreatSword = holdingSpear = holdingSword = holdingHandgun = holdingKatana = holdingPan = holdingLance = false;
+                        holdingBattleAxe = true;
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(7);
+                        Debug.Log("pick up BattleAxe");
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
+                        break;
+                    case "Katana(Clone)":
+                        cleaRightHandObject();
+                        Instantiate(weapons[6], rightHand);
+                        Destroy(firstItem.gameObject);
+                        holdingBattleAxe = holdingGreatSword = holdingSpear = holdingHandgun = holdingSword = holdingPan = holdingLance = false;
+                        holdingKatana = true;
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(7);
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
+                        break;
+                    case "Pan(Clone)":
+                        cleaRightHandObject();
+                        Instantiate(weapons[7], rightHand);
+                        Destroy(firstItem.gameObject);
+                        holdingGreatSword = holdingSpear = holdingSword = holdingBattleAxe = holdingKatana = holdingHandgun = holdingLance = false;
+                        holdingPan = true;
+                        FindObjectOfType<SoundManager>().PlaySoundEffect(7);
+                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
+                        break;
+
+                    //Shield
                     case "Shield_0(Clone)":
                         clearLeftHandObject();
                         Instantiate(weapons[2], leftHand);
                         Destroy(firstItem.gameObject);
-                        holdingShield = true;                     
+                        holdingShield = true;
                         FindObjectOfType<SoundManager>().PlaySoundEffect(8);
                         Debug.Log("pick up Shield_0");
                         PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
@@ -535,54 +627,7 @@ public class PlayerController : MonoBehaviour
                         Debug.Log("pick up Shield_1");
                         PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
                         break;
-                    case "Sword_0(Clone)":
-                        cleaRightHandObject();
-                        Instantiate(weapons[0], rightHand);
-                        Destroy(firstItem.gameObject);
-                        holdingBattleAxe = holdingGreatSword = holdingSpear = holdingHandgun = holdingKatana = holdingPan = false;
-                        holdingSword = true;
-                        FindObjectOfType<SoundManager>().PlaySoundEffect(7);
-                        Debug.Log("pick up Sword_0");
-                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
-                        break;
-                    case "GreatSword(Clone)":
-                        cleaRightHandObject();
-                        Instantiate(weapons[4], rightHand);
-                        Destroy(firstItem.gameObject);
-                        holdingSpear = holdingSword = holdingBattleAxe = holdingHandgun = holdingKatana = holdingPan = false;
-                        holdingGreatSword = true;
-                        FindObjectOfType<SoundManager>().PlaySoundEffect(7);
-                        Debug.Log("pick up GreatSword");
-                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
-                        break;
-                    case "BattleAxe(Clone)":
-                        cleaRightHandObject();
-                        Instantiate(weapons[5], rightHand);
-                        Destroy(firstItem.gameObject);
-                        holdingGreatSword = holdingSpear = holdingSword = holdingHandgun = holdingKatana = holdingPan = false;
-                        holdingBattleAxe = true;
-                        FindObjectOfType<SoundManager>().PlaySoundEffect(7);
-                        Debug.Log("pick up BattleAxe");
-                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
-                        break;
-                    case "Katana(Clone)":
-                        cleaRightHandObject();
-                        Instantiate(weapons[6], rightHand);
-                        Destroy(firstItem.gameObject);
-                        holdingBattleAxe = holdingGreatSword = holdingSpear = holdingHandgun = holdingSword = holdingPan = false;
-                        holdingKatana = true;
-                        FindObjectOfType<SoundManager>().PlaySoundEffect(7);
-                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
-                        break;
-                    case "Pan(Clone)":
-                        cleaRightHandObject();
-                        Instantiate(weapons[7], rightHand);
-                        Destroy(firstItem.gameObject);
-                        holdingGreatSword = holdingSpear = holdingSword = holdingBattleAxe = holdingKatana = holdingHandgun = false;
-                        holdingPan = true;
-                        FindObjectOfType<SoundManager>().PlaySoundEffect(7);
-                        PlayerStatus.Instance.setPlayerCanInteractWithOtherObject(false);
-                        break;
+
                     /*
                     case "Handgun(Clone)":
                         cleaRightHandObject();

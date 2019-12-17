@@ -20,6 +20,9 @@ public class Menu : MonoBehaviour
 
     private bool alreadyPlaySound;
 
+    [SerializeField]
+    private GameObject SkillSoldOutText, MoneyExchangeSoldOutText, StartUpWeaponSoldOutText, WarningText;
+
     private void Start()
     {
         alreadyPlaySound = false;
@@ -33,6 +36,10 @@ public class Menu : MonoBehaviour
         cog_4Animation = cog_4.GetComponent<Animator>();
         doorAnimator = door.GetComponentInChildren<Animator>();
         bookAnimator = book.GetComponent<Animator>();
+        WarningText.SetActive(false);
+        SkillSoldOutText.SetActive(false);
+        MoneyExchangeSoldOutText.SetActive(false);
+        StartUpWeaponSoldOutText.SetActive(false);
     }
     // Update is called once per frame
     private void Update()
@@ -120,13 +127,10 @@ public class Menu : MonoBehaviour
                 if (Input.GetMouseButtonDown(0)) SceneManager.LoadScene(1);
                 _selection = selection;
             }
-            if(selection.CompareTag("VendingMachine"))
+
+            if (selection.CompareTag("Tutroial"))
             {
-                var selectionCollider = selection.GetComponent<Collider>();
-                if (Input.GetMouseButtonDown(0))
-                {
-                  Buying.SetActive(true);
-                }
+                if (Input.GetMouseButton(0)) SceneManager.LoadScene(3);
                 _selection = selection;
             }
             /*
@@ -155,7 +159,72 @@ public class Menu : MonoBehaviour
                    PlayerStatus.Instance.setPlayerAtTheMenu(false);
                     SceneManager.LoadScene(2);
                 }
+            }
+
+            if (selection.gameObject.name == "purchase start up weapon")
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (PlayerStatus.Instance.getReinforcement() >= 5)
+                    {
+                        int[] rand = { 0, 2, 3 };
+                        if (!StartUpWeaponSoldOutText.activeInHierarchy)
+                        {
+                            PlayerStatus.Instance.setReinforcement(-5);
+                            PlayerStatus.Instance.setSelectBetterWeapon(rand[Random.Range(0, rand.Length)]);
+                            StartUpWeaponSoldOutText.SetActive(true);
+                        }
+                    }
+                }
                 _selection = selection;
+            }
+            else
+            {
+                WarningText.SetActive(true);
+            }
+
+            if (selection.gameObject.name == "purchase surprise special skills")
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (PlayerStatus.Instance.getReinforcement() >= 10)
+                    {
+                        if (!SkillSoldOutText.activeInHierarchy)
+                        {
+                            PlayerStatus.Instance.setReinforcement(-10);
+                            PlayerStatus.Instance.setSelectUpgradeSkill(Random.Range(1, 7));
+                            SkillSoldOutText.SetActive(true);
+                        }
+                    }
+                    _selection = selection;
+                }
+            }
+            else
+            {
+                WarningText.SetActive(true);
+            }
+
+            if (selection.gameObject.name == "exchanging to money")
+            {
+                int exchange_time = 10;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    if (PlayerStatus.Instance.getReinforcement() >= 2)
+                    {
+                        if (!MoneyExchangeSoldOutText.activeInHierarchy && exchange_time != 0)
+                        {
+                            PlayerStatus.Instance.setReinforcement(-2);
+                            PlayerStatus.Instance.setRandomStartUpMoney(100);
+                            if (exchange_time == 0) MoneyExchangeSoldOutText.SetActive(true);
+                            else exchange_time--;
+                        }
+                    }
+                }
+                _selection = selection;
+            }
+            else
+            {
+                WarningText.SetActive(true);
             }
             /*
             if (selection.CompareTag("Tutorial"))

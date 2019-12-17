@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 7317295665644698892}
   - component: {fileID: 3940870439286997493}
   - component: {fileID: 3793951400135329483}
+  - component: {fileID: 5840107569670762609}
   m_Layer: 9
   m_Name: Shield_0
-  m_TagString: Weapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3354089651158136105}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 200, y: 200, z: 200}
+  m_LocalScale: {x: 300, y: 300, z: 300}
   m_Children:
   - {fileID: 2674076232357032490}
   m_Father: {fileID: 0}
@@ -93,6 +94,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0038103228, y: 0.03, z: 0.02}
   m_Center: {x: -0.00041831998, y: 0, z: 0}
+--- !u!114 &5840107569670762609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3354089651158136105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0182fe7d026501e4bb3963464315adac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  durability: 5
 --- !u!1001 &6946396588833839408
 PrefabInstance:
   m_ObjectHideFlags: 0
