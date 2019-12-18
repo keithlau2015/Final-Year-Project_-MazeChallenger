@@ -335,7 +335,8 @@ public class PlayerController : MonoBehaviour
         }
         if(other.gameObject.tag == "Back2MainMenu")
         {
-            SceneManager.LoadScene(1);
+            PlayerStatus.Instance.resetData();
+            SceneManager.LoadScene(1);            
         }
         if (other.gameObject.tag == "LadderBottom")
         {

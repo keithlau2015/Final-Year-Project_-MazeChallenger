@@ -7,12 +7,18 @@ public class MenuGameManager : MonoBehaviour
     [SerializeField]
     private GameObject HealthUI, HungerUI, SanityUI, CoinsUI, ReinforcementUI, PauseUI;
 
+    [HideInInspector]
     public string intoAreaIntro;
 
     // Start is called before the first frame update
     void Start()
     {
-        intoAreaIntro = "";                                                                                                                                                                  
+        intoAreaIntro = "";
+        HealthUI.SetActive(false);
+        HungerUI.SetActive(false);
+        SanityUI.SetActive(false);
+        CoinsUI.SetActive(false);
+        ReinforcementUI.SetActive(false);
     }
 
     // Update is called once per frame

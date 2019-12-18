@@ -28,7 +28,9 @@ TagManager:
   - SafeHouse
   - DeadZone
   - Drawer
-
+  - Tutroial
+  - Back2MainMenu
+  
   layers:
   - Default
   - TransparentFX
@@ -42,7 +44,7 @@ TagManager:
   - Item
   - Room
   - Chunk
-  - 
+  - PostProcessing
   - 
   - 
   - 
