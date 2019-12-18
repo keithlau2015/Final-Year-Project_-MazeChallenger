@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sword_1_D 5
+  m_Name: SurpriseBox
   m_Shader: {fileID: -6465566751694194690, guid: 8fe0531ee099cbc4b825b1296f9d4359,
     type: 3}
   m_ShaderKeywords: _GLOSSINESS_FROM_BASE_ALPHA _SPECULAR_COLOR
