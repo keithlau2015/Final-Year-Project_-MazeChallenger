@@ -89,6 +89,8 @@ public class LevelBuilder : MonoBehaviour
         Gift_slot_4.onClick.AddListener(onClickUpgradeHungerButton);
         Gift_slot_5.onClick.AddListener(onClickRestoringToFullHealth);
         Gift_slot_6.onClick.AddListener(onClickRestoringToFullHunger);
+
+        Time.timeScale = 1;
     }
 
     private void Update()
