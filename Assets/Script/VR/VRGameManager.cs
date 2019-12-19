@@ -25,14 +25,6 @@ public class VRGameManager : MonoBehaviour
             errorVideo.SetActive(true);
         }
     }
-
-    private void Start()
-    {
-        
-    }
-
-    private void Update()
-    {
-        
-    }
+}
+}
 }
