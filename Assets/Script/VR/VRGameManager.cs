@@ -13,6 +13,7 @@ public class VRGameManager : MonoBehaviour
     private Vector3 gravity = new Vector3(0f, -9.89f, 0f);
     private void Awake()
     {
+        Time.timeScale = 1;
         Physics.gravity = gravity;
         if (File.Exists(path_Char))
         {
@@ -25,6 +26,4 @@ public class VRGameManager : MonoBehaviour
             errorVideo.SetActive(true);
         }
     }
-}
-}
 }

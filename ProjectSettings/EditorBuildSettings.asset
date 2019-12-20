@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial.unity
     guid: ead8c4cb49363c243a5aacdc6b51b43c
+  - enabled: 1
+    path: Assets/Scenes/RunVRorComputer.unity
+    guid: 859ff26d0efec47e3af91afa7afc8fd7
+  - enabled: 1
+    path: Assets/Scenes/Laboratary.unity
+    guid: ea328e885ff1d2a428c8bb4c4b1c7e4a
   m_configObjects: {}

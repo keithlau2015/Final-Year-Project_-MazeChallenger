@@ -40,6 +40,7 @@ public class Menu : MonoBehaviour
         SkillSoldOutText.SetActive(false);
         MoneyExchangeSoldOutText.SetActive(false);
         StartUpWeaponSoldOutText.SetActive(false);
+        Time.timeScale = 1;
     }
     // Update is called once per frame
     private void Update()

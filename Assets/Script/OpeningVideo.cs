@@ -12,9 +12,7 @@ public class OpeningVideo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        path_Char = "/Subject_Adam.Char";
-        if(count != 0)count = SaveSystem.LoadData().count;
-        PlayerStatus.Instance.setReinforcement(SaveSystem.LoadData().tempReinforcement);
+        path_Char = "/Subject_Adam.Char";    
         videoPlayer = GetComponent<VideoPlayer>();
         videoPlayer.loopPointReached += LoadScene;
 
@@ -52,7 +50,7 @@ public class OpeningVideo : MonoBehaviour
 
     private void LoadScene(VideoPlayer vp)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(4);
     }
 
     private void DisplayDialog(string v1, string v2, string v3, string v4)
