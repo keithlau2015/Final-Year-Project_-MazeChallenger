@@ -8,7 +8,7 @@ public class VRGameManager : MonoBehaviour
     private string path_Char = "/Subject_Adam.Char";
 
     [SerializeField]
-    private GameObject smoke, errorVideo;
+    private GameObject errorVideo;
 
     private Vector3 gravity = new Vector3(0f, -9.89f, 0f);
     private void Awake()
@@ -17,12 +17,10 @@ public class VRGameManager : MonoBehaviour
         Physics.gravity = gravity;
         if (File.Exists(path_Char))
         {
-            smoke.SetActive(false);
             errorVideo.SetActive(false);
         }
         else
         {
-            smoke.SetActive(true);
             errorVideo.SetActive(true);
         }
     }
