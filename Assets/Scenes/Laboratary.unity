@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.598
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1706072501}
-  m_IndirectSpecularColor: {r: 0.10780943, g: 0.13497654, b: 0.18353917, a: 0.598}
+  m_IndirectSpecularColor: {r: 0.1078097, g: 0.13497704, b: 0.18353987, a: 0.598}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7618,7 +7618,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f94655728c7364db991f6969fc1ac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoke: {fileID: 0}
   errorVideo: {fileID: 923010337}
 --- !u!4 &375611978
 Transform:
@@ -12438,7 +12437,7 @@ VideoPlayer:
   m_RenderMode: 3
   m_AspectRatio: 2
   m_DataSource: 0
-  m_PlaybackSpeed: 2
+  m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
   m_TargetAudioSources: []
   m_DirectAudioVolumes: []
@@ -12448,7 +12447,7 @@ VideoPlayer:
   m_ControlledAudioTrackCount: 0
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
-  m_Looping: 1
+  m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
 --- !u!65 &923010339
@@ -14386,7 +14385,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114008530}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 4ad4c7ca333c4734ba05e423c0797a7a, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: ea1975b2bfe418949ae4a38d011c7361, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
